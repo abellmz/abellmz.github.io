@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Hexo主题更换和图片上传 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="一、Hexo博客更换主题：1、登录https://hexo.io/themes/选择想要的主题" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Hexo主题更换和图片上传" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-19T15:52:33.000Z"><a href="/2019/02/19/主题更换和图片上传/">2019-02-19</a></time>
+      
+      
+  
+    <h1 class="title">Hexo主题更换和图片上传</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="一、Hexo博客更换主题："><a href="#一、Hexo博客更换主题：" class="headerlink" title="一、Hexo博客更换主题："></a>一、Hexo博客更换主题：</h5><p>1、登录<a href="https://hexo.io/themes/选择想要的主题" target="_blank" rel="noopener">https://hexo.io/themes/选择想要的主题</a></p>
+<a id="more"></a>
+
+<p>点击图片可以预览所有者的博客</p>
+<p>点击图片下方的文字可以进入主题对应的github代码</p>
+<p><img src="/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550591956.jpg" alt="1550591956"></p>
+<p>2、克隆（复制）代码</p>
+<p>在项目文件夹下点开git bash</p>
+<p><code>hexo clone git@github.com:wizardforcel/hexo-theme-landfarz.git</code></p>
+<p>克隆得到一个文件夹名为hexo-theme-landfarz，将其剪切放入theme文件夹中</p>
+<p>修改_config.yml中的theme： hexo-theme-landfarz（文件夹什么名，就改什么名，注意空格）</p>
+<p>3、清空public</p>
+<p>hexo clean</p>
+<p>4、生成</p>
+<p>hexo g（hexo generate生成  静态文件）</p>
+<p>5、启动服务器</p>
+<p>hexo s</p>
+<p>6、打开浏览器，查看本地主题是否更改</p>
+<p>localhost:4000(localhos+t你本地仓库服务的端口号)</p>
+<p>7、改变后，上传远程仓库</p>
+<p>hexo d</p>
+<p>8、输入域名<a href="https://abellmz.github.io/完成" target="_blank" rel="noopener">https://abellmz.github.io/完成</a></p>
+<h5 id="二、上传图片"><a href="#二、上传图片" class="headerlink" title="二、上传图片"></a>二、上传图片</h5><p>1、在_config.yml文件  post_asset_folder 字段设置为true </p>
+<p>2、设置 后，建立文件时Hexo 会生成一个与文章同名的文件夹，可以把与本文章相关的所有图片等资源都放到此文件夹内，更方便的调用资源。</p>
+<p><img src="/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550593694.jpg" alt="1550593694"></p>
+<p>3、到博客的根目录下执行 npm install <a href="https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2FCodeFalling%2Fhexo-asset-image" target="_blank" rel="noopener">https://github.com/CodeFalling/hexo-asset-image</a> –save 命令来进行插件的安装。</p>
+<p>4、执行 hexo new “XXX” 之后查看博客的 ../source/_posts 目录下的文件，会看到存在一个XXX文件夹 和 XXX.md 文件。</p>
+<p>5、将所需要的图片资源放到XXX文件夹下,写文章就使用XXX文件内的图片</p>
+<p>7、hexo s 命令预览一下博客效果，最后执行hexo clean-&gt; hexo g -&gt; hexo d完成！</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

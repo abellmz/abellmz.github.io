@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>在github上搭建博客 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="1、在Github上建立相应的仓库" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="在github上搭建博客" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-19T15:20:35.000Z"><a href="/2019/02/19/如何在github上搭建博客/">2019-02-19</a></time>
+      
+      
+  
+    <h1 class="title">在github上搭建博客</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="1、在Github上建立相应的仓库"><a href="#1、在Github上建立相应的仓库" class="headerlink" title="1、在Github上建立相应的仓库"></a>1、在Github上建立相应的仓库</h5><a id="more"></a>
+
+<p>既然想在GitHub上建立博客，前提是有GitHub账号的，没有的就注册一下。</p>
+<p>新建仓库，直接点击右上角“+”号菜单，其中就有New repository这个子菜单，接着就是填写仓库对应资料的问题了。</p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550455260188.png" alt="1550455260188"></p>
+<p><code>Repository name</code>这个选项一定要填你的username.github.io不然会出现各种问题（参考资料这么说的）还有就是下方的初始化<code>Initialize this repository with a README</code>勾选，这样能将Github中这个仓库上传的代码clone到你的电脑中。</p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550455831932.png" alt="1550455831932"></p>
+<p>之后点击创建就可以了。</p>
+<p>那么怎么知道自己的博客建立了呢，点击右上角公文包的菜单，选择子菜单<code>Your repositories</code><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550456116833.png" alt="1550456116833"></p>
+<p>进入你刚创建的仓库，会有个<code>Settings</code>的按钮，点击后下拉到GitHub Pages，后面有个默认的地址，它就是你的博客地址了。想要一个特别的域名的话，可以买一个域名，在setting里面绑定就可以了（后面的资料链接有对应的操作）</p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550456296995.png" alt="1550456296995"></p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550456318091.png" alt="1550456318091"></p>
+<p>完成以上操作，仓库就建好了，接着就是配置本机环境。</p>
+<h5 id="2、搭建环境"><a href="#2、搭建环境" class="headerlink" title="2、搭建环境"></a>2、搭建环境</h5><p>安装node.js和git.默认安装即可。未安装的按一下链接参考</p>
+<p><a href="https://www.cnblogs.com/zhouyu2017/p/6485265.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhouyu2017/p/6485265.html</a></p>
+<p>安装完成后，cmd打开命令窗口分别输入node -v,  npm -v, git –version,  都返回版本号就说明安装好了。</p>
+<p>ssh授权，打开git bash 输入</p>
+<p>ssh key检查是否存在：</p>
+<p>$ ls ~/.ssh/id_rsa.pub如果出现文件路径则存在</p>
+<p>生成ssh key：</p>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:your@email.com" target="_blank" rel="noopener">your@email.com</a>“</p>
+<p>-t 指定密钥类型，默认是 rsa ，可以省略。</p>
+<p>-C 设置注释文字，比如邮箱。</p>
+<p>-f 指定密钥文件存储文件名。</p>
+<p>以上代码省略了 -f 参数，因此，运行上面那条命令后会让你输入一个文件名，用于保存刚才生成的 SSH key 代码。连续3个回车。如果不需要密码的话。 最后得到了两个文件：id_rsa和id_rsa.pub。</p>
+<p>如果你是第一次使用git，在此步骤前先设置自己的用户名和邮箱</p>
+<p>$ git config –global user.name “yourname”<br>$ git config –global user.email “<a href="mailto:your@email.com" target="_blank" rel="noopener">your@email.com</a>“</p>
+<p>添加密钥到github上： </p>
+<p>打开你的id_rsa.pub文件，拷贝内容粘贴到github上的ssh设置里就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>复制，ssh-rsa…到最后。</p>
+<p>具体操作：登录你的github账号，点击右上角设置，点击Settings-&gt;点击左边菜单栏的 SSH key，添加一个新的sshkey,将代码贴入，授权完成。</p>
+<p>测试：</p>
+<p>$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p>第一次的话期间若出现是否continue，输入yes，出现hi。。。（加上你的用户名）就成功了。</p>
+<h5 id="3、安装Hexo"><a href="#3、安装Hexo" class="headerlink" title="3、安装Hexo"></a>3、安装Hexo</h5><p>新建一个文件夹作为你博客文件存储的地方，打开git bash进入这个文件夹，输入</p>
+<p>npm install hexo-cli -g</p>
+<p>开始安装Hexo,之后输入</p>
+<p>hexo -v检查hexo是否安装成功。</p>
+<p>然后输入hexo init初始化该文件夹。</p>
+<p>最后的最后尝试：输入hexo s</p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550458739230.png" alt="1550458739230"></p>
+<p>地址栏中输入<a href="http://localhost:400/可以看到一个界面，由于我的主题已经更改，所以copy一个别人的图给大家看看是什么样子。" target="_blank" rel="noopener">http://localhost:400/可以看到一个界面，由于我的主题已经更改，所以copy一个别人的图给大家看看是什么样子。</a></p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550458863481.png" alt="1550458863481"></p>
+<p>这个是默认的主题，如果不满意可以更改，这个在后面会整理出对应的资料。有兴趣的小伙伴可以关注一下我的博客。</p>
+<h5 id="4、写文章"><a href="#4、写文章" class="headerlink" title="4、写文章"></a>4、写文章</h5><p>输入hexo new post  ‘filename’    </p>
+<p>之后再source-&gt;_posts中你可以看到对应的.md文件，是的，这就是文章保存的位置，点击各个文件，就可以开始编辑。</p>
+<h5 id="5、上传项目"><a href="#5、上传项目" class="headerlink" title="5、上传项目"></a>5、上传项目</h5><p>打开_config.yml，修改repository后面的内容(在github对应仓库里的ssh复制过来)，注意：type、repository、branch冒号的后面都有一个空格</p>
+<p><img src="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/1550459433576.png" alt="1550459433576"></p>
+<p>之后输入npm install hexo-deployer-git -save</p>
+<p>之后编辑好文章，执行命令：hexo d -g（生成和部署）然后就可以访问你的域名了，可以看到你刚编辑的文章。</p>
+<p>参考链接：</p>
+<p><a href="https://www.jianshu.com/p/4f56cf990bba" target="_blank" rel="noopener">https://www.jianshu.com/p/4f56cf990bba</a></p>
+<p><a href="https://www.cnblogs.com/trista222/p/8017300.html" target="_blank" rel="noopener">https://www.cnblogs.com/trista222/p/8017300.html</a></p>
+<p><a href="https://www.cnblogs.com/jackyroc/p/7681938.html" target="_blank" rel="noopener">https://www.cnblogs.com/jackyroc/p/7681938.html</a></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

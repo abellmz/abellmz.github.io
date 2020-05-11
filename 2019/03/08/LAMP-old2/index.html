@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>LAMP操作 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="12-24：安装LAMPLAMP之间的区别和运行过程解析
+https://www.cnblogs.com/y0umer/archive/2011/08/19/2809615.html
+l：即操作系统，也就是建立在电脑硬件基础上的最底层的东西，相当于：国家这个概念，而win或者linux就相当于不同的国家
+a：就是web服务器，这个服务器 相当于国家领导人：主席，起到指导作用。
+m：就是数据库，存储数据的地方，相当 银行
+p：就是php，相当于下属，做事情的人
+也就是说php是apache的一个外挂程序，必须依靠web服务器才可以运行。当客户端浏览器触发事件—&amp;gt;php程序提交到apache服务器—-&amp;gt;apache服务器根据php程序的特点判断是php程序，提交给php引擎程序—&amp;gt;php引擎程序解析并读取数据库生成相应的页面
+php引擎；像smarty就是，有自己的标签模式并可以解析这种标签 生成原生态的php程序
+安装：yum命令讲解" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="LAMP操作" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-08T07:28:02.000Z"><a href="/2019/03/08/LAMP-old2/">2019-03-08</a></time>
+      
+      
+  
+    <h1 class="title">LAMP操作</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="12-24：安装LAMP"><a href="#12-24：安装LAMP" class="headerlink" title="12-24：安装LAMP"></a>12-24：安装LAMP</h4><p>LAMP之间的区别和运行过程解析</p>
+<p><a href="https://www.cnblogs.com/y0umer/archive/2011/08/19/2809615.html" target="_blank" rel="noopener">https://www.cnblogs.com/y0umer/archive/2011/08/19/2809615.html</a></p>
+<p>l：即操作系统，也就是建立在电脑硬件基础上的最底层的东西，相当于：国家这个概念，而win或者linux就相当于不同的国家</p>
+<p>a：就是web服务器，这个服务器 相当于国家领导人：主席，起到指导作用。</p>
+<p>m：就是数据库，存储数据的地方，相当 银行</p>
+<p>p：就是php，相当于下属，做事情的人</p>
+<p>也就是说php是apache的一个外挂程序，必须依靠web服务器才可以运行。当客户端浏览器触发事件—&gt;php程序提交到apache服务器—-&gt;apache服务器根据php程序的特点判断是php程序，提交给php引擎程序—&gt;php引擎程序解析并读取数据库生成相应的页面</p>
+<p>php引擎；像smarty就是，有自己的标签模式并可以解析这种标签 生成原生态的php程序</p>
+<h5 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h5><p>yum命令讲解</p>
+<a id="more"></a>
+
+<p><a href="https://blog.csdn.net/shuaigexiaobo/article/details/79875730" target="_blank" rel="noopener">https://blog.csdn.net/shuaigexiaobo/article/details/79875730</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//windows+apache/nginx+mysql+php    wamp</span><br><span class="line">//mac+apache+mysql+php    mamp</span><br><span class="line">//linux+apache/nginx+mysql+php  lamp/lnmp</span><br><span class="line"></span><br><span class="line">//安装环境</span><br><span class="line">yum –y install httpd（安装Apache）</span><br><span class="line">yum –y install mysql mysql-server(安装mysql)</span><br><span class="line">yum -y install php php-mysql php-gd php-mbstring(安装php)</span><br><span class="line">//启动 apache</span><br><span class="line">   apachectl start</span><br><span class="line">//网站根目录:/var/www/html	创建 index.php 写入 php 内容</span><br><span class="line">//通过浏览器访问你自己的 ip 地址,正常就会输出你 php 内容</span><br><span class="line">&lt;?php</span><br><span class="line">echo &apos;nihao&apos;</span><br><span class="line">?&gt;</span><br><span class="line">//vi 编辑器进行搜索（严格区分大小写）</span><br><span class="line">  	:  /搜索的词 	 //n 下一个</span><br><span class="line">//vi 进入文件 </span><br><span class="line">剪切：在目标内容开头按dd(单行内容被剪切)，按p黏贴</span><br><span class="line">复制：在目标内容开头 按v进入视图模式，按方向键到内容结束 按y结束</span><br><span class="line">黏贴：在黏贴处 按p</span><br></pre></td></tr></table></figure>
+
+<p><strong>apache启动报错</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">报apr_sockaddr_info_get() failed for centos-2019</span><br><span class="line"></span><br><span class="line"> Could not reliably determine the server&apos;s fully qualified domain name, using 127.0.0.1 for ServerName</span><br></pre></td></tr></table></figure>
+
+<p>解决：find    / -name httpd.conf</p>
+<p>vi /etc/httpd/conf/httpd.conf</p>
+<p>:/ServerName    </p>
+<p>找到#ServerName <a href="http://www.example.com:80去掉注释" target="_blank" rel="noopener">www.example.com:80去掉注释</a></p>
+<p>关闭防火墙，浏览器输入ip,出现页面，apache安装成功</p>
+<h5 id="虚拟主机配置："><a href="#虚拟主机配置：" class="headerlink" title="虚拟主机配置："></a>虚拟主机配置：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">//虚拟主机：指在⼀台服务器上虚拟出多个⽹站，可以通过不同的</span><br><span class="line">域名进⾏访问，事实上访问的都是⼀台服务器。</span><br><span class="line">   hd.com   qq.com</span><br><span class="line">   主配置文件 /etc/httpd/conf/httpd.conf  </span><br><span class="line">   搜索主配置的NameVirtualHost</span><br><span class="line">//1.主配置的NameVirtualHost *:80这⾏注释去掉</span><br><span class="line">#找到以下这一段代码，用于模仿</span><br><span class="line">#&lt;VirtualHost *:80&gt;</span><br><span class="line">#    ServerAdmin webmaster@dummy-host.example.com</span><br><span class="line">#    DocumentRoot /www/docs/dummy-host.example.com</span><br><span class="line">#    ServerName dummy-host.example.com</span><br><span class="line">#    ErrorLog logs/dummy-host.example.com-error_log</span><br><span class="line">#    CustomLog logs/dummy-host.example.com-access_log common</span><br><span class="line">#&lt;/VirtualHost&gt;</span><br><span class="line">//2.添加扩展配置:/etc/httpd/conf.d/virtual.conf</span><br><span class="line">   &lt;VirtualHost *:80&gt;</span><br><span class="line">ServerAdmin webmaster@dummy-host.example.com</span><br><span class="line">        DocumentRoot /var/www/html/hd（文件根目录）</span><br><span class="line">        ServerName hd.com（域名）</span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line">//3.在/var/www/html创建 qq 和 hd 两个目录,分别创建 index.php写入不通内容</span><br><span class="line">//4.重启 apache：apachectl restart</span><br><span class="line">//5.修改我们自己电脑的 host 文件（由于用的不是公网，需要修改自己电脑的文件）</span><br><span class="line">//windows:c:/windows/system32/drivers/etc/</span><br><span class="line">//mac:/etc/hosts</span><br><span class="line"></span><br><span class="line">//修改 host 文件,增加:</span><br><span class="line">192.168.31.123 hd.com</span><br><span class="line">      192.168.31.123 abc.com</span><br></pre></td></tr></table></figure>
+
+<h5 id="mysql-表分区"><a href="#mysql-表分区" class="headerlink" title="mysql 表分区:"></a>mysql 表分区:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//mysql 表分区</span><br><span class="line">   //启动 mysql:service mysql start</span><br><span class="line">   //初始化 mysql:mysql_secure_installation</span><br><span class="line">修改结束符：\d $$ （mysql语句，需要进入mysql后才能执行 ）mysql -u root -p</span><br><span class="line">......</span><br><span class="line">drop database if exists demo;</span><br><span class="line">create database demo charset utf8;</span><br><span class="line">use demo;</span><br><span class="line">create table partition_table(id int,user varchar(30))</span><br><span class="line">partition BY RANGE (id) ( </span><br><span class="line"> partition p0 VALUES LESS THAN (1000), </span><br><span class="line"> partition p1 VALUES LESS THAN (2000), </span><br><span class="line"> partition p2 VALUES LESS THAN (3000), </span><br><span class="line"> partition p3 VALUES LESS THAN MAXVALUE </span><br><span class="line">);</span><br><span class="line">\d $$</span><br><span class="line">创建一个函数insert_data（）用于灌数据</span><br><span class="line">   create procedure insert_data() begin</span><br><span class="line">declare i int default 5000; declare y date;</span><br><span class="line">while i&gt;0 do</span><br><span class="line">    insert into partition_table(id,user)values(i,left(md5(i),5));</span><br><span class="line">set i=i-1; end while;</span><br><span class="line">end;</span><br><span class="line">   \d $$;</span><br><span class="line">   调用函数 开始灌数据</span><br><span class="line">   call insert_data();</span><br><span class="line">   //explain 帮助开发人员 分析 sql 语句</span><br><span class="line">   explain select * from partition_table where id&lt;100\G（\g等同于‘；’,\G 横向表格纵向输出,根据条件查询不同的分区，速度更快）</span><br></pre></td></tr></table></figure>
+
+<h5 id="安装memcached："><a href="#安装memcached：" class="headerlink" title="安装memcached："></a>安装memcached：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> //安装memcached:yum -y install memcached.i686（安装后要重启环境）</span><br><span class="line">   //搜索:yum search memcached</span><br><span class="line">//启动:memcached -m 128m -p 11211 -d -u root -P /tmp/memcached.pid -c 256（关机或掉线后需要重新启动</span><br><span class="line">• p tcp端⼝号 默认11211</span><br><span class="line">• -m 最⼤内存⼤⼩ 默认64M</span><br><span class="line">• -d 做为守护进程在后台运⾏</span><br><span class="line">• -c 最⼤并发连接数</span><br><span class="line">• -P 保存Memcache的pid⽂件</span><br><span class="line">• -l 监听服务器地址</span><br><span class="line">• -u 如果以root⽤户启动MemCache必须加此选项）</span><br><span class="line">  </span><br><span class="line">  //查看 memcache 状态:netstat -tal    listen</span><br><span class="line">  netstat 用于显示各种网络相关信息</span><br><span class="line">   //关闭:kill -9 `cat /tmp/memcached.pid`</span><br><span class="line">   //安装memcache 的 php 扩展:yum -y install php-pecl-memcache.i686</span><br><span class="line">以下代码有问题，不知道应该如何打开网页，进行测试  </span><br><span class="line">   //php操作 memcache</span><br><span class="line">      $memcache = new Memcache();</span><br><span class="line">      $memcache-&gt;connect(&apos;127.0.0.1&apos;,11211);</span><br><span class="line">      			键		值	不压缩  10秒 </span><br><span class="line">$memcache-&gt;set(&quot;test&quot;,&quot;houdunwang.com&quot;,0,10);</span><br><span class="line">缓存时间从刷新页面开始算，想看效果刷新后，注掉缓存，限定时间内可以看到</span><br><span class="line">      echo $memcache-&gt;get(&apos;test&apos;);</span><br><span class="line">      $memcache-&gt;close();</span><br><span class="line"></span><br><span class="line">//filezilla</span><br></pre></td></tr></table></figure>
+
+<h5 id="memcache"><a href="#memcache" class="headerlink" title="memcache:"></a>memcache:</h5><p><a href="https://www.jb51.net/article/48745.htm" target="_blank" rel="noopener">https://www.jb51.net/article/48745.htm</a></p>
+<p>$memcache = new Memcache();</p>
+<p>127.0.0.1代表本地localhost,可以直接写localhost，基本是固定的（服务器在哪就代表哪）</p>
+<p>$memcache-&gt;connect(‘127.0.0.1’,11211);<br>​                      键            值        不压缩       秒<br> $memcache-&gt;set(“test”,”houdunwang.com”,0,10);<br> echo $memcache-&gt;get(‘test’);<br>$memcache-&gt;close();</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

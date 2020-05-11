@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>运算/局部全局静态变量/其他 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="运算：" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="运算/局部全局静态变量/其他" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-05-20T01:40:34.000Z"><a href="/2019/05/20/运算-局部全局静态变量-其他/">2019-05-20</a></time>
+      
+      
+  
+    <h1 class="title">运算/局部全局静态变量/其他</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="运算："><a href="#运算：" class="headerlink" title="运算："></a>运算：</h5><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">运算符  名称 结果</span><br><span class="line">$a==$b 等于 TRUE，如果$a等于$b</span><br><span class="line">$a===$b 全等于 TRUE，如果$a等于$b，并且类型也相同</span><br><span class="line">$a!=$b 不等 TRUE，如果$a不等于$b</span><br><span class="line">$a&lt;&gt;$b 不等 TRUE，如果$a不等于$b</span><br><span class="line">$a!==$b ⾮全等 TRUE，如果$a不等于$b，或者类型不同</span><br><span class="line">$a&lt;$b ⼩于 TRUE，如果$a严格⼩于$b</span><br><span class="line">$a&gt;$b ⼤于 TRUE，如果$a严格$b</span><br><span class="line">$a&lt;=$b ⼩于等于 TRUE，如果 $a ⼩于或者等于$</span><br><span class="line">$a&gt;=$b ⼤于等于 TRUE，如果 $a ⼤于或者等于$</span><br></pre></td></tr></table></figure>
+
+<h5 id="逻辑运算符："><a href="#逻辑运算符：" class="headerlink" title="逻辑运算符："></a>逻辑运算符：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$a and $b 逻辑与 TRUE，如果 $a 与 $b 都为 TRUE</span><br><span class="line">$a or $b 逻辑或 TRUE，如果 $a 或 $b 任⼀为TRUE</span><br><span class="line">!$a 逻辑⾮ TRUE，如果 $a 不为 TRUE</span><br><span class="line">$a &amp;&amp; $b 逻辑与 TRUE，如果 $a 与 $b 都为TRUE</span><br><span class="line">$a || $b 逻辑或 TRUE，如果 $a 或 $b 任⼀为TRUE</span><br><span class="line">注：其中and与&amp;&amp; 、or与||是同⼀逻辑运算符的两种写法</span><br></pre></td></tr></table></figure>
+
+<h5 id="局部、全局和静态变量："><a href="#局部、全局和静态变量：" class="headerlink" title="局部、全局和静态变量："></a>局部、全局和静态变量：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$hh=0;</span><br><span class="line">function p()&#123; </span><br><span class="line">$hh = 3; //定义局部变量</span><br><span class="line">//global $hh; //利⽤ global 引⼊全局变量</span><br><span class="line">echo &quot;在函数中显示局部变量\$hh值: $hh &lt;/br&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">p();</span><br><span class="line">也可以使⽤全局数组$GLOBALS调⽤全局变量。</span><br><span class="line">echo $GLOBALS[“hh”];</span><br><span class="line"></span><br><span class="line">PHP⽀持声明函数变量为静态的(static)。⼀个静态变量在所有对该函数的</span><br><span class="line">调⽤之间共享，并且仅在脚本的执⾏期间函数第⼀次被调⽤时被初始化。</span><br><span class="line">要声明函数变量为静态的⽤关键字static。通常，静态变量的第⼀次使⽤时</span><br><span class="line">赋予⼀个初始值。</span><br></pre></td></tr></table></figure>
+
+<h5 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h5><p>$变量=(表达式)？值1:值2;<br>• 当表达式的返回值为true时，$变量被赋予值1，否则被赋予值2</p>
+<h5 id="数据类型判断："><a href="#数据类型判断：" class="headerlink" title="数据类型判断："></a>数据类型判断：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">getType()	•（ 获取变量的类型）</span><br><span class="line">is_bool()	• (检测是否为布尔型)</span><br><span class="line">is_int()	• (检测是否为整型)</span><br><span class="line">is_float()	• (检测是否为浮点数)</span><br><span class="line">is_string()	• (检测是否为字符串)</span><br><span class="line">is_null()	• (检测是否为NULL)</span><br><span class="line">⾃动转换</span><br><span class="line">• PHP类型根据值，⾃动转换</span><br><span class="line">强制转换</span><br><span class="line">• settype($var,”type”)</span><br><span class="line">intval()	转换为整型</span><br><span class="line">floatval()	转换为浮点型</span><br><span class="line">strval()	转换为字符串型</span><br></pre></td></tr></table></figure>
+
+<h5 id="include-require-include-once-require-once"><a href="#include-require-include-once-require-once" class="headerlink" title="include/require/include_once/require_once"></a>include/require/include_once/require_once</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">include()，require()</span><br><span class="line">将⽂件导⼊，就像把该⽂件粘贴到使⽤函数的地⽅。</span><br><span class="line">区别</span><br><span class="line">• include( )与require ( )区别在于在脚本执⾏时包含，当处理失败时，</span><br><span class="line">include( )产⽣⼀个警告⽽require( )则导致⼀个致命错误。</span><br><span class="line"></span><br><span class="line">include_once( )和require_once( )函数</span><br><span class="line">• 与include( )语句及require( )类似，区别是如果该⽂件中的代码已经</span><br><span class="line">被包括了，则不会再次包括。</span><br><span class="line">• 这两个函数⽤于在脚本执⾏期间同⼀个⽂件有可能被包括超过⼀次的</span><br><span class="line">情况下，以避免函数重定义，变量重新赋值等问题。</span><br></pre></td></tr></table></figure>
+
+<h5 id="常量与变量"><a href="#常量与变量" class="headerlink" title="常量与变量"></a>常量与变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">常量与变量区别：</span><br><span class="line">• 常量前⾯没有美元符号（$）</span><br><span class="line">• 常量只能⽤define() 函数定义，⽽不能通过赋值语句</span><br><span class="line">• 常量⼀旦定义就不能被重新定义或者取消定义</span><br><span class="line">• 常量的值只能是标量</span><br><span class="line">• 常量可以不⽤理会变量范围的规则⽽在任何地⽅定义和访问</span><br></pre></td></tr></table></figure>
+
+<h5 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">define(&quot;常量名&quot;,值);	以字⺟或下划线开始，后⾯跟着任何字⺟，数字或下划线。</span><br><span class="line">isset(变量名) 	返回值为boolean,检测变量是否存在</span><br><span class="line">unset(变量名)	 是⼀个语句,没有返回值,删除变量</span><br><span class="line">defined(常量) 	bool,检查某常量是否存在。</span><br><span class="line">empty() 	bool,检查一个变量是否为空</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP/">PHP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

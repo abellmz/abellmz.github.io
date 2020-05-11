@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>static用法及$this/self::/parent::之间区别 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="static用法：" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="static用法及$this/self::/parent::之间区别" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-05-20T01:25:18.000Z"><a href="/2019/05/20/static用法及-this-self-parent-之间区别/">2019-05-20</a></time>
+      
+      
+  
+    <h1 class="title">static用法及$this/self::/parent::之间区别</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="static用法："><a href="#static用法：" class="headerlink" title="static用法："></a>static用法：</h5><h5 id><a href="#" class="headerlink" title></a><a id="more"></a></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">static：</span><br><span class="line">• 需要⼀个数据对象只服务于类，即类内部可⽤，对外不可⽤时。建对象是极其耗费资源的,因此当⼀个⽅法具有⽐较强的公⽤性的时候,没有必要为了调⽤这个⽅法⽽重新再⽣成该类的实例。定义的⽅法或变量在程序第⼀次加载时即驻留内存，程序结束释放。</span><br><span class="line">• 静态⽅法不能被⾮静态⽅法重写，构造⽅法不允许声明为static的</span><br><span class="line">static变量：</span><br><span class="line">• 通过static声明的成员变量为静态变量或叫类变量，是该类的公共变量，在第⼀次使⽤时即⽣成，对于该类的所有对象只有⼀份，是属于类的，不是属于对象的。static变量是属于类⽽不属于对象，可以在任何地⽅通过类来访问，是类的全局变量，类创建时即存⼊内存。对多个对象来说，静态数据成员只存储⼀处，可以节省内存。只要对静态数据成员的值更新⼀次，保证所有对象存取更新后的相同的值。</span><br><span class="line">static⽅法：</span><br><span class="line">• ⽤static声明的⽅法为静态⽅法或叫类⽅法，执⾏该⽅法时不会将对象引⽤传给函数，所以我们不能访问⾮静态成员，只能访问静态⽅法或静态变量。只能使⽤关于类的⽅式如self static parent等。使⽤时不⽤⽣成对象即可执⾏</span><br></pre></td></tr></table></figure>
+
+<h5 id="this、self-和parent"><a href="#this、self-和parent" class="headerlink" title="$this、self::和parent::"></a>$this、self::和parent::</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$this</span><br><span class="line">• 是当前对象的引⽤， ⼀般出现在⽅法⾥,⽤于获取类的成员属性，或</span><br><span class="line">执⾏类的成员⽅法</span><br><span class="line">self::</span><br><span class="line">• 对本类的引⽤ ，⽤于获取当前类的表态成员属性或静态成员⽅法</span><br><span class="line">self::run()</span><br><span class="line">parent::</span><br><span class="line">• 对⽗类的引⽤,调⽤⽗类的⽅法或属性。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP/">PHP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

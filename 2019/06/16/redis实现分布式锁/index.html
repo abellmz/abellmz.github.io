@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>redis实现分布式锁 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="redis实现分布式锁" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="redis实现分布式锁" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-06-16T10:53:26.000Z"><a href="/2019/06/16/redis实现分布式锁/">2019-06-16</a></time>
+      
+      
+  
+    <h1 class="title">redis实现分布式锁</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="redis实现分布式锁"><a href="#redis实现分布式锁" class="headerlink" title="redis实现分布式锁"></a>redis实现分布式锁</h5><a id="more"></a>
+
+<p>分布式锁其实可以理解为：控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性。 举个不太恰当的例子：假设共享的资源就是一个房子，里面有各种书，分布式系统就是要进屋看书的人，分布式锁就是保证这个房子只有一个门并且一次只有一个人可以进，而且门只有一把钥匙。然后许多人要去看书，可以，排队，第一个人拿着钥匙把门打开进屋看书并且把门锁上，然后第二个人没有钥匙，那就等着，等第一个出来，然后你在拿着钥匙进去，然后就是以此类推。</p>
+<p>实现原理：</p>
+<ul>
+<li><p>互斥性</p>
+</li>
+<li><ul>
+<li>保证同一时间只有一个客户端可以拿到锁，也就是可以对共享资源进行操作</li>
+</ul>
+</li>
+<li><p>安全性</p>
+</li>
+<li><ul>
+<li>只有加锁的服务才能有解锁权限，也就是不能让a加的锁，bcd都可以解锁，如果都能解锁那分布式锁就没啥意义了</li>
+<li>可能出现的情况就是a去查询发现持有锁，就在准备解锁，这时候忽然a持有的锁过期了，然后b去获得锁，因为a锁过期，b拿到锁，这时候a继续执行第二步进行解锁如果不加校验，就将b持有的锁就给删除了</li>
+</ul>
+</li>
+<li><p>避免死锁</p>
+</li>
+<li><ul>
+<li>出现死锁就会导致后续的任何服务都拿不到锁,不能再对共享资源进行任何操作了</li>
+</ul>
+</li>
+<li><p>保证加锁与解锁操作是原子性操作</p>
+</li>
+<li><ul>
+<li>这个其实属于是实现分布式锁的问题，假设a用redis实现分布式锁</li>
+<li>假设加锁操作，操作步骤分为两步：</li>
+<li>1，设置key set（key，value）2，给key设置过期时间</li>
+</ul>
+</li>
+<li><ul>
+<li>假设现在a刚实现set后，程序崩了就导致了没给key设置过期时间就导致key一直存在就发生了死锁</li>
+</ul>
+</li>
+</ul>
+<p>参考链接：<a href="https://www.cnblogs.com/cmyxn/p/9047848.html" target="_blank" rel="noopener">https://www.cnblogs.com/cmyxn/p/9047848.html</a>（java）</p>
+<p>​        <a href="https://www.cnblogs.com/syhx/p/9753433.html" target="_blank" rel="noopener">https://www.cnblogs.com/syhx/p/9753433.html</a>(PHP)</p>
+<p>redis分布式锁的完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/**</span><br><span class="line"> * 实现Redis分布锁</span><br><span class="line"> */ </span><br><span class="line">$key        = &apos;test&apos;;       //要更新信息的缓存KEY</span><br><span class="line">$lockKey    = &apos;lock:&apos;.$key; //设置锁KEY</span><br><span class="line">$lockExpire = 10;           //设置锁的有效期为10秒</span><br><span class="line"> </span><br><span class="line">//获取缓存信息</span><br><span class="line">$result = $redis-&gt;get($key);</span><br><span class="line">//判断缓存中是否有数据</span><br><span class="line">if(empty($result))</span><br><span class="line">&#123;</span><br><span class="line">    $status = TRUE;</span><br><span class="line">    while ($status)</span><br><span class="line">    &#123;</span><br><span class="line">        //设置锁值为当前时间戳 + 有效期</span><br><span class="line">        $lockValue = time() + $lockExpire;</span><br><span class="line">        /**</span><br><span class="line">         * 创建锁</span><br><span class="line">         * 试图以$lockKey为key创建一个缓存,value值为当前时间戳</span><br><span class="line">         * 由于setnx()函数只有在不存在当前key的缓存时才会创建成功</span><br><span class="line">         * 所以，用此函数就可以判断当前执行的操作是否已经有其他进程在执行了</span><br><span class="line">         * @var [type]</span><br><span class="line">         */</span><br><span class="line">        $lock = $redis-&gt;setnx($lockKey, $lockValue);</span><br><span class="line">        /**</span><br><span class="line">         * 满足两个条件中的一个即可进行操作</span><br><span class="line">         * 1、上面一步创建锁成功;</span><br><span class="line">         * 2、   1）判断锁的值（时间戳）是否小于当前时间    $redis-&gt;get()</span><br><span class="line">         *      2）同时给锁设置新值成功    $redis-&gt;getset()</span><br><span class="line">         */</span><br><span class="line">        if(!empty($lock) || ($redis-&gt;get($lockKey) &lt; time() &amp;&amp; $redis-&gt;getSet($lockKey, $lockValue) &lt; time() ))//存在锁||(当前值&lt;当前时间&amp;&amp;旧值&lt;当前时间)</span><br><span class="line">        &#123;</span><br><span class="line">            //给锁设置生存时间</span><br><span class="line">            $redis-&gt;expire($lockKey, $lockExpire);</span><br><span class="line">            //******************************</span><br><span class="line">            //此处执行插入、更新缓存操作...</span><br><span class="line">            //******************************</span><br><span class="line"> </span><br><span class="line">            //以上程序走完删除锁</span><br><span class="line">            //检测锁是否过期，过期锁没必要删除，redis自动删除</span><br><span class="line">            if($redis-&gt;ttl($lockKey))</span><br><span class="line">                $redis-&gt;del($lockKey);</span><br><span class="line">            $status = FALSE;</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            /**</span><br><span class="line">             * 如果存在有效锁这里做相应处理</span><br><span class="line">             *      等待当前操作完成再执行此次请求</span><br><span class="line">             *      直接返回</span><br><span class="line">             */</span><br><span class="line">            sleep(2);//等待2秒后再尝试执行操作</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">参考链接：https://blog.csdn.net/panjiapengfly/article/details/84758971</span><br></pre></td></tr></table></figure>
+
+<h5 id="redis补充知识"><a href="#redis补充知识" class="headerlink" title="redis补充知识"></a>redis补充知识</h5><p>setnx(key, value)，含义就是SET if Not Exists；如果key不存在，则设置当前key成功，返回1；如果当前key已经存在，则设置当前key失败，返回0。</p>
+<p>msetnx()所有给定 key 都不存在时，同时设置一个或多个 key-value 对。成功，返回 1 ，失败(至少有一个 key 已经存在)，那么返回 0 。</p>
+<p>setex(key,seconds,value)为set和expir的结合，关联值和设置生存时间两个动作会在同一时间内完成。</p>
+<p>setrange(key_name,8,’yy‘)将原 key_name对应的值第8位后开始替换为 yy子字符串</p>
+<p>mset()一次设置多个key 的值，成功返回 ok 表示所有的值都设置了，失败返回 0 表示没有任何值被设置。</p>
+<p>例如：&gt;mset key1 HongWan1 key2 HongWan2</p>
+<p>get(key) 获取key的值，如果存在，则返回；如果不存在，则返回nil。</p>
+<p>getset(key, newValue)该方法是原子的，对key设置newValue这个值，并且返回key原来的旧值。 假设key原来是不存在的，返回nil</p>
+<p>expire（key_name ,time_in_seconds）命令设置一个键的生存时间，到时间后redis会自动删除它 （单位/秒)</p>
+<p> ttl(key_name) 以秒为单位返回 key 的剩余过期时间。当 key 不存在时，返回 -2 。 当 key 存在但没有设置剩余生存时间时，返回 -1 </p>
+<p>del(key_name) 用于删除已存在的键。不存在的 key 会被忽略。</p>
+<p><strong>抢红包高并发解决方案</strong></p>
+<p>1、悲观锁，用sql+for update</p>
+<p>当一条线程抢占了资源后，其他的线程将得不到资源，那么这个时候， CPU 就会将这些得不到资源的线程挂起，挂起的线程也会消耗CPU 的资源，尤其是在高井发的请求中。一旦线程l 提交了事务，那么锁就会被释放，这个时候被挂起的线程就会开始竞争资源，那么竞争到的线程就会被CPU 恢复到运行状态，继续运行。使用悲观锁就会造成大量的线程被挂起和恢复，造成性能下降。</p>
+<p>2、乐观锁（非阻塞锁）</p>
+<p>是一种不会阻塞其他线程并发的机制，它不使用数据库的锁进行实现，一般用版本号机制。读取出数据时，将此版本号一同读出，之后更新时，对此版本号加一。</p>
+<p>但由于版本不一致的问题，会存在大量红包争抢失败的问题。加入重入机制，提高抢红包的成功率。使用时间戳或者规定抢红包次数</p>
+<p>3、redis分布式锁</p>
+<p>采用缓存技术，利用Redis的轻量级、便捷、快速的机制解决高并发问题。但是如何解决数据不一致带来的超发问题呢？用分布式锁，缓存中存入一个值(key-value)，谁拿到这个值谁就可以执行代码。当信息存入缓存、库存-1之后，我们释放锁。为了防止死锁的发生，可以设置锁的过期时间来解决。</p>
+<p>参考链接：<a href="https://blog.csdn.net/qq_33764491/article/details/81083644" target="_blank" rel="noopener">https://blog.csdn.net/qq_33764491/article/details/81083644</a></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP/">PHP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

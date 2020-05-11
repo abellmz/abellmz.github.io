@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>魔术常量和方法、会话 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="魔术常量和方法：" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="魔术常量和方法、会话" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-05-20T01:29:08.000Z"><a href="/2019/05/20/魔术常量和方法、会话/">2019-05-20</a></time>
+      
+      
+  
+    <h1 class="title">魔术常量和方法、会话</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="魔术常量和方法："><a href="#魔术常量和方法：" class="headerlink" title="魔术常量和方法："></a>魔术常量和方法：</h5><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">魔术常量：</span><br><span class="line">__CLASS__ </span><br><span class="line">• 返回该类被定义时的名字（区分⼤⼩写）</span><br><span class="line">__METHOD__ </span><br><span class="line">• 返回该⽅法被定义时的名字（区分⼤⼩写）</span><br><span class="line">__DIR__</span><br><span class="line">• 指向当前执⾏的PHP脚本所在的⽬录</span><br><span class="line">__FILE__</span><br><span class="line">• ⽂件的完整路径和⽂件名。如果⽤在被包含⽂件中，则返回被包含的⽂件名</span><br><span class="line"></span><br><span class="line">魔术方法（拦截器）：</span><br><span class="line">包括 __construct和__destruct()</span><br><span class="line">__isset</span><br><span class="line">• 检测对象⾥⾯的私有成员属性是否存在</span><br><span class="line">__unset()</span><br><span class="line">• 是个共有的⽅法，⽤来删除对象⾥的私有成员属性</span><br><span class="line">__get()</span><br><span class="line">• 获取对象未定义的属性时，⾃动运⾏的魔术函数</span><br><span class="line">__set()</span><br><span class="line">• 给未定义的属性赋值时，⾃动运⾏的魔术函数。可以将set设置的未</span><br><span class="line">定义属性存到类的数组类型成员属性，get时再找相应变量索引</span><br><span class="line">__call()</span><br><span class="line">• 调⽤⼀个未定义的⽅法时，⾃动执⾏的魔术函数，2个参数 1⽅法名 2参数数</span><br><span class="line">组</span><br><span class="line">__callStatic()</span><br><span class="line">• 调⽤⼀个未定义的静态⽅法时，⾃动执⾏的魔术函数，2个参数 1⽅法名 2参数数组</span><br><span class="line">__autoload($className) </span><br><span class="line">• 引⽤⼀个类时⾃动执⾏的函数，可以读⼊类⽂件，可以通过</span><br><span class="line">spl_autoload_register(array(&apos;a&apos;,&apos;run&apos;));来指定新的魔术函数，但是函数要是static的</span><br><span class="line"></span><br><span class="line">构造⽅法__construct()和析构函数__destruct()：魔术方法</span><br><span class="line">• 在创建对象时⾃动执⾏，没有返回值，⽤于执⾏类的⼀些初始化⼯作，</span><br><span class="line">如对象属性的初始化⼯作，PHP4中构造⽅法必须与类同名，php5中</span><br><span class="line">规定构造⽅法为construct(),优点是不受类名的影响，如果不存在</span><br><span class="line">construct php搜索与类同名的⽅法⾃动执⾏。</span><br><span class="line">• 可以在构造⽅法中传递参数，⽤于定义属性，在⽗类和⼦类都定义构</span><br><span class="line">造⽅法时，执⾏⼦类的构造⽅法</span><br><span class="line">析构⽅法destruct()</span><br><span class="line">• ⽤于对象在内存中被销毁时⾃动执⾏的⽅法，不带任何参数</span><br><span class="line"></span><br><span class="line">函数：</span><br><span class="line">get_class_methods()</span><br><span class="line">• 返回由类的⽅法名组成的数组</span><br><span class="line">get_class_vars() </span><br><span class="line">• 返回由类的默认属性组成的关联数组</span><br><span class="line">get_object_vars() </span><br><span class="line">• 返回由对象属性组成的关联数组</span><br><span class="line">call_user_func_array() </span><br><span class="line">• 调⽤回调函数，并把⼀个数组参数作为回调函数的参数</span><br><span class="line">• call_user_func_array ( callable $callback , array $param_arr )</span><br><span class="line">method_exists() </span><br><span class="line">• 检查类的⽅法是否存在</span><br></pre></td></tr></table></figure>
+
+<h5 id="会话："><a href="#会话：" class="headerlink" title="会话："></a>会话：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">setcookie (name ,value, expire,path)</span><br><span class="line">（名字，值，过期的时间，在服务器端的有效路径）</span><br><span class="line">string serialize ( mixed $value )	产⽣⼀个可存储的值的表示</span><br><span class="line">mixed unserialize ( string $str [, string $callback ] )</span><br><span class="line">从已存储的表示中创建 PHP 的值</span><br><span class="line">session_start()</span><br><span class="line">session_id()• 获取设置session_id</span><br><span class="line">session_name()• 获取设置session_name</span><br><span class="line">unset($_SESSION[&apos;web&apos;])• 删除session变量</span><br><span class="line">$_SESSION=array()</span><br><span class="line">• 删除所有session变量， 不删除session⽂件</span><br><span class="line">session_unset()</span><br><span class="line">• 释放当前在内存中已经创建的所有$_SESSION变量，但不删除sess⽂件以及不释放对应的session id</span><br><span class="line">session_destroy()</span><br><span class="line">• 删除当前⽤户对应的session⽂件以及释放session id，内存中的</span><br><span class="line">$_SESSION变量内容依然保留</span><br><span class="line">释放⽤户的session所有资源</span><br><span class="line">• session_unset();session_destroy();</span><br><span class="line">session_save_path()</span><br><span class="line">session.gc_probability = 1</span><br><span class="line">• session清除基数</span><br><span class="line">session.gc_divisor = 100</span><br><span class="line">• 定义在每次初始化会话时，启动垃圾回收程序的概率。 这个收集概率计算公式如下：session.gc_probability/session.gc_divisor; 对会话⻚⾯访问越频繁，概率就应当越⼩。建议值为1/1000~5000。</span><br><span class="line">session.gc_maxlifetime = 1440</span><br><span class="line">• 超过此参数所指的秒数后，保存的数据将被视为&apos;垃圾&apos;并由垃圾回收</span><br><span class="line">程序清理。</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP/">PHP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

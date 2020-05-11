@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>正则1 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="正则1" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="正则1" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-05-18T01:02:35.000Z"><a href="/2019/05/18/正则1/">2019-05-18</a></time>
+      
+      
+  
+    <h1 class="title">正则1</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="正则1"><a href="#正则1" class="headerlink" title="正则1"></a>正则1</h5><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">经常使⽤的分隔符是正斜线(/), hash符号(#) 以及取反符号(~)。建议使⽤//做为定界符,因为与js⼀致</span><br><span class="line">系统提供的元字符(原子)</span><br><span class="line">\d 匹配任意⼀个数字 				  [0-9]</span><br><span class="line">\D 与除了数字以外的任何⼀个字符匹配 	 [^0-9]</span><br><span class="line">\w 与任意⼀个英⽂字⺟,数字或下划线匹配 	[a-zA-Z_]</span><br><span class="line">\W 除了字⺟,数字或下划线外与任何字符匹配  [^a-zA-Z_] </span><br><span class="line">\s 与任意⼀个空⽩字符匹配 				[\n\f\r\t\v] </span><br><span class="line">\n 换⾏字符</span><br><span class="line">\t 制表符 </span><br><span class="line">\S 与除了空⽩符外任意⼀个字符匹配 		[^\n\f\r\t\v]</span><br><span class="line">[] 只匹配其中的一个原子 </span><br><span class="line">[^]　 只匹配&quot;除了&quot;其中原子表中原子的任意一个原子 </span><br><span class="line">[0-9]　 匹配0-9任何一个数字 </span><br><span class="line">[a-z]　 匹配小写a-z任何一个字母 </span><br><span class="line">[A-Z]　 匹配大写A-Z任何一个字母</span><br><span class="line">. 点在正则中表示除换行符外的任意字符</span><br><span class="line">| 这个符号带表选择修释符，也就是 | 左右两侧有⼀个匹配到就可以</span><br><span class="line">在一组字符中匹配某个元字符，在正则表达式中通过元字符表来完成，就是放到[..](方</span><br><span class="line">括号)中，一个[]代表一个原子</span><br><span class="line"></span><br><span class="line">原子组和原子表：</span><br><span class="line">• 如果一次要匹配多个元子，可以通过元子组完成 </span><br><span class="line">• 原子组与原子表的差别在于原子组一次匹配多个元子，而原子表则是匹配成</span><br><span class="line">功表中的一个元字符就可以 </span><br><span class="line">• 原子组用（）表示</span><br><span class="line"></span><br><span class="line">重复匹配：处于原子表[]之外</span><br><span class="line">如果要重复匹配⼀些内容时我们要使⽤重复匹配修饰符，包括以下⼏种</span><br><span class="line">• * 重复零次或更多次</span><br><span class="line">• + 重复⼀次或更多次</span><br><span class="line">• ? 重复零次或⼀次</span><br><span class="line">• &#123;n&#125; 重复n次</span><br><span class="line">• &#123;n,&#125; 重复n次或更多次</span><br><span class="line">• &#123;n,m&#125; 重复n到m次</span><br><span class="line"></span><br><span class="line">禁止重复匹配：</span><br><span class="line">正则表达式在进⾏重复匹配时，默认是贪婪匹配模式，也就是说会尽量匹配更多内</span><br><span class="line">容，但是有的时候我们并不希望他匹配更多内容，这时可以通过?进⾏修饰来禁⽌重</span><br><span class="line">复匹配</span><br><span class="line">*? 	重复任意次，但尽可能少重复</span><br><span class="line">+? 	重复1次或更多次，但尽可能少重复</span><br><span class="line">?? 	重复0次或1次，但尽可能少重复</span><br><span class="line">&#123;n,m&#125;? 重复n到m次，但尽可能少重复</span><br><span class="line">&#123;n,&#125;? 重复n次以上，但尽可能少重复</span><br><span class="line"></span><br><span class="line">边界：</span><br><span class="line">如果想匹配字符的边界，边界包括空格、标点符号、换⾏等，可以使⽤正则表达式</span><br><span class="line">的匹配字符边界修饰符如下</span><br><span class="line">匹配字符串边界：定界符//之内,原子组（）之外</span><br><span class="line">^ 匹配字符串的开始（当^出现在原子表[]的第一个字符时，表示取反）</span><br><span class="line">$ 匹配字符串的结束，忽略换⾏符</span><br><span class="line"></span><br><span class="line">模式修饰符：修饰表达式，处于定界符//之外</span><br><span class="line">正则表达式在执⾏时会按他们的默认执⾏⽅式进⾏，但有时候默认的处理⽅式总不</span><br><span class="line">能满⾜我们的需求，所以可以使⽤模式修正符更改默认⽅式。</span><br><span class="line">• i 不区分⼤⼩写字⺟的匹配</span><br><span class="line">• s 将字符串视为单⾏，换⾏符做普通字符看待，使“.” </span><br><span class="line">匹 配任何字符</span><br><span class="line">• e 将替换的字符串作为表达使⽤</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">preg_match ( string $pattern , string $subject [,$matches])</span><br><span class="line">搜索subject与pattern给定表达式匹配，若无$matches，成功返回1，否则返回0，若有$matches,符合的字符串部分将输出到$matches数组中,只要匹配到一个符合条件的就结束查找,</span><br><span class="line"></span><br><span class="line">preg_match_all ( string $pattern , string $subject , array &amp;$matches [, int $flags = PREG_PATTERN_ORDER [, int $offset = 0])</span><br><span class="line">搜索subject中所有匹配pattern给定正则表达式 的匹配结果并且将它们以flag指定顺序输出到matches中</span><br><span class="line"></span><br><span class="line">preg_split(string $pattern , string $subject [, int $limit = -1 [, int $flags = 0 ]])</span><br><span class="line">用正则表达式pattern分割subject，返回分割后的字符串数组,指定了limit则最多返回 limit 个子串，如果 limit 是 -1，则没有限制</span><br><span class="line"></span><br><span class="line">preg_replace(mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]])	</span><br><span class="line">搜索subject中匹配pattern的部分, 以replacement进⾏替换</span><br><span class="line"></span><br><span class="line">preg_replace_callback ( mixed $pattern , callback $callback , mixed $subject [, int $limit = -1 [, int &amp;$count ]] )</span><br><span class="line">用callback 替代 replacement 进行替换字符串的计算，其他方面等同于 preg_replace()。调用时回调函数得到的参数是从subject 中匹配到的结果。若subject是数组则返回数组，其他返回替换后的字符串。</span><br><span class="line"></span><br><span class="line">$preg = &quot;/\.(baidu|sina)\./is”;//.baidu.或者。sinna符合的部分，不区分大小写，将字符串视为单⾏，换⾏符做普通字符看待，使“.”匹配任何字符看待</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">邮箱验证		手机号码验证			</span><br><span class="line">/.+@.+/			 /^[0-9]&#123;11&#125;$/</span><br><span class="line"></span><br><span class="line">$html = &quot;&lt;b&gt;bold text&lt;/b&gt;&lt;a href=howdy.html&gt;click me&lt;/a&gt;&quot;;</span><br><span class="line">preg_match_all(&quot;/(&lt;([\w]+)[^&gt;]*&gt;)(.*?)(&lt;\/\\2&gt;)/&quot;, $html, $matches, PREG_SET_ORDER);</span><br><span class="line">\\2是一个后向引用的示例.第一个\是转义，第二个\2匹配正则表达式中第二个圆括号(这里是([\w]+))</span><br><span class="line">向后引用：从左向右，以分组的左括号为标志，第一个出现的分组的组号为1，第二个为2，以此类推。https://blog.csdn.net/z69183787/article/details/52263988</span><br><span class="line"></span><br><span class="line">/ \u&#123;61&#125; /</span><br><span class="line">使用u修饰符，正则表达式能够识别大括号&#123;&#125;表示的Unicode字符，否则无法识别，&#123;61&#125;也会被解读为量词，表示61个u字符。</span><br><span class="line">\xnn 匹配ASCII代码中十六进制代码为nn的字符</span><br></pre></td></tr></table></figure>
+
+<p>例子参考链接：<br><a href="https://www.cnblogs.com/supe/p/7239157.html" target="_blank" rel="noopener">https://www.cnblogs.com/supe/p/7239157.html</a></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/前端/">前端</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

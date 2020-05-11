@@ -1,0 +1,371 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>MySQL基础 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="join关联：
+内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接)
+oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="MySQL基础" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-04T07:28:02.000Z"><a href="/2019/03/04/mysql/">2019-03-04</a></time>
+      
+      
+  
+    <h1 class="title">MySQL基础</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>join关联：</p>
+<p>内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接)</p>
+<p>oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接</p>
+<a id="more"></a>
+
+<h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><p>select * from city</p>
+<p>select code_id from city where city_name=’北京’<br>将上面两步句子合并一句话(子查询)<br> select * from code where id=(select code_id from city where city_name=’北京’);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">笛卡尔基  也属于内关联（没条件也是），只是join后面没有on或者where进行筛选</span><br><span class="line">内关联   inner可以省略  on后面跟 条件</span><br><span class="line"></span><br><span class="line">如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</span><br><span class="line"></span><br><span class="line">Select * from class,stu或者</span><br><span class="line">Select * from class join stu或者</span><br><span class="line">Select * from class inner join stu</span><br><span class="line"></span><br><span class="line">执⾏以上语句将产⽣class 表的所有数据乘stu表的所有数据，显然这个结果是</span><br><span class="line">没有意义的，所以我们要对以上查询增加条件以产⽣有价值的数据集合</span><br><span class="line">Select * from class,stu where class.id=stu.cid;</span><br></pre></td></tr></table></figure>
+
+<p>inner join 实际上就是两个表的拼接    on和where后面跟条件， on和where还是有所区别的，join关联on关联条件，where进行筛选条件</p>
+<p>查找    字段      字段     来自  表名   加入 表名 别名  条件         条件</p>
+<p>select city_name,code_name from city join code c on code_id=c.id where city_name=’北京’;</p>
+<h5 id="一对多关联"><a href="#一对多关联" class="headerlink" title="一对多关联"></a>一对多关联</h5><p>多表加外键（也是XXid） 2表合一</p>
+<p>表别名.字段        别名          别名  条件               条件</p>
+<p>select s.sname from class c join student s on c.id=s.class_id where c.class_name=’c96’;<br>张三的同班同学（自关联）      打印出两表联合好观察</p>
+<p>select s1.sname from student s1 join student s2 on s1.class_id=s2.class_id where s2.sname=’张三’ and s1.sname!=’张三’<br>(and,在s2条件下进行s1筛选，实际上经历了1次on关联和2次where筛选);</p>
+<p><strong>外关联</strong></p>
+<p>左关联 偏向左边，左边的表数据全部显示，右边表没有与之相对应的数据，null填充</p>
+<p>left或left outer和right 或者right outer在join之前（outer 都可以省略），左右以join为参考（这个是真的两表粘合一起，left和right决定了null填充的位置,如：left则右边填null）</p>
+<p>select * from class c left join student s on c.id=s.class_id;</p>
+<p>select * from class c right join student s on c.id=s.class_id;</p>
+<p>文章表  article<br>id    title<br>1      马上雾霾就来了<br>2      宝宝心里苦不苦<br>3      IG夺冠<br>4      2W5千里长征</p>
+<p>中间表<br>article_id     tag_id<br>1             1<br>1             7<br>2             4<br>2             5<br>2             6<br>3             2<br>3             4<br>3             8<br>4             3<br>4             6</p>
+<p>标签    tag<br>id       name<br>1       天气<br>2       游戏<br>3       军事<br>4       娱乐<br>5       八卦<br>6       历史<br>7       汽车<br>8       体育</p>
+<h5 id="多对多关联"><a href="#多对多关联" class="headerlink" title="多对多关联"></a>多对多关联</h5><p> 两个表的外键 在中间表中  ；由此组合，三表合一</p>
+<p>合计                   加1               条件</p>
+<p>select a.title,count(*) from article a join article_tag at on a.id=at.article_id group by a.title;</p>
+<p>「马上雾霾就来了」文章有哪些标签              </p>
+<p>select a.title,t.name from article a join article_tag at on a.id=at.article_id join tag t on at.tag_id=t.id where a.title=’马上雾霾就来了’;<br>（a表join on关联中间表at,再at表join on 关联t表，最后where筛选）</p>
+<h5 id="数据库-的操作"><a href="#数据库-的操作" class="headerlink" title="数据库 的操作"></a>数据库 的操作</h5><p>创建数据库    两种方式</p>
+<p>create database c98 charset utf8;</p>
+<p>create database if not exists c98 charset utf8;</p>
+<p>查看所有数据库              查看数据库 的设置</p>
+<p>show databases;      show create database +库名</p>
+<p>进入（使用）数据库</p>
+<p>use c98;</p>
+<p>删除数据库  两种方式</p>
+<p>drop database c98<br>drop database  if exists c98 ;</p>
+<p>数据库名字不可以修改.数据库的修改仅限库选项: 字符集和校对集(校对集依赖字符集)</p>
+<h5 id="表的操作"><a href="#表的操作" class="headerlink" title="表的操作"></a>表的操作</h5><p>创建表           字段+类型+其他要求，字段。。。    删除表                       </p>
+<p>create table student(age tinyint);            drop table student,…;</p>
+<p>create table if not exists 1class(。。。</p>
+<p>create table if not exists c98.student(未进入库前创建表，不能show tables)</p>
+<p>查看表         模糊查询</p>
+<p>show tables;     show tables like ‘s%’;</p>
+<p>查看表结构  查看表结构 创建语句</p>
+<p>desc student;desc student\G  （\g（横向，默认设置）或者\G（纵向）都可以查看创建语句注意后面不能加  分号！）</p>
+<p>describe stu;show columns from stu（与desc一样的结果）;</p>
+<p>show create table student;show create table student\G</p>
+<p>复制表结构</p>
+<p>create table stu_bak like student;</p>
+<p>复制表数据        数据</p>
+<p>insert into stu_bak select * from student;</p>
+<p>复制表结构同时备份数据 数据</p>
+<p>create table stu_bak2 select * from student;</p>
+<p>rename修改表名</p>
+<p>alter table 旧表名 rename 新表名;  rename 旧表名 to 新表名；</p>
+<p>alter table student_copy1 rename sty_copy1;      rename table stu to sstt;</p>
+<h5 id="字段操作"><a href="#字段操作" class="headerlink" title="字段操作"></a>字段操作</h5><p>alter–字段名（change）—字段属性(modify)—添加字段(add)—删除字段(drop)</p>
+<p>插入数据        多选型 字段=数据，字段=。。。</p>
+<p>insert into student set age=18;</p>
+<p>修改字段名change       字段旧名 字段新名 +数据修饰;</p>
+<p>alter table student change username name varchar(100) not null default ‘’;</p>
+<p>修改字段修饰modify    </p>
+<p>alter table student modify name varchar(50) not null default ‘’;</p>
+<p>添加字段 add (after/before)</p>
+<p>alter table student add time int not null default 0 after money;</p>
+<p>删除字段drop</p>
+<p>alter table student drop time;</p>
+<p><strong>主键操作</strong></p>
+<p>添加主键自增         先增加主键  再增加自增</p>
+<p>alter table student add primary key(id);</p>
+<p>alter table student modify id int auto_increment;</p>
+<p>删除主键            先删除自增 再删除主键</p>
+<p>alter table student modify id int;</p>
+<p>alter table student drop primary key;</p>
+<h5 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h5><p>decimal(5,2)浮点型  </p>
+<p>（指的是一共五位数字，其中两位小数,整数3位多了报错，小数多了四舍五入。）</p>
+<p>enum  枚举 （单选型）        set 多选型</p>
+<p>unique    唯一约束     </p>
+<p>primary key    主键：一个表最多只能有一个主键，主键列中不能null 0 重复值</p>
+<p>auto_increment    自增</p>
+<p>char(6)  定长 效率高   最多存储6个</p>
+<p>varchar(30) 变长  省空间</p>
+<p>int(6) zerofill  如果不够6位，前面自动填充0补够6位  zerofill前导0填充</p>
+<p>unsigned非负修饰（设置前导零会自动设置上）</p>
+<p>not null 不为空     default ‘’ 默认‘’</p>
+<p>如果是char或varchar类型，length可以小于字段规定长度，但如果是blog或text类型，必须是指定的length</p>
+<h5 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h5><p>别名设置，left(),mid(),right(),count(),year(),max(),avg(),sum()函数，if(条件，成立反值，不成立反值)</p>
+<p>显示表所有数据</p>
+<p>select * from student;</p>
+<p>查找       set类型     条件    字段中查找</p>
+<p>select * from student where find_in_set(‘篮球’,hobby);</p>
+<p>select * from student where age&gt;30 and sex=’女’;</p>
+<p>连接字符串concat</p>
+<p>select concat(username,’-‘,age) from student;</p>
+<p>distinct,去重 相同数据，后面数据和前面数据合并为一个数据</p>
+<p>select distinct sex from student;</p>
+<p>if表达式  i作为if(条件,成立反值，不成立反值)的字段名，显示大于小于</p>
+<p>select age,if(age&gt;30,’大于30’,’小于等于30’) i from student;</p>
+<p>order排序  desc 降序  asc升序  默认升序可以省略   有重复age时可以用到</p>
+<p>select * from student order by age desc，id desc;</p>
+<p><strong>随机获取</strong>3个数据</p>
+<p>select * from student order by rand() limit 3;</p>
+<p>年龄在10-55之间的同学 between… and…</p>
+<p>select * from student where age between 10 and 55;</p>
+<p>select * from student where age&gt;=10 and age&lt;=55;</p>
+<p>in(),在…里面</p>
+<p>select * from student where age in (23,34,45);</p>
+<p>字符串截取 left mid right  左右不能用两个参数</p>
+<p>截取左边开始的2个字符left(str,length)</p>
+<p>select left(username,2) from student;</p>
+<p>截取左边第2个字开始的1个字符长度mid(str,pos,len)</p>
+<p>select mid(username,2,1) from student;</p>
+<p>select * from student where hobby like ‘%羽毛球%’;</p>
+<p>as+别名      查询结果字段显示别名        as可以省略<br> select username as u,age as a from student;<br> 获得所有人出生年份     年（字段）</p>
+<p>select year(birthday) from student;</p>
+<p>查看班级有多少男同学      两种方法  查询结果只显示数量</p>
+<p>select count(*) from student where sex=’男’;</p>
+<p>select count(name) from student where sex=’男’;、</p>
+<p>max()最大 sum()求和,avg()求平均值</p>
+<p>select name,max(age) from student;</p>
+<p>男生有多少人                   性别分组       男性</p>
+<p>select sex,count(*) from student group by sex having sex=’男’</p>
+<p>插入数据</p>
+<p>insert into student set age=18,money=100;<br>写入多条数据（[字段名]省略字段 则默认所有字段）+values（第一条数据），（第二条数据）</p>
+<p>insert into student (username,age,sex) values (‘超人’,18,’男’),(‘葫芦娃’,18,’男’);</p>
+<p>更新数据             必须要有主键  即主键id(否则视为插入数据)<br> replace into student (id,username,age,sex) values (32,’超人复仇者联盟222’,18,’男’)</p>
+<p>update 表名   set 字段名=新值  where 更新条件;</p>
+<p>update stu_bak set sex=’女’ where sex=’男’;（所有男变为女）</p>
+<p>update stu set name=”小明”, age=19 where tel=”13288097888”;</p>
+<p>删除数据<br> delete from 表名  条件<br> delete from student where id=19;</p>
+<p>清空所有数据，让id重新从1开始</p>
+<p>truncate student;</p>
+<h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><p>select now();    获得当前日期时间</p>
+<p>顺序-where—group by having—order by—limit</p>
+<p>select * from student where id&gt;4 group by gender having gender=’女’ order by age limit 1;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">使用关键字  需加上``</span><br><span class="line">create database `databases`;</span><br><span class="line"></span><br><span class="line">drop database `databases`;</span><br></pre></td></tr></table></figure>
+
+<p>查看服务器识别的字符集</p>
+<p>show charset;</p>
+<p>服务器默认的跟客户端打交道的字符集</p>
+<p>show variables like ‘character_set%’;</p>
+<p>查看mysql中的存储过程和函数状态 SHOW PROCEDURE STATUS LIKE ‘insert_%’\G<br>查看设置的过程 SHOW  CREATE  PROCEDURE insert_d(过程名)  \G<br>MyISAM和InnoDB区别：<a href="https://blog.csdn.net/leeasony/article/details/80327093" target="_blank" rel="noopener">https://blog.csdn.net/leeasony/article/details/80327093</a><br>关联和左右表、练习</p>
+<p>SQL Server 三大算法（嵌套，合并，哈希)的IO成本</p>
+<p>MySQL在<strong>windows</strong>下是不区分大小写的，将script文件导入MySQL后<strong>表名</strong>也会<strong>自动转化</strong>为小写，结果再想要将数据库导出放到linux服务器中使用时就出错了。<br>因为在<strong>linux</strong>下<strong>表名</strong>区分<strong>大小写</strong>而找不到表，查了很多都是说在linux下更改MySQL的设置使其也不区分大小写，但是有没有办法反过来让windows 下大小写敏感呢。其实方法是一样的，相应的更改windows中MySQL的设置就行了。</p>
+<p>优化内容，单路排序（一次扫描）和双路排序（两次扫描）</p>
+<p><a href="https://www.cnblogs.com/wt645631686/p/8320525.html" target="_blank" rel="noopener">https://www.cnblogs.com/wt645631686/p/8320525.html</a></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/MySQL/">MySQL</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>PhpStorm中相关设置 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="PhpStrom连接远程服务器ftp:" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="PhpStorm中相关设置" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-07-18T15:03:10.000Z"><a href="/2019/07/18/PhpStorm中相关设置/">2019-07-18</a></time>
+      
+      
+  
+    <h1 class="title">PhpStorm中相关设置</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="PhpStrom"><a href="#PhpStrom" class="headerlink" title="PhpStrom"></a>PhpStrom</h2><h5 id="连接远程服务器ftp"><a href="#连接远程服务器ftp" class="headerlink" title="连接远程服务器ftp:"></a>连接远程服务器ftp:</h5><a id="more"></a>
+
+<p>ftp:</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600264482.png" alt="1551600264482"></p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600296741.png" alt="1551600296741"></p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600315521.png" alt="1551600315521"></p>
+<h5 id="连接远程数据库："><a href="#连接远程数据库：" class="headerlink" title="连接远程数据库："></a>连接远程数据库：</h5><p>点击右侧栏中的“+”，选择Data Source-&gt;MySQL或者</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551602521875.png" alt="1551602521875"></p>
+<p>菜单栏view-&gt;Tool Windows-&gt;Database</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1561710474971.png" alt="1561710474971"></p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551602537062.png" alt="1551602537062"></p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551602551172.png" alt="1551602551172"></p>
+<p>设置后点击Test Connection，显示成功。</p>
+<p>记得修改.env中的数据库选项</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551602592295.png" alt="1551602592295"></p>
+<p>由于.env为ignore中注册，不上传远程。可能会发生在数据不对应的情况，这时可以手动在远程的.env中修改相应的数据库选项。</p>
+<p>代码提示：</p>
+<p>代码提示：<a href="https://packagist.org/packages/barryvdh/laravel-ide-helper" target="_blank" rel="noopener">https://packagist.org/packages/barryvdh/laravel-ide-helper</a>  解决route空间名提示IdeHelperServiceProvider需要在app.php中注册</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1563461669832.png" alt="1563461669832"></p>
+<p>解决路由，代码提示问题</p>
+<p>中间件：注册-》Kernel    守卫拦截-》config /auth.php</p>
+<p>建立Requests及LoginRequest.php  用于登录账号密码为空时报错，用户名密码输入错误在控制器设置</p>
+<p>建立AdminAuthMiddleware 中间件  为了拦截地址栏的输入  ，需要在Kernel中注册</p>
+<p>IdeHelperServiceProvider提供</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1563461858409.png" alt="1563461858409"></p>
+<h5 id="代码高亮："><a href="#代码高亮：" class="headerlink" title="代码高亮："></a>代码高亮：</h5><p>选择Files-&gt;Settings-&gt;File Types</p>
+<p>查看上面的框，不高亮的后缀的文件  的格式在不在下面，不在的话，就添加进去。</p>
+<p><a href="https://blog.csdn.net/sinat_37390744/article/details/66478336" target="_blank" rel="noopener">https://blog.csdn.net/sinat_37390744/article/details/66478336</a></p>
+<p>依赖composer:</p>
+<h5 id="命令行工具提示："><a href="#命令行工具提示：" class="headerlink" title="命令行工具提示："></a>命令行工具提示：</h5><p>File=&gt;setting=&gt;Languages&amp;Frameworks=&gt;php=&gt;larsvel:两个复选框勾选，应用，ok</p>
+<h5 id="command-Line-Tools-Consol之artisan命令设置"><a href="#command-Line-Tools-Consol之artisan命令设置" class="headerlink" title="command Line Tools Consol之artisan命令设置"></a>command Line Tools Consol之artisan命令设置</h5><p>每一个项目都有各自的artisan命令文件，若copy项目后不改，则迁移时会报：Nothing to migrate.因为你的artisan命令文件用的是原文件的。设置方法：</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1558259326941.png" alt="1558259326941"></p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1558259411890.png" alt="1558259411890"></p>
+<h5 id="basc设置快捷键"><a href="#basc设置快捷键" class="headerlink" title="basc设置快捷键:"></a>basc设置快捷键:</h5><p>File=&gt;setting中搜索keymap-&gt;main menu-&gt;code-&gt;completion-&gt;basc</p>
+<h5 id="后台初始化生成一个admin"><a href="#后台初始化生成一个admin" class="headerlink" title="后台初始化生成一个admin"></a>后台初始化生成一个admin</h5><p>在命令行中输入artisan db:seed</p>
+<p><code>db:seed</code> 命令将运行 <code>DatabaseSeeder</code>类，这个类可以用来调用其它 Seed 类。不过，你也可以使用 <code>--class</code> 选项来指定一个特定的 seeder 类。</p>
+<p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1558260747153.png" alt="1558260747153"></p>
+<h5 id="还有些插件："><a href="#还有些插件：" class="headerlink" title="还有些插件："></a>还有些插件：</h5><p>file=&gt;setting=&gt;Plugins=&gt;=&gt;Browse repositories…=&gt;搜索.env files support 下载后重启    </p>
+<p>​                                    。。。=&gt;.ignore</p>
+<p>​                                    。。。。=&gt;laravel plugin</p>
+<p>中国镜像：=&gt;安装包列表=&gt;搜索laravel-ide-helper：install(根据步骤操作)复制到composer中</p>
+<p>点谁跳谁的样式：</p>
+<p><a href="https://www.hieule.info/products/laravel-active-version-3-released" target="_blank" rel="noopener">https://www.hieule.info/products/laravel-active-version-3-released</a></p>
+<p>根据步骤下载，并在config 的app.php中注册，及设置别名</p>
+<p>三级城市联动：</p>
+<p>1、github中搜索distpicker，根据步骤操作。</p>
+<p>2、bootCDN中搜索distpicker  直接在模板中引入-》<a href="https://cdn.bootcss.com/distpicker/2.0.5/distpicker.min.js" target="_blank" rel="noopener">https://cdn.bootcss.com/distpicker/2.0.5/distpicker.min.js</a></p>
+<h2 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h2><p>如何检测接口：</p>
+<h2 id="Navicat-for-MySQL"><a href="#Navicat-for-MySQL" class="headerlink" title="Navicat for MySQL"></a>Navicat for MySQL</h2><p>如何操作数据库：</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/工具/">工具</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

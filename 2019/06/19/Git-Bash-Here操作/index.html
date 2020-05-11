@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Git Bash Here操作 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="克隆git clone http://git.oschina.net/hod/c98拉取git pull
+git基本操作命令：pwd:    显示当前工作空间" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Git Bash Here操作" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-06-19T13:08:54.000Z"><a href="/2019/06/19/Git-Bash-Here操作/">2019-06-19</a></time>
+      
+      
+  
+    <h1 class="title">Git Bash Here操作</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>克隆<br>git clone <a href="http://git.oschina.net/hod/c98" target="_blank" rel="noopener">http://git.oschina.net/hod/c98</a><br>拉取<br>git pull</p>
+<h5 id="git基本操作命令："><a href="#git基本操作命令：" class="headerlink" title="git基本操作命令："></a>git基本操作命令：</h5><p>pwd:    显示当前工作空间</p>
+<a id="more"></a>
+
+<p>ls:    显示目录列表</p>
+<p>ls -a    :     显示所有目录</p>
+<p>ls -l :     显示目录列表详细信息</p>
+<h5 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd : 切换目录"></a>cd : 切换目录</h5><p> cd 目录路径（ 切换到指定目录）</p>
+<p>cd       切换到家目录</p>
+<p>cd ..    返回上一级</p>
+<p>mkdir hod  创建目录</p>
+<p>创建文件  touch a.php</p>
+<p>删除目录(递归删除包括文件)：rm -rf  hh（删除hh目录，里面的一切删除掉，包括hh）</p>
+<p>git add -a 添加全部文件到 推车</p>
+<h5 id="项目传输三部曲："><a href="#项目传输三部曲：" class="headerlink" title="项目传输三部曲："></a>项目传输三部曲：</h5><p>1git  add .    （加入小推车）</p>
+<p>2git commit -m ‘提示’（提交到本地仓库）    </p>
+<p>3git push(推送到线上仓库)</p>
+<hr>
+<h4 id="新项目操作-代码推送："><a href="#新项目操作-代码推送：" class="headerlink" title="新项目操作-代码推送："></a>新项目操作-代码推送：</h4><p>1创建本地库并完成初始提交</p>
+<p>git init（初始化本地仓库）</p>
+<p>git add .(添加到小推车,’.’代表所有文件，也可以单个文件名)</p>
+<p>git commit -m “提示”（提交到本地仓库）</p>
+<p>2添加远程仓库（一个项目一个仓库，需在git上重新创建一个项目repository）</p>
+<p>git remote add origin <del><a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:hod/hh-xj.git</del>(此处黏贴github中新建repository的ssh方式的密匙)</p>
+<p>3.查看远程库</p>
+<p> git remote -v（命令后需出现两行密匙，后分别跟fetch和push）</p>
+<p>4.推送数据到远程仓库</p>
+<p>git push <u>-u origin master</u></p>
+<h5 id="拉取代码："><a href="#拉取代码：" class="headerlink" title="拉取代码："></a>拉取代码：</h5><p>参考文档<a href="https://www.cnblogs.com/lianghe01/p/5806518.html" target="_blank" rel="noopener">https://www.cnblogs.com/lianghe01/p/5806518.html</a></p>
+<p>1、用克隆：</p>
+<p>初始化仓库git init-&gt;git clone <a href="https://github.com/abellmz/first(就是项目仓库地址，也可以是本地仓库地址)**默认拉取主分之代码" target="_blank" rel="noopener">https://github.com/abellmz/first(就是项目仓库地址，也可以是本地仓库地址)**默认拉取主分之代码</a>**</p>
+<p>2、分支推送、拉取：</p>
+<p>2.1git branch -a 查看所有分支 </p>
+<p>默认只有master分支，所以会看到如下两个分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">master[本地主分支] origin/master[远程主分支]</span><br><span class="line">新克隆下来的代码 默认master  和origin/master是关联的，也就是他们的代码保持同步</span><br></pre></td></tr></table></figure>
+
+<p>2.2创建本地分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch dev</span><br><span class="line">发布远程分支：git push origin dev:dev （本地分支：远程分支）这样远程仓库也有一个dev分支</span><br></pre></td></tr></table></figure>
+
+<p>2.3在dev分支开发代码合并主支后推送和分支推送</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev  # 切换到dev分支进行开发</span><br><span class="line">开发代码之后，有两个选择</span><br><span class="line">第一个：如果功能开发完成了，可以合并主分支（当前操作分支代码改变，被合并分支代码不变）</span><br><span class="line">git checkout master  # 切换到主分支</span><br><span class="line">git merge dev  # 把dev分支的更改和master合并</span><br><span class="line">(我是先在dev中加入小推车，在放入本地仓库，最后切换master,合并dev时会发现，dev中的文件复制到master中一份了)</span><br><span class="line">git push  # 提交主分支代码远程（）</span><br><span class="line">git checkout dev  # 切换到dev远程分支</span><br><span class="line">git push  # 提交dev分支到远程	master和dev可以看做两个地方，需要分别推送，远程才会对应改变</span><br><span class="line"></span><br><span class="line"># 第二个：如果功能没有完成，可以直接推送</span><br><span class="line">git push  # 提交到dev远程分支（**可能错误提示**需要设置对应上游远程分支，设置就可以了，比如git push --set-upstream origin dev  分支名也叫远程叫dev 上游叫dev  本地也叫dev  这三上游分支和另外两个分支的却别，还没搞清楚）</span><br><span class="line"># 注意：在分支切换之前最好先commit全部的改变，除非你真的知道自己在做什么</span><br></pre></td></tr></table></figure>
+
+<p>2.4拉取dev分支代码</p>
+<p>参考文档<a href="https://blog.csdn.net/carfge/article/details/79691360" target="_blank" rel="noopener">https://blog.csdn.net/carfge/article/details/79691360</a></p>
+<p>2.4.1初始化仓库<strong>git init</strong></p>
+<p>2.4.2与远程建立连接</p>
+<p>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:abellmz/first.git   查看远程出现两条数据</p>
+<p>2.4.3远程分支拉取到本地（执行完后没有代码哦）</p>
+<p>git fetch origin dev（dev为远程仓库的分支名）</p>
+<p>2.4.4在本地创建分支并切换到dev分支</p>
+<p>git checkout -b dev(本地分支名称) origin/dev(远程分支名称)</p>
+<p>这个是创建并切换分支的命令，如果直接git branch dev或者master都会报错，原因还没弄清楚</p>
+<p>2.4.5把某个分支上的内容都拉取到本地</p>
+<p>git pull origin dev(远程分支名称)，克隆的代码缺少vendor目录,是因为laravel在文件上传的时候将一些文件给忽略了（.ignore文件），运行终端运行composer instal就可以了出现vendor目录</p>
+<h4 id="github-转码云gitee操作："><a href="#github-转码云gitee操作：" class="headerlink" title="github 转码云gitee操作："></a>github 转码云gitee操作：</h4><p><strong>开源中国：</strong>开源中国成立于2008年8月，是目前国内最大的<a href="https://baike.baidu.com/item/%E5%BC%80%E6%BA%90/246339" target="_blank" rel="noopener">开源</a>技术社区，拥有超过200万会员，形成了由开源软件库、代码分享、资讯、协作翻译、码云、众包、招聘等几大模块内容，为IT开发者提供了一个发现、使用、并交流开源技术的平台。</p>
+<p>2013年,开源中国建立大型综合性的云开发平台——<a href="https://baike.baidu.com/item/%E7%A0%81%E4%BA%91/3679068" target="_blank" rel="noopener">码云</a>，为中国广大开发者提供团队协作、源码托管、代码质量分析、代码评审、<a href="https://baike.baidu.com/item/%E6%B5%8B%E8%AF%95/112688" target="_blank" rel="noopener">测试</a>、代码演示平台等功能。</p>
+<p><strong><em>码云</em>(gitee.com)</strong>是开源中国推出的代码托管平台,支持 Git 和 SVN,提供免费的私有仓库托管</p>
+<p><strong>SVN:</strong>是Subversion的简称，是一个开放源代码的版本控制系统,它的设计目标就是取代CVS（C/S系统,是一个常用的代码版本控制软件）。用于多个人共同开发同一个项目，共用资源。</p>
+<p><strong>SSH：</strong>安全外壳协议 <a href="https://baike.baidu.com/item/Secure%20Shell" target="_blank" rel="noopener">Secure Shell</a> 的缩写，由 IETF 的网络小组（Network Working Group）所制定。最初是UNIX系统上的一个程序，后来又迅速扩展到其他操作平台，几乎所有UNIX平台，都可运行SSH。</p>
+<p><strong>Markdown：</strong>是一种纯文本格式的标记语言。<a href="http://www.coderli.com/write-readme-for-your-project/" target="_blank" rel="noopener">http://www.coderli.com/write-readme-for-your-project/</a></p>
+<p>1、修改远程关联：</p>
+<p> git remote set-url origin <a href="mailto:git@gitee.com" target="_blank" rel="noopener">git@gitee.com</a>:abellmz/blog.git</p>
+<p>命令$ git push -u origin master出问题<br>Permission denied (publickey).<br>fatal: Could not read from remote repository.</p>
+<p>2、将公匙贴入gitee的ssh公匙中</p>
+<p>cd ~/.ssh</p>
+<p>ls</p>
+<p>$ cat ~/.ssh/id_rsa.pub</p>
+<p>复制公匙到码云的ssh公匙中</p>
+<p>在push,问题： ! [rejected]        master -&gt; master (fetch first)<br>error: failed to push some refs to ‘git@gitee.com:abellmz/blog.git’</p>
+<p>hint: Updates were rejected because the tip of your current branch is behind</p>
+<p>报错改变，公匙贴入做法是对的</p>
+<p>3、由于码云新建仓库中有代码文件，不能覆盖</p>
+<p>git fetch之后git merge</p>
+<p>不报错Already up-to-date.</p>
+<p>4、重新上传成功</p>
+<p>git add .            git commit -m ‘提示’         git push -u origin master</p>
+<p>参考文档：</p>
+<p><a href="https://blog.csdn.net/LJFPHP/article/details/79508859" target="_blank" rel="noopener">https://blog.csdn.net/LJFPHP/article/details/79508859</a></p>
+<p><a href="https://blog.csdn.net/m0_37806112/article/details/82289606" target="_blank" rel="noopener">https://blog.csdn.net/m0_37806112/article/details/82289606</a></p>
+<p>附带：clone操作没问题，分支操作也一样</p>
+<h2 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点:"></a>小知识点:</h2><h5 id="1、ssh和https方式的区别："><a href="#1、ssh和https方式的区别：" class="headerlink" title="1、ssh和https方式的区别："></a>1、ssh和https方式的区别：</h5><p><a href="https://blog.csdn.net/qq_26394087/article/details/71740192(更多详情看连接)" target="_blank" rel="noopener">https://blog.csdn.net/qq_26394087/article/details/71740192(更多详情看连接)</a></p>
+<p>1.clone项目:使用ssh方式时，需要配置个人的ssh key，并将生成的ssh公钥配置到git<a href="https://www.baidu.com/s?wd=%E6%9C%8D%E5%8A%A1%E5%99%A8&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">服务器</a>中。下面会谈到如何生成并设置你的ssh key。而对于使用https方式来讲，就没有这些要求。</p>
+<p>2.push:在使用ssh方式时，是不需要验证用户名和密码，如果你在配置ssh key时设置了密码，则需要验证密码。而对于使用https方式来讲，每次push都需要验证用户名和密码</p>
+<h5 id="用户名和邮箱："><a href="#用户名和邮箱：" class="headerlink" title="用户名和邮箱："></a>用户名和邮箱：</h5><p>查看-》    $ git config user.name        </p>
+<p>​        $ git config user.email</p>
+<p>修改（和设置一样）：$ git config –global user.name “xxx”</p>
+<p>​    　                $ git config –global user.email “xxx”</p>
+<h5 id="2、git-clone和git-pull的区别："><a href="#2、git-clone和git-pull的区别：" class="headerlink" title="2、git clone和git pull的区别："></a>2、git clone和git pull的区别：</h5><p>git clone:</p>
+<p>从远程服务器克隆一个一模一样的版本库到本地,复制的是整个版本库，叫做clone.（clone是将一个库复制到你的本地，是一个本地从无到有的过程）<br>git pull:</p>
+<p>从远程服务器获取到一个branch分支的更新到本地，并更新本地库，叫做pull.（pull是指同步一个在你本地有版本的库内容更新的部分到你的本地库）</p>
+<p>git pull 命令等同于先做了git fetch（拉取） ，再做了git merge(合并)。</p>
+<h5 id="3、分支dev推送和拉取的代码和主支master代码一样吗"><a href="#3、分支dev推送和拉取的代码和主支master代码一样吗" class="headerlink" title="3、分支dev推送和拉取的代码和主支master代码一样吗"></a>3、分支dev推送和拉取的代码和主支master代码一样吗</h5><p>分支dev推送的代码由于是在<strong>原代码库</strong>的基础上新增的，所以和master相比会多出改变的文件，但master的代码不变，也就是说，远程dev和master拥有两套代码</p>
+<p>git clone默认拉取master分支代码，拉取分支dev的代码，道理同上，两套不同的代码</p>
+<h5 id="4、如果本地分支中内容不同，转换分支后，仓库对应改变"><a href="#4、如果本地分支中内容不同，转换分支后，仓库对应改变" class="headerlink" title="4、如果本地分支中内容不同，转换分支后，仓库对应改变"></a>4、如果本地分支中内容不同，转换分支后，仓库对应改变</h5><h5 id="5、克隆下载ssh和https有什么不同"><a href="#5、克隆下载ssh和https有什么不同" class="headerlink" title="5、克隆下载ssh和https有什么不同"></a>5、克隆下载ssh和https有什么不同</h5><p>https git clone是长这样的：git clone <a href="https://github.com/project/repo.git" target="_blank" rel="noopener">https://github.com/project/repo.git</a></p>
+<p>ssh git clone是长这样的：git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:project/repo.git(远程关联)</p>
+<p>区别：</p>
+<p>https用443端口，可以对repo根据权限进行读写，只要有账号密码就可进行操作。</p>
+<p>ssh则用的是22端口，也可以对repo根据权限进行读写，但是需要SSH Keys授权，这个key是通过ssh key生成器生成的，然后放在github上，作为授权的证据，这样的话就不需要用户名和密码进行授权了。</p>
+<h4 id="已解决问题："><a href="#已解决问题：" class="headerlink" title="已解决问题："></a>已解决问题：</h4><h5 id="1、文件太大传不到远程："><a href="#1、文件太大传不到远程：" class="headerlink" title="1、文件太大传不到远程："></a>1、文件太大传不到远程：</h5><p>fatal:The remote end hung u 9%p unexpectedly</p>
+<p>……..</p>
+<p><img src="/2019/06/19/Git-Bash-Here%E6%93%8D%E4%BD%9C/1546834433489.png" alt="1546834433489"></p>
+<p>1.检查是否存在ssh key</p>
+<p>$ ls ~/.ssh/id_rsa.pub如果出现文件路径则存在</p>
+<p>2.生成ssh key</p>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:your@email.com" target="_blank" rel="noopener">your@email.com</a>“</p>
+<p>-t 指定密钥类型，默认是 rsa ，可以省略。</p>
+<p>-C 设置注释文字，比如邮箱。</p>
+<p>-f 指定密钥文件存储文件名。</p>
+<p>以上代码省略了 -f 参数，因此，运行上面那条命令后会让你输入一个文件名，用于保存刚才生成的 SSH key 代码。连续3个回车。如果不需要密码的话。 最后得到了两个文件：id_rsa和id_rsa.pub。</p>
+<p>如果你是第一次使用git，在此步骤前先设置自己的用户名和邮箱</p>
+<p>$ git config –global user.name “yourname”<br>$ git config –global user.email “<a href="mailto:your@email.com" target="_blank" rel="noopener">your@email.com</a>“</p>
+<p>3.添加密钥到github上 </p>
+<p>打开你的id_rsa.pub文件，拷贝内容粘贴到github上的ssh设置里就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<p>复制，ssh-rsa…到最后。</p>
+<p>具体操作：登录你的github账号，点击右上角设置，点击Settings-&gt;点击左边菜单栏的 SSH key，添加一个新的sshkey,将代码贴入，完成。</p>
+<p>4.测试</p>
+<p>$ ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p>第一次的话期间若出现是否continue，输入yes，出现hi。。。（加上你的用户名）就成功了。</p>
+<p>然后打开项目目录，.git文件夹下的config内容中修改成如下所示，即把url换成ssh方式的路径就ok了（若已经一样就不用改了），…是你的用户名及项目名，不用自己输入，到github上获得你的ssh方式的路径粘贴过来就ok。</p>
+<p>[remote “origin”]<br>url = <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:………git<br>fetch = +refs/heads/<em>:refs/remotes/origin/</em></p>
+<p>最后再次提交远程就可以了。</p>
+<p>参考文献：</p>
+<p><a href="https://blog.csdn.net/qq_26394087/article/details/71740192" target="_blank" rel="noopener">https://blog.csdn.net/qq_26394087/article/details/71740192</a></p>
+<p><a href="http://www.cnblogs.com/chuyanfenfei/p/8035067.html" target="_blank" rel="noopener">http://www.cnblogs.com/chuyanfenfei/p/8035067.html</a></p>
+<p><a href="https://www.cnblogs.com/hanxianlong/p/3464224.html" target="_blank" rel="noopener">https://www.cnblogs.com/hanxianlong/p/3464224.html</a></p>
+<h4 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h4><p>2、由于尝试命令，导致主分支master被本地仓库被删除了很多文件，想要合并分支dev中的文件。</p>
+<p>git fetch origin dev</p>
+<p>git checkout master<br>git merge dev </p>
+<p>报错：fatal: refusing to merge unrelated histories</p>
+<p>这时需要用命令git merge dev  –allow-unrelated-histories</p>
+<p>再git add .    git commit -m ‘’         git push -u origin    master</p>
+<h5 id="3、报错：The-authenticity-of-host。。。。can’t-be-established-r"><a href="#3、报错：The-authenticity-of-host。。。。can’t-be-established-r" class="headerlink" title="3、报错：The authenticity of host。。。。can’t be established.r"></a>3、报错：The authenticity of host。。。。can’t be established.r</h5><p>解决：输入yes就行了</p>
+<h5 id="4、报错：warning-LF-will-be-replaced-by-CRLF-in-文件地址"><a href="#4、报错：warning-LF-will-be-replaced-by-CRLF-in-文件地址" class="headerlink" title="4、报错：warning: LF will be replaced by CRLF in..文件地址"></a>4、报错：warning: LF will be replaced by CRLF in..文件地址</h5><p><a href="https://www.baidu.com/s?wd=Linux%E7%B3%BB%E7%BB%9F&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">Linux系统</a>和windows系统下的换行符不一样Linux是’\n’既LF，windows下面确实’\r\n’既CRLF。</p>
+<p>git config –global core.autocrlf true//设置git在push转换成lf,pull的时候转换成crlf(其实默认配置就是这个样子的) </p>
+<p>git config –global core.autocrlf false//设置git在push和pull的时候不会进行转换(这个不会报CRLF的错误但是可能会出现错误，有人laravel的routes.php配置的路由运行不了)</p>
+<p>git config –global core.autocrlf input//设置git在push的时候将lf转换成crlf，pull的时候并不会把crlf转换成crlf。</p>
+<p>解决：检查git config –list发现有两个core.autocrlf=true，vi ~/.gitconfig-&gt;i-&gt;删除core下面的autocrlf=true-&gt;再次检查git config –list发现只有一个了。</p>
+<p>提交还是报这个错-&gt;运行git config –global core.autocrlf false（现在只有自己的电脑window10在用代码，进公司的话可能需要改动）-&gt;再次检查git config –list出现两个core.autocrlf一个为true，后面一个为false.-&gt;尝试提交代码不报错</p>
+<p>参考<a href="https://blog.csdn.net/w6248117/article/details/76177103" target="_blank" rel="noopener">https://blog.csdn.net/w6248117/article/details/76177103</a></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Git/">Git</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

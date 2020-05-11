@@ -1,0 +1,229 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>上传下载/目录/时间 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="上传下载函数：" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="上传下载/目录/时间" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-05-20T01:34:18.000Z"><a href="/2019/05/20/上传下载-目录-时间/">2019-05-20</a></time>
+      
+      
+  
+    <h1 class="title">上传下载/目录/时间</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="上传下载函数："><a href="#上传下载函数：" class="headerlink" title="上传下载函数："></a>上传下载函数：</h5><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">php.ini上传文件配置项</span><br><span class="line">• file_uploads = On /Off 是否允许⽂件上传</span><br><span class="line">• upload_max_filesize = 2M 上传的⽂件的最⼤⼤⼩</span><br><span class="line">• post_max_size = 8M POST数据所允许的最⼤⼤⼩</span><br><span class="line">• upload_tmp_dir 上传⽂件放置的临时⽬录</span><br><span class="line"></span><br><span class="line">多文件上传处理：</span><br><span class="line">⽂件上传错误信息</span><br><span class="line">• 0 没有错误发⽣，⽂件上传成功</span><br><span class="line">• 1 ⼤⼩超过了 php.ini 中 upload_max_filesize 限制值</span><br><span class="line">• 2 ⼤⼩超过 HTML 表单中 MAX_FILE_SIZE 选项指定的值</span><br><span class="line">• 3 ⽂件只有部分被上传。</span><br><span class="line">• 4 没有⽂件被上传</span><br><span class="line">例子——</span><br><span class="line">&lt;form action=&quot;82.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">⽂件1：&lt;input type=&quot;file&quot; name = &quot;upfile[]&quot;/&gt;&lt;br/&gt;</span><br><span class="line">⽂件2：&lt;input type=&quot;file&quot; name = &quot;upfile[]&quot;&gt;&lt;br/&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;上传⽂件&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">注：设置name属性为数组格式，实现多⽂件上传处理</span><br><span class="line"></span><br><span class="line">超全局数组：</span><br><span class="line">$_FILES（超级全局数组）</span><br><span class="line">• $_FILES[&apos;userfile&apos;][&apos;name&apos;] 客户端⽂件系统的⽂件名称</span><br><span class="line">• $_FILES[&apos;userfile&apos;][&apos;type&apos;] 客户端传递的⽂件的类型</span><br><span class="line">• $_FILES[&apos;userfile&apos;][&apos;size&apos;] ⽂件的字节的⼤⼩</span><br><span class="line">• $_FILES[&apos;userfile&apos;][&apos;tmp_name&apos;] 服务器存储的临时⽂件</span><br><span class="line">• $_FILES[&apos;userfile&apos;][&apos;error&apos;] ⽂件上传的错误代码</span><br><span class="line"></span><br><span class="line">文档类型：</span><br><span class="line">图⽚⽂件 image/gif，image/jpg，image/jpeg，image/png</span><br><span class="line">纯⽂本和HTML text/txt，text/plain，text/html</span><br><span class="line">⼆进制⽂件 application/octet-stream</span><br><span class="line">⾳频格式 audio/basic</span><br><span class="line">视频格式 video/mpeg</span><br><span class="line"></span><br><span class="line">函数：</span><br><span class="line">is_uploaded_file</span><br><span class="line">• bool is_uploaded_file ( string $filename )</span><br><span class="line">判断⽂件是否是通过 HTTP POST 上传的合法上传⽂件</span><br><span class="line">move_uploaded_file</span><br><span class="line">• bool move_uploaded_file ( string $filename , string $destination )</span><br><span class="line">将上传的⽂件移动到新位置</span><br><span class="line"></span><br><span class="line">文件下载方式：未搞清楚</span><br><span class="line">$file=”houdunwang.jpg&quot;;</span><br><span class="line">header(“Content-type:application/octet-stream”);//⼆进制⽂件</span><br><span class="line">$fileName = basename($file);//获得⽂件名</span><br><span class="line">header(“Content-Disposition:attachment;filename=&#123;$fileName&#125;”);//下载窗⼝中显</span><br><span class="line">示的⽂件名</span><br><span class="line">header(“Accept-ranges:bytes”);//⽂件尺⼨单位</span><br><span class="line">header(“Accept-length:”.filesize($file));//⽂件⼤⼩</span><br><span class="line">readfile($file);//读出⽂件内容</span><br></pre></td></tr></table></figure>
+
+<h5 id="目录操作："><a href="#目录操作：" class="headerlink" title="目录操作："></a>目录操作：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">float disk_total_space ( string $directory )</span><br><span class="line">给出⼀个包含有⼀个⽬录的字符串，本函数将根据相应的⽂件系统或磁盘</span><br><span class="line">分区返回所有的字节数。</span><br><span class="line">float disk_free_space ( string $directory )</span><br><span class="line">给出⼀个包含有⼀个⽬录的字符串，本函数将根据相应的⽂件系统或磁盘</span><br><span class="line">分区返回可⽤的字节数</span><br><span class="line">number pow ( number $base , number $exp )</span><br><span class="line">返回 base 的 exp 次⽅的幂。如果可能，本函数会返回 integer</span><br><span class="line">例子：</span><br><span class="line">$total = disk_total_space(&quot;d:&quot;);</span><br><span class="line">$unit = $total&gt;pow(1024,3)?array(3,&quot;G&quot;):($total&gt;pow(1024,2)?</span><br><span class="line">array(2,&quot;MB&quot;):array(1,&quot;KB&quot;));</span><br><span class="line">echo round($total/pow(1024,$unit[0]),1).$unit[1];</span><br><span class="line"></span><br><span class="line">目录操作：</span><br><span class="line">bool is_writable ( string $filename )</span><br><span class="line">判断给定的⽬录或⽂件是否可写</span><br><span class="line">bool is_readable ( string $filename )</span><br><span class="line">⽂件或⽬录存在并且可读则返回 TRUE</span><br><span class="line">string basename ( string $path [, string $suffix ] )</span><br><span class="line">给出⼀个包含有指向⼀个⽂件的全路径的字符串，本函数返回基本的</span><br><span class="line">⽂件名。如果⽂件名是以 suffix 结束的，那这⼀部分也会被去掉。</span><br><span class="line">string dirname ( string $path )</span><br><span class="line">给出⼀个包含有指向⼀个⽂件的全路径的字符串，本函数返回去掉⽂</span><br><span class="line">件名后的⽬录名。</span><br><span class="line">bool file_exists ( string $filename )</span><br><span class="line">如果由 filename 指定的⽂件或⽬录存在则返回 TRUE，否则返回</span><br><span class="line">FALSE</span><br><span class="line">bool is_dir ( string $filename )</span><br><span class="line">判断给定⽂件名是否是⼀个⽬录</span><br><span class="line">如果⽂件名存在并且为⽬录则返回 TRUE。如果 filename 是⼀个相对</span><br><span class="line">路径，则按照当前⼯作⽬录检查其相对路径。</span><br><span class="line">bool mkdir ( string $pathname [, int $mode [, bool $recursive [, </span><br><span class="line">resource $context ]]] )</span><br><span class="line">第1个参数指定⽬录名，第2个参数⽬录权限，第3个参数为TRUE则递</span><br><span class="line">归创建</span><br><span class="line">bool rmdir ( string $dirname )</span><br><span class="line">尝试删除 dirname 所指定的⽬录。 该⽬录必须是空的，⽽且要有相</span><br><span class="line">应的权限。</span><br><span class="line">bool rename ( string $oldname , string $newname [, resource </span><br><span class="line">$context ] )</span><br><span class="line">尝试把 oldname 重命名为 newname,成功时返回 TRUE， 或者在失</span><br><span class="line">败时返回 FALSE.</span><br><span class="line">bool copy ( string $source , string $dest )</span><br><span class="line">拷⻉⽂件</span><br><span class="line">array glob ( string $pattern [, int $flags ] )</span><br><span class="line">glob() 函数依照 libc glob() 函数使⽤的规则寻找所有与 pattern 匹配</span><br><span class="line">的⽂件路径，类似于⼀般 shells 所⽤的规则⼀样。不进⾏缩写扩展</span><br><span class="line">或参数替代。</span><br><span class="line">例如：</span><br><span class="line">function mkdir_d($path)&#123;</span><br><span class="line"> $info = explode(&apos;/&apos;,$path);</span><br><span class="line"> $tmp=&apos;&apos;;</span><br><span class="line"> foreach($info as $a)&#123;</span><br><span class="line"> $tmp=$tmp.$a.&apos;/&apos;;</span><br><span class="line"> is_dir($tmp) or mkdir($tmp);</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">文件操作：</span><br><span class="line">bool unlink ( string $filename )删除⽂件</span><br></pre></td></tr></table></figure>
+
+<h5 id="时间处理函数："><a href="#时间处理函数：" class="headerlink" title="时间处理函数："></a>时间处理函数：</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PHP.ini配置</span><br><span class="line">• 更改date.timezone = PRC</span><br><span class="line">脚本中修改</span><br><span class="line">• date_default_timezone_get()取得当前使⽤时区</span><br><span class="line">• date_default_timezone_set()设定当前使⽤时区</span><br><span class="line"> </span><br><span class="line">date ( string $format [, int $timestamp ] )	格式化⼀个本地时间／⽇期</span><br><span class="line">time ( void )	返回当前的 Unix 时间戳</span><br><span class="line">microtime ([ bool $get_as_float ] )	</span><br><span class="line">返回当前 Unix 时间戳和微秒数,如果给出了 get_as_float 值为TRUE，将返回⼀个浮点数</span><br><span class="line">strtotime ( string $time) 将任何英⽂⽂本的⽇期时间描述解析为 Unix 时间戳</span><br><span class="line">getdate ([ int $timestamp ] )	取得⽇期／时间信息</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP/">PHP</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/23/Composer/">Composer</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/19/Git-Bash-Here操作/">Git Bash Here操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/16/redis实现分布式锁/">redis实现分布式锁</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
