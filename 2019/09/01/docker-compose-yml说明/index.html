@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>docker-compose.yml说明 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="1234version : &amp;apos;3&amp;apos;  #docker引擎对应所支持的docker-compose文本格式services:            #本工程的服务配置列表  swapping:            #spring boot的服务名，服务名自定义    container_name: swapping-compose
+
+本spring boot服务之后启动的容器实例的名字，如果指定，按照这个命名容器，如果未指定，容器命名规则是,【[compose文件所在目录]_[服务名]_1】，例如【swappingdockercompose_swapping_1】如果多启动，也就是docker-compose scale swapping=3 mysql=2的话，就不需要指定容器名称，否则会报错 容器名重复存在的问题" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="docker-compose.yml说明" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-09-01T14:14:16.000Z"><a href="/2019/09/01/docker-compose-yml说明/">2019-09-01</a></time>
+      
+      
+  
+    <h1 class="title">docker-compose.yml说明</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">version : &apos;3&apos;  #docker引擎对应所支持的docker-compose文本格式</span><br><span class="line">services:            #本工程的服务配置列表</span><br><span class="line">  swapping:            #spring boot的服务名，服务名自定义</span><br><span class="line">    container_name: swapping-compose</span><br></pre></td></tr></table></figure>
+
+<p>本spring boot服务之后启动的容器实例的名字，如果指定，按照这个命名容器，如果未指定，容器命名规则是,【[compose文件所在目录]_[服务名]_1】，例如【swappingdockercompose_swapping_1】如果多启动，也就是docker-compose scale swapping=3 mysql=2的话，就不需要指定容器名称，否则会报错 容器名重复存在的问题</p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">build:            #基于Dockerfile文件构建镜像时使用的属性</span><br><span class="line">  context: .    #代表当前目录，也可以指定绝对路径[/path/test/Dockerfile]或相对路径[../test/Dockerfile]，尽量放在当前目录，便于管理</span><br><span class="line">  dockerfile: Dockerfile-swapping    #指定Dockerfile文件名。如果context指定了文件名，这里就不用本属性了</span><br><span class="line">ports:                        #影射端口属性</span><br><span class="line">  - &quot;9666:9666&quot;                #建议使用字符串格式，指定宿主机端口映射到本容器的端口</span><br><span class="line">volumes:                    #挂载属性</span><br><span class="line">  - .:/vol/development</span><br></pre></td></tr></table></figure>
+
+<p>挂载路径在compose配置文件中只能指定容器内的目录，而docker run命令可以指定[宿主机目录：容器内目录]的挂载方式。可以使用:ro对容器内目录设置只读，来保护宿主机的文件系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">    depends_on:                    #本服务启动，需要依赖哪些别的服务  例如这里；mysql服务就会先于swapping服务启动。至于配置多个的话，depends_on内的多个依赖的启动先后顺序未测试过</span><br><span class="line">      - mysql</span><br><span class="line">    links:                        #与depends_on相对应，上面控制启动顺序，这个控制容器连接问题。</span><br><span class="line">      - &quot;mysql:mysql&quot;            #值可以是- mysql[- 服务名]，也可以是- &quot;mysql:mysql&quot;[- &quot;服务名：别名&quot;]</span><br><span class="line">    restart: always                #是否随docker服务启动重启</span><br><span class="line">    networks:                    #加入指定网络</span><br><span class="line">      - my-network                #自定义的网络名</span><br><span class="line">    environment:                #environment 和 Dockerfile 中的 ENV 指令一样会把变量一直保存在镜像、容器中，类似 docker run -e 的效果。设置容器的环境变量</span><br><span class="line">      - TZ=Asia/Shanghai        #这里设置容器的时区为亚洲上海，也就解决了容器通过compose编排启动的 时区问题！！！！解决了容器的时区问题！！！</span><br><span class="line"></span><br><span class="line">  mysql:                            #服务名叫mysql，自定义</span><br><span class="line">    container_name: mysql-compose    #容器名</span><br><span class="line">    image: mysql:5.7                #虽然没有使用build，但使用了image，指定基于mysql:5.7镜像为基础镜像来构建镜像。【使用build基于Dockerfile文件构建，Dockerfile文件中也有FROM基于基础镜像】</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;33061:3306&quot;</span><br><span class="line">    command: [                        #使用 command 可以覆盖容器启动后默认执行的命令</span><br><span class="line">            &apos;--character-set-server=utf8mb4&apos;,            #设置数据库表的数据集</span><br><span class="line">            &apos;--collation-server=utf8mb4_unicode_ci&apos;,    #设置数据库表的数据集</span><br><span class="line">            &apos;--default-time-zone=+8:00&apos;                    #设置mysql数据库的 时区问题！！！！ 而不是设置容器的时区问题！！！！</span><br><span class="line">    ]</span><br><span class="line">    environment:            </span><br><span class="line">      MYSQL_DATABASE: swapping                             #设置初始的数据库名</span><br><span class="line">      MYSQL_ROOT_PASSWORD: 398023                        #设置root连接密码</span><br><span class="line">      MYSQL_ROOT_HOST: &apos;%&apos; </span><br><span class="line">    restart: always</span><br><span class="line">    networks:</span><br><span class="line">      - my-network</span><br><span class="line">networks:                        #关于compose中的networks的详细使用https://blog.csdn.net/Kiloveyousmile/article/details/79830810</span><br><span class="line">  my-network:                    #自定义的网络，会在第一次构建时候创建自定义网络，默认是bridge</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Docker/">Docker</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/09/01/docker-compose-yml说明/">docker-compose.yml说明</a>
+      </li>
+    
+      <li>
+        <a href="/2019/08/27/Docker-compose相关命令/">Docker-compose相关命令</a>
+      </li>
+    
+      <li>
+        <a href="/2019/08/16/Docker简介和命令/">Docker简介和命令</a>
+      </li>
+    
+      <li>
+        <a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a>
+      </li>
+    
+      <li>
+        <a href="/2019/06/24/Vue-js阶段总结1/">Vue.js阶段总结1</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>1</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 16.67px;">Docker</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
