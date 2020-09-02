@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Git命令补充与rebase操作 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="git知识补充删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’
+git rm –cached readme.txt
+修改提交的描述
+git log" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Git命令补充与rebase操作" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-10-23T03:46:57.000Z"><a href="/2019/10/23/Git命令补充与rebase操作/">2019-10-23</a></time>
+      
+      
+  
+    <h1 class="title">Git命令补充与rebase操作</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="git知识补充"><a href="#git知识补充" class="headerlink" title="git知识补充"></a>git知识补充</h3><p>删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’</p>
+<p>git rm –cached readme.txt</p>
+<p>修改提交的描述</p>
+<p>git log</p>
+<a id="more"></a>
+
+<p>git commot –amend-&gt;自动调用vi编辑器</p>
+<p>别名设置(将add设置别名 a)</p>
+<p>git config –global alias.a  add  或者直接在.gitconfig文件中直接添加（git全局配置）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.gitconfig文件中直接添加（git全局配置）</span><br><span class="line">[alias]</span><br><span class="line">    a=add</span><br><span class="line">    c=commit</span><br><span class="line"></span><br><span class="line">系统别名定义git全局命令</span><br><span class="line">.bash_profile</span><br><span class="line">alias gs=&quot;git status&quot;</span><br><span class="line">alias gc=&quot;git commit -m&quot;</span><br><span class="line">alias gl=&quot;git log --graph --pretty=format:&apos;%Cred%&apos;&quot;</span><br><span class="line">alias gb=&quot;git branch&quot;</span><br><span class="line">alias ga=&quot;git add .&quot;</span><br><span class="line">alias go=&quot;git checkout&quot;</span><br></pre></td></tr></table></figure>
+
+<p>创建分支ask</p>
+<p>git branch ask</p>
+<p>删除分支ask</p>
+<p>git branch -d ask 内容若有修改提交，切换master删除ask分支，会提示未合并master,不能删除</p>
+<p>强制删除分支</p>
+<p>git branch -D ask </p>
+<p>创建并切换到ask</p>
+<p>git checkout  -b ask</p>
+<p>检查master分支的合并情况（指针在master）</p>
+<p>git branch –merged(已合并分支)</p>
+<p>git branch –no-merged（未合并分支）</p>
+<p>拉取远程分支master和ask</p>
+<p>git pull origin ask:ask</p>
+<p>删除远程分支</p>
+<p>git push origin –delete ask</p>
+<p>删除本地分支</p>
+<p>git branch -d ask</p>
+<p><strong>冲突：</strong></p>
+<p>master分支上创建ask分支和bbs分支，两分支同时对xx.php文件进行修改，切换到master分之后合并bbs分支，自动合并提交，合并ask分支，产生冲突（文件基线已经变了（提交点）），需要打开该文件（文件内容显示两分支内容，调整——调整共同的基线），手动提交历史树。</p>
+<p><strong>暂存区：</strong></p>
+<p>文件开发一半，无法提交，但需要切换其他分支怎么办？</p>
+<p>git stash(存储状态，需要在add之后才可使用)，而后可以切换分支</p>
+<p>git stash list（存储列表）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stash@&#123;0&#125;:WIP ...</span><br></pre></td></tr></table></figure>
+
+<p>git stash apply stash@{0}（恢复暂存区stash@{0},无stash@{0}则默认最新的stash@{0}）</p>
+<p>git stash drop stash@{0}（删除暂存区状态stash@{0}）</p>
+<p>git stash pop（恢复并删除暂存区状态stash@{0}，最新的存储状态）</p>
+<p><strong>标签</strong></p>
+<p>git  tag [v1.0] (无【】则为显示标签列表)  标签是稳定的代码才能打上</p>
+<p>开发好后，发布代码，生成zip压缩包。（master分支的所有代码）</p>
+<p>git archive master –prefix=’cms/‘ –forma=zip &gt; cms.zip</p>
+<p>master:分支名</p>
+<p>prefix：压缩后文件名</p>
+<p>forma：后缀</p>
+<p><strong>Rebase</strong>(本地rebase)</p>
+<p>master分支上创建ask分支，master分支本身提交代码，导致master像前移动，切换master合并ask时会弹出窗体合并消息，日志上产生新的合并消息，而不是快速合并，多出一个合并的分支</p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5C9c09f688223bacb8f507722c76d868e.png" alt="image-20200111100317902"></p>
+<p>看图，以时间为轴</p>
+<p>期望的合并状态</p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5Cf44241bff094030b414d6ed6600f999.png" alt="image-20200111100721055"></p>
+<p>rebase可理解为replace base</p>
+<p>master日志中只有master的提交记录，ask日志中有master的提交记录（只包含创建ask时master的提交点）</p>
+<p>在ask分支：git rebase master 在ask日志中插入最新的master提交，使原来的ask提交往 后移动</p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5C20200111103231788.png" alt="image-20200111103231788"></p>
+<p>ask提交后 git rebase –master,这样原本的提交不会丢失，保证了主分支的干净（不保证不冲突）</p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5C20200111103813810.png" alt="image-20200111103813810"></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Git/">Git</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2019/11/16/自动化部署/">自动化部署</a>
+      </li>
+    
+      <li>
+        <a href="/2019/10/23/Git命令补充与rebase操作/">Git命令补充与rebase操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/09/17/微擎框架基本操作/">微擎框架基本操作</a>
+      </li>
+    
+      <li>
+        <a href="/2019/09/01/docker-compose-yml说明/">docker-compose.yml说明</a>
+      </li>
+    
+      <li>
+        <a href="/2019/08/27/Docker-compose相关命令/">Docker-compose相关命令</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>3</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 16.67px;">Docker</a> <a href="/tags/Git/" style="font-size: 16.67px;">Git</a> <a href="/tags/Hexo/" style="font-size: 16.67px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 13.33px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 10px;">PHP框架</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 16.67px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
