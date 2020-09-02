@@ -81,7 +81,7 @@
       
         <h3 id="自动化部署流程："><a href="#自动化部署流程：" class="headerlink" title="自动化部署流程："></a>自动化部署流程：</h3><a id="more"></a>
 
-<p><img src="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C20200111112714243.png" alt="image-20200111112714243"></p>
+<p><img src="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/20200111112714243.png" alt="image-20200111112714243"></p>
 <p><strong>流程</strong></p>
 <p>在github上设置hook(钩子)，本地推送代码到github，会触发hook，github请求web服务器的webhook.php文件，服务器通过文件执行pull命令，拉取github最新代码。完成自动化部署.</p>
 <p>第一次本地推送远程，就会触发hook,服务器尚未有webhook.php文件，因此触发失败，需要服务器手动拉取代码</p>
@@ -92,7 +92,7 @@
 <p>用的时候需要改webhook.php中的<code>secret</code>和<code>$path</code>，两者都来自gitHub-&gt;webhook的设置</p>
 <p><strong>2.github:</strong></p>
 <p>项目设置-》webhooks-&gt;add webhook 需要填写web服务器地址</p>
-<p><img src="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2%5C20200111112843632.png" alt="image-20200111112843632"></p>
+<p><img src="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/20200111112843632.png" alt="image-20200111112843632"></p>
 <p>Payload URL</p>
 <p><code>http://hdxj.houdunren.com/webhook.php（请求文件的地址）</code></p>
 <p>Secret</p>

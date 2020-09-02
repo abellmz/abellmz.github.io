@@ -130,16 +130,16 @@ git log" />
 <p>forma：后缀</p>
 <p><strong>Rebase</strong>(本地rebase)</p>
 <p>master分支上创建ask分支，master分支本身提交代码，导致master像前移动，切换master合并ask时会弹出窗体合并消息，日志上产生新的合并消息，而不是快速合并，多出一个合并的分支</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5C9c09f688223bacb8f507722c76d868e.png" alt="image-20200111100317902"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/9c09f688223bacb8f507722c76d868e.png" alt="image-20200111100317902"></p>
 <p>看图，以时间为轴</p>
 <p>期望的合并状态</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5Cf44241bff094030b414d6ed6600f999.png" alt="image-20200111100721055"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/f44241bff094030b414d6ed6600f999.png" alt="image-20200111100721055"></p>
 <p>rebase可理解为replace base</p>
 <p>master日志中只有master的提交记录，ask日志中有master的提交记录（只包含创建ask时master的提交点）</p>
 <p>在ask分支：git rebase master 在ask日志中插入最新的master提交，使原来的ask提交往 后移动</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5C20200111103231788.png" alt="image-20200111103231788"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103231788.png" alt="image-20200111103231788"></p>
 <p>ask提交后 git rebase –master,这样原本的提交不会丢失，保证了主分支的干净（不保证不冲突）</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C%5C20200111103813810.png" alt="image-20200111103813810"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103813810.png" alt="image-20200111103813810"></p>
 
       
     </div>
