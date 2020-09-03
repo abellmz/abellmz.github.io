@@ -7,7 +7,7 @@
   <meta name="author" content="abellmz" />
 
   
-  <meta name="description" content="git rebase 与git mergegit rebase 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。 原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最" />
+  <meta name="description" content="git rebase 与git mergegit rebase 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。 原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。" />
   
 
   
@@ -80,6 +80,8 @@
     <div class="entry">
       
         <h3 id="git-rebase-与git-merge"><a href="#git-rebase-与git-merge" class="headerlink" title="git rebase 与git merge"></a>git rebase 与git merge</h3><p><strong>git rebase</strong> 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。<br> 原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。</p>
+<a id="more"></a>
+
 <p>官方解释: <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2FGit-" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-</a>分支-变基</p>
 <p><strong>区别</strong></p>
 <p><strong>rebase</strong>会把你当前分支的 commit 放到公共分支的最后面,所以叫变基。就好像你从公共分支又重新拉出来这个分支一样。<br> 举例:如果你从 master 拉了个feature分支出来,然后你提交了几个 commit,这个时候刚好有人把他开发的东西合并到 master 了,这个时候 master 就比你拉分支的时候多了几个 commit,如果这个时候你 rebase master 的话，就会把你当前的几个 commit，放到那个人 commit 的后面。</p>
@@ -166,15 +168,15 @@
   <ul class="entry">
     
       <li>
-        <a href="/2020/12/03/reset使用/">reset使用</a>
-      </li>
-    
-      <li>
         <a href="/2020/01/25/Yii2-0基本使用/">Yii2.0基本使用</a>
       </li>
     
       <li>
         <a href="/2019/12/25/rebase与merge/">rebase与merge</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/03/reset使用/">reset使用</a>
       </li>
     
       <li>
