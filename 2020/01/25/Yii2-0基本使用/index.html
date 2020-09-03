@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Yii2.0基本使用 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="yii2advance与yii2basic的区别
+
+basic 更适合新手，特别是刚刚接触 yii 的入门开发人员。
+adavanced 随包自带两个应用：前台应用 frontend 和后台应用 backend，basic 中只有一个应用 web。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Yii2.0基本使用" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-01-25T13:40:33.000Z"><a href="/2020/01/25/Yii2-0基本使用/">2020-01-25</a></time>
+      
+      
+  
+    <h1 class="title">Yii2.0基本使用</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>yii2advance与yii2basic的区别</p>
+<ul>
+<li><strong>basic</strong> 更适合新手，特别是刚刚接触 yii 的入门开发人员。</li>
+<li><strong>adavanced</strong> 随包自带两个应用：前台应用 <strong>frontend</strong> 和后台应用 <strong>backend</strong>，basic 中只有一个应用 <strong>web</strong>。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="yii2-advanced"><a href="#yii2-advanced" class="headerlink" title="yii2-advanced"></a>yii2-advanced</h3><p>文档：</p>
+<p><a href="https://www.yiichina.com/doc/guide/2.0/security-passwords" target="_blank" rel="noopener">https://www.yiichina.com/doc/guide/2.0/security-passwords</a></p>
+<p>看云</p>
+<p><a href="https://www.kancloud.cn/curder/yii/247756" target="_blank" rel="noopener">https://www.kancloud.cn/curder/yii/247756</a></p>
+<p>官网</p>
+<p><a href="https://www.yiiframework.com/doc/guide/2.0/zh-cn/start-installation" target="_blank" rel="noopener">https://www.yiiframework.com/doc/guide/2.0/zh-cn/start-installation</a></p>
+<h4 id="安装yii2"><a href="#安装yii2" class="headerlink" title="安装yii2"></a><strong>安装yii2</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker-compose pull php-uc</span><br><span class="line">docker-compose up -d</span><br><span class="line">docker-compose exec php-uc composer --working-dir=uc upd</span><br><span class="line">config --list</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">引入阿里云镜像</span><br><span class="line">&gt;docker-compose exec php-uc composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br><span class="line"></span><br><span class="line">&gt;docker-compose exec php-uc composer --working-dir=uc -g config --list</span><br><span class="line">&gt;docker-compose exec php-uc composer --working-dir=ucl upd</span><br><span class="line"></span><br><span class="line">查看查看所有全局配置composer config -gl</span><br></pre></td></tr></table></figure>
+
+<p>创建项目（下载框架）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project --prefer-dist yiisoft/yii2-app-advanced yii2-application（项目名称）</span><br></pre></td></tr></table></figure>
+
+<p>初始化</p>
+<p>cd 到项目目录，执行<code>git init</code>(目录初始化)和<code>init.bat</code>或者<code>init</code>(项目初始化)初始化脚本<code>php init</code></p>
+<p>设置安装的环境，开发环境or生产环境（0-1）。//选择0-&gt;yes</p>
+<p>开发：debug默认开启，生产(线上)：debug默认关闭</p>
+<p>RBAC初始化：</p>
+<p>使用数据迁移命令，初始化RBAC数据库RBAC初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">打开 common\config\main.php 文件，在 components 数组中加入 authManager 组件，注意authManager的配置不要写错哦。</span><br><span class="line">//authManager有PhpManager和DbManager两种方式,    </span><br><span class="line">//PhpManager将权限关系保存在文件里,这里使用的是DbManager方式,将权限关系保存在数据库.    </span><br><span class="line">&quot;authManager&quot; =&gt; [        </span><br><span class="line">   &quot;class&quot; =&gt; &apos;yii\rbac\DbManager&apos;,</span><br><span class="line">],</span><br><span class="line">yii migrate --migrationPath=@yii/rbac/migrations/</span><br></pre></td></tr></table></figure>
+
+<p>composer require mdmsoft/yii2-admin “~2.0”</p>
+<p><strong>docker配置</strong></p>
+<p>nginx</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    root   /var/www/html/uc/;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root /var/www/html/uc/;</span><br><span class="line">        try_files  $uri /frontend/web/index.php?$args;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   location /admin &#123;</span><br><span class="line">        alias  /var/www/html/uc/;</span><br><span class="line">        rewrite  ^(/admin)/$ $1 permanent;</span><br><span class="line">        try_files  $uri /backend/web/index.php?$args;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_pass   php-uc:9000;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>docker-compose.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">php-yii2:</span><br><span class="line">    build: php</span><br><span class="line">    image: php</span><br><span class="line">    working_dir: /var/www/html/uc</span><br><span class="line">    expose:</span><br><span class="line">      - 9000</span><br><span class="line">    links:</span><br><span class="line">      - mysql</span><br><span class="line">      - mongo</span><br><span class="line">      - redis</span><br><span class="line">    volumes:</span><br><span class="line">      - ./html/yii2-application:/var/www/html/uc</span><br><span class="line">      - ./php-yii2/php.ini:/usr/local/etc/php/php.ini:ro</span><br><span class="line">    restart: unless-stopped</span><br></pre></td></tr></table></figure>
+
+<p>创建对应的yii2的php.ini</p>
+<p>本地host添加域名yii2-application：C:\Windows\System32\drivers\etc\host</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">访问 http://siteroot/admin/user/signup 添加用户  注意r=user/signup</span><br><span class="line">权限修改：http://siteroot/admin/admin</span><br></pre></td></tr></table></figure>
+
+<h4 id="yii2-0框架结构"><a href="#yii2-0框架结构" class="headerlink" title="yii2.0框架结构"></a><strong>yii2.0框架结构</strong></h4><p>基于mvc模式开发，不需要模板引擎的</p>
+<p>laravel框架有反向追踪的插件，yii框架没有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、在phpstorm--- file--- settings  --- plugins -- 搜索Laravel Plugin --- 安装</span><br><span class="line">2、安装ide-helper插件</span><br><span class="line">https://blog.csdn.net/u013957017/article/details/88573529</span><br></pre></td></tr></table></figure>
+
+<p><strong>框架目录</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├── backend   后台</span><br><span class="line">├── common   公共目录</span><br><span class="line">├── console   控制台</span><br><span class="line">├── environments   环境配置</span><br><span class="line">├── frontend   前台</span><br><span class="line">├── nbproject</span><br><span class="line">├── tests</span><br><span class="line">├── vendor    第三方程序存放处，包括yii框架本身</span><br><span class="line">├── composer.json</span><br><span class="line">├── composer.lock</span><br><span class="line">├── init</span><br><span class="line">├── init.bat</span><br><span class="line">├── LICENSE.md</span><br><span class="line">├── README.md</span><br><span class="line">├── requirements.php</span><br><span class="line">├── yii    命令行应用的入口脚本</span><br><span class="line">└── yii.bat</span><br></pre></td></tr></table></figure>
+
+<p><strong>common</strong>公共目录, 对于本高级应用的任一独立的应用而言，都是可见、可用的 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">├── config    通用的配置，这些配置将作用于前后台和命令行</span><br><span class="line">├── mail    应用的前后台和命令行的与邮件相关的布局文件等</span><br><span class="line">└── models   前后台和命令行都可能用到的数据模型 common中最主要的部分</span><br></pre></td></tr></table></figure>
+
+<p><strong>frontend</strong>前台目录结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── assets    存放前端资源包PHP类，用于管理CSS、js等前端资源</span><br><span class="line">├── config    存放本应用的配置文件</span><br><span class="line">├── controllers    控制器类</span><br><span class="line">├── models    数据模型类</span><br><span class="line">├── runtime    用于存放缓存的目录</span><br><span class="line">├── views    视图文件</span><br><span class="line">├── web    应用根目录里面包含index.php</span><br><span class="line">└── widgets    存放一些常用的小挂件的类文件</span><br></pre></td></tr></table></figure>
+
+<p>config:包括主配置文件 main.php 和全局参数配置文件 params.php </p>
+<p>tests: 用于存放测试类 </p>
+<p>web: 对于Web服务器可以访问的目录。 除了这一目录，其他所有的目录不应对Web用户暴露出来，这是安全的需要。 </p>
+<p>runtime : 这个目录是要求权限为 <code>chmod 777</code> ，即允许Web服务器具有完全的权限， 因为可能会涉及到写入临时文件等。 但是一个目录并未对Web用户可见。也就是说，权限给了，但是并不是Web用户可以访问到的 </p>
+<p> <strong>命令行应用的入口脚本</strong>是 <code>path/to/digpage.com/yii</code> 文件。这个文件被 <code>init</code> 脚本设为可执行的 </p>
+<h4 id="控制器与视图模板"><a href="#控制器与视图模板" class="headerlink" title="控制器与视图模板"></a><strong>控制器与视图模板</strong></h4><p><strong>路由规则设置（rewrite）</strong></p>
+<p><code>http://www.digpage.com/index.php?r=post/view&amp;id=100</code></p>
+<p>r表示router,PostController下的 actionView 方法</p>
+<p>可简化为<code>http://www.digpage.com/post/view/100</code>，需依赖于应用组件urlManager， </p>
+<p>urlManger功能 ：</p>
+<p>1具有解析请求以便确定指派谁来处理请求</p>
+<p>2根据路由规则生成URL </p>
+<p>url美化：</p>
+<p> 把 URL <code>http://www.digpage.com/index.php?r=post/view&amp;id=100</code> 变成 <code>http://www.digpage.com/post/view/Route.html</code> </p>
+<ul>
+<li>隐藏入口脚本可以通过 <code>yii\web\UrlManager::showScriptName = false</code> 来实现</li>
+<li>路由的路径化可以通过 <code>yii\web\UrlManager::enablePrettyUrl = true</code> 来实现</li>
+<li>参数的路径化可以通过路由规则来实现</li>
+<li>假后缀(fake suffix) <code>.html</code> 可以通过 <code>yii\web\UrlManager::suffix = &#39;.html&#39;</code> 来实现</li>
+</ul>
+<p>参考链接： <a href="https://blog.csdn.net/DingJingMaster/article/details/89090569" target="_blank" rel="noopener">https://blog.csdn.net/DingJingMaster/article/details/89090569</a> </p>
+<p>路由文件写法： <a href="https://www.cnblogs.com/zeopean/p/6020328.html" target="_blank" rel="noopener">https://www.cnblogs.com/zeopean/p/6020328.html</a> </p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/12/03/reset使用/">reset使用</a>
+      </li>
+    
+      <li>
+        <a href="/2020/01/25/Yii2-0基本使用/">Yii2.0基本使用</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/25/rebase与merge/">rebase与merge</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/30/Markdown语法/">Markdown语法</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/16/自动化部署/">自动化部署</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>2</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 12.5px;">PHP框架</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

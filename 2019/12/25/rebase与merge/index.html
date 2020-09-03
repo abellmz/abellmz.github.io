@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>rebase与merge | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="git rebase 与git mergegit rebase 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。 原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="rebase与merge" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-12-25T14:40:29.000Z"><a href="/2019/12/25/rebase与merge/">2019-12-25</a></time>
+      
+      
+  
+    <h1 class="title">rebase与merge</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="git-rebase-与git-merge"><a href="#git-rebase-与git-merge" class="headerlink" title="git rebase 与git merge"></a>git rebase 与git merge</h3><p><strong>git rebase</strong> 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。<br> 原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。</p>
+<p>官方解释: <a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgit-scm.com%2Fbook%2Fzh%2Fv2%2FGit-" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-</a>分支-变基</p>
+<p><strong>区别</strong></p>
+<p><strong>rebase</strong>会把你当前分支的 commit 放到公共分支的最后面,所以叫变基。就好像你从公共分支又重新拉出来这个分支一样。<br> 举例:如果你从 master 拉了个feature分支出来,然后你提交了几个 commit,这个时候刚好有人把他开发的东西合并到 master 了,这个时候 master 就比你拉分支的时候多了几个 commit,如果这个时候你 rebase master 的话，就会把你当前的几个 commit，放到那个人 commit 的后面。</p>
+<p><img src="/2019/12/25/rebase%E4%B8%8Emerge/1577363444.jpg" alt="image-20191226203100590"></p>
+<p><strong>merge</strong> 会把公共分支和你当前的commit 合并在一起，形成一个新的 commit 提交</p>
+<p><img src="/2019/12/25/rebase%E4%B8%8Emerge/1577363538.jpg" alt="image-20191226203228041"></p>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意:"></a><strong>注意:</strong></h5><ul>
+<li>不要在公共分支使用rebase</li>
+<li>本地和远端对应同一条分支,优先使用rebase,而不是merge</li>
+</ul>
+<h6 id="抛出问题"><a href="#抛出问题" class="headerlink" title="抛出问题:"></a>抛出问题:</h6><p><strong>为什么不要再公共分支使用rebase?</strong><br> 因为往后放的这些 commit 都是新的,这样其他从这个公共分支拉出去的人，都需要再 rebase,相当于你 rebase 东西进来，就都是新的 commit 了</p>
+<ul>
+<li>1-2-3 是现在的分支状态</li>
+<li>这个时候从原来的master ,checkout出来一个prod分支</li>
+<li>然后master提交了4.5，prod提交了6.7</li>
+<li>这个时候master分支状态就是1-2-3-4-5，prod状态变成1-2-3-6-7</li>
+<li>如果在prod上用rebase master ,prod分支状态就成了1-2-3-4-5-6-7</li>
+<li>如果是merge<br>1-2-3-6-7-8<br>…….. |<em>4-5</em>|</li>
+<li>会出来一个8，这个8的提交就是把4-5合进来的提交</li>
+</ul>
+<p><strong>merge和rebase实际上只是用的场景不一样</strong><br> <strong>更通俗的解释一波.</strong><br> 比如rebase,你自己开发分支一直在做,然后某一天，你想把主线的修改合到你的分支上,做一次集成,这种情况就用rebase比较好.把你的提交都放在主线修改的头上<br> 如果用merge，脑袋上顶着一笔merge的8,你如果想回退你分支上的某个提交就很麻烦,还有一个重要的问题,rebase的话,本来我的分支是从3拉出来的,rebase完了之后,就不知道我当时是从哪儿拉出来的我的开发分支<br> 同样的,如果你在主分支上用rebase, rebase其他分支的修改,是不是要是别人想看主分支上有什么历史,他看到的就不是完整的历史课,这个历史已经被你篡改了</p>
+<p><strong>常用指令</strong></p>
+<ul>
+<li>git rebase -I dev 可以将dev分支合并到当前分支<br>这里的”-i“是指交互模式。就是说你可以干预rebase这个事务的过程，包括设置commit message，暂停commit等等。</li>
+<li>git rebase –abort 放弃一次合并</li>
+<li><strong>合并多次commit操作:</strong><br>1 git rebase -i dev<br>2 修改最后几次commit记录中的pick 为squash<br>3 保存退出,弹出修改文件,修改commit记录再次保存退出(删除多余的change-id 只保留一个)<br>4 git add .<br>5 git rebase –continue</li>
+</ul>
+<p>参考链接：</p>
+<p><a href="https://www.jianshu.com/p/4079284dd970" target="_blank" rel="noopener">https://www.jianshu.com/p/4079284dd970</a></p>
+<p>如果在master分支下面搞一个新的分支，开发的同时，master有了新增代码，然而需要在新的master上面继续开发，怎么办呢：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、先把自己写的代码，保存到本地库，然后推送到来远程库（至关重要），然后拉下来远程库，这很重要</span><br><span class="line">2在git命令中输入：git rebase origin/master,这样就会把现在正在开发的分支中已经写好的代码与最新的master分支的代码融合在一起</span><br><span class="line">3.输入 git status 显示冲突的文件，然后找到那个文件解决冲突，git add 文件名,这样才算解决一个冲突，输入 git rebase --continue ，继续git status ....... 知道所有的冲突全部解决</span><br><span class="line">（git status如果不显示冲突文件，但又处于rebase状态，输入git rebase --skip)</span><br><span class="line">如果不想解决冲突了，输入 git rebase --abort ，回到最初的状态，前面解决的所有冲突都会恢复到以前的状态</span><br><span class="line">4.解决完冲突后，推送到远程库。</span><br><span class="line"></span><br><span class="line">如何查看rebase完成了呢？</span><br><span class="line">git branch看看自己是否在当前的分支，如果回到当前分支，就是rebase完成。</span><br><span class="line">如果rebase没有完成，git branch不会在当前分支，会在rebase新开的分支里面。（一个临时的分支）</span><br><span class="line">git branch -vv 查看自己的分支，以及自己的分支与远程分支落后多少个文件，如果落后了就git pull，解决冲突，</span><br><span class="line">git push失败，可能是本地这个分支有一些文件落后远程分支，需要git pull</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Git/">Git</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/12/03/reset使用/">reset使用</a>
+      </li>
+    
+      <li>
+        <a href="/2020/01/25/Yii2-0基本使用/">Yii2.0基本使用</a>
+      </li>
+    
+      <li>
+        <a href="/2019/12/25/rebase与merge/">rebase与merge</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/30/Markdown语法/">Markdown语法</a>
+      </li>
+    
+      <li>
+        <a href="/2019/11/16/自动化部署/">自动化部署</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>2</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 12.5px;">PHP框架</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
