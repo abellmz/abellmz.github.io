@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>SQL注入与XSS攻击 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="sql注入以下以Yii2.0为例
+SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="SQL注入与XSS攻击" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-02-15T13:56:52.000Z"><a href="/2020/02/15/SQL注入与XSS攻击/">2020-02-15</a></time>
+      
+      
+  
+    <h1 class="title">SQL注入与XSS攻击</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>以下以Yii2.0为例</p>
+<p>SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。</p>
+<a id="more"></a>
+
+<p>典型的例子就是当对SQL语句进行字符串拼接的时候，直接使用未转义的用户输入内容作为变量。这时，只要在sql语句的中间做修改，比如加上drop、delete等关键字，执行之后后果不堪设想。<br>如何处理：<br>1、过滤用户输入参数中的特殊字符，降低风险。（前、后端）<br>2、禁止通过字符串拼接sql语句，要严格使用 参数绑定 来传入参数。<br>3、合理使用数据库框架提供的机制。就比如Mybatis提供的传入参数的方式 #{}，禁止使用${}，后者相当于是字符串拼接sql，要使用参数化的语句。</p>
+<p>总结下，就是要正确使用【参数化绑定sql变量】。</p>
+<p>后台注入代码示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$data=[</span><br><span class="line">&apos;str&apos;=&gt;&apos;hello world &lt;script&gt;alert(1)&lt;/script&gt;&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">sql注入 or 1=1或  &apos;；drop table user;--&apos;</span><br><span class="line">控制器  访问数据库  占位符‘：‘         </span><br><span class="line">$id=1</span><br><span class="line">$sql=&apos;select * from article where id=:id&apos;;</span><br><span class="line">$r=Article::findBySql($sql，[&apos;:id&apos;=&gt;$id])-&gt;all();</span><br><span class="line">dd($r);</span><br></pre></td></tr></table></figure>
+
+<p>Yii2.0-advanced绑定变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;pageinfo=$pageinfo-&gt;find()-&gt;select([&apos;title&apos;,&apos;keywords&apos;,&apos;description&apos;])-&gt;where(&apos;file_name =:file_name and is_delete=:is_delete&apos;)</span><br><span class="line">            -&gt;addParams([&apos;:file_name&apos;=&gt;&apos;cate&apos;,&apos;:is_delete&apos;=&gt;0])-&gt;asArray()-&gt;one();</span><br></pre></td></tr></table></figure>
+
+<p>xss攻击与sql注入</p>
+<p>想用sql查询请尽量用占位去操作</p>
+<p>yii中纯文本输出，对要输出的内容 <code>CHtml::encode()</code> 即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?= Html::a(&apos;text&apos;, &apos;url&apos;, [</span><br><span class="line">    &apos;data&apos; =&gt; [</span><br><span class="line">        &apos;method&apos; =&gt; &apos;post&apos;,</span><br><span class="line">        &apos;params&apos; =&gt; [</span><br><span class="line">            &apos;params_key&apos; =&gt; &apos;params_val&apos;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">])?&gt;</span><br><span class="line"></span><br><span class="line">1.use yii\helpers\Html;</span><br><span class="line">   &lt;?php echo Html::a(&apos;编辑&apos;,[&apos;edit&apos;,&apos;id&apos;=&gt;$info[&apos;goods_id&apos;]])?&gt;</span><br><span class="line">2.有确认框的删除操作提示信息（其中delete为该控制器中对应的删除的方法）</span><br><span class="line">&lt;?php echo Html::a(&apos;删除&apos;,[&apos;delete&apos;,&apos;id&apos;=&gt;$info[&apos;goods_id&apos;]],[&apos;onclick&apos;=&gt;&apos;return confirm(&quot;aaaaa&quot;)&apos;])?&gt;a</span><br><span class="line"></span><br><span class="line">$purifier = new CHtmlPurifier;echo $purifier-&gt;purify($content);</span><br></pre></td></tr></table></figure>
+
+<h3 id="防止XSS攻击"><a href="#防止XSS攻击" class="headerlink" title="防止XSS攻击"></a>防止XSS攻击</h3><p>XSS：跨站脚本攻击，Cross-Site Scripting，为了和前端的css避免重名，简称为XSS，是指通过技术手段，向正常用户请求的HTML页面中插入恶意脚本，执行。</p>
+<p>这种攻击主要是用于信息窃取和破坏等目的。比如2011年的微博XSS攻击事件，攻击者利用了微博发布功能中未对action-data漏洞做有效的过滤，在发布微博信息的时候带上了包含攻击脚本的URL，用户访问就会加载恶意脚本，导致大量用户被攻击。</p>
+<p>关于防范XSS上，主要就是通过对用户输入的数据做过滤或者是转义，可以使用框架提供的工具类HtmlUtil。另外前端在浏览器展示数据的时候，要使用安全的API展示数据。比如使用innerText而不是innerHTML。</p>
+<p>输出的内容包含脚本，从而对请求的用户进行攻击破坏或窃取信息。<br>主要预防方式是：通过对用户输入的数据做过滤或者是转义</p>
+<p>例如视图输出：字符串过滤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">use \yii\helpers\Html;</span><br><span class="line">user \yii\helpers\HtmlPurifier;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;P&gt;&lt;?=Html::encode($user-&gt;name)?&gt;&lt;/P&gt; 实体化</span><br><span class="line">&lt;?=HtmlPurifier::process($post-&gt;text)?&gt;  去除标签，html显示的文本,更好</span><br><span class="line">&lt;?= Html::encode(&quot;&#123;$country-&gt;name&#125; (&#123;$country-&gt;code&#125;)&quot;) ?&gt;:</span><br><span class="line">&lt;?= $country-&gt;population ?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><p>跨站请求伪造，在用户并不知情的情况下，冒充用户发送请求，在当前已经登录的web网站上执行恶意操作，比如恶意发帖，修改密码等。</p>
+<p>大致来看，与XSS有重合的地方，前者是黑客盗用用户浏览器中的登录信息，冒充用户去执行操作。后者是在正常用户请求的HTML中放入恶意代码，XSS问题出在用户数据没有转义，过滤；CSRF问题出现在HTTP接口没有防范不守信用的调用。</p>
+<p>防范CSRF的漏洞方式：<br>1、CSRF Token验证，利用浏览器的同源限制，在HTTP接口执行前验证Cookie中的Token，验证通过才会继续执行请求<br>2、人机交互，例如短信验证码、界面的滑块</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
+      </li>
+    
+      <li>
+        <a href="/2020/05/03/PDO/">PDO</a>
+      </li>
+    
+      <li>
+        <a href="/2020/04/25/Smarty/">Smarty</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>10</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>3</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

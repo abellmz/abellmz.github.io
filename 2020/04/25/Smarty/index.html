@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Smarty | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="模板（html+css）引擎技术之一
+可以使得“php代码”与“html代码”分离的技术都称为模板引擎技术。" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Smarty" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-04-25T13:23:27.000Z"><a href="/2020/04/25/Smarty/">2020-04-25</a></time>
+      
+      
+  
+    <h1 class="title">Smarty</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>模板（html+css）引擎技术之一</p>
+<p>可以使得“php代码”与“html代码”分离的技术都称为模板引擎技术。</p>
+<a id="more"></a>
+
+<p><img src="/2020/04/25/Smarty/1578990794.jpg" alt="image-20200114163331220"></p>
+<p>模板引擎实际上是一个类</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a><strong>示例</strong></h3><p>目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">view</span><br><span class="line">    --02.html</span><br><span class="line">    --03.html</span><br><span class="line">view_c</span><br><span class="line">    --02.html.php</span><br><span class="line">    --03.html.php</span><br><span class="line">MiniSmarty.class.php</span><br></pre></td></tr></table></figure>
+
+<p>02.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;新建网页&lt;/title&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">        &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;</span><br><span class="line">        &lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div&gt;&#123;$title&#125;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;&#123;$content&#125;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>MiniSmarty.class.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//模板引擎类</span><br><span class="line">class MiniSmarty&#123;</span><br><span class="line">    public $template_dir  = &quot;./view/&quot;;//模板目录</span><br><span class="line">    public $templatec_dir = &quot;./view_c/&quot;;//编译文件目录</span><br><span class="line"></span><br><span class="line">    //给该类声明属性，用于存储外部的变量信息</span><br><span class="line">    public $tpl_var = array();</span><br><span class="line">    //把外部变量设置为类内部属性的一部分</span><br><span class="line">    function assign($k, $v)&#123;</span><br><span class="line">        $this -&gt; tpl_var[$k] = $v;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function display($tpl)&#123;</span><br><span class="line">        $n = $this -&gt; compile($tpl);</span><br><span class="line">        require $n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //&quot;编译&quot;模板文件( &#123;&#125;标记替换为php标记 )</span><br><span class="line">    function compile($tpl)&#123;</span><br><span class="line">        $tpl_file = $this-&gt;template_dir.$tpl;</span><br><span class="line">        $com_file = $this-&gt;templatec_dir.$tpl.&quot;.php&quot;;</span><br><span class="line">        //走“已经生成”的混编文件</span><br><span class="line">        //① 该混编文件必须存在</span><br><span class="line">        //② 混编文件的修改时间 大于 模板文件的修改时间</span><br><span class="line">        if(file_exists($com_file) &amp;&amp; filemtime($com_file) &gt; filemtime($tpl_file))&#123;</span><br><span class="line">            return $com_file;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        //获得模板文件内部具体的模板内容</span><br><span class="line">        $cont = file_get_contents($tpl_file);</span><br><span class="line"></span><br><span class="line">        //替换：&#123; ----&gt; &lt; ?php echo </span><br><span class="line">        //替换：&#123; ----&gt; &lt; ?php echo $this-&gt;tpl_var[&apos;</span><br><span class="line">        $cont = str_replace(&quot;&#123;\$&quot;,&quot;&lt;?php echo \$this-&gt;tpl_var[&apos;&quot;,$cont);</span><br><span class="line"></span><br><span class="line">        //替换： &#125;-----&gt;  ; ? &gt;</span><br><span class="line">        //替换： &#125;-----&gt;  &apos;]; ? &gt;</span><br><span class="line">        $cont = str_replace(&quot;&#125;&quot;,&quot;&apos;]; ?&gt;&quot;,$cont);</span><br><span class="line"></span><br><span class="line">        //echo $cont;</span><br><span class="line">        //把生成好的编译内容(php+html混编内容)放入一个文件里边</span><br><span class="line">        file_put_contents($com_file,$cont);</span><br><span class="line"></span><br><span class="line">        //引入混编文件</span><br><span class="line">        return $com_file;</span><br><span class="line">  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>02.html.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;新建网页&lt;/title&gt;</span><br><span class="line">        &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;</span><br><span class="line">        &lt;meta name=&quot;description&quot; content=&quot;&quot; /&gt;</span><br><span class="line">        &lt;meta name=&quot;keywords&quot; content=&quot;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">        &lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">        &lt;/script&gt;</span><br><span class="line"></span><br><span class="line">        &lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line">        &lt;/style&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;div&gt;&lt;?php echo $this-&gt;tpl_var[&apos;title&apos;]; ?&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;&lt;?php echo $this-&gt;tpl_var[&apos;content&apos;]; ?&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Smarty模板引擎"><a href="#Smarty模板引擎" class="headerlink" title="Smarty模板引擎"></a>Smarty模板引擎</h3><p>对php里边的超级全局数组变量信息的使用</p>
+<ul>
+<li><p>例如：$_GET、$_POST、$_SESSION、$_COOKIE、$_REQUEST、$_SERVER、$_ENV、$GLOBALS、$_FILES、常量信息</p>
+<p>{$smarty.get.xxx}</p>
+<p>{$smarty.post.xxx}</p>
+<p>{$smarty.session.xxx}</p>
+<p>{$smarty.cookies.xxx}</p>
+<p>{$smarty.request.xxx}</p>
+<p>{$smarty.server.xxx}</p>
+<p>{$smarty.env.xxx}</p>
+</li>
+</ul>
+<p>$smarty为smarty的保留变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;&#123;$age&#125;&lt;/div&gt;或者&lt;div&gt;&#123;$smarty.get.age&#125;&lt;/div&gt;//get传参的age变量，get代表超全局数组$_GET</span><br></pre></td></tr></table></figure>
+
+<p><strong>变量调剂器</strong></p>
+<p>smarty本身不支持我们在模板中使用php函数，其把函数给封装了一下，这个封装的函数就是smarty的变量调剂器。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Smarty/">Smarty</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
+      </li>
+    
+      <li>
+        <a href="/2020/05/03/PDO/">PDO</a>
+      </li>
+    
+      <li>
+        <a href="/2020/04/25/Smarty/">Smarty</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>10</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>3</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

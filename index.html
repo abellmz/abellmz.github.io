@@ -68,6 +68,547 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2020-08-25T15:10:43.000Z"><a href="/2020/08/25/Nginx比Apache支持高并发/">2020-08-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="Nginx比Apache高并发的原因"><a href="#Nginx比Apache高并发的原因" class="headerlink" title="Nginx比Apache高并发的原因"></a>Nginx比Apache高并发的原因</h4><p>链接：<a href="https://www.cnblogs.com/hnhycnlc888/p/12606002.html" target="_blank" rel="noopener">https://www.cnblogs.com/hnhycnlc888/p/12606002.html</a></p>
+<h4 id="资料1"><a href="#资料1" class="headerlink" title="资料1"></a>资料1</h4><p>nginx默认以多进程的方式工作,一个master进程和多个worker进程,master进程主要用来管理worker进程.多个worker进程同等竞争来自客户端的请求,一个worker进程可以处理多个请求,但不能处理其它worker进程的请求.每个worker进程里面只有一个主线程,在epoll支持下,采用异步非阻塞的方式来处理请求,从而实现高并发.epoll支持监听多个事件</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/08/25/Nginx比Apache支持高并发/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/服务器/">服务器</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-06-15T14:33:54.000Z"><a href="/2020/06/15/Sessiong表配置/">2020-06-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>主题部署：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">采用经过dmstr/yii2-adminlte-asset封装过的主题进行安装</span><br><span class="line">composer require dmstr/yii2-adminlte-asset</span><br><span class="line">composer require mdmsoft/yii2-admin </span><br><span class="line">腾讯云cos存储插件，存储静态资源，如图片/css/js</span><br><span class="line">composer require qcloud/cos-sdk-v5</span><br></pre></td></tr></table></figure>
+
+<p>由于开启动负载均衡，有几台服务器，所以session的存入服务器的对应session文件不一定在同一台服务器上，导致获取到的信息可能不对应（存的sessionid和取的sessionid不是同一个）。例如短信验证码</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/06/15/Sessiong表配置/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-06-08T13:01:49.000Z"><a href="/2020/06/08/mongoDB/">2020-06-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/06/08/mongoDB/">MongoDB01</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="服务器三种架构"><a href="#服务器三种架构" class="headerlink" title="服务器三种架构"></a>服务器三种架构</h3><p><strong>服务器集群</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/06/08/mongoDB/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/MongoDB/">MongoDB</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-05-03T14:50:31.000Z"><a href="/2020/05/03/PDO/">2020-05-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/05/03/PDO/">PDO</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="PDO概念"><a href="#PDO概念" class="headerlink" title="PDO概念"></a><strong>PDO概念</strong></h3><p>PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例：</p>
+<p>MySQL：<strong><em>\</em>mysql_connect**</strong></p>
+<p>mssql：<strong><em>\</em>mssql_connect**</strong></p>
+<p>Oracle：<strong><em>\</em>oci_connect**</strong></p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/05/03/PDO/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PDO/">PDO</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-04-25T13:23:27.000Z"><a href="/2020/04/25/Smarty/">2020-04-25</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/04/25/Smarty/">Smarty</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>模板（html+css）引擎技术之一</p>
+<p>可以使得“php代码”与“html代码”分离的技术都称为模板引擎技术。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/04/25/Smarty/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Smarty/">Smarty</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-04-13T14:19:24.000Z"><a href="/2020/04/13/ThinkPHP/">2020-04-13</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/04/13/ThinkPHP/">ThinkPHP</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>框架下载地址：版本5.0.24</p>
+<p> <a href="http://www.thinkphp.cn/down/framework.html" target="_blank" rel="noopener">http://www.thinkphp.cn/down/framework.html</a> </p>
+<p>TP5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tp5</span><br><span class="line">├─application     应用目录</span><br><span class="line">├─extend          扩展类库目录（可定义）</span><br><span class="line">├─public         网站对外访问目录</span><br><span class="line">├─runtime         运行时目录（可定义）</span><br><span class="line">├─vendor          第三方类库目录（Composer）</span><br><span class="line">├─thinkphp        框架核心目录</span><br><span class="line">├─build.php       自动生成定义文件（参考）</span><br><span class="line">├─composer.json   Composer定义文件</span><br><span class="line">├─LICENSE.txt     授权说明文件</span><br><span class="line">├─README.md       README 文件</span><br><span class="line">├─think           命令行工具入口</span><br><span class="line"></span><br><span class="line">如果在linux环境下面的话，需要给runtime目录755权限。</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/04/13/ThinkPHP/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-02-15T14:24:09.000Z"><a href="/2020/02/15/Yii-basic与advanced及SQL调用/">2020-02-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/02/15/Yii-basic与advanced及SQL调用/">Yii-basic与advanced及SQL调用</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="下载版本basic与advanced区别"><a href="#下载版本basic与advanced区别" class="headerlink" title="下载版本basic与advanced区别"></a>下载版本basic与advanced区别</h4><table>
+<thead>
+<tr>
+<th>Codeception 测试</th>
+<th>/</th>
+<th>/</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>功能</td>
+<td>Basic</td>
+<td>advanced</td>
+</tr>
+<tr>
+<td>Project 结构</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>网站控制器</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>用户登录/登出</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>表单</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>数据库连接</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>命令控制台</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>资源包</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>Bootstrap</td>
+<td>/</td>
+<td>/</td>
+</tr>
+<tr>
+<td>前后台应用</td>
+<td></td>
+<td>/</td>
+</tr>
+<tr>
+<td>可用的 User 模型</td>
+<td></td>
+<td>/</td>
+</tr>
+<tr>
+<td>用户注册和密码恢复</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出、和数据库连接等功能。但是，</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/02/15/Yii-basic与advanced及SQL调用/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-02-15T14:05:32.000Z"><a href="/2020/02/15/Yii的布局与表单提交/">2020-02-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/02/15/Yii的布局与表单提交/">Yii的布局与表单提交</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>定义父模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在类中定义</span><br><span class="line">public $layout=&apos;home&apos;;</span><br><span class="line">view的 layout目录添加home.php</span><br><span class="line">body中+&lt;?=$content ;?&gt;</span><br><span class="line"></span><br><span class="line">页面中引入其他页面  &lt;php echo $this-&gt;render(&apos;about&apos;);?&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/02/15/Yii的布局与表单提交/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-02-15T13:56:52.000Z"><a href="/2020/02/15/SQL注入与XSS攻击/">2020-02-15</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2020/02/15/SQL注入与XSS攻击/">SQL注入与XSS攻击</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>以下以Yii2.0为例</p>
+<p>SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2020/02/15/SQL注入与XSS攻击/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2020-01-25T13:40:33.000Z"><a href="/2020/01/25/Yii2-0基本使用/">2020-01-25</a></time>
       
       
@@ -78,7 +619,7 @@
     </header>
     <div class="entry">
       
-        <p>yii2advance与yii2basic的区别</p>
+        <p>Yii2-advanced与yii2basic的区别</p>
 <ul>
 <li><strong>basic</strong> 更适合新手，特别是刚刚接触 yii 的入门开发人员。</li>
 <li><strong>adavanced</strong> 随包自带两个应用：前台应用 <strong>frontend</strong> 和后台应用 <strong>backend</strong>，basic 中只有一个应用 <strong>web</strong>。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的</li>
@@ -117,479 +658,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-12-25T14:40:29.000Z"><a href="/2019/12/25/rebase与merge/">2019-12-25</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/12/25/rebase与merge/">rebase与merge</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="git-rebase-与git-merge"><a href="#git-rebase-与git-merge" class="headerlink" title="git rebase 与git merge"></a>git rebase 与git merge</h3><p><strong>git rebase</strong> 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。<br> 原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/12/25/rebase与merge/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Git/">Git</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-12-03T04:35:29.000Z"><a href="/2019/12/03/reset使用/">2019-12-03</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/12/03/reset使用/">reset使用</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="git-reset三种模式（–hard-–mixed-–soft）"><a href="#git-reset三种模式（–hard-–mixed-–soft）" class="headerlink" title="git reset三种模式（–hard/–mixed/–soft）"></a>git reset三种模式（–hard/–mixed/–soft）</h3><p>Git会有三个区域：</p>
-<p>1.Working Tree 当前的工作区域(本地代码存放位置)</p>
-<p>2.Index/Stage 暂存区域，和git stash命令暂存的地方不一样。使用git add xx，就可以将xx添加进Stage里面（暂存区域）</p>
-<p> Repository 提交的历史，即使用git commit提交后的结果（类似本地仓库）</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/12/03/reset使用/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Git/">Git</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-11-30T14:23:18.000Z"><a href="/2019/11/30/Markdown语法/">2019-11-30</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/11/30/Markdown语法/">Markdown语法</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="标题1-6阶：1-6个-空格-标题"><a href="#标题1-6阶：1-6个-空格-标题" class="headerlink" title="标题1-6阶：1~6个#+空格+标题"></a>标题1-6阶：1~6个#+空格+标题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级</span><br><span class="line">## 二级</span><br><span class="line">### 三级</span><br><span class="line">#### 四级</span><br><span class="line">##### 五级</span><br><span class="line">###### 六级</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/11/30/Markdown语法/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Markdown/">Markdown</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-11-16T14:57:02.000Z"><a href="/2019/11/16/自动化部署/">2019-11-16</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/11/16/自动化部署/">自动化部署</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="自动化部署流程："><a href="#自动化部署流程：" class="headerlink" title="自动化部署流程："></a>自动化部署流程：</h3>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/11/16/自动化部署/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Git/">Git</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-10-23T03:46:57.000Z"><a href="/2019/10/23/Git命令补充与rebase操作/">2019-10-23</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/10/23/Git命令补充与rebase操作/">Git命令补充与rebase操作</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="git知识补充"><a href="#git知识补充" class="headerlink" title="git知识补充"></a>git知识补充</h3><p>删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’</p>
-<p>git rm –cached readme.txt</p>
-<p>修改提交的描述</p>
-<p>git log</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/10/23/Git命令补充与rebase操作/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Git/">Git</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-09-17T04:26:50.000Z"><a href="/2019/09/17/微擎框架基本操作/">2019-09-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/09/17/微擎框架基本操作/">微擎框架基本操作</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="公众平台说明"><a href="#公众平台说明" class="headerlink" title="公众平台说明"></a><strong>公众平台说明</strong></h3><p>公众号分为个人（只能申请订阅号，不可认证）和企业（服务号、订阅号，可认证），订阅号每天可发文章，在订阅列表中，服务号1个月4篇文章，在微信列表，权限、功能更强大。未认证的订阅号很多接口无法对接，比如支付，不仅要认证还要申请支付通道。</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/09/17/微擎框架基本操作/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP框架/">PHP框架</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-09-01T14:14:16.000Z"><a href="/2019/09/01/docker-compose-yml说明/">2019-09-01</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/09/01/docker-compose-yml说明/">docker-compose.yml说明</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">version : &apos;3&apos;  #docker引擎对应所支持的docker-compose文本格式</span><br><span class="line">services:            #本工程的服务配置列表</span><br><span class="line">  swapping:            #spring boot的服务名，服务名自定义</span><br><span class="line">    container_name: swapping-compose</span><br></pre></td></tr></table></figure>
-
-<p>本spring boot服务之后启动的容器实例的名字，如果指定，按照这个命名容器，如果未指定，容器命名规则是,【[compose文件所在目录]_[服务名]_1】，例如【swappingdockercompose_swapping_1】如果多启动，也就是docker-compose scale swapping=3 mysql=2的话，就不需要指定容器名称，否则会报错 容器名重复存在的问题</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/09/01/docker-compose-yml说明/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Docker/">Docker</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-08-27T15:06:48.000Z"><a href="/2019/08/27/Docker-compose相关命令/">2019-08-27</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/08/27/Docker-compose相关命令/">Docker-compose相关命令</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>docker-compose –help相关命令翻译</p>
-<p>build<br>创建或者再建服务<br>服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它<br>help 显示命令的帮助和使用信息<br>kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过，<br>比如： docker-compose kill -s SIGKINT</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/08/27/Docker-compose相关命令/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Docker/">Docker</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-08-16T14:52:59.000Z"><a href="/2019/08/16/Docker简介和命令/">2019-08-16</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/08/16/Docker简介和命令/">Docker简介和命令</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a><strong>docker</strong></h3><p>docker是一个轻量级的虚拟化解决方案。Docker 为各种应用程序提供了 Linux 容器。通常情况下，一个 LAMP 应用汇包含以下三个容器：一个 Web 服务器，一个 PHP-FPM 线程和 MySQL。可以为项目构建一个 <code>docker-compose.yml</code> 文件来配置生成容器的规则和容器的通讯规则，或者在Vagrant 的共享文件夹中，不需要改变应用文件路径，只需要告诉 Docker 到哪里可以找到MySQL等容器即可。</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/08/16/Docker简介和命令/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Docker/">Docker</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </nav>
@@ -603,23 +676,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2020/01/25/Yii2-0基本使用/">Yii2.0基本使用</a>
+        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
       </li>
     
       <li>
-        <a href="/2019/12/25/rebase与merge/">rebase与merge</a>
+        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
       </li>
     
       <li>
-        <a href="/2019/12/03/reset使用/">reset使用</a>
+        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
       </li>
     
       <li>
-        <a href="/2019/11/30/Markdown语法/">Markdown语法</a>
+        <a href="/2020/05/03/PDO/">PDO</a>
       </li>
     
       <li>
-        <a href="/2019/11/16/自动化部署/">自动化部署</a>
+        <a href="/2020/04/25/Smarty/">Smarty</a>
       </li>
     
   </ul>
@@ -641,15 +714,25 @@
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
     <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
   
-    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
   
-    <li><a href="/tags/PHP框架/">PHP框架</a><small>2</small></li>
+    <li><a href="/tags/PHP/">PHP</a><small>10</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>3</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
   
     <li><a href="/tags/前端/">前端</a><small>3</small></li>
   
     <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
   
   </ul>
 </div>
@@ -659,7 +742,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 12.5px;">PHP框架</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 

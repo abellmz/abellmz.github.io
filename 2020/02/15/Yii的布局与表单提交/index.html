@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Yii的布局与表单提交 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="布局定义父模板
+123456在类中定义public $layout=&amp;apos;home&amp;apos;;view的 layout目录添加home.phpbody中+&amp;lt;?=$content ;?&amp;gt;页面中引入其他页面  &amp;lt;php echo $this-&amp;gt;render(&amp;apos;about&amp;apos;);?&amp;gt;" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Yii的布局与表单提交" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2020-02-15T14:05:32.000Z"><a href="/2020/02/15/Yii的布局与表单提交/">2020-02-15</a></time>
+      
+      
+  
+    <h1 class="title">Yii的布局与表单提交</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><p>定义父模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在类中定义</span><br><span class="line">public $layout=&apos;home&apos;;</span><br><span class="line">view的 layout目录添加home.php</span><br><span class="line">body中+&lt;?=$content ;?&gt;</span><br><span class="line"></span><br><span class="line">页面中引入其他页面  &lt;php echo $this-&gt;render(&apos;about&apos;);?&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>向layout中传入变量</p>
+<p>参考链接：<a href="https://blog.csdn.net/u012119576/article/details/52633762" target="_blank" rel="noopener">https://blog.csdn.net/u012119576/article/details/52633762</a></p>
+<p><strong>方案1:控制器内成员变量</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public $layout = false; //不使用布局</span><br><span class="line">public $layout = &quot;main&quot;; //设置使用的布局文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>方案2：控制器成员方法内</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;layout = false; //不使用布局</span><br><span class="line">$this-&gt;layout = &quot;main&quot;; //设置使用的布局文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>方案3：视图中选择布局</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;context-&gt;layout = false; //不使用布局</span><br><span class="line">$this-&gt;context-&gt;layout = &apos;main&apos;; //设置使用的布局文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="gii"><a href="#gii" class="headerlink" title="gii"></a><strong>gii</strong></h3><p>它的模型生成器非常方便 可以帮助我们生成代码 避免了 我们的重复劳作</p>
+<p> <a href="https://blog.csdn.net/qq_36431213/article/details/72853671" target="_blank" rel="noopener">https://blog.csdn.net/qq_36431213/article/details/72853671</a> </p>
+<h3 id="表单提交CSRF"><a href="#表单提交CSRF" class="headerlink" title="表单提交CSRF"></a>表单提交CSRF</h3><p>Yii2表单提交默认需要验证CSRF，如果CSRF验证不通过，则表单提交失败，解决方法</p>
+<p>用yii2框架自带的表单，则自带了csrf</p>
+<p><strong>yii2高级版的name值分前后台区分</strong></p>
+<p>表单中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; name=&quot;_csrf-frontend&quot; value=&quot;&lt;?= Yii::$app-&gt;request-&gt;csrfToken ?&gt;&quot; /&gt;（前台实例）</span><br></pre></td></tr></table></figure>
+
+<p>AJAX中加入_csrf字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var csrfToken = $(&apos;meta[name=&quot;csrf-token&quot;]&apos;).attr(&quot;content&quot;);</span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  type: &apos;POST&apos;,</span><br><span class="line">  url: url,</span><br><span class="line">  data: &#123;_csrf:csrfToken&#125;,</span><br><span class="line">  success: success,</span><br><span class="line">  dataType: dataType</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">                url:&apos;&lt;?php echo Url::to([&apos;login/register-do&apos;]);?&gt;&apos;,</span><br><span class="line">                type: &apos;POST&apos;,</span><br><span class="line">                data: formData,</span><br><span class="line">                headers: &#123;</span><br><span class="line">                    &quot;&lt;?php echo yii\web\Request::CSRF_HEADER; ?&gt;&quot; : &quot;&lt;?php echo Yii::$app-&gt;request-&gt;csrfToken;?&gt;&quot;  //csrf</span><br><span class="line">                &#125;,</span><br><span class="line">                //这两个设置项必填</span><br><span class="line">                contentType: false,</span><br><span class="line">                processData: false,</span><br><span class="line">                success:function(data)&#123;</span><br><span class="line">                    // console.log(data);</span><br><span class="line">                    layer.msg(data.msg,&#123;icon:data.code&#125;);</span><br><span class="line">                    if(data.code == 1)&#123;</span><br><span class="line">                        window.location.href=&quot;&lt;?php echo Url::toRoute([&apos;/login/login&apos;]);?&gt;&quot;;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+<p>控制器设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public $enableCsrfValidation = false;//关闭</span><br></pre></td></tr></table></figure>
+
+<p>全局设置</p>
+<p>yii\web\request中的enableCookieValidation默认设置为true的，也就是默认开启csrf的（全局），因为这是全局的，所以在任何的post请求都会要求认证。我们在post数据的时候，就必须设置csrf的数据隐藏在表单中。</p>
+<p>关键词和描述</p>
+<p><a href="https://jingyan.baidu.com/article/9f63fb916254e6c8400f0ebb.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/9f63fb916254e6c8400f0ebb.html</a></p>
+<p>表单提交组件</p>
+<p><a href="http://www.xiaochengfu.com/index.php/index/detail/aid/64.html" target="_blank" rel="noopener">http://www.xiaochengfu.com/index.php/index/detail/aid/64.html</a></p>
+<h3 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h3><p>参考链接：<a href="http://www.imooc.com/article/details/id/289193" target="_blank" rel="noopener">http://www.imooc.com/article/details/id/289193</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">下载kucha/ueditor</span><br><span class="line">$ php composer.phar require kucha/ueditor &quot;*&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>controller:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public function actions()</span><br><span class="line">    &#123;</span><br><span class="line">        return [</span><br><span class="line">            &apos;upload&apos; =&gt; [</span><br><span class="line">                &apos;class&apos; =&gt; &apos;kucha\ueditor\UEditorAction&apos;,</span><br><span class="line">                &apos;config&apos; =&gt; [</span><br><span class="line">                    &quot;imageUrlPrefix&quot;  =&gt; &apos;&apos;,//图片访问路径前缀</span><br><span class="line">                    &quot;imagePathFormat&quot; =&gt; &quot;/upload/image/&#123;yyyy&#125;&#123;mm&#125;&#123;dd&#125;/&#123;time&#125;&#123;rand:6&#125;&quot;, //上传保存路径</span><br><span class="line">                    &quot;imageFieldName&quot;  =&gt; &quot;91&quot;,</span><br><span class="line">                    &quot;imageActionName&quot; =&gt; &quot;uploadimage&quot;,  //这里uploadimage一定要用小写，请求的时候，会自动拼接action 上去</span><br><span class="line">                &quot;imageRoot&quot; =&gt; Yii::getAlias(&quot;@webroot&quot;)</span><br><span class="line">            ],</span><br><span class="line">        ]</span><br><span class="line">        ];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>View:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php $form = ActiveForm::begin(); ?&gt;</span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;title&apos;)-&gt;textInput([&apos;maxlength&apos; =&gt; true, &apos;style&apos;=&gt;&apos;width:200px&apos;]) ?&gt;</span><br><span class="line"></span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;keywords&apos;)-&gt;textInput([&apos;maxlength&apos; =&gt; true, &apos;style&apos;=&gt;&apos;width:200px&apos;]) ?&gt;</span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;digest&apos;)-&gt;textInput([&apos;maxlength&apos; =&gt; true, &apos;style&apos;=&gt;&apos;width:200px&apos;]) ?&gt;</span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;type&apos;)-&gt;dropDownList($type, [&apos;style&apos;=&gt;&apos;width:200px&apos;]) ?&gt;</span><br><span class="line">                &lt;div style=&quot;width: 500px&quot;&gt;</span><br><span class="line">                    &lt;?= $form-&gt;field($model, &apos;logo&apos;)-&gt;label(&apos;图片&apos;)-&gt;widget(&apos;manks\FileInput&apos;, []) ?&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">&lt;!--                详情描述--&gt;</span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;content&apos;)-&gt;widget(&apos;kucha\ueditor\UEditor&apos;,[</span><br><span class="line">                        &apos;clientOptions&apos; =&gt; [</span><br><span class="line">                            //编辑区域大小</span><br><span class="line">                            &apos;initialFrameHeight&apos; =&gt; &apos;200&apos;,</span><br><span class="line">                            //设置语言</span><br><span class="line">                            &apos;lang&apos; =&gt;&apos;zh-cn&apos;, //中文为 zh-cn</span><br><span class="line">                            //定制菜单</span><br><span class="line">                            &apos;toolbars&apos; =&gt; [</span><br><span class="line">                                [</span><br><span class="line">                                    &apos;fullscreen&apos;, &apos;source&apos;, &apos;undo&apos;, &apos;redo&apos;, &apos;|&apos;,</span><br><span class="line">                                    &apos;fontsize&apos;,</span><br><span class="line">                                    &apos;bold&apos;, &apos;italic&apos;, &apos;underline&apos;, &apos;fontborder&apos;, &apos;strikethrough&apos;, &apos;removeformat&apos;,</span><br><span class="line">                                    &apos;formatmatch&apos;, &apos;autotypeset&apos;, &apos;blockquote&apos;, &apos;pasteplain&apos;, &apos;|&apos;,</span><br><span class="line">                                    &apos;forecolor&apos;, &apos;backcolor&apos;, &apos;|&apos;,</span><br><span class="line">                                    &apos;lineheight&apos;, &apos;|&apos;,</span><br><span class="line">                                    &apos;indent&apos;, &apos;|&apos;,&apos;simpleupload&apos;,&apos;insertimage&apos;,&apos;justifyleft&apos;, &apos;justifyright&apos;, &apos;justifycenter&apos;, &apos;justifyjustify&apos;, //两端对齐</span><br><span class="line">                                ],</span><br><span class="line">                            ]</span><br><span class="line">                        ]</span><br><span class="line">                    ]</span><br><span class="line">                        ) ?&gt;</span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;recommend&apos;)-&gt;radioList([&apos;1&apos;=&gt;&apos;是&apos;,&apos;0&apos;=&gt;&apos;否&apos;]) ?&gt;</span><br><span class="line">                &lt;?= $form-&gt;field($model, &apos;sorts&apos;)-&gt;textInput([&apos;maxlength&apos; =&gt; true, &apos;style&apos;=&gt;&apos;width:100px&apos;,&apos;placeholder&apos;=&gt;&apos;越大越靠前&apos;]) ?&gt;</span><br><span class="line">                &lt;div class=&quot;form-group&quot;&gt;</span><br><span class="line">                    &lt;?= Html::submitButton(&apos;保存&apos;, [&apos;class&apos; =&gt; &apos;btn btn-success&apos;]) ?&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                &lt;?php ActiveForm::end(); ?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a><strong>分页</strong></h3><p>controller</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$pageSize=5;//相关栏目分页</span><br><span class="line">if(isset($get[&apos;type&apos;]))&#123;</span><br><span class="line">            $catgory=$model-&gt;find()-&gt;where(&apos;type=:type&apos;)-&gt;addParams([&apos;:type&apos;=&gt;intval($get[&apos;type&apos;])]);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            $catgory=$model-&gt;find()-&gt;where(&apos;type=:type&apos;)-&gt;addParams([&apos;:type&apos;=&gt;1]);</span><br><span class="line">        &#125;</span><br><span class="line">//        dd($catgory-&gt;count());</span><br><span class="line">        $pages=new Pagination([</span><br><span class="line">            //总的记录条数</span><br><span class="line">            &apos;totalCount&apos; =&gt; $catgory-&gt;count(),</span><br><span class="line">            //分页大小</span><br><span class="line">            &apos;pageSize&apos; =&gt; $pageSize,</span><br><span class="line">            //设置地址栏当前页数参数名</span><br><span class="line">            &apos;pageParam&apos; =&gt; &apos;p&apos;,</span><br><span class="line">            //设置地址栏分页大小参数名</span><br><span class="line">            &apos;pageSizeParam&apos; =&gt; &apos;pageSize&apos;,</span><br><span class="line">        ]);</span><br><span class="line">        $catgory=$catgory-&gt;orderBy(&apos;sorts desc , addtime desc&apos;)</span><br><span class="line">            -&gt;offset($pages-&gt;offset)</span><br><span class="line">            -&gt;limit($pages-&gt;limit)</span><br><span class="line">            -&gt;asArray()</span><br><span class="line">            -&gt;all();</span><br></pre></td></tr></table></figure>
+
+<p>view:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php endforeach; ?&gt;</span><br><span class="line">              &lt;?= \yii\widgets\LinkPager::widget([</span><br><span class="line">                    &apos;pagination&apos; =&gt; $pages,</span><br><span class="line">                    &apos;firstPageLabel&apos; =&gt; &apos;首页&apos;,</span><br><span class="line">                    &apos;lastPageLabel&apos; =&gt; &apos;尾页&apos;,</span><br><span class="line">                    &apos;nextPageLabel&apos; =&gt; &apos;下一页&apos;,</span><br><span class="line">                    &apos;prevPageLabel&apos; =&gt; &apos;上一页&apos;,</span><br><span class="line">                    //设置class样式</span><br><span class="line">                   &apos;options&apos; =&gt; [&apos;class&apos; =&gt; &apos;pagination&apos;],</span><br><span class="line">              ]) ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>文章详情页，上一篇和下一篇</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//上一篇</span><br><span class="line">            $prev=$model-&gt;find()-&gt;Where(&apos;type=:type and id &lt;:id&apos;)-&gt;addParams([&apos;:type&apos;=&gt;$type,&apos;:id&apos;=&gt;intval($get[&apos;id&apos;])])</span><br><span class="line">                -&gt;orderBy([&apos;id&apos; =&gt; SORT_DESC])-&gt;limit(1)-&gt;asArray()-&gt;one();</span><br><span class="line">//            dd($prev);</span><br><span class="line">            //下一篇</span><br><span class="line">            $next=$model-&gt;find()-&gt;Where(&apos;type=:type and id &gt;:id&apos;)-&gt;addParams([&apos;:type&apos;=&gt;$type,&apos;:id&apos;=&gt;intval($get[&apos;id&apos;])])</span><br><span class="line">                -&gt;orderBy([&apos;id&apos; =&gt; SORT_DESC])-&gt;limit(1)-&gt;asArray()-&gt;one();</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：<a href="https://blog.csdn.net/tjls2008/article/details/91411454" target="_blank" rel="noopener">https://blog.csdn.net/tjls2008/article/details/91411454</a></p>
+<p>设置helper函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">common\Helper.php</span><br></pre></td></tr></table></figure>
+
+<p>搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$search=$help-&gt;find()-&gt;select(&apos;name1&apos;)-&gt;where(&apos;question like :keywords&apos;)-&gt;orWhere(&apos;answer like :keywords&apos;)-&gt;addParams([&apos;:keywords&apos;=&gt;&apos;%&apos; .$post[&apos;key&apos;] .&apos;%&apos;]);</span><br></pre></td></tr></table></figure>
+
+<p>判断是否ajax请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (Yii::$app-&gt;request-&gt;isAjax) &#123;</span><br><span class="line">            return pagine(Pattern::find(), &apos;id desc&apos;);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>yii2adavnce对layui表格中的字段数据做判断</p>
+<p><a href="https://www.cnblogs.com/yachyu/p/10768252.html" target="_blank" rel="noopener">https://www.cnblogs.com/yachyu/p/10768252.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; id=&quot;types&quot;&gt;</span><br><span class="line">    &#123;&#123;# if (d.type == &apos;1&apos;) &#123; &#125;&#125;</span><br><span class="line">     &lt;span &gt;主题1&lt;/span&gt;</span><br><span class="line"> &#123;&#123;# &#125; else if(d.type == &apos;2&apos;) &#123; &#125;&#125;</span><br><span class="line">     &lt;span &gt;主题2&lt;/span&gt;</span><br><span class="line"> &#123;&#123;# &#125; else if(d.type === &apos;3&apos;) &#123; &#125;&#125;</span><br><span class="line">     &lt;span &gt;主题3&lt;/span&gt;</span><br><span class="line"> &#123;&#123;# &#125; else if(d.type === &apos;4&apos;) &#123; &#125;&#125;</span><br><span class="line">     &lt;span &gt;主题4&lt;/span&gt;</span><br><span class="line"> &#123;&#123;# &#125; &#125;&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"> &#123;field:&apos;type&apos;, title:&apos;主题1&apos;,templet:&apos;#types&apos;&#125;,</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
+      </li>
+    
+      <li>
+        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
+      </li>
+    
+      <li>
+        <a href="/2020/05/03/PDO/">PDO</a>
+      </li>
+    
+      <li>
+        <a href="/2020/04/25/Smarty/">Smarty</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>10</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>3</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2020 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

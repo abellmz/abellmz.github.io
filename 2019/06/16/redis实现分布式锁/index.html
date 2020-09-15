@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>redis实现分布式锁 | abellmz</title>
+  <title>Redis实现分布式锁 | abellmz</title>
   <meta name="author" content="abellmz" />
 
   
-  <meta name="description" content="redis实现分布式锁" />
+  <meta name="description" content="Redis实现分布式锁分布式锁其实可以理解为：控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性。 举个不太恰当的例子：假设共享的资源就是一个房子，里面有各种书，分布式系统就是要进屋看书的人，分布式锁就是保证这个房子只有一个门并且一次只有一个人可以进，而且门只有一把钥匙。然后许多人要去看书，可以，排队，第一个人拿着钥匙把门打开进屋看书并且把门锁上，然后第二个人没有钥匙，那就等着，等第一个出来，然后你在拿着钥匙进去，然后就是以此类推。" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="redis实现分布式锁" />
+  <meta property="og:title" content="Redis实现分布式锁" />
   <meta property="og:site_name" content="abellmz" />
 
   
@@ -73,15 +73,15 @@
       
       
   
-    <h1 class="title">redis实现分布式锁</h1>
+    <h1 class="title">Redis实现分布式锁</h1>
   
 
     </header>
     <div class="entry">
       
-        <h5 id="redis实现分布式锁"><a href="#redis实现分布式锁" class="headerlink" title="redis实现分布式锁"></a>redis实现分布式锁</h5><a id="more"></a>
+        <h5 id="Redis实现分布式锁"><a href="#Redis实现分布式锁" class="headerlink" title="Redis实现分布式锁"></a>Redis实现分布式锁</h5><p>分布式锁其实可以理解为：控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性。 举个不太恰当的例子：假设共享的资源就是一个房子，里面有各种书，分布式系统就是要进屋看书的人，分布式锁就是保证这个房子只有一个门并且一次只有一个人可以进，而且门只有一把钥匙。然后许多人要去看书，可以，排队，第一个人拿着钥匙把门打开进屋看书并且把门锁上，然后第二个人没有钥匙，那就等着，等第一个出来，然后你在拿着钥匙进去，然后就是以此类推。</p>
+<a id="more"></a>
 
-<p>分布式锁其实可以理解为：控制分布式系统有序的去对共享资源进行操作，通过互斥来保持一致性。 举个不太恰当的例子：假设共享的资源就是一个房子，里面有各种书，分布式系统就是要进屋看书的人，分布式锁就是保证这个房子只有一个门并且一次只有一个人可以进，而且门只有一把钥匙。然后许多人要去看书，可以，排队，第一个人拿着钥匙把门打开进屋看书并且把门锁上，然后第二个人没有钥匙，那就等着，等第一个出来，然后你在拿着钥匙进去，然后就是以此类推。</p>
 <p>实现原理：</p>
 <ul>
 <li><p>互斥性</p>
@@ -154,7 +154,7 @@
         
   
   <div class="tags">
-    <a href="/tags/PHP/">PHP</a>
+    <a href="/tags/Redis/">Redis</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -195,23 +195,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2020/01/25/Yii2-0基本使用/">Yii2.0基本使用</a>
+        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
       </li>
     
       <li>
-        <a href="/2019/12/25/rebase与merge/">rebase与merge</a>
+        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
       </li>
     
       <li>
-        <a href="/2019/12/03/reset使用/">reset使用</a>
+        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
       </li>
     
       <li>
-        <a href="/2019/11/30/Markdown语法/">Markdown语法</a>
+        <a href="/2020/05/03/PDO/">PDO</a>
       </li>
     
       <li>
-        <a href="/2019/11/16/自动化部署/">自动化部署</a>
+        <a href="/2020/04/25/Smarty/">Smarty</a>
       </li>
     
   </ul>
@@ -233,15 +233,25 @@
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+  
     <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
   
-    <li><a href="/tags/PHP/">PHP</a><small>13</small></li>
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
   
-    <li><a href="/tags/PHP框架/">PHP框架</a><small>2</small></li>
+    <li><a href="/tags/PHP/">PHP</a><small>10</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>3</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
   
     <li><a href="/tags/前端/">前端</a><small>3</small></li>
   
     <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
   
   </ul>
 </div>
@@ -251,7 +261,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Git/" style="font-size: 17.5px;">Git</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12.5px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 12.5px;">PHP框架</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 15px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 
