@@ -94,27 +94,21 @@
 <p>在资料中找到了对应mysql5.5的rpm包，本地上传到Linux</p>
 <p>pscp -r D:\MySQL\MySQL高级\mysql5.5.48 <a href="mailto:root@192.168.1.15" target="_blank" rel="noopener">root@192.168.1.15</a>:/opt</p>
 <p>上传成功</p>
-<p>#mysqladmin –version有东西说明安装成功</p>
-<p>#service mysql start</p>
-<p>#mysql——出现欢迎词，开始按照提示<strong>设置密码</strong></p>
-<p>#/usr/bin/mysqladmin -u root password 123456</p>
-<p>#mysql——出现报错</p>
-<p>#mysql -u root -p出现欢迎词</p>
-<p>#exit</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin --version有东西说明安装成功</span><br><span class="line">service mysql start</span><br><span class="line">mysql——出现欢迎词，开始按照提示**设置密码**</span><br><span class="line">/usr/bin/mysqladmin -u root password 123456</span><br><span class="line">mysql——出现报错</span><br><span class="line">mysql -u root -p出现欢迎词</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
 <p>top命令后，左上角可知道linux开机持续多长时间</p>
 <p><strong>设置开机自启动mysql</strong></p>
-<p>#chkconfig mysql on</p>
-<p>#chkconfig –list|grep mysql</p>
-<p>#ntsysv    命令用于设置系统的各种服务,报不是命令就下载-》 yum install ntsysv</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chkconfig mysql on</span><br><span class="line">chkconfig --list|grep mysql</span><br><span class="line">ntsysv	命令用于设置系统的各种服务,报不是命令就下载-》 yum install ntsysv</span><br></pre></td></tr></table></figure>
+
 <p>看到【*】mysql,表示开机后 自动启动mysql（带星号表示，开机自启动，反之相反）</p>
 <p><strong>修改配置文件位置：</strong></p>
 <p>将 /usr/share/mysql/my-huge.cnf拷贝到/etc下</p>
 <p>cp  /usr/share/mysql/my-huge.cnf  /etc/my.cnf</p>
-<p>#service mysql stop</p>
-<p>#service mysql start</p>
-<p>#mysql -u root -p登录，建立数据库和表发现中文乱码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">service mysql stop</span><br><span class="line">service mysql start</span><br><span class="line">mysql -u root -p登录，建立数据库和表发现中文乱码</span><br></pre></td></tr></table></figure>
+
 <p>修改字符集和数据存储路径：</p>
-<p>#show variables like ‘character%’;发现database（客户端）和server（服务器）都是用的latinl，所以乱码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &apos;character%&apos;;发现database（客户端）和server（服务器）都是用的latinl，所以乱码</span><br></pre></td></tr></table></figure>
+
 <p>在 /etc/my.cnf对应位置修改</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555039230364.png" alt="1555039230364"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555039755952.png" alt="1555039755952"></p>
@@ -151,6 +145,8 @@
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555165225463.png" alt="1555165225463"></p>
 <p>mysql常见瓶颈（略）</p>
 <p>Explain</p>
+<p>key、type 、rows、extra</p>
+<p><a href="https://www.cnblogs.com/dlp-527/p/11824467.html" target="_blank" rel="noopener">https://www.cnblogs.com/dlp-527/p/11824467.html</a></p>
 <p>用法：Explain+SQL语句</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555208384192.png" alt="1555208384192"></p>
 <p>字段意思——select_type之Primary</p>
@@ -188,7 +184,7 @@
 <p>保证join语句中被驱动表（大表）上join字段已经被索引；</p>
 <p>当无法保证被驱动表的join条件字段被索引 且内存资源充足的前提下，不要吝啬JoinBuffer的设置；</p>
 <p><strong>索引优化</strong>——索引失效</p>
-<p>带头大哥不能少（第一字段），中间兄弟不能断（断了索引只能用到前面的，后面永不上影响精确度，key_len和ref少了），索引列上少计算（动了容易索引失效，性能降低），范围之后全失效（索引用到范围字段为止，后面用不上索引），百分like加右边（若like ‘%字符%’必须用，则用覆盖索引解决），字符串里有引号（比如varchar类型,查询必须加单引号，如name=’XXX’，否者索引失效）</p>
+<p>带头大哥不能少（第一字段），中间兄弟不能断（断了索引只能用到前面的，后面用不上影响精确度，key_len和ref少了），索引列上少计算（动了容易索引失效，性能降低），范围之后全失效（索引用到范围字段为止，后面用不上索引），百分like加右边（若like ‘%字符%’必须用，则用覆盖索引解决），字符串里有引号（比如varchar类型,查询必须加单引号，如name=’XXX’，否者索引失效）</p>
 <p>题目SQL：</p>
 <p>where后条件and连接条件（都为常量）。“常量”可以随意排，不影响优化，mysql自动调序，但最好按顺序来；</p>
 <p>若where后and连接 常量+范围+常量（按顺序），则范围之后全失效。</p>
@@ -208,6 +204,8 @@
 <p>口诀：</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555386995622.png" alt="1555386995622"></p>
 <h5 id="查询截取分析"><a href="#查询截取分析" class="headerlink" title="查询截取分析"></a>查询截取分析</h5><p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555396854576.png" alt="1555396854576"></p>
+<p>Show profile :</p>
+<p>是mysql 提供可以用来分析当前会话中语句执行的资源消耗情况。可以用于sql 调优的测量。<strong>默认情况下，参数处于关闭状态，并保存最近15次的运行结果</strong></p>
 <p><strong>查询优化</strong>——永远小表驱动大表类似全套循环NestedLoop</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555398326846.png" alt="1555398326846"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555398407219.png" alt="1555398407219"></p>
@@ -247,7 +245,8 @@
 <p>emp表中插入数据insert_emp(开始编号，插入条数)</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555821828985.png" alt="1555821828985"></p>
 <p>删除</p>
-<p>#delimiter;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delimiter;</span><br></pre></td></tr></table></figure>
+
 <p>drop procedure insert_em;</p>
 <p>dept表中插入数据</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555822396356.png" alt="1555822396356">4、调用存储过程</p>
@@ -417,23 +416,23 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
+      </li>
+    
+      <li>
+        <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/10/mongoDB/">MongoDB01</a>
+      </li>
+    
+      <li>
         <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
-      </li>
-    
-      <li>
-        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
-      </li>
-    
-      <li>
-        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
-      </li>
-    
-      <li>
-        <a href="/2020/05/03/PDO/">PDO</a>
-      </li>
-    
-      <li>
-        <a href="/2020/04/25/Smarty/">Smarty</a>
       </li>
     
   </ul>
@@ -449,13 +448,15 @@
   
     <li><a href="/tags/Git/">Git</a><small>5</small></li>
   
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
   
     <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
   
@@ -483,7 +484,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 
@@ -493,7 +494,7 @@
   <footer id="footer" class="inner"><div class="alignleft">
   <p>
   
-  &copy; 2020 abellmz
+  &copy; 2021 abellmz
   
   All rights reserved.</p>
   <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>

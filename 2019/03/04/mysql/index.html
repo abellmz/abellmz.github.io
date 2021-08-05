@@ -9,7 +9,9 @@
   
   <meta name="description" content="join关联：
 内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接)
-oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接" />
+oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接
+union的例子
+https://www.cnblogs.com/poloyy/p/12884399.html" />
   
 
   
@@ -84,6 +86,8 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
         <p>join关联：</p>
 <p>内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接)</p>
 <p>oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接</p>
+<p>union的例子</p>
+<p><a href="https://www.cnblogs.com/poloyy/p/12884399.html" target="_blank" rel="noopener">https://www.cnblogs.com/poloyy/p/12884399.html</a></p>
 <a id="more"></a>
 
 <h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><p>select * from city</p>
@@ -169,6 +173,8 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
 <p>unsigned非负修饰（设置前导零会自动设置上）</p>
 <p>not null 不为空     default ‘’ 默认‘’</p>
 <p>如果是char或varchar类型，length可以小于字段规定长度，但如果是blog或text类型，必须是指定的length</p>
+<p>各类型数据字节数</p>
+<p><a href="https://www.jianshu.com/p/9c6af5c1eac5?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/9c6af5c1eac5?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
 <h5 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h5><p>别名设置，left(),mid(),right(),count(),year(),max(),avg(),sum()函数，if(条件，成立反值，不成立反值)</p>
 <p>显示表所有数据</p>
 <p>select * from student;</p>
@@ -200,7 +206,7 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
 <p>select year(birthday) from student;</p>
 <p>查看班级有多少男同学      两种方法  查询结果只显示数量</p>
 <p>select count(*) from student where sex=’男’;</p>
-<p>select count(name) from student where sex=’男’;、</p>
+<p>select count(name) from student where sex=’男’;</p>
 <p>max()最大 sum()求和,avg()求平均值</p>
 <p>select name,max(age) from student;</p>
 <p>男生有多少人                   性别分组       男性</p>
@@ -283,23 +289,23 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
   <ul class="entry">
     
       <li>
+        <a href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
+      </li>
+    
+      <li>
+        <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/10/mongoDB/">MongoDB01</a>
+      </li>
+    
+      <li>
         <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
-      </li>
-    
-      <li>
-        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
-      </li>
-    
-      <li>
-        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
-      </li>
-    
-      <li>
-        <a href="/2020/05/03/PDO/">PDO</a>
-      </li>
-    
-      <li>
-        <a href="/2020/04/25/Smarty/">Smarty</a>
       </li>
     
   </ul>
@@ -315,13 +321,15 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
   
     <li><a href="/tags/Git/">Git</a><small>5</small></li>
   
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
   
     <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
   
@@ -349,7 +357,7 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 
@@ -359,7 +367,7 @@ oracle支持全连接，mysql上不支持全连接，可以使用左链接+union
   <footer id="footer" class="inner"><div class="alignleft">
   <p>
   
-  &copy; 2020 abellmz
+  &copy; 2021 abellmz
   
   All rights reserved.</p>
   <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>

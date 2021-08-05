@@ -127,7 +127,7 @@ nosql产品特点：" />
 <p>3、数据的个数是确定的</p>
 <p>常见运算：</p>
 <p>交集、并集、差集</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sadd set1 a 像集合set1中添加单元a</span><br><span class="line">smembers set1 获取结合set1中的所有单元</span><br><span class="line">srem set1 a	移除集合set1中的a单元</span><br><span class="line">spop set1	随机弹出集合中的一个单元</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sadd set1 a 像集合set1中添加单元a</span><br><span class="line">smembers set1 获取集合set1中的所有单元</span><br><span class="line">srem set1 a	移除集合set1中的a单元</span><br><span class="line">spop set1	随机弹出集合中的一个单元</span><br></pre></td></tr></table></figure>
 
 <p>社交类网站中用于推荐好友、共同好友等。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sinter set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的共同好友（求交集）</span><br><span class="line">sunion set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的全部好友（并集）</span><br><span class="line">sdiff set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">让3号用户给45号用户推荐好友（差集）</span><br></pre></td></tr></table></figure>
@@ -172,6 +172,19 @@ nosql产品特点：" />
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672637713.png" alt="1557672637713"></p>
 <p>发现基于文件追加方式的文件已经存在</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672744263.png" alt="1557672744263"></p>
+<h4 id="基于快照和日志文件的持久化场景"><a href="#基于快照和日志文件的持久化场景" class="headerlink" title="基于快照和日志文件的持久化场景"></a>基于快照和日志文件的持久化场景</h4><p>RDB(快照)和AOF(日志)区别场景分析</p>
+<p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/WeChat424e10f43e5f0ebdc097cf275dd8a1cb.png" alt="WeChat424e10f43e5f0ebdc097cf275dd8a1cb"></p>
+<p>RDB和AOF的选择之感</p>
+<p>对数据非常敏感，建议使用默认的AOF持久化方案<br>AOF持久化策略使用erverysecond，每秒钟fsync一次。该策略redis任然可以保持很好的处理性能，当出现问题时，最多丢失0-1秒中的数据。<br>注意：由于AOF文件存储体积较大，且恢复数据较慢<br>数据呈现阶段有效性，建议使用RDB持久化方案<br>数据可以良好的做到阶段内无丢失（该阶段是开发者或运维人工手工维护的），且恢复速度较快，阶段点数据恢复通常采用RDB方案<br>注意：利用RDB实现紧凑的数据持久化会使Redis降得很低<br>综合对比<br>RDB与AOF得选择实际上是在做一种权衡，每种都有利弊<br>如不能承受数分钟以内得数据丢失，对业务数据非常敏感，选用AOF<br>如能承受数分钟以内数据丢失，且追求大数据集得恢复速度，选用RDB<br>灾难恢复选用RDB<br>双保险策略，同时开启RDB和AOF，重启后，Redis优先使用AOF来恢复数据，降低丢失数据的量</p>
+<p><strong>持久化应用场景</strong></p>
+<p>1Redis应用于抢购、限购、限量发放优惠券、激活等业务的数据存储设计</p>
+<p>2Redis应用于具有操作先后顺序的数据控制</p>
+<p>3Redis应用于最新消息展示</p>
+<p>4Redis应用于基于黑名单与白名单设定的服务控制</p>
+<p>5Redis应用于计数器组合排序功能对应的排名</p>
+<p>6Redis应用于按次结算的服务控制</p>
+<p>参考链接：<a href="https://blog.csdn.net/weixin_35099248/article/details/111577925" target="_blank" rel="noopener">https://blog.csdn.net/weixin_35099248/article/details/111577925</a></p>
+<p>mongodb的高并发处理<a href="https://www.cnblogs.com/hulianwangjiagoushi/p/12073244.html" target="_blank" rel="noopener">https://www.cnblogs.com/hulianwangjiagoushi/p/12073244.html</a></p>
 
       
     </div>
@@ -226,23 +239,23 @@ nosql产品特点：" />
   <ul class="entry">
     
       <li>
+        <a href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
+      </li>
+    
+      <li>
+        <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
+      </li>
+    
+      <li>
+        <a href="/2021/03/10/mongoDB/">MongoDB01</a>
+      </li>
+    
+      <li>
         <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
-      </li>
-    
-      <li>
-        <a href="/2020/06/15/Sessiong表配置/">Sessiong表配置</a>
-      </li>
-    
-      <li>
-        <a href="/2020/06/08/mongoDB/">MongoDB01</a>
-      </li>
-    
-      <li>
-        <a href="/2020/05/03/PDO/">PDO</a>
-      </li>
-    
-      <li>
-        <a href="/2020/04/25/Smarty/">Smarty</a>
       </li>
     
   </ul>
@@ -258,13 +271,15 @@ nosql产品特点：" />
   
     <li><a href="/tags/Git/">Git</a><small>5</small></li>
   
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
     <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>1</small></li>
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
   
     <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
   
@@ -292,7 +307,7 @@ nosql产品特点：" />
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 
@@ -302,7 +317,7 @@ nosql产品特点：" />
   <footer id="footer" class="inner"><div class="alignleft">
   <p>
   
-  &copy; 2020 abellmz
+  &copy; 2021 abellmz
   
   All rights reserved.</p>
   <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
