@@ -116,6 +116,7 @@
 <p>MySQL的安装位置——在linux下查看安装目录ps -ef|grep mysql</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555041185351.png" alt="1555041185351"></p>
 <h5 id="mysql主要配置文件："><a href="#mysql主要配置文件：" class="headerlink" title="mysql主要配置文件："></a>mysql主要配置文件：</h5><h5 id="mysql存储引擎："><a href="#mysql存储引擎：" class="headerlink" title="mysql存储引擎："></a>mysql存储引擎：</h5><p><strong>查看命令：</strong></p>
+<p>两种引擎可否混用？：引擎是针对表，而不是针对库的，你在建表的时候声明成不同的引擎即可。 比如 Create Table: CREATE TABLE <code>test_1</code> ( <code>name</code> varchar(20) DEFAULT NULL, <code>year</code> int(5) DEFAULT NULL ) ENGINE=MyISAM </p>
 <p><strong>两种存储引擎区别</strong></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555043061222.png" alt="1555043061222"></p>
 <p><strong>阿里巴巴、淘宝用哪个</strong></p>
@@ -145,20 +146,31 @@
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555165225463.png" alt="1555165225463"></p>
 <p>mysql常见瓶颈（略）</p>
 <p>Explain</p>
-<p>key、type 、rows、extra</p>
 <p><a href="https://www.cnblogs.com/dlp-527/p/11824467.html" target="_blank" rel="noopener">https://www.cnblogs.com/dlp-527/p/11824467.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">其中重要的几个就是 key、type 、rows、extra，其中key为null时，说明没有使用到索引，需要调整索引。type为all的地方,需要进行优化.一般需要达到 ref、eq_ref 级别，范围查找需要达到 range。extra有Using filesort、Using temporary 的一定需要优化，根据rows可以直观看出优化结果</span><br></pre></td></tr></table></figure>
+
+<p>key:实际从 possible_key 选择使用的索引，如果为 NULL,则没有使用索引</p>
+<p>type:在表中找到所需行的方式，又称“访问类型”</p>
+<p>rows:认为必须检查的用来返回请求数据的行数，即需要扫描的行数。</p>
+<p>ref:显示索引的哪一列被使用了</p>
 <p>用法：Explain+SQL语句</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555208384192.png" alt="1555208384192"></p>
-<p>字段意思——select_type之Primary</p>
+<p>id:表示查询中执行select子句或操作表的顺序</p>
+<p>select_type之Primary</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555208677356.png" alt="1555208677356"></p>
-<p>字段——type的值</p>
+<p>type: 在表中找到所需行的方式，又称“访问类型”</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555211114328.png" alt="1555211114328"></p>
-<p>all最差指全表扫描，百万记录一下不用管，百万以上需要优化。</p>
-<p>system和const</p>
+<p>type类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">system 表仅有一行(=系统表)。这是 const 连接类型的一个特例。表中只有一行数据或者是空表，且只能用于myisam和memory表。如果是Innodb引擎表，type列在这个情况通常都是all或者index</span><br><span class="line"></span><br><span class="line">const用于用常数值比较 PRIMARY KEY 时.**使用唯一索引或者主键**，返回记录一定是1行记录的等值where条件时，通常type是const。其他数据库也叫做唯一索引扫描。当查询的表仅有一行时,使用 System。</span><br><span class="line"></span><br><span class="line">ref总之，返回数据不唯一的等值查找就可能出现</span><br><span class="line"></span><br><span class="line">range索引范围扫描</span><br><span class="line"></span><br><span class="line">Index索引全表扫描，把索引从头到尾扫一遍</span><br><span class="line"></span><br><span class="line">all最差指全表扫描数据文件，百万记录一下不用管，百万以上需要优化。</span><br></pre></td></tr></table></figure>
+
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555226439400.png" alt="1555226439400"></p>
 <p>const from后定死的’表’，相当于常量，d1是别名也是衍生；对常量进行查询，也就查询    只有一条记录的表，类型为system。</p>
-<p>字段——extra—覆盖索引</p>
+<p>extra:额外的比较重要的信息，解决查询的详细信息。</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555293690604.png" alt="1555293690604"></p>
+<p>using where：表示存储引擎返回的记录并不是所有的都满足查询条件，需要在server层进行过滤。</p>
+<p>using filesort：排序时无法使用到索引时，就会出现这个。常见于order by和group by语句中。没有办法利用现有索引进行排序，需要额外排序，建议：根据排序需要，创建相应合适的索引。</p>
+<p>using temporary：表示使用了临时表存储中间结果。临时表可以是内存临时表和磁盘临时表，执行计划中看不出来，需要查看status变量，used_tmp_table，used_tmp_disk_table才能看出来</p>
+<p>using index：查询时不需要回表查询，直接通过索引就可以获取查询的数据。利用覆盖索引，无需回表即可取得结果数据，这种结果是好的。</p>
 <p>热身——</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555294548058.png" alt="1555294548058"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555294621968.png" alt="1555294621968"></p>
@@ -273,7 +285,9 @@
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555852172953.png" alt="1555852172953"></p>
 <p><strong>锁的分类</strong></p>
 <p>XXXXXXXX</p>
-<p><strong>表锁（偏读）</strong></p>
+<h6 id="MyISAM的锁机制"><a href="#MyISAM的锁机制" class="headerlink" title="MyISAM的锁机制"></a>MyISAM的锁机制</h6><p><strong>表锁（偏读）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表锁</span><br><span class="line">读锁：当前线程能读不能写，未解锁前不能查看其它未锁定的表。其它线程可读不能写，写操作时会出现等待</span><br><span class="line"></span><br><span class="line">加写锁：当前能读和写，阻塞其他线程的读和写（等待）。</span><br></pre></td></tr></table></figure>
+
 <p>建表sql</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555853034727.png" alt="1555853034727"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555853393947.png" alt="1555853393947"></p>
@@ -282,8 +296,6 @@
 <p>加读锁</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555854357824.png" alt="1555854357824"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555854440948.png" alt="1555854440948"></p>
-<p>读锁：当前能读不能写操作，不能更新插入数据操作该表，不能查看其它表。其它线程可读不能写操作，会出现等待</p>
-<p>加写锁：当前能读和写，阻塞其他线程的读和写（等待）。</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555855231229.png" alt="1555855231229"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555855312765.png" alt="1555855312765"></p>
 <p>总结</p>
@@ -292,20 +304,21 @@
 <p>表锁分析</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555856148934.png" alt="1555856148934"></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555856215379.png" alt="1555856215379"></p>
-<p><strong>行锁(偏写)</strong></p>
+<h6 id="lnnoDB的锁机制"><a href="#lnnoDB的锁机制" class="headerlink" title="lnnoDB的锁机制"></a>lnnoDB的锁机制</h6><p><strong>行锁(偏写)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">行锁</span><br><span class="line">共享锁又称：读锁。当一个事务对某几行上读锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作，也不允许其他事务给这几行上写锁，但允许上读锁。</span><br><span class="line">排它锁又称：写锁。当一个事务对某几个上写锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作。也不允许其他事务给这几行上任何锁，包括写锁。</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line"></span><br><span class="line">1.两个事务不能锁同一个索引。</span><br><span class="line">2.insert ，delete ， update在事务中都会自动默认加上排它锁。</span><br><span class="line">3.行锁必须有索引才能实现，否则会自动锁全表，那么就不是行锁了。</span><br><span class="line">4.InnoDb表锁和MyISAM差别不大 。注意：开启一个新事务的时候会解锁表</span><br><span class="line">参考：https://blog.csdn.net/FMC_WBL/article/details/88831294</span><br></pre></td></tr></table></figure>
+
 <p>事物的ACID</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555856569535.png" alt="1555856569535"></p>
 <p>更新丢失（Lost Update）</p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555856824265.png" alt="1555856824265"></p>
-<p>脏读（Dirty Reads）</p>
-<p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555860819877.png" alt="1555860819877"></p>
-<p>不可重复读（Non-Repeatable Reads）</p>
-<p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555861060513.png" alt="1555861060513"></p>
-<p>幻读（Phantom Reads）</p>
-<p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555861150957.png" alt="1555861150957"></p>
-<p>事物隔离级别</p>
+<p><strong>事物隔离级别与脏读、不可重复读、幻读的关系</strong></p>
 <p><img src="/2019/04/22/mysql%E4%BC%98%E5%8C%96/1555861329078.png" alt="1555861329078"></p>
-<p>  nosql CAP 理论</p>
+<p>mysql的InnoDB事务的隔离级别 默认是“可重复读”（REPEATABLE READ）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1）未提交读（READUNCOMMITTED）。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据（脏读）( 隔离级别最低，并发性能高 )。</span><br><span class="line">2）提交读（READCOMMITTED）。本事务读取到的是最新的数据（其他事务提交后的）。问题是，在同一个事务里，前后两次相同的SELECT会读到不同的结果（不重复读）。会出现不可重复读、幻读问题（锁定正在读取的行）</span><br><span class="line">3）可重复读（REPEATABLEREAD）。在同一个事务里，SELECT的结果是事务开始时时间点的状态，因此，同样的SELECT操作读到的结果会是一致的。但是，会有幻读现象（稍后解释）。会出幻读（锁定所读取的所有行）。</span><br><span class="line">4）串行化（SERIALIZABLE）。读操作会隐式获取共享锁，可以保证不同事务间的互斥（锁表）。</span><br><span class="line"></span><br><span class="line">四个级别逐渐增强，每个级别解决一个问题。</span><br><span class="line">1）脏读。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据。</span><br><span class="line">2）不重复读。解决了脏读后，会遇到，同一个事务执行过程中，另外一个事务提交了新数据，因此本事务先后两次读到的数据结果会不一致。</span><br><span class="line">3）幻读。解决了不重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。但是，如果另一个事务同时提交了新数据，本事务再更新时，就会“惊奇的”发现了这些新数据，貌似之前读到的数据是“鬼影”一样的幻觉。</span><br><span class="line"></span><br><span class="line">脏读和幻读的区别：脏读是事务b修改了数据，幻读是事务b新增了数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">参考链接：https://blog.csdn.net/ccfeng2008/article/details/51760350</span><br></pre></td></tr></table></figure>
+
+
+
+<p>nosql CAP 理论</p>
 <p><a href="http://www.cnblogs.com/gudi/p/8183548.html" target="_blank" rel="noopener">http://www.cnblogs.com/gudi/p/8183548.html</a></p>
 <p>一致性C（Consistency）、可用性A（Availability）和分区容错性P（Tolerance of network Partition）</p>
 <p>保CP还是保AP，大网站只能保AP</p>
@@ -416,23 +429,23 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/08/24/os与strings常用函数/">os与strings常用函数</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/24/go常用函数/">go常用函数</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/23/Redis基础知识/未命名/">Redis基础知识/未命名</a>
+      </li>
+    
+      <li>
         <a href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
       </li>
     
       <li>
         <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
-      </li>
-    
-      <li>
-        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
-      </li>
-    
-      <li>
-        <a href="/2021/03/10/mongoDB/">MongoDB01</a>
-      </li>
-    
-      <li>
-        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
       </li>
     
   </ul>
@@ -449,6 +462,8 @@
     <li><a href="/tags/Git/">Git</a><small>5</small></li>
   
     <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
@@ -484,7 +499,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 

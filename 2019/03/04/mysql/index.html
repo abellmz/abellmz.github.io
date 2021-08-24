@@ -90,6 +90,8 @@ https://www.cnblogs.com/poloyy/p/12884399.html" />
 <p><a href="https://www.cnblogs.com/poloyy/p/12884399.html" target="_blank" rel="noopener">https://www.cnblogs.com/poloyy/p/12884399.html</a></p>
 <a id="more"></a>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select * from emp as a left join dept as b on a.dept_id = b.id</span><br><span class="line">union</span><br><span class="line">select * from emp as a right join dept as b on a.dept_id = b.id;</span><br><span class="line">//以上自动去重，两边空缺以null填充。未去重使用union all;若联合同一个表的不同条件数据，结果以第一条sql为基准，且两条sql的字段顺序最好相同，否则容易结果数据错乱。</span><br><span class="line">比如错乱的：</span><br><span class="line">select name,id,leader,is_enable,dept_id from emp where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select *  from emp where leader = 0</span><br><span class="line">比如不错乱的：</span><br><span class="line">select * from emp where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select id,name,dept_id,leader,is_enable   from emp where leader = 0</span><br></pre></td></tr></table></figure>
+
 <h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><p>select * from city</p>
 <p>select code_id from city where city_name=’北京’<br>将上面两步句子合并一句话(子查询)<br> select * from code where id=(select code_id from city where city_name=’北京’);</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">笛卡尔基  也属于内关联（没条件也是），只是join后面没有on或者where进行筛选</span><br><span class="line">内关联   inner可以省略  on后面跟 条件</span><br><span class="line"></span><br><span class="line">如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</span><br><span class="line"></span><br><span class="line">Select * from class,stu或者</span><br><span class="line">Select * from class join stu或者</span><br><span class="line">Select * from class inner join stu</span><br><span class="line"></span><br><span class="line">执⾏以上语句将产⽣class 表的所有数据乘stu表的所有数据，显然这个结果是</span><br><span class="line">没有意义的，所以我们要对以上查询增加条件以产⽣有价值的数据集合</span><br><span class="line">Select * from class,stu where class.id=stu.cid;</span><br></pre></td></tr></table></figure>
@@ -289,23 +291,23 @@ https://www.cnblogs.com/poloyy/p/12884399.html" />
   <ul class="entry">
     
       <li>
+        <a href="/2021/08/24/os与strings常用函数/">os与strings常用函数</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/24/go常用函数/">go常用函数</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/23/Redis基础知识/未命名/">Redis基础知识/未命名</a>
+      </li>
+    
+      <li>
         <a href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
       </li>
     
       <li>
         <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
-      </li>
-    
-      <li>
-        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
-      </li>
-    
-      <li>
-        <a href="/2021/03/10/mongoDB/">MongoDB01</a>
-      </li>
-    
-      <li>
-        <a href="/2020/08/25/Nginx比Apache支持高并发/">Nginx比Apache支持高并发</a>
       </li>
     
   </ul>
@@ -322,6 +324,8 @@ https://www.cnblogs.com/poloyy/p/12884399.html" />
     <li><a href="/tags/Git/">Git</a><small>5</small></li>
   
     <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
   
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
@@ -357,7 +361,7 @@ https://www.cnblogs.com/poloyy/p/12884399.html" />
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 
