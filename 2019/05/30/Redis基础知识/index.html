@@ -117,8 +117,36 @@ nosql产品特点：" />
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557632184416.png" alt="1557632184416"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1Redis的数据是共享的</span><br><span class="line">    如果将用户信息存储在web服务的本地缓存，则每个web服务都会缓存一份，当用户修改昵称时，需要通知其它web服务更新用户缓存。</span><br><span class="line">    如果将用户信息存储在Redis，则只有一份缓存，所有的web访问的都是同一份缓存，当用户修改昵称时，所有web服务都能同时访问到最新的缓存。</span><br><span class="line">2Redis是单线程的</span><br><span class="line">    由于Redis的性能瓶颈在于内存读写速度，而不是CPU，设计者将Redis设计成了单线程模式，其所有操作都是原子性的，避免了多线程带来的复杂性。</span><br><span class="line"></span><br><span class="line">应用场景</span><br><span class="line">1计数器</span><br><span class="line">    string类型的incr和decr命令的作用是将key中储存的数字值加一/减一，这两个操作具有原子性，总能安全地进行加减操作，因此可以用string类型进行计数，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。</span><br><span class="line">2分布式锁</span><br><span class="line">    string类型的setnx的作用是“当key不存在时，设值并返回1，当key已经存在时，不设值并返回0”，“判断key是否存在”和“设值”两个操作是原子性地执行的，因此可以用string类型作为分布式锁，返回1表示获得锁，返回0表示没有获得锁。例如，为了保证定时任务的高可用，往往会同时部署多个具备相同定时任务的服务，但是业务上只希望其中的某一台服务执行定时任务，当定时任务的时间点触发时，多个服务同时竞争一个分布式锁，获取到锁的执行定时任务，没获取到的放弃执行定时任务。定时任务执行完时通过del命令删除key即释放锁，如果担心del命令操作失败而导致锁一直未释放，可以通过expire命令给锁设置一个合理的自动过期时间，确保即使del命令失败，锁也能被释放。不过expire命令同样存在失败的可能性，如果你用的是Java语言，建议使用JedisCommands接口提供的String set(String key, String value, String nxxx, String expx, long time)方法，这个方法可以将setnx和expire原子性地执行，具体使用方式如下（相信其它语言的Redis客户端也应当提供了类似的方法）。</span><br><span class="line">3存储对象</span><br><span class="line">    利用JSON强大的兼容性、可读性和易用性，将对象转换为JSON字符串，再存储在string类型中，是个不错的选择，如用户信息、商品信息等。</span><br></pre></td></tr></table></figure>
 
-
-
+<p>string底层是简单动态字符串(simple dynamic string, SDS)</p>
+<table>
+<thead>
+<tr>
+<th>C字符串</th>
+<th>SDS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>获取字符串长度的复杂度为O(N)</td>
+<td>获取字符串长度的复杂度为O(1)</td>
+</tr>
+<tr>
+<td>API是不安全的，可能会造成缓冲区溢出</td>
+<td>API是安全的，不会造成缓冲区溢出</td>
+</tr>
+<tr>
+<td>修改字符串长度N次必然需要执行N次内存重分配</td>
+<td>修改字符串长度N次最多需要执行N次内存重分配</td>
+</tr>
+<tr>
+<td>只能保存文本数据</td>
+<td>可以保存文本或者二进制数据</td>
+</tr>
+<tr>
+<td>可以使用所有库中的函数</td>
+<td>可以使用一部分库的函数</td>
+</tr>
+</tbody></table>
+<p>参考链接：<a href="https://blog.csdn.net/pugongying_95/article/details/99718749" target="_blank" rel="noopener">https://blog.csdn.net/pugongying_95/article/details/99718749</a></p>
 <h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;hset userInfo name asion</span><br><span class="line">hsetd命令设置单个，key为userInfo,value为name asion</span><br><span class="line">类似于php中关联数组$userInfo=array(&apos;name&apos;=&gt;&apos;asion&apos;)</span><br><span class="line">&gt;hget userInfo name	获取单个值value</span><br><span class="line">&gt;hmset userInfo age 12 email gogo@163.com</span><br><span class="line">hmset设置多个，获取单个值value是一样的操作，获取userInfo全部value值，用hgetall</span><br><span class="line">&gt;hgetall userInfo</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1购物车</span><br><span class="line">以用户id为key，商品id为field，商品数量为value，恰好构成了购物车的3个要素。</span><br><span class="line">2存储对象</span><br><span class="line">hash类型的(key, field, value)的结构与对象的(对象id, 属性, 值)的结构相似，也可以用来存储对象。</span><br><span class="line">参考：https://www.cnblogs.com/pangzizhe/p/10657801.html</span><br></pre></td></tr></table></figure>
@@ -263,6 +291,10 @@ nosql产品特点：" />
   <ul class="entry">
     
       <li>
+        <a href="/2021/09/12/时间复杂度与空间复杂度/">时间复杂度与空间复杂度</a>
+      </li>
+    
+      <li>
         <a href="/2021/08/24/os与strings常用函数/">os与strings常用函数</a>
       </li>
     
@@ -276,10 +308,6 @@ nosql产品特点：" />
     
       <li>
         <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
-      </li>
-    
-      <li>
-        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
       </li>
     
   </ul>
@@ -325,6 +353,8 @@ nosql产品特点：" />
   
     <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
   
+    <li><a href="/tags/算法/">算法</a><small>1</small></li>
+  
   </ul>
 </div>
 
@@ -333,7 +363,7 @@ nosql产品特点：" />
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
   </div>
 </div>
 

@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>时间复杂度与空间复杂度 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="复杂度
+时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。
+空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="时间复杂度与空间复杂度" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-09-12T15:17:30.000Z"><a href="/2021/09/12/时间复杂度与空间复杂度/">2021-09-12</a></time>
+      
+      
+  
+    <h1 class="title">时间复杂度与空间复杂度</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><ul>
+<li>时间维度：是指执行当前算法所消耗的时间，我们通常用「<strong>时间复杂度</strong>」来描述。</li>
+<li>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「<strong>空间复杂度</strong>」来描述</li>
+</ul>
+<a id="more"></a>
+
+<p>—What is Big O?—</p>
+<p>O(1):Constant Complexity:Constant 常数复杂度     一次运算</p>
+<p>O(log n):Logarithmic Complexity:对数复杂度</p>
+<p>O(n):Linear Complexity: 线性时间复杂度（*） 循环n次</p>
+<p>O(nlogn):线性对数阶</p>
+<p>O(n^2):N square Complexity: 平方    时间复杂度是n^2</p>
+<p>O(n^3):N square Complexity: 立方</p>
+<p>O(n^k):k次方阶</p>
+<p>O(2^n):Exponential Growth:指数</p>
+<p>O(n！):Factorial 阶乘</p>
+<p>注意：多块代码一起时，只看最高复杂度的运算   </p>
+<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h4><p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585812424.jpg" alt="image-20200402152728506"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">O(1):</span><br><span class="line">int n=1000</span><br><span class="line">system.out.println(&apos;print:&apos;+n);</span><br><span class="line"></span><br><span class="line">O(n)</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        system.out.println(&apos;print:&apos;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(n^2)</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">        system.out.println(&apos;print:&apos;+i+&apos;and&apos;+j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">O(log n)//若n=4,则以下执行2次，而不是4次,即logn(底数为2)</span><br><span class="line">     for(int i=1;i&lt;=n;i=i*2)&#123;</span><br><span class="line">        system.out.println(&apos;print:&apos;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(k^n)</span><br><span class="line">    for(int i=1;i&lt;=Math.pow(2,n);i++&#123;//终止条件2^n</span><br><span class="line">        system.out.println(&apos;print:&apos;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(n！)</span><br><span class="line">    for(int i=1;i&lt;=factorial(n);i++&#123;</span><br><span class="line">        system.out.println(&apos;print:&apos;+i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585621617.jpg" alt="image-20200331102706328"></p>
+<p>横坐标：n   纵坐标：运行次数</p>
+<p>常数、对数、线性、线性对数、平方、指数、阶乘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">计算：1+2+3+...+n</span><br><span class="line">y=0</span><br><span class="line">for i=1 to n</span><br><span class="line">    y=i+y</span><br><span class="line">//硬循环,累加n次</span><br><span class="line">求和公式：</span><br><span class="line">    y=n*(n+1)/2</span><br><span class="line">//只运行1次</span><br><span class="line">时间复杂度由O(n)降为O(1)</span><br></pre></td></tr></table></figure>
+
+<p>用算法提高效率</p>
+<p>斐波那锲数列（Fibonacci sequence）1、1、2、3、5、8、13、21、34…n</p>
+<p>f(n)=f(n-1)+f(n-2)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">递归</span><br><span class="line">function fn(n)&#123;</span><br><span class="line">    if(n==1|n==2)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return fn(n-1)+fn(n-2);</span><br><span class="line">&#125;</span><br><span class="line">时间复杂度是2^n，或者说是O(k^n)</span><br><span class="line">现实中n=6的话只需要计算6次，但计算机中算了不止6次，所以代码不是最优的</span><br><span class="line">公司：Master Theorem（主定律）提供了用渐近符号表示许多由分治法得到的递推关系式的方法</span><br></pre></td></tr></table></figure>
+
+<p>二分查找(Binary search)O(logn):一分为二，只查一边</p>
+<p>二叉树遍历(Binary tree traversal):每个节点遍历一次且仅遍历一次O(n)</p>
+<p>排序查找(Optimal sorted matrix serach):（一维数组二分查找是O(logn）或排好序的二维矩阵的查找(O(n))</p>
+<p>排序(Merge sort):（快排，归并排）O(nlogn)</p>
+<p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585624623.jpg" alt="image-20200331111710507"></p>
+<p>做自己不熟悉的算法题，比如常见的：动态规划，搜索，回溯，递归</p>
+<p><a href="https://leetcode.com/problemset/all/" target="_blank" rel="noopener">https://leetcode.com/problemset/all/</a></p>
+<p>中文社区：<a href="https://leetcode-cn.com/" target="_blank" rel="noopener">https://leetcode-cn.com/</a></p>
+<p>切题：题目的范围、所有解法先思考一遍，找出最优的解法。</p>
+<p>经常的面试题：二叉树遍历-前序、中序、后序：什么样子？时间复杂度是多少？</p>
+<p>解题：时间复杂度为O(n),n代表二叉树的树的节点总数（通过主定理得到的）不论前序中序后序，它遍历二叉树时，每个节点会访问一次且仅访问一次，所以时间复杂度是线性于二叉树的节点总数，也就是O(n)的时间复杂度。</p>
+<p><strong>图的遍历</strong>：时间复杂度是多少？-》同理可得是O(n)，n代表图中节点总数</p>
+<p><strong>搜索算法</strong>：DFS（深度优先）、BFS（广度优先）时间复杂度是多少？-》同理可得是O(n)，n代表搜索空间里的节点总数</p>
+<p><strong>二分查找</strong>：时间复杂度是多少？-》logn</p>
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><p>与时间复杂度类似，但更加简单，主要两条原则：</p>
+<p>1数组的长度：</p>
+<p>例如一维数组，长度为传入元素的个数，一般来说空间复杂度就是O(n),如果是二维数组，数组的长度为n^2,空间复杂度就是O(n^2)</p>
+<p>2递归的深度（特殊说明）</p>
+<p>递归的深度就是空间复杂度的最大值，若递归中又开数组，那么两者之间的最大值就是你的空间复杂度。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/算法/">算法</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/09/12/时间复杂度与空间复杂度/">时间复杂度与空间复杂度</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/24/os与strings常用函数/">os与strings常用函数</a>
+      </li>
+    
+      <li>
+        <a href="/2021/08/24/go常用函数/">go常用函数</a>
+      </li>
+    
+      <li>
+        <a href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
+      </li>
+    
+      <li>
+        <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>2</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>2</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>10</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>3</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+    <li><a href="/tags/算法/">算法</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

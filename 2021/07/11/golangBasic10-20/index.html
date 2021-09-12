@@ -164,7 +164,7 @@
 <p>一旦使用go，就不能使用函数返回值来与主进程进行数据交换，而只能使用channel</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">func Tesk1()&#123;</span><br><span class="line">	for &#123;</span><br><span class="line">		fmt.Println(time.Now().Format(&quot;15:04:05&quot;),&quot;正在处理Task1的任务！&quot;)</span><br><span class="line">		time.Sleep(time.Second *3)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">func Tesk2()&#123;</span><br><span class="line">	for &#123;</span><br><span class="line">		fmt.Println(time.Now().Format(&quot;15:04:05&quot;),&quot;正在处理Task2的任务！&quot;)</span><br><span class="line">		time.Sleep(time.Second *1)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	go Tesk1()</span><br><span class="line">	go Tesk2()</span><br><span class="line">	for  &#123;</span><br><span class="line">		fmt.Println(time.Now().Format(&quot;15:04:05&quot;),&quot;正在处理主进程的任务！&quot;)</span><br><span class="line">		time.Sleep(time.Second *2)</span><br><span class="line">	&#125;</span><br><span class="line">执行结果：</span><br><span class="line">22:03:50 正在处理主进程的任务！</span><br><span class="line">22:03:50 正在处理Task1的任务！</span><br><span class="line">22:03:50 正在处理Task2的任务！</span><br><span class="line">22:03:51 正在处理Task2的任务！</span><br><span class="line">22:03:52 正在处理主进程的任务！</span><br><span class="line">22:03:52 正在处理Task2的任务！</span><br><span class="line">22:03:53 正在处理Task1的任务！</span><br><span class="line">22:03:53 正在处理Task2的任务！</span><br><span class="line">22:03:54 正在处理主进程的任务！</span><br><span class="line">22:03:54 正在处理Task2的任务！</span><br></pre></td></tr></table></figure>
 
-<p>所有gorountine函数在main函数结束时会一并结束。虽然gorountine类似于线程概念，但调度上不如线程细腻，而细腻程度取决于gorountine调度器的实现和运行环境。终止gorountine最好的方法是直接在函数中自然放回。</p>
+<p>所有gorountine函数在main函数结束时会一并结束。虽然gorountine类似于线程概念，但调度上不如线程细腻，而细腻程度取决于gorountine调度器的实现和运行环境。终止gorountine最好的方法是直接在函数中自然返回。</p>
 <p>go关键字后也可以是匿名函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go func(参数列表)&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125; (调用参数列表)</span><br></pre></td></tr></table></figure>
 
@@ -462,6 +462,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/09/12/时间复杂度与空间复杂度/">时间复杂度与空间复杂度</a>
+      </li>
+    
+      <li>
         <a href="/2021/08/24/os与strings常用函数/">os与strings常用函数</a>
       </li>
     
@@ -475,10 +479,6 @@
     
       <li>
         <a href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
-      </li>
-    
-      <li>
-        <a href="/2021/03/10/mongoDB02/">mongoDB02</a>
       </li>
     
   </ul>
@@ -524,6 +524,8 @@
   
     <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
   
+    <li><a href="/tags/算法/">算法</a><small>1</small></li>
+  
   </ul>
 </div>
 
@@ -532,7 +534,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Git/" style="font-size: 16px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 12px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 12px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 14px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 12px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18px;">PHP框架</a> <a href="/tags/Redis/" style="font-size: 14px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 14px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
   </div>
 </div>
 
