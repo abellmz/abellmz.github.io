@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>散列表 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="散列表Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="散列表" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-11-21T11:59:52.000Z"><a href="/2021/11/21/散列表/">2021-11-21</a></time>
+      
+      
+  
+    <h1 class="title">散列表</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h4><p>Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。</p>
+<a id="more"></a>
+
+<p><strong>散列冲突的原因</strong>：散列地址不同的结点争夺同一个后继散列地址的现象称为聚集或堆积(Clustering)。</p>
+<blockquote>
+<p>1再好的散列函数也无法避免散列冲突</p>
+<p>2最常见的哈希算法是取模法</p>
+</blockquote>
+<p>散列函数设计的基本要求</p>
+<blockquote>
+<p>1散列函数计算得到的散列值是一个非负整数；</p>
+<p>2如果 key1 = key2，那 hash(key1) == hash(key2)；</p>
+<p>3如果 key1 ≠ key2，那 hash(key1) ≠ hash(key2)。</p>
+</blockquote>
+<p><strong>从解决冲突的角度</strong>，主要有开放寻址法和拉链法。</p>
+<p><strong>开放寻址-线性探测</strong>： </p>
+<blockquote>
+<p>1插入：通过散列函数找到理想位置-&gt;发现被占-&gt;继续遍历直到寻到一个空位 </p>
+<p>2查找：查看散列位置-&gt;不匹配-&gt;继续找till第一个空位 </p>
+<p>3删除：不清空存储位置，而是标记deleted，以避免查找功能失效</p>
+</blockquote>
+<p>存在问题：当散列表中插入的数据越来越多时，散列冲突发生的可能性就会越来越大，空闲位置会越来越少，最坏情况下的时间复杂度为 O(n)</p>
+<p><strong>开放寻址-二次探测</strong>： </p>
+<blockquote>
+<p>线性探测每次探测的步长是 1,即hash(key)+0，hash(key)+1，hash(key)+2……，而二次探测探测的步长就变成了原来的“二次方”,即下标序列就是 hash(key)+0，hash(key)+1<sup>2</sup>，hash(key)+2<sup>2</sup>…</p>
+</blockquote>
+<p><strong>开放寻址-双重散列</strong>：</p>
+<blockquote>
+<p>不是使用一个散列函数，而是使用一组散列函数 hash1(key)，hash2(key)，hash3(key)……hash1(key)计算得到的存储位置已经被占用，再用第二个散列函数，依次类推，直到找到空闲的存储位置</p>
+</blockquote>
+<p>装载因子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">散列表的装载因子=填入表中的元素个数/散列表的长度</span><br><span class="line"></span><br><span class="line">装载因子越大，说明空闲位置越少，冲突越多，散列表的性能会下降。</span><br></pre></td></tr></table></figure>
+
+<p><strong>链表法</strong></p>
+<p>每个“桶（bucket）”或者“槽（slot）”会对应一条链表，所有散列值相同的元素我们都放到相同槽位对应的链表中</p>
+<p>hash冲突时，如何通过key，查询到对应的value?(即当key1 != key2 ，f(key1)==f(key2),怎么找到key1、key2对应的value呢？)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">从解决冲突的角度，主要有开放定址法和拉链法。</span><br><span class="line">开放地址法：又分线性探查法和平方探查法。</span><br><span class="line"></span><br><span class="line">拉链法-查询：</span><br><span class="line">通过散列函数f(key)，返回一个地址（一个链表的指针，即链表的位置），再通过遍历链表匹配key,找到对应的value</span><br><span class="line">参考链接：https://blog.csdn.net/freedom_like_wind/article/details/71078188#commentBox</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：与散列函数、装载因子、散列冲突等有关，不能笼统的说成O(1),最坏的情况是O(n)</p>
+<p>以上学于极客时间，做的笔记</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/algorithm-data-structure/">algorithm-data_structure</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/11/21/散列表/">散列表</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

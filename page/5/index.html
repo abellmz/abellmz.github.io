@@ -68,6 +68,264 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2019-09-17T04:26:50.000Z"><a href="/2019/09/17/微擎框架基本操作/">2019-09-17</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/09/17/微擎框架基本操作/">微擎框架基本操作</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="公众平台说明"><a href="#公众平台说明" class="headerlink" title="公众平台说明"></a><strong>公众平台说明</strong></h3><p>公众号分为个人（只能申请订阅号，不可认证）和企业（服务号、订阅号，可认证），订阅号每天可发文章，在订阅列表中，服务号1个月4篇文章，在微信列表，权限、功能更强大。未认证的订阅号很多接口无法对接，比如支付，不仅要认证还要申请支付通道。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/09/17/微擎框架基本操作/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/PHP框架/">PHP框架</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-09-01T14:14:16.000Z"><a href="/2019/09/01/docker-compose-yml说明/">2019-09-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/09/01/docker-compose-yml说明/">docker-compose.yml说明</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">version : &apos;3&apos;  #docker引擎对应所支持的docker-compose文本格式</span><br><span class="line">services:            #本工程的服务配置列表</span><br><span class="line">  swapping:            #spring boot的服务名，服务名自定义</span><br><span class="line">    container_name: swapping-compose</span><br></pre></td></tr></table></figure>
+
+<p>本spring boot服务之后启动的容器实例的名字，如果指定，按照这个命名容器，如果未指定，容器命名规则是,【[compose文件所在目录]_[服务名]_1】，例如【swappingdockercompose_swapping_1】如果多启动，也就是docker-compose scale swapping=3 mysql=2的话，就不需要指定容器名称，否则会报错 容器名重复存在的问题</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/09/01/docker-compose-yml说明/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Docker/">Docker</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-08-27T15:06:48.000Z"><a href="/2019/08/27/Docker-compose相关命令/">2019-08-27</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/08/27/Docker-compose相关命令/">Docker-compose相关命令</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>docker-compose –help相关命令翻译</p>
+<p>build<br>创建或者再建服务<br>服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它<br>help 显示命令的帮助和使用信息<br>kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过，<br>比如： docker-compose kill -s SIGKINT</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/08/27/Docker-compose相关命令/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Docker/">Docker</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-08-16T14:52:59.000Z"><a href="/2019/08/16/Docker简介和命令/">2019-08-16</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/08/16/Docker简介和命令/">Docker简介和命令</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="docker"><a href="#docker" class="headerlink" title="docker"></a><strong>docker</strong></h3><p>docker是一个轻量级的虚拟化解决方案。Docker 为各种应用程序提供了 Linux 容器。通常情况下，一个 LAMP 应用汇包含以下三个容器：一个 Web 服务器，一个 PHP-FPM 线程和 MySQL。可以为项目构建一个 <code>docker-compose.yml</code> 文件来配置生成容器的规则和容器的通讯规则，或者在Vagrant 的共享文件夹中，不需要改变应用文件路径，只需要告诉 Docker 到哪里可以找到MySQL等容器即可。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/08/16/Docker简介和命令/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Docker/">Docker</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-07-18T15:03:10.000Z"><a href="/2019/07/18/PhpStorm中相关设置/">2019-07-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/07/18/PhpStorm中相关设置/">PhpStorm中相关设置</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="PhpStrom"><a href="#PhpStrom" class="headerlink" title="PhpStrom"></a>PhpStrom</h2><h5 id="连接远程服务器ftp"><a href="#连接远程服务器ftp" class="headerlink" title="连接远程服务器ftp:"></a>连接远程服务器ftp:</h5>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/07/18/PhpStorm中相关设置/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/工具/">工具</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2019-06-24T07:53:42.000Z"><a href="/2019/06/24/Vue-js阶段总结1/">2019-06-24</a></time>
       
       
@@ -325,261 +583,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-05-29T02:07:15.000Z"><a href="/2019/05/29/接口与抽象类/">2019-05-29</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/05/29/接口与抽象类/">接口与抽象类</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h5 id="抽象类："><a href="#抽象类：" class="headerlink" title="抽象类："></a>抽象类：</h5><p>abstract来修饰一个类/方法就叫抽象类/抽象方法</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/05/29/接口与抽象类/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP/">PHP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-05-20T01:48:49.000Z"><a href="/2019/05/20/循环/">2019-05-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/05/20/循环/">循环</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h5 id="if判断"><a href="#if判断" class="headerlink" title="if判断"></a>if判断</h5>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/05/20/循环/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP/">PHP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-05-20T01:40:34.000Z"><a href="/2019/05/20/运算-局部全局静态变量-其他/">2019-05-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/05/20/运算-局部全局静态变量-其他/">运算/局部全局静态变量/其他</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h5 id="运算："><a href="#运算：" class="headerlink" title="运算："></a>运算：</h5>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/05/20/运算-局部全局静态变量-其他/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP/">PHP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-05-20T01:34:18.000Z"><a href="/2019/05/20/上传下载-目录-时间/">2019-05-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/05/20/上传下载-目录-时间/">上传下载/目录/时间</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h5 id="上传下载函数："><a href="#上传下载函数：" class="headerlink" title="上传下载函数："></a>上传下载函数：</h5>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/05/20/上传下载-目录-时间/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP/">PHP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-05-20T01:29:08.000Z"><a href="/2019/05/20/魔术常量和方法、会话/">2019-05-20</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2019/05/20/魔术常量和方法、会话/">魔术常量和方法、会话</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h5 id="魔术常量和方法："><a href="#魔术常量和方法：" class="headerlink" title="魔术常量和方法："></a>魔术常量和方法：</h5>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2019/05/20/魔术常量和方法、会话/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP/">PHP</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -598,23 +601,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2021/11/14/配置ssh的sftp服务及nginx文件检测/">配置ssh的sftp服务及nginx文件检测</a>
+        <a href="/2021/11/21/散列表/">散列表</a>
       </li>
     
       <li>
-        <a href="/2021/11/07/linux找到java安装路径/">linux找到java安装路径及进程占用查询</a>
+        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
       </li>
     
       <li>
-        <a href="/2021/11/06/解压安装各类格式文件/">解压安装各类格式文件</a>
+        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
       </li>
     
       <li>
-        <a href="/2021/10/30/Mac-ssh连接远程服务器，并实现文件的上传和下载/">Mac,ssh连接远程服务器，并实现文件的上传和下载</a>
+        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
       </li>
     
       <li>
-        <a href="/2021/10/26/docker删除镜像/">docker删除镜像</a>
+        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
       </li>
     
   </ul>
@@ -656,13 +659,13 @@
   
     <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
   
+    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
+  
     <li><a href="/tags/前端/">前端</a><small>3</small></li>
   
     <li><a href="/tags/工具/">工具</a><small>1</small></li>
   
     <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
-  
-    <li><a href="/tags/算法/">算法</a><small>1</small></li>
   
   </ul>
 </div>
@@ -672,7 +675,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 

@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>排序——快排与归并排 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="快排、归并排：归并排：
+归并排序和快速排序都用到了分治思想，非常巧妙,空间复杂度O(nlogn)，不是原地排序
+分治算法一般都是用递归来实现的。分治是一种解决问题的处理思想，递归是一种编程技巧" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="排序——快排与归并排" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-11-20T09:50:49.000Z"><a href="/2021/11/20/排序——快排与归并排/">2021-11-20</a></time>
+      
+      
+  
+    <h1 class="title">排序——快排与归并排</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="快排、归并排："><a href="#快排、归并排：" class="headerlink" title="快排、归并排："></a>快排、归并排：</h5><p><strong>归并排</strong>：</p>
+<p>归并排序和快速排序都用到了分治思想，非常巧妙,空间复杂度O(nlogn)，不是原地排序</p>
+<p>分治算法一般都是用递归来实现的。分治是一种解决问题的处理思想，递归是一种编程技巧</p>
+<a id="more"></a>
+
+<p>基本逻辑：如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">merge_sort_c([9, 11, 8,13] 0,3); 升序</span><br><span class="line">//递归的最后一层，实际上是两个数的比较，倒数第二层开始，第一个数组的第一个和第二数组的第一个比较（有点 类似双指针法）</span><br><span class="line">参考动图：https://www.cnblogs.com/lxhyty/p/11231927.html</span><br><span class="line">function merge_sort_c(&amp;$arr, $start, $end)</span><br><span class="line">&#123;</span><br><span class="line">    if($start &gt;= $end)&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    $middle = (floor)(($start +$end)/2);// 1   0            分解</span><br><span class="line">    merge_sort_c($arr, $start, $middle);//arr,0,1    arr,0,0</span><br><span class="line">    merge_sort_c($arr, $middle+1, $end);//arr,2,2 arr,1,1</span><br><span class="line"> </span><br><span class="line">    merger($arr, $start, $middle, $end);//arr,0,1,3   arr,0,0,1    排序、合并数组</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">function merger(&amp;$arr, $start, $middle, $end) //arr,0,0,1</span><br><span class="line">&#123;</span><br><span class="line">    $i = $start;</span><br><span class="line">    $j = $middle+1;</span><br><span class="line">    $arrTemp =[];</span><br><span class="line">    while($i&lt;=$middle &amp;&amp; $j&lt;=$end)&#123;</span><br><span class="line">       if($arr[$i] &lt;= $arr[$j])&#123;</span><br><span class="line">           $arrTemp[] =$arr[$i];</span><br><span class="line">           $i++;</span><br><span class="line">       &#125;else&#123;</span><br><span class="line">           $arrTemp[] =$arr[$j];</span><br><span class="line">           $j++;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    while($i &lt;= $middle)&#123;</span><br><span class="line">        $arrTemp[] =$arr[$i];</span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">    while($j&lt;=$end)&#123;</span><br><span class="line">        $arrTemp[] =$arr[$j];</span><br><span class="line">        $j++;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    $i = $start;</span><br><span class="line">    foreach ($arrTemp as $key=&gt;$val)&#123;</span><br><span class="line">        $arr[$i]= $val;</span><br><span class="line">        $i++;</span><br><span class="line">    &#125;</span><br><span class="line">    return ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>快排</strong>：</p>
+<p>快排核心思想就是分治和分区</p>
+<p>基本逻辑：如果要排序数组中下标从 p 到 r 之间的一组数据，我们选择 p 到 r 之间的任意一个数据作为 pivot（分区点），分三部分：将小于 pivot 的放到左边，将大于 pivot 的放到右边，将 pivot 放到中间，递归终止条件——区间缩小到1，即剩余1个元素。</p>
+<p>array_merge()时间复杂度为O(n)线性阶，而快排的时间复杂度是O(nlogn)线性对数阶，极端情况下([1,2,3,4,5,6,7,8,9]，已经有序)退化为O(n<sup>2</sup>)，快排是一种原地、不稳定的排序算法，递归来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$a = [9, 11, 8,13];</span><br><span class="line"></span><br><span class="line">function quick_sort($a) //8    【9】    11,13</span><br><span class="line">&#123;</span><br><span class="line">    if (count($a) &lt;= 1) &#123;</span><br><span class="line">        return $a;</span><br><span class="line">    &#125;</span><br><span class="line">    $middle = $a[0]; // 中间值  </span><br><span class="line">    $left = array(); // 接收小于中间值</span><br><span class="line">    $right = array();// 接收大于中间值</span><br><span class="line"></span><br><span class="line">    for ($i=1; $i &lt; count($a); $i++) &#123;  // 循环比较</span><br><span class="line">        if ($middle &lt; $a[$i]) &#123;</span><br><span class="line">            $right[] = $a[$i];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $left[] = $a[$i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $left = quick_sort($left); </span><br><span class="line">    $right = quick_sort($right);</span><br><span class="line">    </span><br><span class="line">    return array_merge($left, array($middle), $right);  </span><br><span class="line">&#125;</span><br><span class="line">print_r(quick_sort($a));</span><br></pre></td></tr></table></figure>
+
+<p><strong>快排与归并排的比较</strong>：</p>
+<p>归并排序算法是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度比较高，是 O(n)。正因为此，它也没有快排应用广泛。</p>
+<p>快速排序算法虽然最坏情况下的时间复杂度是 O(n2)，但是平均情况下时间复杂度都是 O(nlogn)。不仅如此，快速排序算法时间复杂度退化到 O(n2) 的概率非常小，我们可以通过合理地选择 pivot 来避免这种情况。</p>
+<p>以上学于极客时间，做的笔记</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/algorithm-data-structure/">algorithm-data_structure</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/11/21/散列表/">散列表</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

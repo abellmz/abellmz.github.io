@@ -68,6 +68,276 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2019-03-20T07:28:02.000Z"><a href="/2019/03/20/linux-命令补充/">2019-03-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/20/linux-命令补充/">Linux命令补充</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Linux命令："><a href="#Linux命令：" class="headerlink" title="Linux命令："></a>Linux命令：</h2><h5 id="shell和Linux的关系"><a href="#shell和Linux的关系" class="headerlink" title="shell和Linux的关系"></a>shell和Linux的关系</h5><p>实际上Shell是一个命令解释器，它解释由用户输入的命令并且把它们送到内核。不仅如此，Shell有自己的编程语言用于对命令的编辑，它允许用户编写由shell命令组成的程序。Shell编程语言具有普通编程语言的很多特点，比如它也有循环结构和分支控制结构等，用这种编程语言编写的Shell程序与其他应用程序具有同样的效果。</p>
+<p><strong>根目录和家目录</strong></p>
+<p>Linux的根目录是目录的最高层，所有文件都在根目录下面，而根目录下有bin，etc，<a href="https://www.baidu.com/s?wd=root&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">root</a>，mnt等文件目录，而家目录在/home/用户名里面（root用户的家目录不在home里面，而在/root）</p>
+<h5 id="基本操作命令："><a href="#基本操作命令：" class="headerlink" title="基本操作命令："></a>基本操作命令：</h5>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/03/20/linux-命令补充/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-08T07:28:02.000Z"><a href="/2019/03/08/LAMP-old2/">2019-03-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/08/LAMP-old2/">LAMP操作</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h4 id="12-24：安装LAMP"><a href="#12-24：安装LAMP" class="headerlink" title="12-24：安装LAMP"></a>12-24：安装LAMP</h4><p>LAMP之间的区别和运行过程解析</p>
+<p><a href="https://www.cnblogs.com/y0umer/archive/2011/08/19/2809615.html" target="_blank" rel="noopener">https://www.cnblogs.com/y0umer/archive/2011/08/19/2809615.html</a></p>
+<p>l：即操作系统，也就是建立在电脑硬件基础上的最底层的东西，相当于：国家这个概念，而win或者linux就相当于不同的国家</p>
+<p>a：就是web服务器，这个服务器 相当于国家领导人：主席，起到指导作用。</p>
+<p>m：就是数据库，存储数据的地方，相当 银行</p>
+<p>p：就是php，相当于下属，做事情的人</p>
+<p>也就是说php是apache的一个外挂程序，必须依靠web服务器才可以运行。当客户端浏览器触发事件—&gt;php程序提交到apache服务器—-&gt;apache服务器根据php程序的特点判断是php程序，提交给php引擎程序—&gt;php引擎程序解析并读取数据库生成相应的页面</p>
+<p>php引擎；像smarty就是，有自己的标签模式并可以解析这种标签 生成原生态的php程序</p>
+<h5 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h5><p>yum命令讲解</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/03/08/LAMP-old2/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-04T07:28:02.000Z"><a href="/2019/03/04/Redis操作/">2019-03-04</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/04/Redis操作/">Redis操作</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>​    Redis,是一个key-value存储系统，支持存储的value类型包括string(字符串)、list(链表)、set(集合)、zset(sortedset–有序集合)和hash（哈希类型）五种数据类型，存储形式均为字符串。并且redis会周期性将更新的数据写入磁盘（以快照的方式）或者把修改操作写入追加的日志文件中。</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/03/04/Redis操作/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Redis/">Redis</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-03-04T07:28:02.000Z"><a href="/2019/03/04/mysql/">2019-03-04</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/03/04/mysql/">MySQL基础</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>join关联：</p>
+<p>内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接)</p>
+<p>oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接</p>
+<p>union的例子</p>
+<p><a href="https://www.cnblogs.com/poloyy/p/12884399.html" target="_blank" rel="noopener">https://www.cnblogs.com/poloyy/p/12884399.html</a></p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/03/04/mysql/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/MySQL/">MySQL</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2019-02-26T13:27:10.000Z"><a href="/2019/02/26/解决hexo-绑定域名丢失问题/">2019-02-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2019/02/26/解决hexo-绑定域名丢失问题/">解决hexo绑定域名丢失问题</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>​    前两天操作hexo 发现，原来绑定在对应GitHub 项目上的域名没了，于是在github上添加上，再次操作 hexo clean、hexo g、hexo d ，结果域名又没了，是该解决一下了！！！</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2019/02/26/解决hexo-绑定域名丢失问题/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2019-02-20T02:38:38.000Z"><a href="/2019/02/20/Scout全文搜索/">2019-02-20</a></time>
       
       
@@ -285,23 +555,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2021/11/14/配置ssh的sftp服务及nginx文件检测/">配置ssh的sftp服务及nginx文件检测</a>
+        <a href="/2021/11/21/散列表/">散列表</a>
       </li>
     
       <li>
-        <a href="/2021/11/07/linux找到java安装路径/">linux找到java安装路径及进程占用查询</a>
+        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
       </li>
     
       <li>
-        <a href="/2021/11/06/解压安装各类格式文件/">解压安装各类格式文件</a>
+        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
       </li>
     
       <li>
-        <a href="/2021/10/30/Mac-ssh连接远程服务器，并实现文件的上传和下载/">Mac,ssh连接远程服务器，并实现文件的上传和下载</a>
+        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
       </li>
     
       <li>
-        <a href="/2021/10/26/docker删除镜像/">docker删除镜像</a>
+        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
       </li>
     
   </ul>
@@ -343,13 +613,13 @@
   
     <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
   
+    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
+  
     <li><a href="/tags/前端/">前端</a><small>3</small></li>
   
     <li><a href="/tags/工具/">工具</a><small>1</small></li>
   
     <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
-  
-    <li><a href="/tags/算法/">算法</a><small>1</small></li>
   
   </ul>
 </div>
@@ -359,7 +629,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
   </div>
 </div>
 

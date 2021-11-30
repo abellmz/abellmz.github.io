@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>排序——桶排序、计数排序、基数排序 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="桶排序、计数排序、基数排序桶排序:
+核心思想（含计算时间复杂度）" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="排序——桶排序、计数排序、基数排序" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-11-20T10:54:30.000Z"><a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">2021-11-20</a></time>
+      
+      
+  
+    <h1 class="title">排序——桶排序、计数排序、基数排序</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h5 id="桶排序、计数排序、基数排序"><a href="#桶排序、计数排序、基数排序" class="headerlink" title="桶排序、计数排序、基数排序"></a>桶排序、计数排序、基数排序</h5><p><strong>桶排序</strong>:</p>
+<p>核心思想（含计算时间复杂度）</p>
+<a id="more"></a>
+
+<blockquote>
+<p>1.将数据(假设n个)分到几个(假设m个)彼此有序的桶里 O(n) </p>
+<p>2.每个桶里的数据再单独进行快速排序 O(m * n/m * log(n/m)) = O(nlogn/m) </p>
+<p>3.桶内排完序后，再把每个桶里的数据，按照彼此顺序依次取出，组成的就是有序的 O(n)</p>
+<p>4.从 O(nlog(n/m)) 到 O(n): 上面3步是相加，所以取最大值，T(nlog(n/m)) 当 log2(n/m) 中 n/m = 2 时，log2(2) = 1, 这时 T(n) = O(n)</p>
+</blockquote>
+<p>使用条件：</p>
+<p>桶排序对要排序数据的要求是非常苛刻的</p>
+<blockquote>
+<p>1.要排序数据容易划分m个桶，桶之间有天然的大小关系 </p>
+<p>2.数据在之间分布比较均匀 ,平均分配性好</p>
+<p>使用场景：外部排序（外部存储，数据量大，内存有限）,比如10GB的数据，但内存只有几百MB,无法一次性加载</p>
+</blockquote>
+<p>例子：订单数据按订单金额排序。</p>
+<p><strong>计数排序</strong>：</p>
+<p>高考的成绩数据不存储mysql?,mysql直接排序不行吗，一定要拿出来作桶排序？或者mysql内部是用到了桶排序？</p>
+<p>计数排序：</p>
+<p>计数排序其实是桶排序的一种特殊情况，是一种稳定排序算法</p>
+<p>计数排序只能用在数据范围不大的场景中，如果数据范围 k 比要排序的数据 n 大很多，就不适合用计数排序了。而且，计数排序只能给非负整数排序，如果要排序的数据是其他类型的，要将其在不改变相对大小的情况下，转化为非负整数。</p>
+<p>比如，数据为精确到小数后一位，则数据*10转化为整数后排序，若数据范围是-1000~1000，则每个数据+1000转为非负整数</p>
+<p>例子：高考排名次，900分，分901个桶。（实际上高考分数相同，依次比较小数点后的语文、数学、英语、理综成绩）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">2 5 3 0 2 3 0 3 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 计数排序，a是数组，n是数组大小。假设数组中存储的都是非负整数。</span><br><span class="line">public void countingSort(int[] a, int n) &#123;</span><br><span class="line">  if (n &lt;= 1) return;</span><br><span class="line"></span><br><span class="line">  // 查找数组中数据的范围</span><br><span class="line">  int max = a[0];</span><br><span class="line">  for (int i = 1; i &lt; n; ++i) &#123;</span><br><span class="line">    if (max &lt; a[i]) &#123;</span><br><span class="line">      max = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  int[] c = new int[max + 1]; // 申请一个计数数组c，下标大小[0,max]</span><br><span class="line">  for (int i = 0; i &lt;= max; ++i) &#123;</span><br><span class="line">    c[i] = 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 计算每个元素的个数，放入c中</span><br><span class="line">  for (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">    c[a[i]]++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 依次累加</span><br><span class="line">  for (int i = 1; i &lt;= max; ++i) &#123;</span><br><span class="line">    c[i] = c[i-1] + c[i];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 临时数组r，存储排序之后的结果</span><br><span class="line">  int[] r = new int[n];</span><br><span class="line">  for (int i = n - 1; i &gt;= 0; --i) &#123;// 计算排序的关键步骤，有点难理解  解决同分数间的排序</span><br><span class="line">    int index = c[a[i]]-1;</span><br><span class="line">    r[index] = a[i];</span><br><span class="line">    c[a[i]]--;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 将结果拷贝给a数组</span><br><span class="line">  for (int i = 0; i &lt; n; ++i) &#123;</span><br><span class="line">    a[i] = r[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>基数排序</strong>：</p>
+<p>手机号排序</p>
+<p>11位bigint数据能在 变量数据有没有区分32位和64位系统的说法，比如32位的bignit数据太大，可能溢出</p>
+<p>基数排序的命门：下面（底层）的排序算法得是稳定的</p>
+<p>基数排序对要排序的数据是有要求的：</p>
+<blockquote>
+<p> 1需要可以分割出独立的“位”来比较，而且位之间有递进的关系，如果 a 数据的高位比 b 数据大，那剩下的低位就不用比较了。</p>
+<p> 2除此之外，每一位的数据范围不能太大，要可以用线性排序算法来排序，否则，基数排序的时间复杂度就无法做到 O(n) 了</p>
+</blockquote>
+<p>例子：比如手机号码的排序</p>
+<h5 id="排序算法优化"><a href="#排序算法优化" class="headerlink" title="排序算法优化"></a>排序算法优化</h5><p>1.快排时间复杂度就会退化为 O(n<sup>2</sup>)：</p>
+<p>如果数据原来就是有序的或者接近有序的，每次分区点都选择最后一个数据，那快速排序算法就会变得非常糟糕，时间复杂度就会退化为O(n<sup>2</sup>)。这种O(n<sup>2</sup>)时间复杂度出现的主要原因还是因为我们分区点选得不够合理。</p>
+<blockquote>
+<p>1三数取中法:我们从区间的首、尾、中间，分别取出一个数，然后对比大小，取这 3 个数的中间值作为分区点</p>
+<p>2随机法:每次从要排序的区间中，随机选择一个元素作为分区点.概率上来说，间复杂度退化为最糟糕的 O(n<sup>2</sup>)的情况，出现的可能性不大。</p>
+</blockquote>
+<p>快排递归，警惕堆栈溢出</p>
+<blockquote>
+<p>1是限制递归深度。一旦递归过深，超过了我们事先设定的阈值，就停止递归</p>
+<p>2通过在堆上模拟实现一个函数调用栈，手动模拟递归压栈、出栈的过程，这样就没有了系统栈大小的限制。</p>
+</blockquote>
+<p>2.C 语言中 qsort()</p>
+<blockquote>
+<p>qsort() 会优先使用归并排序来排序输入数据，需额外的内存空间，适合于小数据量的排序（1KB、2KB等），空间换时间</p>
+<p>数据量比较大时，qsort() 会改为用快速排序算法来排序，比如100KB。其源码的采用的就是三数取中和手动模拟递归。快排的时，元素的个数 小于等于4时，采用插入排序（在小规模数据面前，O(n2) 时间复杂度的算法并不一定比 O(nlogn) 的算法执行时间长）</p>
+</blockquote>
+<p>3.哨兵来简化代码，少做一些判断</p>
+<p>序函数是非常常用、非常基础的函数，性能的优化要做到极致</p>
+<p>以上学于极客时间，做的笔记</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/algorithm-data-structure/">algorithm-data_structure</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/11/21/散列表/">散列表</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
