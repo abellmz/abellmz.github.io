@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>定时任务 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="#! /bin/bashlinux shell脚本中的开头 #! /bin/bash的含义
+很多时候不规范的写法可以忽略掉这一句，执行起来好像也是ok，结果没什么不一样 。这只是因为在我们常用 的linux系统上默认都是执行/bin/bash来执行我们的shell脚本，但是如果有些用户使用的是csh，那么缺少第一行的“#！/bin/bash的shell脚本执行结果就可能存在语法不兼容的问题，导致结果异常或者根本不能执行。" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="定时任务" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-09-19T08:59:56.000Z"><a href="/2021/09/19/定时任务/">2021-09-19</a></time>
+      
+      
+  
+    <h1 class="title">定时任务</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="bin-bash"><a href="#bin-bash" class="headerlink" title="#! /bin/bash"></a>#! /bin/bash</h3><p>linux shell脚本中的开头 <code>#! /bin/bash</code>的含义</p>
+<p>很多时候不规范的写法可以忽略掉这一句，执行起来好像也是ok，结果没什么不一样 。这只是因为在我们常用 的linux系统上默认都是执行/bin/bash来执行我们的shell脚本，但是如果有些用户使用的是csh，那么缺少第一行的“#！/bin/bash的shell脚本执行结果就可能存在语法不兼容的问题，导致结果异常或者根本不能执行。</p>
+<a id="more"></a>
+
+<p>Shell脚本和我们常用的C语言或者C++语言编写编译出来的bin执行当不一样，shell是一种解释性语言，他需要专门的解析器来解析然后执行，不同的脚本语言需要匹配对应的解析器才能解析执行，比如python也是一中解释性编程语言，需要对应的ptthon解释器来解析执行。</p>
+<p>我们linux上的shell 是bash shell，所以我们在编写一个脚本的时候需要在第一行添加”#！/bin/bash“. 这句话的意思是告诉执行器需要调用/bin/bash来执行我。</p>
+<p>这也是在shell中唯一以#号开头却不代表是注释的意思，其他任何地方以#号开头的语句都会被认为是注释语句而忽略执行，所以这句话只能写在 shell的开头才有效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#！/bin/bash</span><br><span class="line"></span><br><span class="line">#this is a test shell</span><br><span class="line"></span><br><span class="line">pwd</span><br><span class="line"></span><br><span class="line">#this is a comment</span><br><span class="line"></span><br><span class="line">who</span><br><span class="line"></span><br><span class="line">#show date</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+
+<p>参考链接：<a href="https://www.cnblogs.com/tid-think/p/10961490.html" target="_blank" rel="noopener">https://www.cnblogs.com/tid-think/p/10961490.html</a></p>
+<p>linux命令 执行和停止一个定时任务</p>
+<h3 id="定时任务编写"><a href="#定时任务编写" class="headerlink" title="定时任务编写"></a>定时任务编写</h3><table>
+<thead>
+<tr>
+<th>顺序</th>
+<th></th>
+<th>分</th>
+<th>时</th>
+<th>日期</th>
+<th>月份</th>
+<th>星期</th>
+<th>年（可选）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>取值</td>
+<td></td>
+<td>0-59</td>
+<td>0-23</td>
+<td>1-30(31)</td>
+<td>1-12</td>
+<td>1-7</td>
+<td></td>
+</tr>
+<tr>
+<td>允许特殊字符</td>
+<td></td>
+<td>, - * /</td>
+<td>, - * /</td>
+<td>, - * / ? L W C</td>
+<td>, - * /</td>
+<td>, - * / L # C</td>
+<td>1970-2099 , - * /</td>
+</tr>
+</tbody></table>
+<p>*：代表所有可能的值<br>-：指定范围<br>,：列出枚举  例如在分钟里，”5,15”表示5分钟和20分钟触发<br>/：指定增量  例如在分钟里，”3/15”表示从3分钟开始，没隔15分钟执行一次<br>?：表示没有具体的值，使用?要注意冲突<br>L：表示last，例如星期中表示7或SAT，月份中表示最后一天31或30，6L表示这个月倒数第6天，FRIL表示这个月的最后一个星期五<br>W：只能用在月份中，表示最接近指定天的工作日</p>
+<p><code>#</code>:只能用在星期中，表示这个月的第几个周几，例如6#3表示这个月的第3个周五</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">第一个“*”  一小时当中的第几分钟  0-59</span><br><span class="line">第二个“*” 一天当中的第几小时  0-23</span><br><span class="line">第三个“*” 一个月当中的第几天  1-31</span><br><span class="line">第五个“*”一周当中的星期几 0-7（0和7都代表星期日）</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">45 22 * * * 命令     在22点45分执行命令</span><br><span class="line">0 17 * * 1 命令    每周1 的17点0分执行命令</span><br><span class="line">0 5 1,15 * * 命令    每月1号和15号的凌晨5点0分执行命令</span><br><span class="line">40 4 * * 1-5 命令    每周一到周五的凌晨4点40分执行命令</span><br><span class="line">*/10 4 * * * 命令    每天的凌晨4点，每隔10分钟执行一次命令</span><br><span class="line">0 0 1,15 * 1 命令    每月1号和15号，每周1的0点0分都会执行命令</span><br><span class="line"></span><br><span class="line">注意：星期几和 几号最好不要同时出现，因为他们定义的都是天。非常容易让管理员混乱。</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/qq_41283044/article/details/90701074" target="_blank" rel="noopener">https://blog.csdn.net/qq_41283044/article/details/90701074</a></p>
+<p>实操</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">sudo crontab -e   //编写任务</span><br><span class="line"></span><br><span class="line">^G 求助      ^O 写入      ^W 搜索      ^K 剪切文字  ^J 对齐      ^C 游标位置</span><br><span class="line">^X 离开      ^R 读档      ^\ 替换      ^U 还原剪切  ^T 拼写检查  ^_ 跳行</span><br><span class="line"></span><br><span class="line">例如：离开——ctrl+X</span><br><span class="line">————————</span><br><span class="line">*/1 * * * *  /bin/sh /home/XXX/note/test.sh &gt;&gt; /home/XXX/note/test.log</span><br><span class="line">每分钟执行一次，将/home/XXX/note/test.sh的执行结果追加入/home/XXX/note/test.log</span><br><span class="line">————————</span><br><span class="line">ctrl+x ，回车  // 保存,退出</span><br><span class="line">sudo service cron restart 重启任务——成功</span><br><span class="line"></span><br><span class="line">sudo crontab -e//编辑任务</span><br><span class="line">sudo crontab -l  //查询crontab任务</span><br><span class="line">sudo crontab -r //删除当前用户所有的crontab任务</span><br><span class="line">格式：</span><br><span class="line">crontab [-u user] file</span><br><span class="line">crontab [-u user] [ -e | -l | -r ]</span><br><span class="line"></span><br><span class="line">参数说明：</span><br><span class="line"></span><br><span class="line">-u user：用来设定某个用户的crontab服务，例如，“-u ixdba”表示设定ixdba用户的crontab服务，此参数一般有root用户来运行。</span><br><span class="line"></span><br><span class="line">file：file是命令文件的名字,表示将file做为crontab的任务列表文件并载入crontab。如果在命令行中没有指定这个文件，crontab命令将接受标准输入（键盘）上键入的命令，并将它们载入crontab。</span><br><span class="line"></span><br><span class="line">-e：编辑某个用户的crontab文件内容。如果不指定用户，则表示编辑当前用户的crontab文件。</span><br><span class="line"></span><br><span class="line">-l：显示某个用户的crontab文件内容，如果不指定用户，则表示显示当前用户的crontab文件内容。</span><br><span class="line"></span><br><span class="line">-r：从/var/spool/cron目录中删除某个用户的crontab文件，如果不指定用户，则默认删除当前用户的crontab文件。</span><br><span class="line"></span><br><span class="line">-i：在删除用户的crontab文件时给确认提示。</span><br></pre></td></tr></table></figure>
+
+<p>原文链接：<a href="https://blog.csdn.net/ren593669257/article/details/95455245" target="_blank" rel="noopener">https://blog.csdn.net/ren593669257/article/details/95455245</a></p>
+<p>命令也能这么写，比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*/1 * * * * /bin/bash /etc/init.d/test.sh  此命令每分钟执行一次test.sh脚本</span><br><span class="line">或</span><br><span class="line">1 * * * * cd /etc/init.d &amp;&amp; ./test.sh &gt;&gt; /home/loganalysis/error.log 2&gt;&amp;1 此命令执行shell脚本文件，并记录日志</span><br></pre></td></tr></table></figure>
+
+<p>其他</p>
+<p><strong>cron运行日志</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cron运行日志在/var/log/cron.log，ubuntu默认没有开启cron日志，所以当Ubuntu服务器/var/log下没有cron日志，如何使用ubuntu server查看crontab记录日志</span><br><span class="line">//修改rsyslog</span><br><span class="line">sudo vim /etc/rsyslog.d/50-default.conf</span><br><span class="line">cron.* /var/log/cron.log #将cron前面的注释符去掉</span><br><span class="line">//重启rsyslog</span><br><span class="line">sudo service rsyslog restart</span><br><span class="line">sudo service cron restart</span><br><span class="line">//查看crontab日志</span><br><span class="line">tail -f /var/log/cron.log</span><br><span class="line"></span><br><span class="line">不需要保留执行的输出,则重定向到null中:&gt;/dev/null 2&gt;&amp;1(忽略日志输出)</span><br><span class="line">  例如 * * * * * cd /home/wang &amp;&amp; ./temp.sh &gt;/dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+
+<p>原文链接：</p>
+<p><a href="https://blog.csdn.net/xiaoguo1001/article/details/80512906" target="_blank" rel="noopener">https://blog.csdn.net/xiaoguo1001/article/details/80512906</a><br><a href="https://blog.csdn.net/weixin_43946245/article/details/103184208" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43946245/article/details/103184208</a></p>
+<p>如果只是简单的任务，可以不用写脚本，直接在crontab中加入任务即可，对于比较复杂的任务，需要写脚本（shell编程）</p>
+<p><strong>定时任务 调用接口</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 */1 * * * php /dat0/web/dev02/yii send/expire</span><br><span class="line">调用Yii2.0框架send控制器下的expire接口</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/10/24/MySQL联查及统计问题/">MySQL联查及统计问题</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/16/php计算舍入差及Ubuntu升级php版本/">php计算舍入差及Ubuntu升级php版本</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/07/PhpStorm查看代码修改人/">PhpStorm查看代码修改人</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/06/Redis-zset/">Redis-zset</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/05/Redis危险命令处理/">Redis危险命令处理</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+    <li><a href="/tags/算法/">算法</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.67px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.67px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.67px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18.33px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

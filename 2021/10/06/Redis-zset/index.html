@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>Redis-zset | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="zset命令与zrangebylex" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="Redis-zset" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-10-06T10:08:00.000Z"><a href="/2021/10/06/Redis-zset/">2021-10-06</a></time>
+      
+      
+  
+    <h1 class="title">Redis-zset</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="zset命令与zrangebylex"><a href="#zset命令与zrangebylex" class="headerlink" title="zset命令与zrangebylex"></a><strong>zset命令与zrangebylex</strong></h3><a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">zadd key score1 member1 [score2 member2]</span><br><span class="line">向有序集合添加一个或多个成员，或者更新已存在成员的分数</span><br><span class="line">zcard key</span><br><span class="line">获取有序集合的成员</span><br><span class="line">	zcount key min max</span><br><span class="line">计算在有序集合中指定区间分数的成员数</span><br><span class="line">	zincrby key increment member</span><br><span class="line">有序集合中对指定成员的分数加上增量 increment</span><br><span class="line">zinterstore destination numkeys key [key ...]</span><br><span class="line">计算给定的一个或多个有序集的交集并将结果集存储在新的有序集合 destination 中</span><br><span class="line">	zlexcount key min max</span><br><span class="line">在有序集合中计算指定字典区间内成员数量</span><br><span class="line">	zrange key start stop [WITHSCORES]</span><br><span class="line">通过索引区间返回有序集合指定区间内的成员</span><br><span class="line">	zrangebylex key min max [LIMIT offset count]</span><br><span class="line">通过字典区间返回有序集合的成员</span><br><span class="line">	zrangebyscore key min max [WITHSCORES] [LIMIT]</span><br><span class="line">通过分数返回有序集合指定区间内的成员</span><br><span class="line">	zrank key member</span><br><span class="line">返回有序集合中指定成员的索引</span><br><span class="line">	zrem key member [member ...]</span><br><span class="line">移除有序集合中的一个或多个成员</span><br><span class="line">	zremrangebylex key min max</span><br><span class="line">移除有序集合中给定的字典区间的所有成员</span><br><span class="line">	zremrangebyrank key start stop</span><br><span class="line">移除有序集合中给定的排名区间的所有成员</span><br><span class="line">	zremrangebyscore key min max</span><br><span class="line">移除有序集合中给定的分数区间的所有成员</span><br><span class="line">	zrevrange key start stop [WITHSCORES]</span><br><span class="line">返回有序集中指定区间内的成员，通过索引，分数从高到低</span><br><span class="line">	zrevrrangebyscore key max min [WITHSCORES]</span><br><span class="line">返回有序集中指定分数区间内的成员，分数从高到低排序</span><br><span class="line">	zrevrank key member</span><br><span class="line">返回有序集合中指定成员的排名，有序集成员按分数值递减(从大到小)排序</span><br><span class="line">zscore key member</span><br><span class="line">返回有序集中，成员的分数值</span><br><span class="line">zunionstore destination numkeys key [key ...]</span><br><span class="line">计算给定的一个或多个有序集的并集，并存储在新的 key 中</span><br><span class="line">	zscan key cursor [MATCH pattern] [COUNT count]</span><br><span class="line">迭代有序集合中的元素（包括元素成员和元素分值）</span><br></pre></td></tr></table></figure>
+
+<p>zrangebylex解析及应用场景</p>
+<p><a href="https://blog.csdn.net/chwshuang/article/details/52848704" target="_blank" rel="noopener">https://blog.csdn.net/chwshuang/article/details/52848704</a></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Redis/">Redis</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/10/24/MySQL联查及统计问题/">MySQL联查及统计问题</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/16/php计算舍入差及Ubuntu升级php版本/">php计算舍入差及Ubuntu升级php版本</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/07/PhpStorm查看代码修改人/">PhpStorm查看代码修改人</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/06/Redis-zset/">Redis-zset</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/05/Redis危险命令处理/">Redis危险命令处理</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>3</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>5</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+    <li><a href="/tags/算法/">算法</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.67px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.67px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 13.33px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.67px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 13.33px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 18.33px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 13.33px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
