@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>linux找到java安装路径及进程占用查询 | abellmz</title>
+  <meta name="author" content="abellmz" />
+
+  
+  <meta name="description" content="找到java安装路径及进程占用查询" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="linux找到java安装路径及进程占用查询" />
+  <meta property="og:site_name" content="abellmz" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">abellmz</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
+    
+      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
+    
+      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2021-11-07T11:29:14.000Z"><a href="/2021/11/07/linux找到java安装路径/">2021-11-07</a></time>
+      
+      
+  
+    <h1 class="title">linux找到java安装路径及进程占用查询</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>找到java安装路径及进程占用查询</p>
+<a id="more"></a>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ which java</span><br><span class="line">&gt;/usr/bin/java</span><br><span class="line">$ ls -lrt /usr/bin/java</span><br><span class="line">&gt;lrwxrwxrwx 1 root root 22 8月  13 11:01 /usr/bin/java -&gt; /etc/alternatives/java</span><br><span class="line">$ ls -lrt /etc/alternatives/java</span><br><span class="line">&gt; lrwxrwxrwx 1 root root 43 8月  13 11:01 /etc/alternatives/java -&gt; /usr/lib/jvm/java-11-openjdk-amd64/bin/java</span><br><span class="line">$ cd /usr/lib/jvm/java-11-openjdk-amd64/</span><br><span class="line"></span><br><span class="line">ls -lrt</span><br><span class="line">-a ：显示所有文件即目录（ls内定将文件名或目录名称开头为“.”的视为隐藏档，不会列出）</span><br><span class="line">-l： 除文件名称外，亦将文件形态、权限、拥有者、文件大小等资讯详细列出。</span><br><span class="line">-r： 将文件以相反次序显示（原定依英文字母次序）。</span><br><span class="line">-t： 将文件依次建立时间之先后次序列出。</span><br><span class="line">-A： 同-a，但不列出“.” (当前目录)及“…”(副文件)。</span><br><span class="line">-F: 在列出的文件名称后加一符号;例如可执行档则加“*”，目录则加“/”</span><br><span class="line">-R： 若目录下有文件，则以下之文件亦皆依序里列出。</span><br><span class="line"></span><br><span class="line"> which java</span><br><span class="line">此方法是无法定位到java的安装路径的，只能定位到执行路径</span><br><span class="line">echo $JAVA_HOME </span><br><span class="line">使用 echo $JAVA_HOME 命令可以定位到java安装路径，但前提是匹配了环境变量 $JAVA_HOME ，否则还是定位不到</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>sudo netstat -ltunp</code> 显示端口号进程占用情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">-a或--all 显示所有连线中的Socket。</span><br><span class="line">-A&lt;网络类型&gt;或--&lt;网络类型&gt; 列出该网络类型连线中的相关地址。</span><br><span class="line">-c或--continuous 持续列出网络状态。</span><br><span class="line">-C或--cache 显示路由器配置的快取信息。</span><br><span class="line">-e或--extend 显示网络其他相关信息。</span><br><span class="line">-F或--fib 显示路由缓存。</span><br><span class="line">-g或--groups 显示多重广播功能群组组员名单。</span><br><span class="line">-h或--help 在线帮助。</span><br><span class="line">-i或--interfaces 显示网络界面信息表单。</span><br><span class="line">-l或--listening 显示监控中的服务器的Socket。</span><br><span class="line">-M或--masquerade 显示伪装的网络连线。</span><br><span class="line">-n或--numeric 直接使用IP地址，而不通过域名服务器。</span><br><span class="line">-N或--netlink或--symbolic 显示网络硬件外围设备的符号连接名称。</span><br><span class="line">-o或--timers 显示计时器。</span><br><span class="line">-p或--programs 显示正在使用Socket的程序识别码和程序名称。</span><br><span class="line">-r或--route 显示Routing Table。</span><br><span class="line">-s或--statistics 显示网络工作信息统计表。</span><br><span class="line">-t或--tcp 显示TCP传输协议的连线状况。</span><br><span class="line">-u或--udp 显示UDP传输协议的连线状况。</span><br><span class="line">-v或--verbose 显示指令执行过程。</span><br><span class="line">-V或--version 显示版本信息。</span><br><span class="line">-w或--raw 显示RAW传输协议的连线状况。</span><br><span class="line">-x或--unix 此参数的效果和指定&quot;-A unix&quot;参数相同。</span><br><span class="line">--ip或--inet 此参数的效果和指定&quot;-A inet&quot;参数相同。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>kill 1142</code>    kill+进程号结束进程</p>
+<p><code>ps -ef</code> 查看所有进程</p>
+<p><code>gnome-system-monitor</code>   系统自带的资源管理器</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Linux/">Linux</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
+	<script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2021/11/07/linux找到java安装路径/">linux找到java安装路径及进程占用查询</a>
+      </li>
+    
+      <li>
+        <a href="/2021/11/06/解压安装各类格式文件/">解压安装各类格式文件</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/30/Mac-ssh连接远程服务器，并实现文件的上传和下载/">Mac,ssh连接远程服务器，并实现文件的上传和下载</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/26/docker删除镜像/">docker删除镜像</a>
+      </li>
+    
+      <li>
+        <a href="/2021/10/24/MySQL联查及统计问题/">MySQL联查及统计问题</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
+  
+    <li><a href="/tags/Git/">Git</a><small>5</small></li>
+  
+    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
+  
+    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
+  
+    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
+  
+    <li><a href="/tags/Linux/">Linux</a><small>8</small></li>
+  
+    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
+  
+    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
+  
+    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
+  
+    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
+  
+    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
+  
+    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
+  
+    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
+  
+    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
+  
+    <li><a href="/tags/前端/">前端</a><small>3</small></li>
+  
+    <li><a href="/tags/工具/">工具</a><small>1</small></li>
+  
+    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
+  
+    <li><a href="/tags/算法/">算法</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2021 abellmz
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+</footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
