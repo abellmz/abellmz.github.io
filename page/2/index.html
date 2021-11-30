@@ -68,6 +68,59 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2021-09-26T09:58:39.000Z"><a href="/2021/09/26/Redis点赞设计/">2021-09-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2021/09/26/Redis点赞设计/">Redis点赞设计</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="点赞设计"><a href="#点赞设计" class="headerlink" title="点赞设计"></a>点赞设计</h2><h3 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h3><p><code>考虑：此方案不针对于排行榜，只是文章的点赞。</code></p>
+<p>缺点：redis挂掉的时候会丢失数据， 同时不及时同步redis中的数据， 可能会在redis内存置换的时候被淘汰掉;</p>
+<p>不过对于我们点赞而已， 稍微丢失一点数据问题不大;</p>
+      
+    </div>
+    
+    <footer>
+      <div class="alignleft">
+        <a href="/2021/09/26/Redis点赞设计/#more" class="more-link">More</a>
+      </div>
+    </footer>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Redis/">Redis</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2021-09-20T09:26:17.000Z"><a href="/2021/09/20/反向代理/">2021-09-20</a></time>
       
       
@@ -530,57 +583,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2021-03-10T13:01:49.000Z"><a href="/2021/03/10/mongoDB/">2021-03-10</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2021/03/10/mongoDB/">MongoDB01</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h3 id="服务器三种架构"><a href="#服务器三种架构" class="headerlink" title="服务器三种架构"></a>服务器三种架构</h3><p><strong>服务器集群</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
-      
-    </div>
-    
-    <footer>
-      <div class="alignleft">
-        <a href="/2021/03/10/mongoDB/#more" class="more-link">More</a>
-      </div>
-    </footer>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/MongoDB/">MongoDB</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -599,6 +601,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2021/11/14/配置ssh的sftp服务及nginx文件检测/">配置ssh的sftp服务及nginx文件检测</a>
+      </li>
+    
+      <li>
         <a href="/2021/11/07/linux找到java安装路径/">linux找到java安装路径及进程占用查询</a>
       </li>
     
@@ -612,10 +618,6 @@
     
       <li>
         <a href="/2021/10/26/docker删除镜像/">docker删除镜像</a>
-      </li>
-    
-      <li>
-        <a href="/2021/10/24/MySQL联查及统计问题/">MySQL联查及统计问题</a>
       </li>
     
   </ul>
@@ -637,7 +639,7 @@
   
     <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
   
-    <li><a href="/tags/Linux/">Linux</a><small>8</small></li>
+    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
   
     <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
   
