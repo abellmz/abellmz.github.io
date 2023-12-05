@@ -1,92 +1,117 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  
+
   
   <title>Redis基础知识 | abellmz</title>
-  <meta name="author" content="abellmz" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis基础知识Redis官网:http:&#x2F;&#x2F;redis.io 国内社区：http:&#x2F;&#x2F;www.redis.cn http:&#x2F;&#x2F;nosql-database.org列出了世界上目前正在使用的nosql产品 nosql产品特点：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="Redis基础知识Redis官网:http:&#x2F;&#x2F;redis.io 国内社区：http:&#x2F;&#x2F;www.redis.cn http:&#x2F;&#x2F;nosql-database.org列出了世界上目前正在使用的nosql产品 nosql产品特点：">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557581277148.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557582360330.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557582768921.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557631620786.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557632184416.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557648966813.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557650784445.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557652211423.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557670734545.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671170647.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671358424.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671431153.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671823506.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671849089.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672637713.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672744263.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/WeChat424e10f43e5f0ebdc097cf275dd8a1cb.png">
+<meta property="article:published_time" content="2019-05-30T02:51:15.000Z">
+<meta property="article:modified_time" content="2021-08-31T01:58:06.315Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557581277148.png">
   
-  <meta name="description" content="Redis基础知识Redis官网:http://redis.io
-国内社区：http://www.redis.cn
-http://nosql-database.org列出了世界上目前正在使用的nosql产品
-nosql产品特点：" />
-  
-
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-  <meta property="og:title" content="Redis基础知识" />
-  <meta property="og:site_name" content="abellmz" />
-
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
   
   
-
+    <link rel="icon" href="/favicon.png">
   
-    <meta property="og:image" content="" />
   
-
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link href="/css/images/favicon.ico" rel="icon" />
   
+<link rel="stylesheet" href="/css/style.css">
 
-  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
-</head>
-
+<meta name="generator" content="Hexo 7.0.0"></head>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">abellmz</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Redis基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time datetime="2019-05-30T02:51:15.000Z" itemprop="datePublished">2019-05-30</time>
+</a>
     
-      <li><a href="/">Home</a></li>
+  </div>
+  <div class="article-inner">
     
-      <li><a href="/archives">Archives</a></li>
     
-      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
-    
-      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
-    
-      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+      <header class="article-header">
+        
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2019-05-30T02:51:15.000Z"><a href="/2019/05/30/Redis基础知识/">2019-05-30</a></time>
-      
-      
-  
-    <h1 class="title">Redis基础知识</h1>
+    <h1 class="article-title" itemprop="name">
+      Redis基础知识
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h3><p>Redis官网:<a href="http://redis.io" target="_blank" rel="noopener">http://redis.io</a></p>
-<p>国内社区：<a href="http://www.redis.cn" target="_blank" rel="noopener">http://www.redis.cn</a></p>
-<p><a href="http://nosql-database.org列出了世界上目前正在使用的nosql产品" target="_blank" rel="noopener">http://nosql-database.org列出了世界上目前正在使用的nosql产品</a></p>
+        <h3 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h3><p>Redis官网:<a href="http://redis.io/">http://redis.io</a></p>
+<p>国内社区：<a href="http://www.redis.cn/">http://www.redis.cn</a></p>
+<p><a href="http://nosql-database.org列出了世界上目前正在使用的nosql产品/">http://nosql-database.org列出了世界上目前正在使用的nosql产品</a></p>
 <p>nosql产品特点：</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>1、一般不适用严格的表结构（由行和列组成的表）</p>
 <p>2、数据查询一般都不再使用sql查询</p>
@@ -97,25 +122,25 @@ nosql产品特点：" />
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557582360330.png" alt="1557582360330"></p>
 <p>window系统下，在命令行工具窗口启动redis服务端</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557582768921.png" alt="1557582768921"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">启动客户端</span><br><span class="line">redis -cli.exe -h 192.168.1.11 -p 6379</span><br><span class="line">设置个叫asion的名字：</span><br><span class="line">&gt;set name asion</span><br><span class="line">&gt;get name</span><br><span class="line"></span><br><span class="line">-h redis服务器的IP地址</span><br><span class="line">-p redis的端口 默认6379</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">启动客户端</span><br><span class="line">redis -cli.exe -h 192.168.1.11 -p 6379</span><br><span class="line">设置个叫asion的名字：</span><br><span class="line">&gt;set name asion</span><br><span class="line">&gt;get name</span><br><span class="line"></span><br><span class="line">-h redis服务器的IP地址</span><br><span class="line">-p redis的端口 默认6379</span><br></pre></td></tr></table></figure>
 
 <p>关闭redis服务  按ctrl+c</p>
 <p>Linux下redis的安装，需要redis源码包和php扩展包</p>
 <p>xshell操作：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">make命令：</span><br><span class="line">make 的作用是开始进行源代码编译，以及一些功能的提供，这些功能由他的 Makefile 设置文件提供相关的功能。当我们在使用make命令时，常常会在make后面加上其他单词，比如check，install，installcheck…这些单词都是make的参数，我们称之为“目标（targets）”。</span><br><span class="line">参考链接：https://zhidao.baidu.com/question/873571868982546612.html</span><br><span class="line"></span><br><span class="line">#service vsftpd status  (查看ftp服务有没有开启)</span><br><span class="line">连接ftp(用FlashFXP软件)，上传redis源码包和php扩展包到linux系统</span><br><span class="line">cp包到 linux下 /user/local/src/</span><br><span class="line">tar -zxvf redis-3.0.7.tar.gz	进入目录，并进行解压</span><br><span class="line">进入 源码包目录，</span><br><span class="line">#make（直接make,不需要使用configure过程，这是编译）</span><br><span class="line">#make PREFIX=/user/local/redis install(指定安装目录)</span><br><span class="line">安装redis到指定目录  </span><br><span class="line">#mkdir /etc/redis</span><br><span class="line">#cp redis.conf /etc/redis/</span><br><span class="line">#cd 切换到redis/bin</span><br><span class="line"># ./redis-server启动服务，可以ctrl +c关闭服务</span><br><span class="line">使redis服务在后台运行，修改配置文件redis.conf</span><br><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">	将daemonize no 改为daemonize yes完成保存</span><br><span class="line">在bin目录下</span><br><span class="line">#./redis-server /etc/redis/redis.conf使用配置文件启动服务</span><br><span class="line">查看redis服务是否正常启动</span><br><span class="line">#ps axu |grep redis-server使用ps查看</span><br><span class="line">	看到./redis-server*:6379</span><br><span class="line">#netstat -tunple | grep 6379使用netstat查看</span><br><span class="line">	看到LISTEN和redis-server</span><br><span class="line">关闭后台redis服务</span><br><span class="line">#pkill -9 redis-server用pkill关闭</span><br><span class="line">在用ps或netstat查看</span><br><span class="line">使用客户端连接服务</span><br><span class="line">#./redis-server /etc/redis/redis.conf(确保服务启动)</span><br><span class="line">#./redis-cli -h 192.168.1.11 -p 6379</span><br><span class="line">测试</span><br><span class="line">&gt;set name asion（set命令,key是name，value是asion ）</span><br><span class="line">&gt;get name(获取value值)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">make命令：</span><br><span class="line">make 的作用是开始进行源代码编译，以及一些功能的提供，这些功能由他的 Makefile 设置文件提供相关的功能。当我们在使用make命令时，常常会在make后面加上其他单词，比如check，install，installcheck…这些单词都是make的参数，我们称之为“目标（targets）”。</span><br><span class="line">参考链接：https://zhidao.baidu.com/question/873571868982546612.html</span><br><span class="line"></span><br><span class="line">#service vsftpd status  (查看ftp服务有没有开启)</span><br><span class="line">连接ftp(用FlashFXP软件)，上传redis源码包和php扩展包到linux系统</span><br><span class="line">cp包到 linux下 /user/local/src/</span><br><span class="line">tar -zxvf redis-3.0.7.tar.gz	进入目录，并进行解压</span><br><span class="line">进入 源码包目录，</span><br><span class="line">#make（直接make,不需要使用configure过程，这是编译）</span><br><span class="line">#make PREFIX=/user/local/redis install(指定安装目录)</span><br><span class="line">安装redis到指定目录  </span><br><span class="line">#mkdir /etc/redis</span><br><span class="line">#cp redis.conf /etc/redis/</span><br><span class="line">#cd 切换到redis/bin</span><br><span class="line"># ./redis-server启动服务，可以ctrl +c关闭服务</span><br><span class="line">使redis服务在后台运行，修改配置文件redis.conf</span><br><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">	将daemonize no 改为daemonize yes完成保存</span><br><span class="line">在bin目录下</span><br><span class="line">#./redis-server /etc/redis/redis.conf使用配置文件启动服务</span><br><span class="line">查看redis服务是否正常启动</span><br><span class="line">#ps axu |grep redis-server使用ps查看</span><br><span class="line">	看到./redis-server*:6379</span><br><span class="line">#netstat -tunple | grep 6379使用netstat查看</span><br><span class="line">	看到LISTEN和redis-server</span><br><span class="line">关闭后台redis服务</span><br><span class="line">#pkill -9 redis-server用pkill关闭</span><br><span class="line">在用ps或netstat查看</span><br><span class="line">使用客户端连接服务</span><br><span class="line">#./redis-server /etc/redis/redis.conf(确保服务启动)</span><br><span class="line">#./redis-cli -h 192.168.1.11 -p 6379</span><br><span class="line">测试</span><br><span class="line">&gt;set name asion（set命令,key是name，value是asion ）</span><br><span class="line">&gt;get name(获取value值)</span><br></pre></td></tr></table></figure>
 
 <p>redis数据类型</p>
 <h5 id="string"><a href="#string" class="headerlink" title="string"></a>string</h5><p>（value中保存的是string）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;set name asion set设置,key是name，value是asion</span><br><span class="line">&gt;incr age 	对key为age的value	自增+1操作</span><br><span class="line">&gt;decr age 	对key为age的value	自减-1操作</span><br><span class="line">&gt;incrby age  23 	对key为age的value自增23</span><br><span class="line">&gt;decrby age  23 	对key为age的value自减23</span><br><span class="line">&gt;keys *获取redis中所有key</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;set name asion set设置,key是name，value是asion</span><br><span class="line">&gt;incr age 	对key为age的value	自增+1操作</span><br><span class="line">&gt;decr age 	对key为age的value	自减-1操作</span><br><span class="line">&gt;incrby age  23 	对key为age的value自增23</span><br><span class="line">&gt;decrby age  23 	对key为age的value自减23</span><br><span class="line">&gt;keys *获取redis中所有key</span><br></pre></td></tr></table></figure>
 
 <p>redis中对key的设计</p>
 <p>场景-&gt;获得最新的10个登录用户信息：select * from user order by logintime desc limit 10;</p>
 <p>mysql中it_user表</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557631620786.png" alt="1557631620786"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">it_user:id:1:username 保存username,若保存email,则将username换成email</span><br><span class="line">表名：主键字段：主键值：其他字段</span><br><span class="line">&gt;set it_user:id:1:username asion	设置key为it_user:id:1:username，value为asion</span><br><span class="line">&gt;keys it_user:id:1*		h获取id为1的用户的信息</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">it_user:id:1:username 保存username,若保存email,则将username换成email</span><br><span class="line">表名：主键字段：主键值：其他字段</span><br><span class="line">&gt;set it_user:id:1:username asion	设置key为it_user:id:1:username，value为asion</span><br><span class="line">&gt;keys it_user:id:1*		h获取id为1的用户的信息</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557632184416.png" alt="1557632184416"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1Redis的数据是共享的</span><br><span class="line">    如果将用户信息存储在web服务的本地缓存，则每个web服务都会缓存一份，当用户修改昵称时，需要通知其它web服务更新用户缓存。</span><br><span class="line">    如果将用户信息存储在Redis，则只有一份缓存，所有的web访问的都是同一份缓存，当用户修改昵称时，所有web服务都能同时访问到最新的缓存。</span><br><span class="line">2Redis是单线程的</span><br><span class="line">    由于Redis的性能瓶颈在于内存读写速度，而不是CPU，设计者将Redis设计成了单线程模式，其所有操作都是原子性的，避免了多线程带来的复杂性。</span><br><span class="line"></span><br><span class="line">应用场景</span><br><span class="line">1计数器</span><br><span class="line">    string类型的incr和decr命令的作用是将key中储存的数字值加一/减一，这两个操作具有原子性，总能安全地进行加减操作，因此可以用string类型进行计数，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。</span><br><span class="line">2分布式锁</span><br><span class="line">    string类型的setnx的作用是“当key不存在时，设值并返回1，当key已经存在时，不设值并返回0”，“判断key是否存在”和“设值”两个操作是原子性地执行的，因此可以用string类型作为分布式锁，返回1表示获得锁，返回0表示没有获得锁。例如，为了保证定时任务的高可用，往往会同时部署多个具备相同定时任务的服务，但是业务上只希望其中的某一台服务执行定时任务，当定时任务的时间点触发时，多个服务同时竞争一个分布式锁，获取到锁的执行定时任务，没获取到的放弃执行定时任务。定时任务执行完时通过del命令删除key即释放锁，如果担心del命令操作失败而导致锁一直未释放，可以通过expire命令给锁设置一个合理的自动过期时间，确保即使del命令失败，锁也能被释放。不过expire命令同样存在失败的可能性，如果你用的是Java语言，建议使用JedisCommands接口提供的String set(String key, String value, String nxxx, String expx, long time)方法，这个方法可以将setnx和expire原子性地执行，具体使用方式如下（相信其它语言的Redis客户端也应当提供了类似的方法）。</span><br><span class="line">3存储对象</span><br><span class="line">    利用JSON强大的兼容性、可读性和易用性，将对象转换为JSON字符串，再存储在string类型中，是个不错的选择，如用户信息、商品信息等。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1Redis的数据是共享的</span><br><span class="line">    如果将用户信息存储在web服务的本地缓存，则每个web服务都会缓存一份，当用户修改昵称时，需要通知其它web服务更新用户缓存。</span><br><span class="line">    如果将用户信息存储在Redis，则只有一份缓存，所有的web访问的都是同一份缓存，当用户修改昵称时，所有web服务都能同时访问到最新的缓存。</span><br><span class="line">2Redis是单线程的</span><br><span class="line">    由于Redis的性能瓶颈在于内存读写速度，而不是CPU，设计者将Redis设计成了单线程模式，其所有操作都是原子性的，避免了多线程带来的复杂性。</span><br><span class="line"></span><br><span class="line">应用场景</span><br><span class="line">1计数器</span><br><span class="line">    string类型的incr和decr命令的作用是将key中储存的数字值加一/减一，这两个操作具有原子性，总能安全地进行加减操作，因此可以用string类型进行计数，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。</span><br><span class="line">2分布式锁</span><br><span class="line">    string类型的setnx的作用是“当key不存在时，设值并返回1，当key已经存在时，不设值并返回0”，“判断key是否存在”和“设值”两个操作是原子性地执行的，因此可以用string类型作为分布式锁，返回1表示获得锁，返回0表示没有获得锁。例如，为了保证定时任务的高可用，往往会同时部署多个具备相同定时任务的服务，但是业务上只希望其中的某一台服务执行定时任务，当定时任务的时间点触发时，多个服务同时竞争一个分布式锁，获取到锁的执行定时任务，没获取到的放弃执行定时任务。定时任务执行完时通过del命令删除key即释放锁，如果担心del命令操作失败而导致锁一直未释放，可以通过expire命令给锁设置一个合理的自动过期时间，确保即使del命令失败，锁也能被释放。不过expire命令同样存在失败的可能性，如果你用的是Java语言，建议使用JedisCommands接口提供的String set(String key, String value, String nxxx, String expx, long time)方法，这个方法可以将setnx和expire原子性地执行，具体使用方式如下（相信其它语言的Redis客户端也应当提供了类似的方法）。</span><br><span class="line">3存储对象</span><br><span class="line">    利用JSON强大的兼容性、可读性和易用性，将对象转换为JSON字符串，再存储在string类型中，是个不错的选择，如用户信息、商品信息等。</span><br></pre></td></tr></table></figure>
 
 <p>string底层是简单动态字符串(simple dynamic string, SDS)</p>
 <table>
@@ -146,18 +171,18 @@ nosql产品特点：" />
 <td>可以使用一部分库的函数</td>
 </tr>
 </tbody></table>
-<p>参考链接：<a href="https://blog.csdn.net/pugongying_95/article/details/99718749" target="_blank" rel="noopener">https://blog.csdn.net/pugongying_95/article/details/99718749</a></p>
-<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;hset userInfo name asion</span><br><span class="line">hsetd命令设置单个，key为userInfo,value为name asion</span><br><span class="line">类似于php中关联数组$userInfo=array(&apos;name&apos;=&gt;&apos;asion&apos;)</span><br><span class="line">&gt;hget userInfo name	获取单个值value</span><br><span class="line">&gt;hmset userInfo age 12 email gogo@163.com</span><br><span class="line">hmset设置多个，获取单个值value是一样的操作，获取userInfo全部value值，用hgetall</span><br><span class="line">&gt;hgetall userInfo</span><br></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://blog.csdn.net/pugongying_95/article/details/99718749">https://blog.csdn.net/pugongying_95/article/details/99718749</a></p>
+<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;hset userInfo name asion</span><br><span class="line">hsetd命令设置单个，key为userInfo,value为name asion</span><br><span class="line">类似于php中关联数组$userInfo=array(&#x27;name&#x27;=&gt;&#x27;asion&#x27;)</span><br><span class="line">&gt;hget userInfo name	获取单个值value</span><br><span class="line">&gt;hmset userInfo age 12 email gogo@163.com</span><br><span class="line">hmset设置多个，获取单个值value是一样的操作，获取userInfo全部value值，用hgetall</span><br><span class="line">&gt;hgetall userInfo</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1购物车</span><br><span class="line">以用户id为key，商品id为field，商品数量为value，恰好构成了购物车的3个要素。</span><br><span class="line">2存储对象</span><br><span class="line">hash类型的(key, field, value)的结构与对象的(对象id, 属性, 值)的结构相似，也可以用来存储对象。</span><br><span class="line">参考：https://www.cnblogs.com/pangzizhe/p/10657801.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1购物车</span><br><span class="line">以用户id为key，商品id为field，商品数量为value，恰好构成了购物车的3个要素。</span><br><span class="line">2存储对象</span><br><span class="line">hash类型的(key, field, value)的结构与对象的(对象id, 属性, 值)的结构相似，也可以用来存储对象。</span><br><span class="line">参考：https://www.cnblogs.com/pangzizhe/p/10657801.html</span><br></pre></td></tr></table></figure>
 
 
 
 <h5 id="list链表"><a href="#list链表" class="headerlink" title="list链表"></a>list链表</h5><p>左侧头部，右侧尾部</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lpush link1 a	从左侧（头部）向链表link1压入a</span><br><span class="line">rpush link2 A	从右侧（尾部）向链表link2压入a</span><br><span class="line">lrang link1 0 -1从左侧开始取link1数据，0是第一个单元，-1代表最后一个单元</span><br><span class="line">lpop link1	弹出link1左侧第一个元素</span><br><span class="line">rpop link1	弹出link1右侧第一个元素</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lpush link1 a	从左侧（头部）向链表link1压入a</span><br><span class="line">rpush link2 A	从右侧（尾部）向链表link2压入a</span><br><span class="line">lrang link1 0 -1从左侧开始取link1数据，0是第一个单元，-1代表最后一个单元</span><br><span class="line">lpop link1	弹出link1左侧第一个元素</span><br><span class="line">rpop link1	弹出link1右侧第一个元素</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557648966813.png" alt="1557648966813"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1消息队列</span><br><span class="line">list类型的lpop和rpush（或者反过来，lpush和rpop）能实现队列的功能，故而可以用Redis的list类型实现简单的点对点的消息队列。不过我不推荐在实战中这么使用，因为现在已经有Kafka、NSQ、RabbitMQ等成熟的消息队列了，它们的功能已经很完善了，除非是为了更深入地理解消息队列，不然我觉得没必要去重复造轮子。</span><br><span class="line">2排行版</span><br><span class="line">list类型的lrange命令可以分页查看队列中的数据。感觉用zset会更好</span><br><span class="line">3最新列表</span><br><span class="line">list类型的lpush命令和lrange命令能实现最新列表的功能，每次通过lpush命令往列表里插入新的元素，然后通过lrange命令读取最新的元素列表，如朋友圈的点赞列表、评论列表</span><br><span class="line">https://www.cnblogs.com/pangzizhe/p/10674501.html</span><br><span class="line">秒杀场景的使用，作为参考：</span><br><span class="line">https://blog.csdn.net/a7442358/article/details/102463137</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1消息队列</span><br><span class="line">list类型的lpop和rpush（或者反过来，lpush和rpop）能实现队列的功能，故而可以用Redis的list类型实现简单的点对点的消息队列。不过我不推荐在实战中这么使用，因为现在已经有Kafka、NSQ、RabbitMQ等成熟的消息队列了，它们的功能已经很完善了，除非是为了更深入地理解消息队列，不然我觉得没必要去重复造轮子。</span><br><span class="line">2排行版</span><br><span class="line">list类型的lrange命令可以分页查看队列中的数据。感觉用zset会更好</span><br><span class="line">3最新列表</span><br><span class="line">list类型的lpush命令和lrange命令能实现最新列表的功能，每次通过lpush命令往列表里插入新的元素，然后通过lrange命令读取最新的元素列表，如朋友圈的点赞列表、评论列表</span><br><span class="line">https://www.cnblogs.com/pangzizhe/p/10674501.html</span><br><span class="line">秒杀场景的使用，作为参考：</span><br><span class="line">https://blog.csdn.net/a7442358/article/details/102463137</span><br></pre></td></tr></table></figure>
 
 
 
@@ -167,13 +192,13 @@ nosql产品特点：" />
 <p>3、数据的个数是确定的</p>
 <p>常见运算：</p>
 <p>交集、并集、差集</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sadd set1 a 像集合set1中添加单元a</span><br><span class="line">smembers set1 获取集合set1中的所有单元</span><br><span class="line">srem set1 a	移除集合set1中的a单元</span><br><span class="line">spop set1	随机弹出集合中的一个单元</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sadd set1 a 像集合set1中添加单元a</span><br><span class="line">smembers set1 获取集合set1中的所有单元</span><br><span class="line">srem set1 a	移除集合set1中的a单元</span><br><span class="line">spop set1	随机弹出集合中的一个单元	</span><br></pre></td></tr></table></figure>
 
 <p>社交类网站中用于推荐好友、共同好友等。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sinter set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的共同好友（求交集）</span><br><span class="line">sunion set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的全部好友（并集）</span><br><span class="line">sdiff set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">让3号用户给45号用户推荐好友（差集）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sinter set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的共同好友（求交集）</span><br><span class="line">sunion set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的全部好友（并集）</span><br><span class="line">sdiff set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">让3号用户给45号用户推荐好友（差集）</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557650784445.png" alt="1557650784445"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1好友/关注/粉丝/感兴趣的人</span><br><span class="line">set类型唯一的特点使得其适合用于存储好友/关注/粉丝/感兴趣的人集合，集合中的元素数量可能很多，每次全部取出来成本不小，set类型提供了一些很实用的命令用于直接操作这些集合，如</span><br><span class="line">a. sinter命令可以获得A和B两个用户的共同好友</span><br><span class="line">b. sismember命令可以判断A是否是B的好友</span><br><span class="line">c. scard命令可以获取好友数量</span><br><span class="line">d. 关注时，smove命令可以将B从A的粉丝集合转移到A的好友集合</span><br><span class="line">2随机展示</span><br><span class="line">通常，app首页的展示区域有限，但是又不能总是展示固定的内容，一种做法是先确定一批需要展示的内容，再从中随机获取</span><br><span class="line">3黑名单/白名单</span><br><span class="line">经常有业务出于安全性方面的考虑，需要设置用户黑名单、ip黑名单、设备黑名单等，set类型适合存储这些黑名单数据，sismember命令可用于判断用户、ip、设备是否处于黑名单之中</span><br><span class="line">参考链接：https://www.cnblogs.com/pangzizhe/p/10723019.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1好友/关注/粉丝/感兴趣的人</span><br><span class="line">set类型唯一的特点使得其适合用于存储好友/关注/粉丝/感兴趣的人集合，集合中的元素数量可能很多，每次全部取出来成本不小，set类型提供了一些很实用的命令用于直接操作这些集合，如</span><br><span class="line">a. sinter命令可以获得A和B两个用户的共同好友</span><br><span class="line">b. sismember命令可以判断A是否是B的好友</span><br><span class="line">c. scard命令可以获取好友数量</span><br><span class="line">d. 关注时，smove命令可以将B从A的粉丝集合转移到A的好友集合</span><br><span class="line">2随机展示</span><br><span class="line">通常，app首页的展示区域有限，但是又不能总是展示固定的内容，一种做法是先确定一批需要展示的内容，再从中随机获取</span><br><span class="line">3黑名单/白名单</span><br><span class="line">经常有业务出于安全性方面的考虑，需要设置用户黑名单、ip黑名单、设备黑名单等，set类型适合存储这些黑名单数据，sismember命令可用于判断用户、ip、设备是否处于黑名单之中</span><br><span class="line">参考链接：https://www.cnblogs.com/pangzizhe/p/10723019.html</span><br></pre></td></tr></table></figure>
 
 
 
@@ -181,11 +206,11 @@ nosql产品特点：" />
 <p>1、数据彼此有顺序之分（权重：如1-9阿拉伯数字或者 a-z字母顺序等）</p>
 <p>2、数据彼此不重复</p>
 <p>3、数据的个数是确定的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zadd class:phpRank 5 mark 给class:phpRank的集合中添加权重为5的mark</span><br><span class="line">zrange class:phpRank 0 -1 withscores</span><br><span class="line">显示集合中的元素和对应权重（withscores按权重排好序了）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zadd class:phpRank 5 mark 给class:phpRank的集合中添加权重为5的mark</span><br><span class="line">zrange class:phpRank 0 -1 withscores</span><br><span class="line">显示集合中的元素和对应权重（withscores按权重排好序了）</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557652211423.png" alt="1557652211423"></p>
 <p>应用场景</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1延时队列</span><br><span class="line">score作为时间戳，自动按照时间最近的进行排序，启一个线程持续poll并设置park时间，完成延迟队列的设计</span><br><span class="line">2排行榜</span><br><span class="line">score作为浏览次数，自动进行排序，但要注意冷数据</span><br><span class="line">3滑动窗口限流</span><br><span class="line">score作为时间戳，可统计最近一段时间内内的成员数量，实现滑动窗口限流</span><br><span class="line">参考链接：https://zhuanlan.zhihu.com/p/147912757</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1延时队列</span><br><span class="line">score作为时间戳，自动按照时间最近的进行排序，启一个线程持续poll并设置park时间，完成延迟队列的设计</span><br><span class="line">2排行榜</span><br><span class="line">score作为浏览次数，自动进行排序，但要注意冷数据</span><br><span class="line">3滑动窗口限流</span><br><span class="line">score作为时间戳，可统计最近一段时间内内的成员数量，实现滑动窗口限流</span><br><span class="line">参考链接：https://zhuanlan.zhihu.com/p/147912757</span><br></pre></td></tr></table></figure>
 
 
 
@@ -199,7 +224,7 @@ nosql产品特点：" />
 <p>a基于快照的方式：按照一定周期把将内存中的数据同步到磁盘文件中</p>
 <p>b基于日志文件的追加：把对redis数据造成更改的命令记录到日志文件里面，然后在再一次重启的时候，执行一下日志文件里面对redis写的操作，达到数据还原的目的</p>
 <h5 id="基于快照的方式"><a href="#基于快照的方式" class="headerlink" title="基于快照的方式"></a>基于快照的方式</h5><p>1、修改配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">:/save搜索save,按n下一个</span><br><span class="line">找到内容-&gt;基于周期性持久化，只要任何一个条件达到，就会触发</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">:/save搜索save,按n下一个</span><br><span class="line">找到内容-&gt;基于周期性持久化，只要任何一个条件达到，就会触发</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557670734545.png" alt="1557670734545"></p>
 <p>save 900 1 含义，如果在900s内对redis的key进行过1次操作，则会把内存里面的数据同步到磁盘文件</p>
@@ -210,17 +235,17 @@ nosql产品特点：" />
 <p>尝试：</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671358424.png" alt="1557671358424"></p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671431153.png" alt="1557671431153"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;bgsave	人为的触发基于快照的持久化操作</span><br><span class="line">#pkill -9 redis -sever 人为的模拟服务宕机</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;bgsave	人为的触发基于快照的持久化操作</span><br><span class="line">#pkill -9 redis -sever 人为的模拟服务宕机</span><br></pre></td></tr></table></figure>
 
 <h5 id="基于文件追加的方式"><a href="#基于文件追加的方式" class="headerlink" title="基于文件追加的方式"></a>基于文件追加的方式</h5><p>1、修改redis.conf文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">修改内容-&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">修改内容-&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671823506.png" alt="1557671823506"></p>
 <p>备份文件的周期</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671849089.png" alt="1557671849089"></p>
 <p>appendfsync always  含义 只要存在对redis数据造成更改的操作，都要记录到磁盘文件上</p>
 <p>appendfsync everysec  含义 每1s进行一次，把对redis数据造成更改的操作，都要记录到磁盘文件上</p>
-<p>appendfsync no  含义    完全交给操作系统 来完成，即当操作系统不繁忙的时候会把，对redis数据造成更改的操作，都要记录到磁盘文件上，这种操作最不靠谱。</p>
+<p>appendfsync no  含义	完全交给操作系统 来完成，即当操作系统不繁忙的时候会把，对redis数据造成更改的操作，都要记录到磁盘文件上，这种操作最不靠谱。</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672637713.png" alt="1557672637713"></p>
 <p>发现基于文件追加方式的文件已经存在</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672744263.png" alt="1557672744263"></p>
@@ -235,169 +260,149 @@ nosql产品特点：" />
 <p>4Redis应用于基于黑名单与白名单设定的服务控制</p>
 <p>5Redis应用于计数器组合排序功能对应的排名</p>
 <p>6Redis应用于按次结算的服务控制</p>
-<p>参考链接：<a href="https://blog.csdn.net/weixin_35099248/article/details/111577925" target="_blank" rel="noopener">https://blog.csdn.net/weixin_35099248/article/details/111577925</a></p>
-<p>mongodb的高并发处理<a href="https://www.cnblogs.com/hulianwangjiagoushi/p/12073244.html" target="_blank" rel="noopener">https://www.cnblogs.com/hulianwangjiagoushi/p/12073244.html</a></p>
+<p>参考链接：<a href="https://blog.csdn.net/weixin_35099248/article/details/111577925">https://blog.csdn.net/weixin_35099248/article/details/111577925</a></p>
+<p>mongodb的高并发处理<a href="https://www.cnblogs.com/hulianwangjiagoushi/p/12073244.html">https://www.cnblogs.com/hulianwangjiagoushi/p/12073244.html</a></p>
 
       
     </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Redis/">Redis</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="clpsdly1o000gc4vn8n39gavu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
 
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/16/redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis实现分布式锁
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/29/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">接口与抽象类</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-
-
-
-
-<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-</div></div>
-    <aside id="sidebar" class="alignright">
+</section>
+        
+          <aside id="sidebar">
   
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
     
-      <li>
-        <a href="/2021/11/21/散列表/">散列表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
-      </li>
-    
-  </ul>
-</div>
-
 
   
-<div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
-  
-    <li><a href="/tags/Git/">Git</a><small>5</small></li>
-  
-    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
-  
-    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
-  
-    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
-  
-    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
-  
-    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
-  
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
-  
-    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
-  
-    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
-  
-    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
-  
-    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
-  
-    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
-  
-    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
-  
-    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
-  
-    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
-  
-    <li><a href="/tags/前端/">前端</a><small>3</small></li>
-  
-    <li><a href="/tags/工具/">工具</a><small>1</small></li>
-  
-    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
-  <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+    </div>
   </div>
-</div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
 </aside>
-    <div class="clearfix"></div>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2021 abellmz
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
 </footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 
-<div id='bg'></div>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>

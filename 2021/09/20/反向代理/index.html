@@ -1,92 +1,100 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  
+
   
   <title>反向代理 | abellmz</title>
-  <meta name="author" content="abellmz" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="正向代理与反向代理正向代理： 正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。 反向代理：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反向代理">
+<meta property="og:url" content="http://yoursite.com/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="正向代理与反向代理正向代理： 正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。 反向代理：">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-09-20T09:26:17.000Z">
+<meta property="article:modified_time" content="2021-11-30T09:49:01.801Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
   
-  <meta name="description" content="正向代理与反向代理正向代理：
-正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。
-反向代理：" />
-  
-
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-  <meta property="og:title" content="反向代理" />
-  <meta property="og:site_name" content="abellmz" />
-
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
   
   
-
+    <link rel="icon" href="/favicon.png">
   
-    <meta property="og:image" content="" />
   
-
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link href="/css/images/favicon.ico" rel="icon" />
   
+<link rel="stylesheet" href="/css/style.css">
 
-  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
-</head>
-
+<meta name="generator" content="Hexo 7.0.0"></head>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">abellmz</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-反向代理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="article-date">
+  <time datetime="2021-09-20T09:26:17.000Z" itemprop="datePublished">2021-09-20</time>
+</a>
     
-      <li><a href="/">Home</a></li>
+  </div>
+  <div class="article-inner">
     
-      <li><a href="/archives">Archives</a></li>
     
-      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
-    
-      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
-    
-      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+      <header class="article-header">
+        
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2021-09-20T09:26:17.000Z"><a href="/2021/09/20/反向代理/">2021-09-20</a></time>
-      
-      
-  
-    <h1 class="title">反向代理</h1>
+    <h1 class="article-title" itemprop="name">
+      反向代理
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
         <h3 id="正向代理与反向代理"><a href="#正向代理与反向代理" class="headerlink" title="正向代理与反向代理"></a>正向代理与反向代理</h3><p>正向代理：</p>
 <p>正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
 <p>反向代理：</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<p>例用户访问 <a href="http://ooxx.me/readme，但ooxx.me上并不存在readme页面，他是偷偷从另外一台服务器上取回来,然后作为自己的内容吐给用户。" target="_blank" rel="noopener">http://ooxx.me/readme，但ooxx.me上并不存在readme页面，他是偷偷从另外一台服务器上取回来,然后作为自己的内容吐给用户。</a></p>
+<p>例用户访问 <a href="http://ooxx.me/readme%EF%BC%8C%E4%BD%86ooxx.me%E4%B8%8A%E5%B9%B6%E4%B8%8D%E5%AD%98%E5%9C%A8readme%E9%A1%B5%E9%9D%A2%EF%BC%8C%E4%BB%96%E6%98%AF%E5%81%B7%E5%81%B7%E4%BB%8E%E5%8F%A6%E5%A4%96%E4%B8%80%E5%8F%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%8F%96%E5%9B%9E%E6%9D%A5,%E7%84%B6%E5%90%8E%E4%BD%9C%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%86%85%E5%AE%B9%E5%90%90%E7%BB%99%E7%94%A8%E6%88%B7%E3%80%82">http://ooxx.me/readme，但ooxx.me上并不存在readme页面，他是偷偷从另外一台服务器上取回来,然后作为自己的内容吐给用户。</a></p>
 <p>对于客户端而言反向代理就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理 的命名空间(name-space)中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端，就像这些内容 原本就是它自己的一样。</p>
 <p>两者区别：</p>
 <p>从用途 上来讲：</p>
@@ -96,189 +104,169 @@
 <p>正向代理允许客户端通过它访问任意网站并且隐藏客户端自身，因此你必须采取安全措施以确保仅为经过授权的客户端提供服务。</p>
 <p>反向代理对外都是透明的，访问者并不知道自己访问的是一个代理。</p>
 <p>参考链接：</p>
-<p><a href="https://blog.csdn.net/m13666368773/article/details/8060481" target="_blank" rel="noopener">https://blog.csdn.net/m13666368773/article/details/8060481</a></p>
-<p><a href="https://www.cnblogs.com/quail2333/p/11187076.html" target="_blank" rel="noopener">https://www.cnblogs.com/quail2333/p/11187076.html</a></p>
-<h3 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h3><p>参考链接：<a href="https://blog.csdn.net/bigtree_3721/article/details/106105924" target="_blank" rel="noopener">https://blog.csdn.net/bigtree_3721/article/details/106105924</a></p>
+<p><a href="https://blog.csdn.net/m13666368773/article/details/8060481">https://blog.csdn.net/m13666368773/article/details/8060481</a></p>
+<p><a href="https://www.cnblogs.com/quail2333/p/11187076.html">https://www.cnblogs.com/quail2333/p/11187076.html</a></p>
+<h3 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h3><p>参考链接：<a href="https://blog.csdn.net/bigtree_3721/article/details/106105924">https://blog.csdn.net/bigtree_3721/article/details/106105924</a></p>
 <p>Nginx一般配置</p>
-<p><a href="http://ab/a/" target="_blank" rel="noopener">http://ab/a/</a>     <a href="http://ab/b/" target="_blank" rel="noopener">http://ab/b/</a>  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line"></span><br><span class="line">        server_name ab;</span><br><span class="line">        root /var/www/html;</span><br><span class="line">        index index.php;</span><br><span class="line">        client_max_body_size 100m;</span><br><span class="line"></span><br><span class="line">        location = /a &#123;</span><br><span class="line">                root /var/www/html/a/;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br><span class="line">        location = /b &#123;</span><br><span class="line">                root /var/www/html/b/;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">                include snippets/fastcgi-php.conf;</span><br><span class="line"></span><br><span class="line">                fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://ab/a/">http://ab/a/</a>     <a href="http://ab/b/">http://ab/b/</a>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line"></span><br><span class="line">        server_name ab;</span><br><span class="line">        root /var/www/html;</span><br><span class="line">        index index.php;</span><br><span class="line">        client_max_body_size 100m;</span><br><span class="line"></span><br><span class="line">        location = /a &#123;</span><br><span class="line">                root /var/www/html/a/;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br><span class="line">        location = /b &#123;</span><br><span class="line">                root /var/www/html/b/;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        location ~ \.php$ &#123;</span><br><span class="line">                include snippets/fastcgi-php.conf;</span><br><span class="line"></span><br><span class="line">                fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>实际上通配符，行不通，还导致以上几个路径无法正常访问</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">                root /var/www/html/b/c;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">                root /var/www/html/b/c;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
-<p> <a href="http://ab/c/" target="_blank" rel="noopener">http://ab/c/</a> 无法访问</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location = /c &#123;</span><br><span class="line">                root /var/www/html/b/c;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p> <a href="http://ab/c/">http://ab/c/</a> 无法访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location = /c &#123;</span><br><span class="line">                root /var/www/html/b/c;</span><br><span class="line">                index index.php;</span><br><span class="line">                try_files $uri $uri/ /index.php$is_args$args;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
 
 <p>反向代理：</p>
 <p>hosts配置 域名a</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1   a</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1   a</span><br></pre></td></tr></table></figure>
 
 <p>nginx配置反向代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">反向代理到百度</span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        server_name a;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass https://www.baidu.com/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">反向代理到本地域名 http://ab/a/</span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        server_name a;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://ab/a/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">反向代理到百度</span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        server_name a;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass https://www.baidu.com/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">反向代理到本地域名 http://ab/a/</span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        listen [::]:80;</span><br><span class="line"></span><br><span class="line">        server_name a;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://ab/a/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>反向代理详解：</p>
-<p><a href="https://www.jianshu.com/p/b010c9302cd0" target="_blank" rel="noopener">https://www.jianshu.com/p/b010c9302cd0</a></p>
+<p><a href="https://www.jianshu.com/p/b010c9302cd0">https://www.jianshu.com/p/b010c9302cd0</a></p>
 
       
     </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Linux/">Linux</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" data-id="clpsdly2b001dc4vn16zo8mss" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
 
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis点赞设计
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ubuntu进程查看和软件卸载</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-
-
-
-
-<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-</div></div>
-    <aside id="sidebar" class="alignright">
+</section>
+        
+          <aside id="sidebar">
   
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
     
-      <li>
-        <a href="/2021/11/21/散列表/">散列表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
-      </li>
-    
-  </ul>
-</div>
-
 
   
-<div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
-  
-    <li><a href="/tags/Git/">Git</a><small>5</small></li>
-  
-    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
-  
-    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
-  
-    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
-  
-    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
-  
-    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
-  
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
-  
-    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
-  
-    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
-  
-    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
-  
-    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
-  
-    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
-  
-    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
-  
-    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
-  
-    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
-  
-    <li><a href="/tags/前端/">前端</a><small>3</small></li>
-  
-    <li><a href="/tags/工具/">工具</a><small>1</small></li>
-  
-    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
-  <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+    </div>
   </div>
-</div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
 </aside>
-    <div class="clearfix"></div>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2021 abellmz
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
 </footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 
-<div id='bg'></div>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>

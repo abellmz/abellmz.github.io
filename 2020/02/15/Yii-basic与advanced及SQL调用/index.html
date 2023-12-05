@@ -1,152 +1,93 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  
+
   
   <title>Yii-basic与advanced及SQL调用 | abellmz</title>
-  <meta name="author" content="abellmz" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="下载版本basic与advanced区别   Codeception 测试 &#x2F; &#x2F;    功能 Basic advanced   Project 结构 &#x2F; &#x2F;   网站控制器 &#x2F; &#x2F;   用户登录&#x2F;登出 &#x2F; &#x2F;   表单 &#x2F; &#x2F;   数据库连接 &#x2F; &#x2F;   命令控制台 &#x2F; &#x2F;   资源包 &#x2F; &#x2F;   Bootstrap &#x2F; &#x2F;   前后台应用  &#x2F;   可用的 User 模型  &#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yii-basic与advanced及SQL调用">
+<meta property="og:url" content="http://yoursite.com/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="下载版本basic与advanced区别   Codeception 测试 &#x2F; &#x2F;    功能 Basic advanced   Project 结构 &#x2F; &#x2F;   网站控制器 &#x2F; &#x2F;   用户登录&#x2F;登出 &#x2F; &#x2F;   表单 &#x2F; &#x2F;   数据库连接 &#x2F; &#x2F;   命令控制台 &#x2F; &#x2F;   资源包 &#x2F; &#x2F;   Bootstrap &#x2F; &#x2F;   前后台应用  &#x2F;   可用的 User 模型  &#x2F;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-02-15T14:24:09.000Z">
+<meta property="article:modified_time" content="2020-09-15T14:32:45.064Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="PHP框架">
+<meta name="twitter:card" content="summary">
   
-  <meta name="description" content="下载版本basic与advanced区别
-
-
-Codeception 测试
-/
-/
-
-
-
-功能
-Basic
-advanced
-
-
-Project 结构
-/
-/
-
-
-网站控制器
-/
-/
-
-
-用户登录/登出
-/
-/
-
-
-表单
-/
-/
-
-
-数据库连接
-/
-/
-
-
-命令控制台
-/
-/
-
-
-资源包
-/
-/
-
-
-Bootstrap
-/
-/
-
-
-前后台应用
-
-/
-
-
-可用的 User 模型
-
-/
-
-
-用户注册和密码恢复
-
-
-
-
-basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出、和数据库连接等功能。但是，" />
-  
-
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-  <meta property="og:title" content="Yii-basic与advanced及SQL调用" />
-  <meta property="og:site_name" content="abellmz" />
-
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
   
   
-
+    <link rel="icon" href="/favicon.png">
   
-    <meta property="og:image" content="" />
   
-
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link href="/css/images/favicon.ico" rel="icon" />
   
+<link rel="stylesheet" href="/css/style.css">
 
-  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
-</head>
-
+<meta name="generator" content="Hexo 7.0.0"></head>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">abellmz</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Yii-basic与advanced及SQL调用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" class="article-date">
+  <time datetime="2020-02-15T14:24:09.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
     
-      <li><a href="/">Home</a></li>
+  </div>
+  <div class="article-inner">
     
-      <li><a href="/archives">Archives</a></li>
     
-      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
-    
-      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
-    
-      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+      <header class="article-header">
+        
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2020-02-15T14:24:09.000Z"><a href="/2020/02/15/Yii-basic与advanced及SQL调用/">2020-02-15</a></time>
-      
-      
-  
-    <h1 class="title">Yii-basic与advanced及SQL调用</h1>
+    <h1 class="article-title" itemprop="name">
+      Yii-basic与advanced及SQL调用
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
         <h4 id="下载版本basic与advanced区别"><a href="#下载版本basic与advanced区别" class="headerlink" title="下载版本basic与advanced区别"></a>下载版本basic与advanced区别</h4><table>
 <thead>
@@ -172,7 +113,7 @@ basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出�
 <td>/</td>
 </tr>
 <tr>
-<td>用户登录/登出</td>
+<td>用户登录&#x2F;登出</td>
 <td>/</td>
 <td>/</td>
 </tr>
@@ -217,57 +158,57 @@ basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出�
 <td></td>
 </tr>
 </tbody></table>
-<p>basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出、和数据库连接等功能。但是，</p>
-<a id="more"></a>
+<p>basic 和 advanced 都自带有一些基本功能，Home页面、登录&#x2F;登出、和数据库连接等功能。但是，</p>
+<span id="more"></span>
 
 <ul>
 <li><strong>basic</strong> 更适合新手，特别是刚刚接触 yii 的入门开发人员。</li>
 <li><strong>adavanced</strong> 随包自带两个应用：前台应用 <strong>frontend</strong> 和后台应用 <strong>backend</strong>，basic 中只有一个应用 <strong>web</strong>。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的。</li>
 </ul>
-<p>参考链接： <a href="https://www.awaimai.com/600.html" target="_blank" rel="noopener">https://www.awaimai.com/600.html</a> </p>
+<p>参考链接： <a href="https://www.awaimai.com/600.html">https://www.awaimai.com/600.html</a> </p>
 <p> Yii中，别名以 <code>@</code> 开头，以区别于正常的文件路径和URL </p>
 <h3 id="Yii2-0-advanced细节捡取"><a href="#Yii2-0-advanced细节捡取" class="headerlink" title="Yii2.0-advanced细节捡取"></a>Yii2.0-advanced细节捡取</h3><p>入口文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/index.php?r=index</span><br><span class="line"></span><br><span class="line">/index.php: 指明请求入口的php文件</span><br><span class="line">?r=index：指明请求的是IndexController控制器的默认方法(actionIndex)</span><br><span class="line"></span><br><span class="line">入口index.php中，加载helper文件夹中function.php文件函数</span><br><span class="line">require(_DIR_.&apos;/../helper/function.php)</span><br><span class="line"></span><br><span class="line">自定义辅助函数</span><br><span class="line">function dd()&#123;</span><br><span class="line">    echo &quot;&lt;pre&gt;&quot;</span><br><span class="line">    var_dump($data)</span><br><span class="line">    echo &quot;&lt;/pre&gt;&quot;</span><br><span class="line">    die;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/index.php?r=index</span><br><span class="line"></span><br><span class="line">/index.php: 指明请求入口的php文件</span><br><span class="line">?r=index：指明请求的是IndexController控制器的默认方法(actionIndex)</span><br><span class="line"></span><br><span class="line">入口index.php中，加载helper文件夹中function.php文件函数</span><br><span class="line">require(_DIR_.&#x27;/../helper/function.php)</span><br><span class="line"></span><br><span class="line">自定义辅助函数</span><br><span class="line">function dd()&#123;</span><br><span class="line">    echo &quot;&lt;pre&gt;&quot;</span><br><span class="line">    var_dump($data)</span><br><span class="line">    echo &quot;&lt;/pre&gt;&quot;</span><br><span class="line">    die;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>请求组件：get获取参数id</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">请求方法判断：$request-&gt;isPost或isGet</span><br><span class="line">当前用户ip地址：$request-&gt;userIP</span><br><span class="line"></span><br><span class="line">$request=\Yii::$app-&gt;request;</span><br><span class="line">echo $request-&gt;get(&apos;id&apos;,1)   1为默认值，id没有则为1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">请求方法判断：$request-&gt;isPost或isGet</span><br><span class="line">当前用户ip地址：$request-&gt;userIP</span><br><span class="line"></span><br><span class="line">$request=\Yii::$app-&gt;request;</span><br><span class="line">echo $request-&gt;get(&#x27;id&#x27;,1)   1为默认值，id没有则为1</span><br></pre></td></tr></table></figure>
 
 <p>请求组件：post获取，用户postman  模拟表单参数，body中form-data</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$request=\Yii::$app-&gt;request;</span><br><span class="line">$username= $request-&gt;post(&apos;username&apos;,&apos;n&apos;)   n为默认值，username没有则为n</span><br><span class="line">dd($username)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$request=\Yii::$app-&gt;request;</span><br><span class="line">$username= $request-&gt;post(&#x27;username&#x27;,&#x27;n&#x27;)   n为默认值，username没有则为n</span><br><span class="line">dd($username)</span><br></pre></td></tr></table></figure>
 
 <p>传参至视图</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">变量放入1个数组,将零散的数据组装在一个数组里面</span><br><span class="line">$na=[&apos;nihao&apos;=&gt;&apos;sdjhjh&apos;,</span><br><span class="line">	...]</span><br><span class="line">data[</span><br><span class="line">	&apos;username&apos;=&gt;&apos;lalla&apos;,</span><br><span class="line">	...</span><br><span class="line">	&apos;arr&apos;=&gt;[</span><br><span class="line">	&apos;age&apos; =&gt;7,</span><br><span class="line">	...</span><br><span class="line">	]</span><br><span class="line">	&apos;na&apos;=&gt;$na</span><br><span class="line">]</span><br><span class="line">return $this-&gt;rederPartial(&apos;index&apos;,$data)</span><br><span class="line"></span><br><span class="line">视图</span><br><span class="line">&lt;?php echo $username ?&gt;</span><br><span class="line">&lt;?php echo $arr[&apos;age&apos;] ?&gt;</span><br><span class="line"></span><br><span class="line">可以用conpact()代替$data</span><br><span class="line">return $this-&gt;rederPartial(&apos;index&apos;,compact(&apos;$na&apos;,&apos;&apos;))</span><br><span class="line">reder与rederPartial对比，会渲染父模板，并将内容嵌入，后者不渲染</span><br><span class="line">父模板在views中的layouts目录，main.php文件（通用）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">变量放入1个数组,将零散的数据组装在一个数组里面</span><br><span class="line">$na=[&#x27;nihao&#x27;=&gt;&#x27;sdjhjh&#x27;,</span><br><span class="line">	...]</span><br><span class="line">data[</span><br><span class="line">	&#x27;username&#x27;=&gt;&#x27;lalla&#x27;,</span><br><span class="line">	...</span><br><span class="line">	&#x27;arr&#x27;=&gt;[</span><br><span class="line">	&#x27;age&#x27; =&gt;7,</span><br><span class="line">	...</span><br><span class="line">	]</span><br><span class="line">	&#x27;na&#x27;=&gt;$na</span><br><span class="line">]</span><br><span class="line">return $this-&gt;rederPartial(&#x27;index&#x27;,$data)</span><br><span class="line"></span><br><span class="line">视图</span><br><span class="line">&lt;?php echo $username ?&gt;</span><br><span class="line">&lt;?php echo $arr[&#x27;age&#x27;] ?&gt;</span><br><span class="line"></span><br><span class="line">可以用conpact()代替$data</span><br><span class="line">return $this-&gt;rederPartial(&#x27;index&#x27;,compact(&#x27;$na&#x27;,&#x27;&#x27;))</span><br><span class="line">reder与rederPartial对比，会渲染父模板，并将内容嵌入，后者不渲染</span><br><span class="line">父模板在views中的layouts目录，main.php文件（通用）</span><br></pre></td></tr></table></figure>
 
 <h3 id="SQL调用："><a href="#SQL调用：" class="headerlink" title="SQL调用："></a>SQL调用：</h3><p>框架本身拥有一些基类，比如ActiveRecord。创建的Article需要继承这个类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">查</span><br><span class="line">查询全部数据</span><br><span class="line">$data=Article::find()-&gt;all();</span><br><span class="line">查询单条数据</span><br><span class="line">$data=Article::find()-&gt;where(&apos;id&apos;=&gt;5)-&gt;all();</span><br><span class="line">id&gt;3</span><br><span class="line">$data=Article::find()-&gt;where([&apos;&gt;&apos;,id&apos;,3])-&gt;all();</span><br><span class="line">id在2和5之间 并变为数组输出(节约内存）</span><br><span class="line">$data=Article::find()-&gt;where([&apos;between&apos;,’id&apos;,2,5])-&gt;asArray()-&gt;all();</span><br><span class="line">大量数据，每次取100条（默认）减轻内存压力</span><br><span class="line">foreach(Article::find()-&gt;batch(2) as $article)&#123;</span><br><span class="line">echo count($article),&apos;-&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">增</span><br><span class="line">$article = new Article();</span><br><span class="line">$article-&gt;title=&apos;XXXX&apos;;</span><br><span class="line">$article-&gt;num=10;</span><br><span class="line">$data=$article-&gt;insert();或-&gt;save();</span><br><span class="line">查看属性值$article-&gt;attributes[&apos;id&apos;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">改</span><br><span class="line">update()或save()</span><br><span class="line">updateAllCounters([&apos;num&apos;=&gt;1])每次查看num+1</span><br><span class="line"></span><br><span class="line">删</span><br><span class="line">delete(&apos;id&gt;:id and num&lt;:num&apos;,[&apos;:id&apos;=&gt;13,&apos;:num&apos;=&gt;100]);deleteall</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">查</span><br><span class="line">查询全部数据</span><br><span class="line">$data=Article::find()-&gt;all();</span><br><span class="line">查询单条数据</span><br><span class="line">$data=Article::find()-&gt;where(&#x27;id&#x27;=&gt;5)-&gt;all();</span><br><span class="line">id&gt;3</span><br><span class="line">$data=Article::find()-&gt;where([&#x27;&gt;&#x27;,id&#x27;,3])-&gt;all();</span><br><span class="line">id在2和5之间 并变为数组输出(节约内存）</span><br><span class="line">$data=Article::find()-&gt;where([&#x27;between&#x27;,’id&#x27;,2,5])-&gt;asArray()-&gt;all();</span><br><span class="line">大量数据，每次取100条（默认）减轻内存压力</span><br><span class="line">foreach(Article::find()-&gt;batch(2) as $article)&#123;</span><br><span class="line">echo count($article),&#x27;-&#x27;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">增</span><br><span class="line">$article = new Article();</span><br><span class="line">$article-&gt;title=&#x27;XXXX&#x27;;</span><br><span class="line">$article-&gt;num=10;</span><br><span class="line">$data=$article-&gt;insert();或-&gt;save();</span><br><span class="line">查看属性值$article-&gt;attributes[&#x27;id&#x27;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">改</span><br><span class="line">update()或save()</span><br><span class="line">updateAllCounters([&#x27;num&#x27;=&gt;1])每次查看num+1</span><br><span class="line"></span><br><span class="line">删</span><br><span class="line">delete(&#x27;id&gt;:id and num&lt;:num&#x27;,[&#x27;:id&#x27;=&gt;13,&#x27;:num&#x27;=&gt;100]);deleteall</span><br></pre></td></tr></table></figure>
 
 <p>or的使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$where=&apos;is_delete=:is_delete and type=:type and (digest || title like :keywords)&apos;;</span><br><span class="line">$addparams=[&apos;:is_delete&apos;=&gt;0,&apos;:type&apos;=&gt;intval($type),&apos;:keywords&apos;=&gt;&apos;%&apos;.$keywords.&apos;%&apos;];</span><br><span class="line">$news=$newsmodel-&gt;find()-&gt;where($where)-&gt;addParams($addparams);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$where=&#x27;is_delete=:is_delete and type=:type and (digest || title like :keywords)&#x27;;</span><br><span class="line">$addparams=[&#x27;:is_delete&#x27;=&gt;0,&#x27;:type&#x27;=&gt;intval($type),&#x27;:keywords&#x27;=&gt;&#x27;%&#x27;.$keywords.&#x27;%&#x27;];</span><br><span class="line">$news=$newsmodel-&gt;find()-&gt;where($where)-&gt;addParams($addparams);</span><br></pre></td></tr></table></figure>
 
 <h3 id="关联"><a href="#关联" class="headerlink" title="关联"></a>关联</h3><p>一对多：hasmany</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$category=Category::findOne(1);</span><br><span class="line">$article=$category-&gt;hasMany(&apos;app\models\Article&apos;,[&apos;cate_id&apos;=&gt;&apos;id&apos;])-&gt;all();</span><br><span class="line">或$article=$category-&gt;hasMany(Article::className(),[&apos;cate_id&apos;=&gt;&apos;id&apos;])-&gt;all();</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$category=Category::findOne(1);</span><br><span class="line">$article=$category-&gt;hasMany(&#x27;app\models\Article&#x27;,[&#x27;cate_id&#x27;=&gt;&#x27;id&#x27;])-&gt;all();</span><br><span class="line">或$article=$category-&gt;hasMany(Article::className(),[&#x27;cate_id&#x27;=&gt;&#x27;id&#x27;])-&gt;all();</span><br></pre></td></tr></table></figure>
 
 <p>在模型中定义一对多  默认all()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Category extend ActiveRecord&#123;</span><br><span class="line">    public function getArticle()</span><br><span class="line">    &#123;</span><br><span class="line">		$article=$this-&gt;hasMany(&apos;app\models\Article&apos;,[&apos;cate_id&apos;=&gt;&apos;id&apos;])-&gt;all();</span><br><span class="line">		return $article;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$category=Category::findOne(1);</span><br><span class="line">$article=$category-&gt;getArticle();或取属性值-&gt;articles</span><br><span class="line">all()二维数组one()一维</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Category extend ActiveRecord&#123;</span><br><span class="line">    public function getArticle()</span><br><span class="line">    &#123;</span><br><span class="line">		$article=$this-&gt;hasMany(&#x27;app\models\Article&#x27;,[&#x27;cate_id&#x27;=&gt;&#x27;id&#x27;])-&gt;all();</span><br><span class="line">		return $article;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$category=Category::findOne(1);</span><br><span class="line">$article=$category-&gt;getArticle();或取属性值-&gt;articles</span><br><span class="line">all()二维数组one()一维   </span><br></pre></td></tr></table></figure>
 
 <p>一对一：hasOne   默认one()</p>
 <p>可以用with()替代循环，使它只需要一次sql查询，其中应用了join的原理</p>
-<p>$articles=Article::find()-&gt;with(‘category’)-&gt;asArray()-&gt;all();</p>
+<p>$articles&#x3D;Article::find()-&gt;with(‘category’)-&gt;asArray()-&gt;all();</p>
 <p>a标签发送post请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use yii\web\UrlManager;</span><br><span class="line">$urlManager = new UrlManager();</span><br><span class="line"></span><br><span class="line">&lt;a class=&quot;layui-btn layui-btn-normal&quot; href=&quot;&lt;?= $urlManager-&gt;createUrl([&apos;caselist/create&apos;]) ?&gt;&quot;&gt;添加案例&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http://www.xiaochengfu.com/index.php/index/detail/aid/64.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">use yii\web\UrlManager;</span><br><span class="line">$urlManager = new UrlManager();</span><br><span class="line"></span><br><span class="line">&lt;a class=&quot;layui-btn layui-btn-normal&quot; href=&quot;&lt;?= $urlManager-&gt;createUrl([&#x27;caselist/create&#x27;]) ?&gt;&quot;&gt;添加案例&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http://www.xiaochengfu.com/index.php/index/detail/aid/64.html</span><br></pre></td></tr></table></figure>
 
-<h3 id="yii2-basic"><a href="#yii2-basic" class="headerlink" title="yii2-basic"></a>yii2-basic</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├──assets    用来存放js和css文件</span><br><span class="line">├──commands    包含控制台命令类</span><br><span class="line">├──config    对yii2做基本配置</span><br><span class="line">  console.php    控制台应用配置信息</span><br><span class="line">  web.php    Web 应用配置信息</span><br><span class="line">├──controllers    存放控制器类</span><br><span class="line">├──models    存放模型类</span><br><span class="line">├──runtime    包含 Yii 在运行时生成的文件，例如日志和缓存文件</span><br><span class="line">├──vender     包含已经安装的 Composer 包，包括 Yii 框架自身</span><br><span class="line">├──views     视图目录，用于存放模板</span><br><span class="line">├──web     Web 应用根目录，包含 Web 入口文件</span><br><span class="line">  assets/    包含 Yii 发布的资源文件（javascript 和 css）</span><br><span class="line">  index.php 应用入口文件</span><br><span class="line">├──composer.json    Composer 配置文件, 描述包信息</span><br></pre></td></tr></table></figure>
+<h3 id="yii2-basic"><a href="#yii2-basic" class="headerlink" title="yii2-basic"></a>yii2-basic</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├──assets    用来存放js和css文件</span><br><span class="line">├──commands    包含控制台命令类</span><br><span class="line">├──config    对yii2做基本配置</span><br><span class="line">  console.php    控制台应用配置信息</span><br><span class="line">  web.php    Web 应用配置信息</span><br><span class="line">├──controllers    存放控制器类</span><br><span class="line">├──models    存放模型类</span><br><span class="line">├──runtime    包含 Yii 在运行时生成的文件，例如日志和缓存文件</span><br><span class="line">├──vender     包含已经安装的 Composer 包，包括 Yii 框架自身</span><br><span class="line">├──views     视图目录，用于存放模板</span><br><span class="line">├──web     Web 应用根目录，包含 Web 入口文件</span><br><span class="line">  assets/    包含 Yii 发布的资源文件（javascript 和 css）</span><br><span class="line">  index.php 应用入口文件</span><br><span class="line">├──composer.json    Composer 配置文件, 描述包信息</span><br></pre></td></tr></table></figure>
 
 <p>控制器的一些方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">重定向 $this-&gt;redirect([‘test/index’])</span><br><span class="line">回到首页 $this-&gt;goHome()</span><br><span class="line">返回 $this-&gt;goBack()</span><br><span class="line">刷新当前页面 $this-&gt;refresh()</span><br><span class="line">渲染视图 $this-&gt;render(视图,注入视图数组数据)</span><br><span class="line">渲染没有layout的视图 $this-&gt;renderPartial(视图,注入视图数组数据)</span><br><span class="line">响应Ajax请求，有layout的视图 $this-&gt;renderAjax(视图,注入视图数组数据)</span><br><span class="line">修改Test控制器的index操作</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">重定向 $this-&gt;redirect([‘test/index’])</span><br><span class="line">回到首页 $this-&gt;goHome()</span><br><span class="line">返回 $this-&gt;goBack()</span><br><span class="line">刷新当前页面 $this-&gt;refresh()</span><br><span class="line">渲染视图 $this-&gt;render(视图,注入视图数组数据)</span><br><span class="line">渲染没有layout的视图 $this-&gt;renderPartial(视图,注入视图数组数据)</span><br><span class="line">响应Ajax请求，有layout的视图 $this-&gt;renderAjax(视图,注入视图数组数据)</span><br><span class="line">修改Test控制器的index操作</span><br></pre></td></tr></table></figure>
 
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TestController中调用return $this-&gt;render(&apos;index&apos;,[&apos;data&apos;=&gt;[1,2,3]]);</span><br><span class="line">在@app\views\test\index.php中获取Test控制器注入的值</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">foreach ($data as $key =&gt; $value) &#123;</span><br><span class="line">echo $value.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TestController中调用return $this-&gt;render(&#x27;index&#x27;,[&#x27;data&#x27;=&gt;[1,2,3]]);</span><br><span class="line">在@app\views\test\index.php中获取Test控制器注入的值</span><br><span class="line"></span><br><span class="line">&lt;?php</span><br><span class="line">foreach ($data as $key =&gt; $value) &#123;</span><br><span class="line">echo $value.&quot;&lt;br /&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p>模型</p>
 <p>模型在@app\models目录下模型类名与模型文件名同名，Model一般继承与两个yii2的类，一个是关联到数据库的yii\db\ActiveRecord，这个时候如果类名(文件名)不能与表直接对应，需要通过tableName()公共静态方法显式的指定表名，另一个是继承自yii\base\Model类。</p>
 <p>sql调用与yii2-advance类似</p>
-<p>*<em>模型继承AtiveRecord *</em></p>
+<p>**模型继承AtiveRecord **</p>
 <p>AtiveRecord 是继承自Model的，Model有的ActiveRecord 都有。</p>
 <p>Active Record （活动记录，以下简称AR）提供了一个面向对象的接口， 用以访问数据库中的数据。一个 AR 类关联一张数据表， 每个 AR 对象对应表中的一行，对象的属性（即 AR 的特性Attribute）映射到数据行的对应列。 一条活动记录（AR对象）对应数据表的一行，AR对象的属性则映射该行的相应列。 您可以直接以面向对象的方式来操纵数据表中的数据</p>
 <p>Model 模型是 MVC 模式中的一部分， 是代表业务数据、规则和逻辑的对象。可通过继承 yii\base\Model 或它的子类定义模型类，Model用于一些没有操作数据库的模型，比如表单</p>
@@ -275,164 +216,144 @@ basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出�
 
       
     </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/PHP框架/">PHP框架</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" data-id="clpsdly1u000qc4vn913gcuep" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li></ul>
 
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/13/ThinkPHP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ThinkPHP
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Yii的布局与表单提交</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-
-
-
-
-<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-</div></div>
-    <aside id="sidebar" class="alignright">
+</section>
+        
+          <aside id="sidebar">
   
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
     
-      <li>
-        <a href="/2021/11/21/散列表/">散列表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
-      </li>
-    
-  </ul>
-</div>
-
 
   
-<div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
-  
-    <li><a href="/tags/Git/">Git</a><small>5</small></li>
-  
-    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
-  
-    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
-  
-    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
-  
-    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
-  
-    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
-  
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
-  
-    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
-  
-    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
-  
-    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
-  
-    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
-  
-    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
-  
-    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
-  
-    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
-  
-    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
-  
-    <li><a href="/tags/前端/">前端</a><small>3</small></li>
-  
-    <li><a href="/tags/工具/">工具</a><small>1</small></li>
-  
-    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
-  <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+    </div>
   </div>
-</div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
 </aside>
-    <div class="clearfix"></div>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2021 abellmz
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
 </footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 
-<div id='bg'></div>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>

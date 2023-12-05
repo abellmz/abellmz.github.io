@@ -1,285 +1,273 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
+  
+
   
   <title>os与strings常用函数 | abellmz</title>
-  <meta name="author" content="abellmz" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="os包中的一些常用函数fmt.Println(os.Hostname())&#x2F;&#x2F;获取主机名 fmt.Println(os.Getwd());&#x2F;&#x2F;获取当前目录 fmt.Println(os.Getuid());&#x2F;&#x2F;获取用户ID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="os与strings常用函数">
+<meta property="og:url" content="http://yoursite.com/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="os包中的一些常用函数fmt.Println(os.Hostname())&#x2F;&#x2F;获取主机名 fmt.Println(os.Getwd());&#x2F;&#x2F;获取当前目录 fmt.Println(os.Getuid());&#x2F;&#x2F;获取用户ID">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-08-24T09:06:58.000Z">
+<meta property="article:modified_time" content="2021-08-24T09:08:32.898Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="Golang常用函数">
+<meta name="twitter:card" content="summary">
   
-  <meta name="description" content="os包中的一些常用函数fmt.Println(os.Hostname())//获取主机名
-fmt.Println(os.Getwd());//获取当前目录
-fmt.Println(os.Getuid());//获取用户ID" />
-  
-
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-  <meta property="og:title" content="os与strings常用函数" />
-  <meta property="og:site_name" content="abellmz" />
-
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
   
   
-
+    <link rel="icon" href="/favicon.png">
   
-    <meta property="og:image" content="" />
   
-
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <link href="/css/images/favicon.ico" rel="icon" />
   
+<link rel="stylesheet" href="/css/style.css">
 
-  <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-  
-
-
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
-
-</head>
-
+<meta name="generator" content="Hexo 7.0.0"></head>
 
 <body>
-  <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">abellmz</a></h1>
-  <h2><a href="/"></a></h2>
-</div>
-<nav id="main-nav" class="alignright">
-  <ul>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-os与strings常用函数" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2021-08-24T09:06:58.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
     
-      <li><a href="/">Home</a></li>
+  </div>
+  <div class="article-inner">
     
-      <li><a href="/archives">Archives</a></li>
     
-      <li><a href="https://github.com/abellmz" target="_blank" rel="noopener">GitHub</a></li>
-    
-      <li><a href="http://shop.abellmz.cn/" target="_blank" rel="noopener">Laravel-Shop</a></li>
-    
-      <li><a href="http://www.yy.abellmz.cn/" target="_blank" rel="noopener">Laravel-yy</a></li>
-    
-  </ul>
-  <div class="clearfix"></div>
-</nav>
-<div class="clearfix"></div></header>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+      <header class="article-header">
+        
   
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2021-08-24T09:06:58.000Z"><a href="/2021/08/24/os与strings常用函数/">2021-08-24</a></time>
-      
-      
-  
-    <h1 class="title">os与strings常用函数</h1>
+    <h1 class="article-title" itemprop="name">
+      os与strings常用函数
+    </h1>
   
 
-    </header>
-    <div class="entry">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="os包中的一些常用函数"><a href="#os包中的一些常用函数" class="headerlink" title="os包中的一些常用函数"></a>os包中的一些常用函数</h3><p>fmt.Println(os.Hostname())//获取主机名</p>
-<p>fmt.Println(os.Getwd());//获取当前目录</p>
-<p>fmt.Println(os.Getuid());//获取用户ID</p>
-<a id="more"></a>
+        <h3 id="os包中的一些常用函数"><a href="#os包中的一些常用函数" class="headerlink" title="os包中的一些常用函数"></a>os包中的一些常用函数</h3><p>fmt.Println(os.Hostname())&#x2F;&#x2F;获取主机名</p>
+<p>fmt.Println(os.Getwd());&#x2F;&#x2F;获取当前目录</p>
+<p>fmt.Println(os.Getuid());&#x2F;&#x2F;获取用户ID</p>
+<span id="more"></span>
 
-<p>fmt.Println(os.Geteuid());//获取有效用户ID</p>
-<p>fmt.Println(os.Getgid());//获取组ID</p>
-<p>fmt.Println(os.Getegid());//获取有效组ID</p>
-<p>fmt.Println(os.Getpid());//获取进程ID</p>
-<p>fmt.Println(os.Getppid());//获取父进程ID</p>
-<p>fmt.Println(os.Getenv(<code>&quot;GOPATH&quot;</code>));//获取环境变量的值</p>
-<p>os.Setenv(<code>&quot;TEST&quot;</code>, <code>&quot;test&quot;</code>);//设置环境变量的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//改变当前工作目录</span><br><span class="line">os.Chdir(&quot;C:/&quot;);</span><br><span class="line">fmt.Println(os.Getwd());</span><br><span class="line">//创建文件</span><br><span class="line">f1, _ := os.Create(``&quot;./1.txt&quot;``);</span><br><span class="line">defer` `f1.Close();</span><br><span class="line"> </span><br><span class="line">//修改文件权限</span><br><span class="line">if err := os.Chmod(&quot;./1.txt&quot;, 0777); err != nil &#123;</span><br><span class="line">   fmt.Println(err);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//修改文件所有者</span><br><span class="line">if err := os.Chown(&quot;./1.txt&quot;, 0, 0); err != nil &#123;</span><br><span class="line">    fmt.Println(err);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//修改文件的访问时间和修改时间</span><br><span class="line">os.Chtimes(&quot;./1.txt&quot;, time.Now().Add(time.Hour), time.Now().Add(time.Hour));</span><br></pre></td></tr></table></figure>
+<p>fmt.Println(os.Geteuid());&#x2F;&#x2F;获取有效用户ID</p>
+<p>fmt.Println(os.Getgid());&#x2F;&#x2F;获取组ID</p>
+<p>fmt.Println(os.Getegid());&#x2F;&#x2F;获取有效组ID</p>
+<p>fmt.Println(os.Getpid());&#x2F;&#x2F;获取进程ID</p>
+<p>fmt.Println(os.Getppid());&#x2F;&#x2F;获取父进程ID</p>
+<p>fmt.Println(os.Getenv(<code>&quot;GOPATH&quot;</code>));&#x2F;&#x2F;获取环境变量的值</p>
+<p>os.Setenv(<code>&quot;TEST&quot;</code>, <code>&quot;test&quot;</code>);&#x2F;&#x2F;设置环境变量的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//改变当前工作目录</span><br><span class="line">os.Chdir(&quot;C:/&quot;);</span><br><span class="line">fmt.Println(os.Getwd());</span><br><span class="line">//创建文件</span><br><span class="line">f1, _ := os.Create(``&quot;./1.txt&quot;``);</span><br><span class="line">defer` `f1.Close();</span><br><span class="line"> </span><br><span class="line">//修改文件权限</span><br><span class="line">if err := os.Chmod(&quot;./1.txt&quot;, 0777); err != nil &#123;</span><br><span class="line">   fmt.Println(err);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//修改文件所有者</span><br><span class="line">if err := os.Chown(&quot;./1.txt&quot;, 0, 0); err != nil &#123;</span><br><span class="line">    fmt.Println(err);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">//修改文件的访问时间和修改时间</span><br><span class="line">os.Chtimes(&quot;./1.txt&quot;, time.Now().Add(time.Hour), time.Now().Add(time.Hour));</span><br></pre></td></tr></table></figure>
 
-<p>//获取所有环境变量</p>
+<p>&#x2F;&#x2F;获取所有环境变量</p>
 <p>fmt.Println(strings.Join(os.Environ(), “\r\n”));</p>
-<p>//把字符串中带${var}或$var替换成指定指符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(os.Expand(&quot;$&#123;1&#125; $&#123;2&#125; $&#123;3&#125;&quot;, func(k string) string &#123;</span><br><span class="line">   mapp := map[string]string&#123;</span><br><span class="line">     &quot;1&quot;: &quot;111&quot;,</span><br><span class="line">     &quot;2&quot;: &quot;222&quot;,</span><br><span class="line">     &quot;3&quot;: &quot;333&quot;,</span><br><span class="line">   &#125;;</span><br><span class="line">   return mapp[k];</span><br><span class="line"> &#125;));</span><br></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F;把字符串中带${var}或$var替换成指定指符串</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(os.Expand(&quot;$&#123;1&#125; $&#123;2&#125; $&#123;3&#125;&quot;, func(k string) string &#123;</span><br><span class="line">   mapp := map[string]string&#123;</span><br><span class="line">     &quot;1&quot;: &quot;111&quot;,</span><br><span class="line">     &quot;2&quot;: &quot;222&quot;,</span><br><span class="line">     &quot;3&quot;: &quot;333&quot;,</span><br><span class="line">   &#125;;</span><br><span class="line">   return mapp[k];</span><br><span class="line"> &#125;));</span><br></pre></td></tr></table></figure>
 
-<p>//创建目录<br>os.Mkdir(“abc”, os.ModePerm);</p>
-<p>//创建多级目录<br>os.MkdirAll(“abc/d/e/f”, os.ModePerm);</p>
-<p>//删除文件或目录<br>os.Remove(“abc/d/e/f”);</p>
-<p>//删除指定目录下所有文件<br>os.RemoveAll(“abc”);</p>
-<p>//重命名文件<br>os.Rename(“./2.txt”, “./2_new.txt”);</p>
-<p>//判断是否为同一文件,unix下通过底层结构的设备和索引节点是否相同来判断,其他系统可能是通过文件绝对路径来判断</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fs1, _ := f1.Stat();</span><br><span class="line">f2, _ := os.Open(&quot;./1.txt&quot;);</span><br><span class="line">fs2, _ := f2.Stat();</span><br><span class="line">fmt.Println(os.SameFile(fs1, fs2));</span><br></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F;创建目录<br>os.Mkdir(“abc”, os.ModePerm);</p>
+<p>&#x2F;&#x2F;创建多级目录<br>os.MkdirAll(“abc&#x2F;d&#x2F;e&#x2F;f”, os.ModePerm);</p>
+<p>&#x2F;&#x2F;删除文件或目录<br>os.Remove(“abc&#x2F;d&#x2F;e&#x2F;f”);</p>
+<p>&#x2F;&#x2F;删除指定目录下所有文件<br>os.RemoveAll(“abc”);</p>
+<p>&#x2F;&#x2F;重命名文件<br>os.Rename(“.&#x2F;2.txt”, “.&#x2F;2_new.txt”);</p>
+<p>&#x2F;&#x2F;判断是否为同一文件,unix下通过底层结构的设备和索引节点是否相同来判断,其他系统可能是通过文件绝对路径来判断</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fs1, _ := f1.Stat();</span><br><span class="line">f2, _ := os.Open(&quot;./1.txt&quot;);</span><br><span class="line">fs2, _ := f2.Stat();</span><br><span class="line">fmt.Println(os.SameFile(fs1, fs2));</span><br></pre></td></tr></table></figure>
 
-<p>//返回临时目录<br>fmt.Println(os.TempDir());</p>
+<p>&#x2F;&#x2F;返回临时目录<br>fmt.Println(os.TempDir());</p>
 <p><strong>常用文件函数的使用</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">package main;</span><br><span class="line">  </span><br><span class="line">import (</span><br><span class="line">    &quot;os&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;strconv&quot;</span><br><span class="line">)</span><br><span class="line">  </span><br><span class="line">//os包中关于文件的操作函数</span><br><span class="line">  </span><br><span class="line">func main() &#123;</span><br><span class="line">    //创建文件，返回一个文件指针</span><br><span class="line">    f3, _ := os.Create(&quot;./3.txt&quot;);</span><br><span class="line">    defer f3.Close();</span><br><span class="line">  </span><br><span class="line">    //以读写方式打开文件，如果不存在则创建文件，等同于上面os.Create</span><br><span class="line">    f4, _ := os.OpenFile(&quot;./4.txt&quot;, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666);</span><br><span class="line">    defer f4.Close();</span><br><span class="line">  </span><br><span class="line">    //打开文件，返回文件指针</span><br><span class="line">    f1, _ := os.Open(&quot;./1.txt&quot;);</span><br><span class="line">    defer f1.Close();</span><br><span class="line">  </span><br><span class="line">    //修改文件权限，类似os.chmod</span><br><span class="line">    f1.Chmod(0777);</span><br><span class="line">  </span><br><span class="line">    //修改文件所有者，类似os.chown</span><br><span class="line">    f1.Chown(0, 0);</span><br><span class="line">  </span><br><span class="line">    //返回文件的句柄，通过NewFile创建文件需要文件句柄</span><br><span class="line">    fmt.Println(f1.Fd());</span><br><span class="line">  </span><br><span class="line">    //从文件中读取数据</span><br><span class="line">    buf := make([]byte, 128);</span><br><span class="line">    //read每次读取数据到buf中</span><br><span class="line">    for n, _ := f1.Read(buf); n != 0; n, _ = f1.Read(buf) &#123;</span><br><span class="line">        fmt.Println(string(buf[:n]));</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //向文件中写入数据</span><br><span class="line">    for i := 0; i &lt; 5; i++ &#123;</span><br><span class="line">        f3.Write([]byte(&quot;写入数据&quot; + strconv.Itoa(i) + &quot;\r\n&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //返回一对关联的文件对象</span><br><span class="line">    //从r中可以读取到从w写入的数据</span><br><span class="line">    r, w, _ := os.Pipe();</span><br><span class="line">    //向w中写入字符串</span><br><span class="line">    w.WriteString(&quot;写入w&quot;);</span><br><span class="line">    buf2 := make([]byte, 128);</span><br><span class="line">    //从r中读取数据</span><br><span class="line">    n, _ := r.Read(buf);</span><br><span class="line">    fmt.Println(string(buf2[:n]));</span><br><span class="line">  </span><br><span class="line">    //改变工作目录</span><br><span class="line">    os.Mkdir(&quot;a&quot;, os.ModePerm);</span><br><span class="line">    dir, _ := os.Open(&quot;a&quot;);</span><br><span class="line">    //改变工作目录到dir，dir必须为一个目录</span><br><span class="line">    dir.Chdir();</span><br><span class="line">    fmt.Println(os.Getwd());</span><br><span class="line">  </span><br><span class="line">    //读取目录的内容，返回一个FileInfo的slice</span><br><span class="line">    //参数大于0，最多返回n个FileInfo</span><br><span class="line">    //参数小于等于0，返回所有FileInfo</span><br><span class="line">    fi, _ := dir.Readdir(-1);</span><br><span class="line">    for _, v := range fi &#123;</span><br><span class="line">        fmt.Println(v.Name());</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //读取目录中文件对象的名字</span><br><span class="line">    names, _ := dir.Readdirnames(-1);</span><br><span class="line">    fmt.Println(names);</span><br><span class="line">  </span><br><span class="line">    //获取文件的详细信息，返回FileInfo结构</span><br><span class="line">    fi3, _ := f3.Stat();</span><br><span class="line">    //文件名</span><br><span class="line">    fmt.Println(fi3.Name());</span><br><span class="line">    //文件大小</span><br><span class="line">    fmt.Println(fi3.Size());</span><br><span class="line">    //文件权限</span><br><span class="line">    fmt.Println(fi3.Mode());</span><br><span class="line">    //文件修改时间</span><br><span class="line">    fmt.Println(fi3.ModTime());</span><br><span class="line">    //是否是目录</span><br><span class="line">    fmt.Println(fi3.IsDir());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">package main;</span><br><span class="line">  </span><br><span class="line">import (</span><br><span class="line">    &quot;os&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;strconv&quot;</span><br><span class="line">)</span><br><span class="line">  </span><br><span class="line">//os包中关于文件的操作函数</span><br><span class="line">  </span><br><span class="line">func main() &#123;</span><br><span class="line">    //创建文件，返回一个文件指针</span><br><span class="line">    f3, _ := os.Create(&quot;./3.txt&quot;);</span><br><span class="line">    defer f3.Close();</span><br><span class="line">  </span><br><span class="line">    //以读写方式打开文件，如果不存在则创建文件，等同于上面os.Create</span><br><span class="line">    f4, _ := os.OpenFile(&quot;./4.txt&quot;, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0666);</span><br><span class="line">    defer f4.Close();</span><br><span class="line">  </span><br><span class="line">    //打开文件，返回文件指针</span><br><span class="line">    f1, _ := os.Open(&quot;./1.txt&quot;);</span><br><span class="line">    defer f1.Close();</span><br><span class="line">  </span><br><span class="line">    //修改文件权限，类似os.chmod</span><br><span class="line">    f1.Chmod(0777);</span><br><span class="line">  </span><br><span class="line">    //修改文件所有者，类似os.chown</span><br><span class="line">    f1.Chown(0, 0);</span><br><span class="line">  </span><br><span class="line">    //返回文件的句柄，通过NewFile创建文件需要文件句柄</span><br><span class="line">    fmt.Println(f1.Fd());</span><br><span class="line">  </span><br><span class="line">    //从文件中读取数据</span><br><span class="line">    buf := make([]byte, 128);</span><br><span class="line">    //read每次读取数据到buf中</span><br><span class="line">    for n, _ := f1.Read(buf); n != 0; n, _ = f1.Read(buf) &#123;</span><br><span class="line">        fmt.Println(string(buf[:n]));</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //向文件中写入数据</span><br><span class="line">    for i := 0; i &lt; 5; i++ &#123;</span><br><span class="line">        f3.Write([]byte(&quot;写入数据&quot; + strconv.Itoa(i) + &quot;\r\n&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //返回一对关联的文件对象</span><br><span class="line">    //从r中可以读取到从w写入的数据</span><br><span class="line">    r, w, _ := os.Pipe();</span><br><span class="line">    //向w中写入字符串</span><br><span class="line">    w.WriteString(&quot;写入w&quot;);</span><br><span class="line">    buf2 := make([]byte, 128);</span><br><span class="line">    //从r中读取数据</span><br><span class="line">    n, _ := r.Read(buf);</span><br><span class="line">    fmt.Println(string(buf2[:n]));</span><br><span class="line">  </span><br><span class="line">    //改变工作目录</span><br><span class="line">    os.Mkdir(&quot;a&quot;, os.ModePerm);</span><br><span class="line">    dir, _ := os.Open(&quot;a&quot;);</span><br><span class="line">    //改变工作目录到dir，dir必须为一个目录</span><br><span class="line">    dir.Chdir();</span><br><span class="line">    fmt.Println(os.Getwd());</span><br><span class="line">  </span><br><span class="line">    //读取目录的内容，返回一个FileInfo的slice</span><br><span class="line">    //参数大于0，最多返回n个FileInfo</span><br><span class="line">    //参数小于等于0，返回所有FileInfo</span><br><span class="line">    fi, _ := dir.Readdir(-1);</span><br><span class="line">    for _, v := range fi &#123;</span><br><span class="line">        fmt.Println(v.Name());</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //读取目录中文件对象的名字</span><br><span class="line">    names, _ := dir.Readdirnames(-1);</span><br><span class="line">    fmt.Println(names);</span><br><span class="line">  </span><br><span class="line">    //获取文件的详细信息，返回FileInfo结构</span><br><span class="line">    fi3, _ := f3.Stat();</span><br><span class="line">    //文件名</span><br><span class="line">    fmt.Println(fi3.Name());</span><br><span class="line">    //文件大小</span><br><span class="line">    fmt.Println(fi3.Size());</span><br><span class="line">    //文件权限</span><br><span class="line">    fmt.Println(fi3.Mode());</span><br><span class="line">    //文件修改时间</span><br><span class="line">    fmt.Println(fi3.ModTime());</span><br><span class="line">    //是否是目录</span><br><span class="line">    fmt.Println(fi3.IsDir());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>os中关于进程的操作：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package main;</span><br><span class="line">  </span><br><span class="line">import (</span><br><span class="line">    &quot;os&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">  </span><br><span class="line">//os包中关于进程的操作函数</span><br><span class="line">  </span><br><span class="line">func main() &#123;</span><br><span class="line">    //设置新进程的属性</span><br><span class="line">    attr := &amp;os.ProcAttr&#123;</span><br><span class="line">        //files指定新进程继承的活动文件对象</span><br><span class="line">        //前三个分别为，标准输入、标准输出、标准错误输出</span><br><span class="line">        Files: []*os.File&#123;os.Stdin, os.Stdout, os.Stderr&#125;,</span><br><span class="line">        //新进程的环境变量</span><br><span class="line">        Env: os.Environ(),</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //win下通过记事本打开1.txt</span><br><span class="line">    //开始一个新进程</span><br><span class="line">    p, err := os.StartProcess(&quot;C:\\Windows\\System32\\notepad.exe&quot;, []string&#123;&quot;C:\\Windows\\System32\\notepad.exe&quot;, &quot;D:\\1.txt&quot;&#125;, attr);</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        fmt.Println(err);</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(p);</span><br><span class="line">    fmt.Println(&quot;进程ID：&quot;, p.Pid);</span><br><span class="line">  </span><br><span class="line">    //通过进程ID查找进程</span><br><span class="line">    p2, _ := os.FindProcess(p.Pid);</span><br><span class="line">    fmt.Println(p2);</span><br><span class="line">  </span><br><span class="line">    //等待10秒，执行函数</span><br><span class="line">    time.AfterFunc(time.Second*10, func() &#123;</span><br><span class="line">        //向p进程发送退出信号</span><br><span class="line">        p.Signal(os.Kill);</span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    //等待进程p的退出，返回进程状态</span><br><span class="line">    ps, _ := p.Wait();</span><br><span class="line">    fmt.Println(ps.String());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">package main;</span><br><span class="line">  </span><br><span class="line">import (</span><br><span class="line">    &quot;os&quot;</span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">    &quot;time&quot;</span><br><span class="line">)</span><br><span class="line">  </span><br><span class="line">//os包中关于进程的操作函数</span><br><span class="line">  </span><br><span class="line">func main() &#123;</span><br><span class="line">    //设置新进程的属性</span><br><span class="line">    attr := &amp;os.ProcAttr&#123;</span><br><span class="line">        //files指定新进程继承的活动文件对象</span><br><span class="line">        //前三个分别为，标准输入、标准输出、标准错误输出</span><br><span class="line">        Files: []*os.File&#123;os.Stdin, os.Stdout, os.Stderr&#125;,</span><br><span class="line">        //新进程的环境变量</span><br><span class="line">        Env: os.Environ(),</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    //win下通过记事本打开1.txt</span><br><span class="line">    //开始一个新进程</span><br><span class="line">    p, err := os.StartProcess(&quot;C:\\Windows\\System32\\notepad.exe&quot;, []string&#123;&quot;C:\\Windows\\System32\\notepad.exe&quot;, &quot;D:\\1.txt&quot;&#125;, attr);</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        fmt.Println(err);</span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(p);</span><br><span class="line">    fmt.Println(&quot;进程ID：&quot;, p.Pid);</span><br><span class="line">  </span><br><span class="line">    //通过进程ID查找进程</span><br><span class="line">    p2, _ := os.FindProcess(p.Pid);</span><br><span class="line">    fmt.Println(p2);</span><br><span class="line">  </span><br><span class="line">    //等待10秒，执行函数</span><br><span class="line">    time.AfterFunc(time.Second*10, func() &#123;</span><br><span class="line">        //向p进程发送退出信号</span><br><span class="line">        p.Signal(os.Kill);</span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    //等待进程p的退出，返回进程状态</span><br><span class="line">    ps, _ := p.Wait();</span><br><span class="line">    fmt.Println(ps.String());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>参考：<a href="https://www.cnblogs.com/saryli/p/11694933.html" target="_blank" rel="noopener">https://www.cnblogs.com/saryli/p/11694933.html</a></p>
-<h3 id="strings包常用函数"><a href="#strings包常用函数" class="headerlink" title="strings包常用函数"></a>strings包常用函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">    s1 := &quot; aBc&quot;</span><br><span class="line">    s2 := &quot;100a&quot;</span><br><span class="line">    s3 := s1 + s2</span><br><span class="line">    fmt.Println(s3)</span><br><span class="line">    fmt.Println(strings.HasPrefix(s3, &quot;a&quot;)) //判断前缀</span><br><span class="line">    fmt.Println(strings.HasSuffix(s3, &quot;0&quot;)) //判断后缀</span><br><span class="line">    fmt.Println(strings.Contains(s3, &quot;9&quot;))  //字符串包含关系</span><br><span class="line">    fmt.Println(strings.Index(s3, &quot;0&quot;))     //判断子字符串或字符在父字符串中出现的位置（索引）</span><br><span class="line">    fmt.Println(strings.LastIndex(s3, &quot;0&quot;)) //最后出现位置的索引</span><br><span class="line">    fmt.Println(strings.Replace(s3,&quot;0&quot;,&quot;1&quot;,-1))//如果 n = -1 则替换所有字符串</span><br><span class="line">    fmt.Println(strings.Count(s3,&quot;0&quot;))//出现的非重叠次数</span><br><span class="line">    fmt.Println(strings.Repeat(s3,2))//重复字符串</span><br><span class="line">    fmt.Println(strings.ToLower(s3))//修改字符串大小写</span><br><span class="line">    fmt.Println(strings.ToUpper(s3))//修改字符串大小写</span><br><span class="line">    fmt.Println(strings.TrimSpace(s3))//修剪字符串 去掉开头和结尾空格</span><br><span class="line">    fmt.Println(strings.Trim(strings.TrimSpace(s3),&quot;a&quot;))//修剪字符串 去掉开头和结尾字符串</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://www.cnblogs.com/saryli/p/11694933.html">https://www.cnblogs.com/saryli/p/11694933.html</a></p>
+<h3 id="strings包常用函数"><a href="#strings包常用函数" class="headerlink" title="strings包常用函数"></a>strings包常用函数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">    s1 := &quot; aBc&quot;</span><br><span class="line">    s2 := &quot;100a&quot;</span><br><span class="line">    s3 := s1 + s2</span><br><span class="line">    fmt.Println(s3)</span><br><span class="line">    fmt.Println(strings.HasPrefix(s3, &quot;a&quot;)) //判断前缀</span><br><span class="line">    fmt.Println(strings.HasSuffix(s3, &quot;0&quot;)) //判断后缀</span><br><span class="line">    fmt.Println(strings.Contains(s3, &quot;9&quot;))  //字符串包含关系</span><br><span class="line">    fmt.Println(strings.Index(s3, &quot;0&quot;))     //判断子字符串或字符在父字符串中出现的位置（索引）</span><br><span class="line">    fmt.Println(strings.LastIndex(s3, &quot;0&quot;)) //最后出现位置的索引</span><br><span class="line">    fmt.Println(strings.Replace(s3,&quot;0&quot;,&quot;1&quot;,-1))//如果 n = -1 则替换所有字符串</span><br><span class="line">    fmt.Println(strings.Count(s3,&quot;0&quot;))//出现的非重叠次数</span><br><span class="line">    fmt.Println(strings.Repeat(s3,2))//重复字符串</span><br><span class="line">    fmt.Println(strings.ToLower(s3))//修改字符串大小写</span><br><span class="line">    fmt.Println(strings.ToUpper(s3))//修改字符串大小写</span><br><span class="line">    fmt.Println(strings.TrimSpace(s3))//修剪字符串 去掉开头和结尾空格</span><br><span class="line">    fmt.Println(strings.Trim(strings.TrimSpace(s3),&quot;a&quot;))//修剪字符串 去掉开头和结尾字符串</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>参考：<a href="https://studygolang.com/articles/14215" target="_blank" rel="noopener">https://studygolang.com/articles/14215</a></p>
+<p>参考：<a href="https://studygolang.com/articles/14215">https://studygolang.com/articles/14215</a></p>
 
       
     </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' target="_blank" rel="noopener" class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/Golang常用函数/">Golang常用函数</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" data-id="clpsdly260014c4vn35zcag58" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li></ul>
 
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          时间复杂度与空间复杂度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">go常用函数</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
-
-
-
-
-
-<div id="lv-container" data-id="city" data-uid="MTAyMC80Mjc5OC8xOTM0NQ==">
-	<script type="text/javascript">
-   (function(d, s) {
-       var j, e = d.getElementsByTagName(s)[0];
-
-       if (typeof LivereTower === 'function') { return; }
-
-       j = d.createElement(s);
-       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-       j.async = true;
-
-       e.parentNode.insertBefore(j, e);
-   })(document, 'script');
-	</script>
-<noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
-</div>
-</div></div>
-    <aside id="sidebar" class="alignright">
+</section>
+        
+          <aside id="sidebar">
   
-
-  
-<div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
-  <ul class="entry">
     
-      <li>
-        <a href="/2021/11/21/散列表/">散列表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——桶排序、计数排序、基数排序/">排序——桶排序、计数排序、基数排序</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/排序——快排与归并排/">排序——快排与归并排</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/二分查找与Redis跳表/">二分查找与Redis跳表</a>
-      </li>
-    
-      <li>
-        <a href="/2021/11/20/递归与排序——冒泡、插入和选择/">递归与排序——冒泡、插入和选择</a>
-      </li>
-    
-  </ul>
-</div>
-
 
   
-<div class="widget tag">
-  <h3 class="title">Tags</h3>
-  <ul class="entry">
-  
-    <li><a href="/tags/Docker/">Docker</a><small>4</small></li>
-  
-    <li><a href="/tags/Git/">Git</a><small>5</small></li>
-  
-    <li><a href="/tags/GolangBasic/">GolangBasic</a><small>2</small></li>
-  
-    <li><a href="/tags/Golang常用函数/">Golang常用函数</a><small>2</small></li>
-  
-    <li><a href="/tags/Hexo/">Hexo</a><small>3</small></li>
-  
-    <li><a href="/tags/Linux/">Linux</a><small>9</small></li>
-  
-    <li><a href="/tags/Markdown/">Markdown</a><small>1</small></li>
-  
-    <li><a href="/tags/MongoDB/">MongoDB</a><small>2</small></li>
-  
-    <li><a href="/tags/MySQL/">MySQL</a><small>3</small></li>
-  
-    <li><a href="/tags/PDO/">PDO</a><small>1</small></li>
-  
-    <li><a href="/tags/PHP/">PHP</a><small>11</small></li>
-  
-    <li><a href="/tags/PHP框架/">PHP框架</a><small>7</small></li>
-  
-    <li><a href="/tags/PhpStorm/">PhpStorm</a><small>1</small></li>
-  
-    <li><a href="/tags/Redis/">Redis</a><small>6</small></li>
-  
-    <li><a href="/tags/Smarty/">Smarty</a><small>1</small></li>
-  
-    <li><a href="/tags/algorithm-data-structure/">algorithm-data_structure</a><small>6</small></li>
-  
-    <li><a href="/tags/前端/">前端</a><small>3</small></li>
-  
-    <li><a href="/tags/工具/">工具</a><small>1</small></li>
-  
-    <li><a href="/tags/服务器/">服务器</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-
-  
-<div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
-  <div class="entry">
-    <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+    </div>
   </div>
-</div>
 
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
 </aside>
-    <div class="clearfix"></div>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
   </div>
-  <footer id="footer" class="inner"><div class="alignleft">
-  <p>
-  
-  &copy; 2021 abellmz
-  
-  All rights reserved.</p>
-  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
-</div>
-<div class="clearfix"></div>
-
-<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
-
 </footer>
-  <script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
 <script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
 
 
-<div id='bg'></div>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>
