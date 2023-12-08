@@ -15,7 +15,7 @@
 <meta property="og:description" content="join关联： 内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接) oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接 union的例子 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;poloyy&#x2F;p&#x2F;12884399.html">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-03-04T07:28:02.000Z">
-<meta property="article:modified_time" content="2023-11-23T01:08:22.512Z">
+<meta property="article:modified_time" content="2023-12-08T08:51:11.648Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -100,7 +100,7 @@
 
 <h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><p>select * from city</p>
 <p>select code_id from city where city_name&#x3D;’北京’<br>将上面两步句子合并一句话(子查询)<br> select * from code where id&#x3D;(select code_id from city where city_name&#x3D;’北京’);</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">笛卡尔基  也属于内关联（没条件也是），只是join后面没有on或者where进行筛选</span><br><span class="line">内关联   inner可以省略  on后面跟 条件</span><br><span class="line"></span><br><span class="line">如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</span><br><span class="line"></span><br><span class="line">Select * from class,stu或者</span><br><span class="line">Select * from class join stu或者</span><br><span class="line">Select * from class inner join stu</span><br><span class="line"></span><br><span class="line">执⾏以上语句将产⽣class 表的所有数据乘stu表的所有数据，显然这个结果是</span><br><span class="line">没有意义的，所以我们要对以上查询增加条件以产⽣有价值的数据集合</span><br><span class="line">Select * from class,stu where class.id=stu.cid;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">笛卡尔基  也属于内关联（没条件也是），只是join后面没有on或者where进行筛选</span><br><span class="line">内关联   inner可以省略  on后面跟 条件</span><br><span class="line"></span><br><span class="line">如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</span><br><span class="line"></span><br><span class="line">Select * from class,stu或者</span><br><span class="line">Select * from class join stu或者</span><br><span class="line">Select * from class inner join stu</span><br><span class="line"></span><br><span class="line">执⾏以上语句将产⽣class 表的所有数据条数乘stu表的所有数据条数，显然这个结果是没有意义的，所以需要对以上查询增加条件以产⽣有价值的数据集合</span><br><span class="line">Select * from class,stu where class.id=stu.cid;</span><br></pre></td></tr></table></figure>
 
 <p>inner join 实际上就是两个表的拼接    on和where后面跟条件， on和where还是有所区别的，join关联on关联条件，where进行筛选条件</p>
 <p>查找    字段      字段     来自  表名   加入 表名 别名  条件         条件</p>
@@ -157,7 +157,7 @@
 <p>修改字段名change       字段旧名 字段新名 +数据修饰;</p>
 <p>alter table student change username name varchar(100) not null default ‘’;</p>
 <p>修改字段修饰modify    </p>
-<p>alter table student modify name varchar(50) not null default ‘’;</p>
+<p>alter table student modify name varchar(50) not null default ‘’ comment ‘姓名’;</p>
 <p>添加字段 add (after&#x2F;before)</p>
 <p>alter table student add time int not null default 0 after money;</p>
 <p>删除字段drop</p>
@@ -247,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clpse6izn0012k8vn42m4511q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clpwe17t500126mvn2bd31ppy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
