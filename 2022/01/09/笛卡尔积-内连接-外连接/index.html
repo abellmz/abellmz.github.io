@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>笛卡尔积/内连接/外连接 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="笛卡尔积、内连接和外连接的关系笛卡尔积与内连接笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="笛卡尔积&#x2F;内连接&#x2F;外连接">
+<meta property="og:url" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="笛卡尔积、内连接和外连接的关系笛卡尔积与内连接笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/empt-table.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/dept-table.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/cartesian-product.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/inner-join.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/left-outer-join.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/right-outer-join.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-all-full-join.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-full-join.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/same-order-full-join.png">
+<meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/different-order-full-join.png">
+<meta property="article:published_time" content="2022-01-09T07:40:47.000Z">
+<meta property="article:modified_time" content="2023-12-09T09:49:44.599Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/empt-table.png">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-笛卡尔积-内连接-外连接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/" class="article-date">
+  <time datetime="2022-01-09T07:40:47.000Z" itemprop="datePublished">2022-01-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      笛卡尔积/内连接/外连接
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="笛卡尔积、内连接和外连接的关系"><a href="#笛卡尔积、内连接和外连接的关系" class="headerlink" title="笛卡尔积、内连接和外连接的关系"></a>笛卡尔积、内连接和外连接的关系</h3><h4 id="笛卡尔积与内连接"><a href="#笛卡尔积与内连接" class="headerlink" title="笛卡尔积与内连接"></a>笛卡尔积与内连接</h4><p>笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：</p>
+<span id="more"></span>
+
+<p>A&#x3D;{1,2},B&#x3D;{a,b,c},笛卡尔积就是{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)}，MySQL中的笛卡尔积（交叉连接）也是类似的。</p>
+<p><strong>笛卡尔积</strong>结果集：行数为两表的行数相乘，列数为两个表的所有列。</p>
+<p><strong>内连接</strong>结果集：行数是满足关联条件的行对数，列数是满足条件的两表行中所选取的两表列数。</p>
+<p>empt表：</p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/empt-table.png"></p>
+<p>dept表：</p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/dept-table.png"></p>
+<p>如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select * From empt,dept;</span><br><span class="line">或者</span><br><span class="line">Select * From empt JOIN dept;</span><br><span class="line">或者</span><br><span class="line">Select * From empt INNER JOIN dept;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/cartesian-product.png"></p>
+<p>显然，以上结果是没有什么意义的，一般会对以上查询增加条件以产⽣有价值的数据集合。</p>
+<p>内连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.*,b.id,b.name FROM empt a JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/inner-join.png"></p>
+<p>再者，笛卡尔积是对两表进行全表扫描,会产生大量冗余数据，查询效率较低。而内连接利用连接条件进行筛选，可以减少不必要的数据处理，查询效率较高。若on条件是非唯一字段，则会出现局部笛卡尔积。</p>
+<h4 id="内连接和外连接"><a href="#内连接和外连接" class="headerlink" title="内连接和外连接"></a>内连接和外连接</h4><p>内连接（INNER JOIN,INNER可以省略），它只返回两个表中满足连接条件的行，内连接的优点是操作简单、效率较高，缺点是可能会丢失不符合连接条件的数据。</p>
+<p>外连接（OUTER JOIN,OUTER 可以省略），包括左(外)连接、右(外)连接、全(外)连接，它返回两个表中的所有行（比如全连接），并根据连接条件进行匹配，两边空缺以null填充。与内连接不同，外连接不会剔除不符合连接条件的行，而是将它们保留在结果集中。外连接的优点是能够保留更多的数据，缺点是操作相对复杂且效率较低。</p>
+<p>左连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a LEFT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/left-outer-join.png"></p>
+<p>右连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a RIGHT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/right-outer-join.png"></p>
+<p>Oracle支持的全连接(FULL JOIN)，MySQL却不支持全连接，但可以使用UNION ALL进行模拟全连接。需要注意的是，ALL用在UNION子句里，省略与否的输出结果是不一样的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a LEFT JOIN dept b ON a.dept_id = b.id</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a RIGHT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
+
+<p>有ALL，将保留所有的记录行，不会剔除有重复的行</p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-all-full-join.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a LEFT JOIN dept b ON a.dept_id = b.id</span><br><span class="line">UNION</span><br><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a RIGHT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
+
+<p>省略ALL关键字，系统会自动去重。</p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-full-join.png"></p>
+<p>若全连接的两条sql是同一张表的不同条件，则结果数据以第一条sql为基准，且两条sql的select字段顺序最好相同，否则结果数据容易错乱，可读性差。</p>
+<p>相同顺序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from empt where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select id，name,gender,dept_id,is_enable from empt where dept_id = 2；</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/same-order-full-join.png"></p>
+<p>不同顺序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from empt where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select name,id,gender,dept_id,is_enable from empt where dept_id = 2；</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/different-order-full-join.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/" data-id="clpxvkpmf001qjsvn2el48d8n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">散列表</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 13.75px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/">笛卡尔积/内连接/外连接</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2023 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

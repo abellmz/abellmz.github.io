@@ -7,15 +7,15 @@
   
   <title>MySQL基础 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="join关联： 内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接) oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接 union的例子 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;poloyy&#x2F;p&#x2F;12884399.html">
+  <meta name="description" content="一对一关联select * from city select code_id from city where city_name&#x3D;’北京’将上面两步句子合并一句话——子查询">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL基础">
 <meta property="og:url" content="http://yoursite.com/2019/03/04/mysql/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="join关联： 内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接) oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接 union的例子 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;poloyy&#x2F;p&#x2F;12884399.html">
+<meta property="og:description" content="一对一关联select * from city select code_id from city where city_name&#x3D;’北京’将上面两步句子合并一句话——子查询">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-03-04T07:28:02.000Z">
-<meta property="article:modified_time" content="2023-12-08T08:51:11.648Z">
+<meta property="article:modified_time" content="2023-12-09T09:49:41.976Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -89,31 +89,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>join关联：</p>
-<p>内连接、外连接（ 左(外)连接、右(外)连接、全(外)连接）、笛卡尔积(交叉连接)</p>
-<p>oracle支持全连接，mysql上不支持全连接，可以使用左链接+union（联合，自带去重）+右连接</p>
-<p>union的例子</p>
-<p><a href="https://www.cnblogs.com/poloyy/p/12884399.html">https://www.cnblogs.com/poloyy/p/12884399.html</a></p>
+        <h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><p>select * from city</p>
+<p>select code_id from city where city_name&#x3D;’北京’<br>将上面两步句子合并一句话——子查询</p>
 <span id="more"></span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select * from emp as a left join dept as b on a.dept_id = b.id</span><br><span class="line">union</span><br><span class="line">select * from emp as a right join dept as b on a.dept_id = b.id;</span><br><span class="line">//以上自动去重，两边空缺以null填充。未去重使用union all;若联合同一个表的不同条件数据，结果以第一条sql为基准，且两条sql的字段顺序最好相同，否则容易结果数据错乱。</span><br><span class="line">比如错乱的：</span><br><span class="line">select name,id,leader,is_enable,dept_id from emp where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select *  from emp where leader = 0</span><br><span class="line">比如不错乱的：</span><br><span class="line">select * from emp where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select id,name,dept_id,leader,is_enable   from emp where leader = 0</span><br></pre></td></tr></table></figure>
-
-<h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><p>select * from city</p>
-<p>select code_id from city where city_name&#x3D;’北京’<br>将上面两步句子合并一句话(子查询)<br> select * from code where id&#x3D;(select code_id from city where city_name&#x3D;’北京’);</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">笛卡尔基  也属于内关联（没条件也是），只是join后面没有on或者where进行筛选</span><br><span class="line">内关联   inner可以省略  on后面跟 条件</span><br><span class="line"></span><br><span class="line">如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</span><br><span class="line"></span><br><span class="line">Select * from class,stu或者</span><br><span class="line">Select * from class join stu或者</span><br><span class="line">Select * from class inner join stu</span><br><span class="line"></span><br><span class="line">执⾏以上语句将产⽣class 表的所有数据条数乘stu表的所有数据条数，显然这个结果是没有意义的，所以需要对以上查询增加条件以产⽣有价值的数据集合</span><br><span class="line">Select * from class,stu where class.id=stu.cid;</span><br></pre></td></tr></table></figure>
-
-<p>inner join 实际上就是两个表的拼接    on和where后面跟条件， on和where还是有所区别的，join关联on关联条件，where进行筛选条件</p>
-<p>查找    字段      字段     来自  表名   加入 表名 别名  条件         条件</p>
+<p> select * from code where id&#x3D;(select code_id from city where city_name&#x3D;’北京’);</p>
+<p>on和where后面所跟的条件不同：</p>
+<p><code>select</code>+查询字段+<code>from</code>+查询表+<code>join</code>+关联表+<code>on</code>+关联条件+<code>where</code>+筛选条件</p>
 <p>select city_name,code_name from city join code c on code_id&#x3D;c.id where city_name&#x3D;’北京’;</p>
 <h5 id="一对多关联"><a href="#一对多关联" class="headerlink" title="一对多关联"></a>一对多关联</h5><p>多表加外键（也是XXid） 2表合一</p>
 <p>表别名.字段        别名          别名  条件               条件</p>
 <p>select s.sname from class c join student s on c.id&#x3D;s.class_id where c.class_name&#x3D;’c96’;<br>张三的同班同学（自关联）      打印出两表联合好观察</p>
 <p>select s1.sname from student s1 join student s2 on s1.class_id&#x3D;s2.class_id where s2.sname&#x3D;’张三’ and s1.sname!&#x3D;’张三’<br>(and,在s2条件下进行s1筛选，实际上经历了1次on关联和2次where筛选);</p>
-<p><strong>外关联</strong></p>
-<p>左关联 偏向左边，左边的表数据全部显示，右边表没有与之相对应的数据，null填充</p>
-<p>left或left outer和right 或者right outer在join之前（outer 都可以省略），左右以join为参考（这个是真的两表粘合一起，left和right决定了null填充的位置,如：left则右边填null）</p>
-<p>select * from class c left join student s on c.id&#x3D;s.class_id;</p>
-<p>select * from class c right join student s on c.id&#x3D;s.class_id;</p>
 <p>文章表  article<br>id    title<br>1      马上雾霾就来了<br>2      宝宝心里苦不苦<br>3      IG夺冠<br>4      2W5千里长征</p>
 <p>中间表<br>article_id     tag_id<br>1             1<br>1             7<br>2             4<br>2             5<br>2             6<br>3             2<br>3             4<br>3             8<br>4             3<br>4             6</p>
 <p>标签    tag<br>id       name<br>1       天气<br>2       游戏<br>3       军事<br>4       娱乐<br>5       八卦<br>6       历史<br>7       汽车<br>8       体育</p>
@@ -247,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clpwe17t500126mvn2bd31ppy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clpxvkpm20012jsvn89y08n9h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
@@ -299,7 +286,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 13.75px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
     </div>
   </div>
 
@@ -308,7 +295,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -319,6 +306,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/">笛卡尔积/内连接/外连接</a>
+          </li>
         
           <li>
             <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
@@ -334,10 +325,6 @@
         
           <li>
             <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
           </li>
         
       </ul>

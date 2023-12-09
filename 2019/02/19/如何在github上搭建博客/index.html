@@ -118,7 +118,7 @@
 <p>ssh key检查是否存在：</p>
 <p>$ ls ~&#x2F;.ssh&#x2F;id_rsa.pub如果出现文件路径则存在</p>
 <p>生成ssh key：</p>
-<p>$ ssh-keygen -t rsa -C “<a href="mailto:&#x79;&#111;&#117;&#114;&#x40;&#x65;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#x79;&#111;&#117;&#114;&#x40;&#x65;&#x6d;&#97;&#105;&#108;&#46;&#99;&#x6f;&#109;</a>“</p>
+<p>$ ssh-keygen -t rsa -C “<a href="mailto:&#121;&#x6f;&#117;&#x72;&#x40;&#x65;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#121;&#x6f;&#117;&#x72;&#x40;&#x65;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a>“</p>
 <p>-t 指定密钥类型，默认是 rsa ，可以省略。</p>
 <p>-C 设置注释文字，比如邮箱。</p>
 <p>-f 指定密钥文件存储文件名。</p>
@@ -133,7 +133,7 @@
 <p>复制，ssh-rsa…到最后。</p>
 <p>具体操作：登录你的github账号，点击右上角设置，点击Settings-&gt;点击左边菜单栏的 SSH key，添加一个新的sshkey,将代码贴入，授权完成。</p>
 <p>测试：</p>
-<p>$ ssh -T <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;">&#x67;&#x69;&#x74;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#98;&#x2e;&#99;&#111;&#109;</a></p>
+<p>$ ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;</a></p>
 <p>第一次的话期间若出现是否continue，输入yes，出现hi。。。（加上你的用户名）就成功了。</p>
 <h5 id="3、安装Hexo"><a href="#3、安装Hexo" class="headerlink" title="3、安装Hexo"></a>3、安装Hexo</h5><p>新建一个文件夹作为你博客文件存储的地方，打开git bash进入这个文件夹，输入</p>
 <p>npm install hexo-cli -g</p>
@@ -156,8 +156,8 @@
 <p><a href="https://www.cnblogs.com/trista222/p/8017300.html">https://www.cnblogs.com/trista222/p/8017300.html</a></p>
 <p><a href="https://www.cnblogs.com/jackyroc/p/7681938.html">https://www.cnblogs.com/jackyroc/p/7681938.html</a></p>
 <p>mac:</p>
-<p> sudo ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a>  #报permission denied (publickey)</p>
-<p>sudo ssh -T -v <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;">&#x67;&#x69;&#x74;&#64;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#x6f;&#x6d;</a>  #检查进程，发现</p>
+<p> sudo ssh -T <a href="mailto:&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#103;&#105;&#116;&#x40;&#x67;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;</a>  #报permission denied (publickey)</p>
+<p>sudo ssh -T -v <a href="mailto:&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;">&#103;&#105;&#x74;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#109;</a>  #检查进程，发现</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">debug1: Authentications that can continue: publickey</span><br><span class="line">debug1: Next authentication method: publickey</span><br><span class="line">debug1: Trying private key: /var/root/.ssh/id_rsa</span><br><span class="line">debug1: Trying private key: /var/root/.ssh/id_dsa</span><br><span class="line">debug1: Trying private key: /var/root/.ssh/id_ecdsa</span><br><span class="line">debug1: Trying private key: /var/root/.ssh/id_ed25519</span><br><span class="line">debug1: Trying private key: /var/root/.ssh/id_xmss</span><br><span class="line">debug1: No more authentication methods to try.</span><br><span class="line">git@github.com: Permission denied (publickey).</span><br></pre></td></tr></table></figure>
 
 <p>发现它一直在查找id_rsa、id_dsa、id_ecdsa等文件，然后就没了</p>
@@ -170,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="clpwe17td001e6mvndminf3j6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="clpxvkpm9001ejsvn4ifj2ltd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
@@ -217,7 +217,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 12.5px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 13.75px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
     </div>
   </div>
 
@@ -226,7 +226,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -237,6 +237,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/">笛卡尔积/内连接/外连接</a>
+          </li>
         
           <li>
             <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
@@ -252,10 +256,6 @@
         
           <li>
             <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
-          </li>
-        
-          <li>
-            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
           </li>
         
       </ul>
