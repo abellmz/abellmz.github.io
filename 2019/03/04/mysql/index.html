@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/04/mysql/articles_tags.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/mysql/tags.png">
 <meta property="article:published_time" content="2019-03-04T07:28:02.000Z">
-<meta property="article:modified_time" content="2023-12-16T11:56:42.607Z">
+<meta property="article:modified_time" content="2023-12-19T07:13:32.172Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -110,7 +110,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s.name from class c join students s on c.id=s.class_id where c.class_name = &quot;一班&quot;；</span><br></pre></td></tr></table></figure>
 
 <p>张三的同班同学（自关联）     </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s1.sname ,s2.name from students s1 join students s2 on s1.class_id=s2.class_id where s2.sname=&#x27;张三&#x27; and s1.sname!=&#x27;张三&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s1.name ,s2.name from students s1 join students s2 on s1.class_id=s2.class_id where s2.name=&#x27;张三&#x27; and s1.name!=&#x27;张三&#x27;;</span><br></pre></td></tr></table></figure>
 
 <h5 id="多对多关联"><a href="#多对多关联" class="headerlink" title="多对多关联"></a>多对多关联</h5><p>多对多关联需添加第三张表作为中间表，中间表至少包含两个字段，这两个字段分别作为外键，指向各自一方的主键。例如以下是articles与tags是多对多关系，添加中间表articles_tags，其中字段分别指向两表</p>
 <p>文章表articles<br><img src="/2019/03/04/mysql/articles.png"></p>
@@ -419,7 +419,7 @@
 <p>连接字符串concat</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(username,&#x27;-&#x27;,age) from students;</span><br></pre></td></tr></table></figure>
 
-<p>distinct,去重 相同数据，后面数据和前面数据合并为一个数据</p>
+<p>distinct,去重相同数据，后面数据和前面数据合并为一个数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct sex from students;</span><br></pre></td></tr></table></figure>
 
 <p>if表达式  i作为if(条件,成立反值，不成立反值)的字段名，显示大于小于</p>
@@ -454,7 +454,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select count(*) from students where sex=&#x27;男&#x27;;</span><br><span class="line">select count(name) from students where sex=&#x27;男&#x27;;</span><br></pre></td></tr></table></figure>
 
 <p>max()最大，sum()求和，avg()求平均值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name,max(age) from students;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select max(age) from students;</span><br><span class="line">错误书写：</span><br><span class="line">select name,max(age) a from students;</span><br><span class="line">由于max()是聚合函数max(age)属于聚合列，而name不是，不兼容报错</span><br></pre></td></tr></table></figure>
 
 <p>男生有多少人</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sex,count(*) from students group by sex having sex=&#x27;男&#x27;;</span><br></pre></td></tr></table></figure>
@@ -471,6 +471,8 @@
 <p>update:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//所有男变为女</span><br><span class="line">update stu_bak set sex=&#x27;女&#x27; where sex=&#x27;男&#x27;;</span><br><span class="line">//更新一条数据的多个字段</span><br><span class="line">update stu set name=&quot;小明&quot;, age=19 where tel=&quot;13288097888&quot;;</span><br></pre></td></tr></table></figure>
 
+<p>replace into 与 update的区别：</p>
+<p><code>REPLACE INTO</code> 和 <code>UPDATE</code> 都是在数据库中更新数据的操作，但<code>REPLACE INTO</code>语句首先尝试插入一条新记录，如果已存在具有相同主键（或唯一键）的记录，则先删除旧记录，然后再插入新记录。 而  <code>UPDATE</code>  语句仅更新现有记录的某些列，不会删除或重新插入记录。</p>
 <p>删除数据<br> delete from 表名  条件</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from students where id=19;</span><br></pre></td></tr></table></figure>
 
@@ -501,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clqab2b4w00137avn2c2h1fvk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clqw3on5u00139jvn6pk731ba" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
@@ -606,7 +608,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 abellmz<br>
+      &copy; 2024 abellmz<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
