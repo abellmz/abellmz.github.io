@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/03/04/mysql/articles_tags.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/mysql/tags.png">
 <meta property="article:published_time" content="2019-03-04T07:28:02.000Z">
-<meta property="article:modified_time" content="2023-12-19T07:13:32.172Z">
+<meta property="article:modified_time" content="2024-09-04T09:02:32.143Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -148,7 +148,7 @@
 <p>模糊查询</p>
 <pre><code>show tables like &#39;s%&#39;;
 </code></pre>
-<p>查看表结构 <code>\g</code>横向，默认设置;<code>\G</code>:纵向;注意后面不能加  分号<code>！</code></p>
+<p>查看表结构 <code>\g</code>横向，默认设置;<code>\G</code>纵向;注意后面不能加分号</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">desc students;desc students\G</span><br><span class="line">describe students;</span><br><span class="line">show columns from students;</span><br></pre></td></tr></table></figure>
 
 <p>查看表结构创建语句</p>
@@ -160,7 +160,7 @@
 <p>复制表数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu_bak select * from students;</span><br></pre></td></tr></table></figure>
 
-<p>复制表结构同时备份数据 数据</p>
+<p>复制表结构同时备份数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table stu_bak2 select * from students;</span><br></pre></td></tr></table></figure>
 
 <p>rename修改表名</p>
@@ -190,20 +190,25 @@
 <p>删除主键：先删除自增，再删除主键</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table students modify id int;</span><br><span class="line">alter table students drop primary key;</span><br></pre></td></tr></table></figure>
 
-<h5 id="常用数据类型与修饰"><a href="#常用数据类型与修饰" class="headerlink" title="常用数据类型与修饰"></a>常用数据类型与修饰</h5><p>decimal(5,2):浮点型,指一共五位数字，其中两位小数,整数3位多了报错，小数多了四舍五入。</p>
+<h5 id="常用数据类型与修饰"><a href="#常用数据类型与修饰" class="headerlink" title="常用数据类型与修饰"></a>常用数据类型与修饰</h5><p>decimal(5,2):浮点型,指一共五位数字，其中两位小数,整数3位多了报错，小数多了四舍五入。相比于float，double类型，decimal类型属于精确类型，不会丢失精度，所以只要涉及到金钱，财务相关的数据，对应的类型一定要选择decimal。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Decimal(18,9)，18这个数代表最长可以到18位，而9这个数字表示小数点后面有9位数字，那么18-9=9，也就得出了整数位可以有9位。</span><br><span class="line">1个字节8位，4个字节也就是32位，算符号位也可以存21亿多，也就是可以存10位数字，那说明存9位数字绰绰有余。decimal(18.9)小数两边个存储9个数字，一共使用9个字节：小数点前的数用四个字节，小数点后用4个字节，小数点本身占一个字节。所以decimal(18,9)占用9个字节。</span><br></pre></td></tr></table></figure>
+
 <p>enum：枚举，单选型，用于存储单一值       </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students add gender1 ENUM(&#x27;男&#x27;, &#x27;女&#x27;)</span><br></pre></td></tr></table></figure>
+
 <p>set：集合类型，多选型，用于存储多个值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students add hobby1 set(&#x27;羽毛球&#x27;, &#x27;篮球&#x27;,&#x27;乒乓球&#x27;);</span><br></pre></td></tr></table></figure>
+
 <p>char(6) ：定长 效率高，最多存储6个字符</p>
 <p>varchar(30) ：变长，省空间</p>
-<p>Int(10):指定zerofill前导0填充,能显示的宽度能显示10位,当输入的数据不足10位时，会自动帮你补全位数。int的值为10 的，int(9)和int(3)就是显示的长度不一样而已,都是占用四个字节的空间</p>
+<p>Int(10):指定zerofill前导0填充,不足10位时，以0填充，超过则正常显示，不做宽度限制。无论int(9)还是int(3)，都是占用四个字节的空间</p>
 <p>unique：唯一约束 	</p>
 <p>primary key：主键，一个表最多只能有一个主键，主键列中不能null 0 重复值</p>
 <p>auto_increment：自增</p>
 <p>unsigned：非负修饰（设置前导零会自动设置上）</p>
 <p>not null：不为空 	</p>
 <p>default ：默认值</p>
-<p>如果是char或varchar类型，length可以小于字段规定长度，但如果是blob或text类型，必须是指定的length。</p>
-<p>当varchar太大时，会自动转化为text。</p>
+<p>如果是char或varchar类型，length可以小于字段规定长度。当varchar太大时，会自动转化为text。</p>
 <h5 id="Mysql-数据类型："><a href="#Mysql-数据类型：" class="headerlink" title="Mysql 数据类型："></a>Mysql 数据类型：</h5><p><strong>数值类型：</strong></p>
 <p>MySQL 支持所有标准 SQL 数值数据类型。</p>
 <p>这些类型包括严格数值数据类型( INTEGER、SMALLINT、DECIMAL 和 NUMERIC )，以及近似数值数据类型( FLOAT、REAL 和 DOUBLE PRECISION )。</p>
@@ -270,11 +275,11 @@
 <td align="left">双精度浮点数，size 参数中规定显示最大位数，d 参数中规定小数点右侧的最大位数</td>
 </tr>
 <tr>
-<td align="left">DECIMAL(size,d)</td>
-<td>对DECIMAL(size,d) ，如果size&gt;d，为size+d，否则为size+d</td>
+<td align="left">DECIMAL(M,D)</td>
+<td>默认M&#x3D;10，D&#x3D;0</td>
 <td>依赖于size和d的值</td>
 <td>依赖于size和d的值</td>
-<td align="left">小数值，作为字符串存储的 DOUBLE 类型，允许固定的小数点。size 参数中规定显示最大位数，d 参数中规定小数点右侧的最大位数</td>
+<td align="left"><code>size</code> 为精度；<code>d</code> 为保留的小数位数</td>
 </tr>
 </tbody></table>
 <p>以上的 size 代表的并不是存储在数据库中的具体的长度，如 int(4) 并不是只能存储4个长度的数字。</p>
@@ -354,9 +359,35 @@
 </tr>
 </tbody></table>
 <p>CHAR 和 VARCHAR 类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。</p>
-<p>BINARY 和 VARBINARY 类类似于 CHAR 和 VARCHAR，不同的是它们包含二进制字符串而不要非二进制字符串。也就是说，它们包含字节字符串而不是字符字符串。这说明它们没有字符集，并且排序和比较基于列值字节的数值值。</p>
-<p>BLOB 是一个二进制大对象，可以容纳可变数量的数据。有 4 种 BLOB 类型：TINYBLOB、BLOB、MEDIUMBLOB 和 LONGBLOB。它们只是可容纳值的最大长度不同。</p>
-<p>有 4 种 TEXT 类型：TINYTEXT、TEXT、MEDIUMTEXT 和 LONGTEXT。这些对应 4 种BLOB 类型，有相同的最大长度和存储需求。</p>
+<p>BINARY 和 VARBINARY 类类似于 CHAR 和 VARCHAR，不同的是它们包含二进制字符串而不是非二进制字符串。也就是说，它们包含字节字符串而不是字符字符串。这说明它们没有字符集，并且排序和比较基于列值字节的数值。</p>
+<p>BLOB 是一个二进制大对象，可以容纳可变数量的数据，可以存储图片，音视频等文件。有 4 种 BLOB 类型，它们只是可容纳值的最大长度不同。</p>
+<blockquote>
+<p>TINYBLOB：大小：0 - 255字节，用途：短文本二进制字符串</p>
+<p>BLOB：大小：0 - 65KB，用途：二进制字符串，例如图标或 logo 图片</p>
+<p>MEDIUMBLOB ：大小：0 - 16MB，用途：二进制形式的长文本数据</p>
+<p>LONGBLOB：大小：0 - 4GB，用途：二进制形式的极大文本数据</p>
+</blockquote>
+<p>数据库并不适合直接存储图片，如果有大量存储图片的需求，请使用对象存储或文件存储，数据库中可以存储图片路径来调用。</p>
+<p>TEXT类型同 char、varchar 类似，都可用于存储字符串，一般情况下，遇到存储长文本字符串的需求时可以考虑使用 text 类型。按照可存储大小区分，有 4 种 类型：</p>
+<blockquote>
+<p>TINYTEXT：大小：0 - 255字节，用途：一般文本字符串</p>
+<p>TEXT：大小：0 - 65 535字节，用途：长文本字符串</p>
+<p>MEDIUMTEXT ：大小：0 - 16 772 150字节，用途：较大文本数据</p>
+<p> LONGTEXT：大小：0 - 4 294 967 295字节，用途：极大文本数据</p>
+</blockquote>
+<p>不过在日常场景中，存储字符串还是尽量用 varchar ，只有要存储长文本数据时，可以使用 text 类型。</p>
+<p>对比 varchar ，text 类型有以下特点</p>
+<blockquote>
+<ul>
+<li>text 类型无须指定长度。</li>
+<li>若数据库未启用严格的 sqlmode ，当插入的值超过 text 列的最大长度时，则该值会被截断插入并生成警告。</li>
+<li>text 类型字段不能有默认值。</li>
+<li>varchar 可直接创建索引，text 字段创建索引要指定前多少个字符。</li>
+<li>text 类型检索效率比 varchar 要低。</li>
+</ul>
+</blockquote>
+<p>text存储字节，varchar存储字符。</p>
+<p>数据库规范中一般不推荐使用 blob 及 text 类型，但由于一些历史遗留问题或是某些场景下，还是会用到这两类数据类型的。</p>
 <p><strong>日期时间类型：</strong></p>
 <p>表示时间值的日期和时间类型为 DATETIME、DATE、TIMESTAMP、TIME 和 YEAR。</p>
 <p>每个时间类型有一个有效值范围和一个”零”值，当指定不合法的 MySQL 不能表示的值时使用”零”值。</p>
@@ -414,22 +445,22 @@
 
 <p>在字段中查找set类型数据</p>
 <p>find_in_set(s1,s2):返回在字符串s2中与s1匹配的字符串的位置,列中逗号需得是英文”,”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from students where find_in_set(&#x27;篮球&#x27;,hobby);</span><br><span class="line">select * from students where age&gt;30 and sex=&#x27;女&#x27;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在表students中筛选出字段hobby中包含“篮球”的数据</span><br><span class="line">select * from students where find_in_set(&#x27;篮球&#x27;,hobby);</span><br><span class="line">select * from students where age&gt;30 and sex=&#x27;女&#x27;;</span><br></pre></td></tr></table></figure>
 
 <p>连接字符串concat</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(username,&#x27;-&#x27;,age) from students;</span><br></pre></td></tr></table></figure>
 
-<p>distinct,去重相同数据，后面数据和前面数据合并为一个数据</p>
+<p>distinct去重相同数据，后面数据和前面数据合并为一个数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct sex from students;</span><br></pre></td></tr></table></figure>
 
 <p>if表达式  i作为if(条件,成立反值，不成立反值)的字段名，显示大于小于</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select age,if(age&gt;30,&#x27;大于30&#x27;,&#x27;小于等于30&#x27;) i from students;</span><br></pre></td></tr></table></figure>
 
-<p>order排序  desc 降序  asc升序  默认升序可以省略   有重复age时可以用到</p>
+<p>order排序  desc 降序  asc升序  默认升序可以省略，有重复age时可以用到</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students order by age desc，id desc;</span><br></pre></td></tr></table></figure>
 
 <p><strong>随机获取</strong>3个数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students order by rand() limit 3;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">select * from students order by rand() limit 3;</span><br><span class="line"></span><br><span class="line">rand([seed])可选,如果指定了seed，则返回可重复的随机数序列。如果未指定种子，则返回完全随机的数字。</span><br><span class="line"></span><br><span class="line">返回一个随机十进制数（没有种子值 - 所以它返回一个完全随机的数字&gt; = 0且&lt;1）</span><br><span class="line">&gt;select rand();// 0.10445088809770614</span><br><span class="line"></span><br><span class="line">&gt;select rand(8);//0.15668530311126755</span><br><span class="line">&gt;select rand(8);//再来一次，值还是0.15668530311126755</span><br><span class="line"></span><br><span class="line">返回一个随机十进制数&gt; = 5且&lt;10：rand()*(j-i)+i</span><br><span class="line">&gt;SELECT RAND()*(10-5)+5; //8.627276326182557</span><br><span class="line"></span><br><span class="line">返回一个随机数&gt; = 5且&lt;= 10：floor(rand()*(j-i+1)+i)</span><br><span class="line">&gt;SELECT FLOOR(RAND()*(10-5+1)+5); //10</span><br></pre></td></tr></table></figure>
 
 <p>年龄在10-55之间的同学 between… and…</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from students where age between 10 and 55;</span><br><span class="line">select * from students where age&gt;=10 and age&lt;=55;</span><br></pre></td></tr></table></figure>
@@ -479,8 +510,11 @@
 <p>清空所有数据，让id重新从1开始</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate students;</span><br></pre></td></tr></table></figure>
 
+<p>显示警告：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show warnings；</span><br></pre></td></tr></table></figure>
+
 <h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><p>select now();	获得当前日期时间</p>
-<p>顺序-where—group by having—order by—limit</p>
+<p>顺序:where—group by having—order by—limit</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students where id&gt;4 group by gender having gender=&#x27;女&#x27; order by age limit 1;</span><br></pre></td></tr></table></figure>
 
 <p>使用关键字  需加上”&#96;&#96;”</p>
@@ -503,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="clqw3on5u00139jvn6pk731ba" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="cm4dztqkf0012jali8jjhfwjn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>

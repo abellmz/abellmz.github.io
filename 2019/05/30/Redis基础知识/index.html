@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672744263.png">
 <meta property="og:image" content="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/WeChat424e10f43e5f0ebdc097cf275dd8a1cb.png">
 <meta property="article:published_time" content="2019-05-30T02:51:15.000Z">
-<meta property="article:modified_time" content="2021-08-31T01:58:06.315Z">
+<meta property="article:modified_time" content="2024-08-25T01:44:04.507Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -131,7 +131,7 @@
 
 <p>redis数据类型</p>
 <h5 id="string"><a href="#string" class="headerlink" title="string"></a>string</h5><p>（value中保存的是string）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;set name asion set设置,key是name，value是asion</span><br><span class="line">&gt;incr age 	对key为age的value	自增+1操作</span><br><span class="line">&gt;decr age 	对key为age的value	自减-1操作</span><br><span class="line">&gt;incrby age  23 	对key为age的value自增23</span><br><span class="line">&gt;decrby age  23 	对key为age的value自减23</span><br><span class="line">&gt;keys *获取redis中所有key</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;set name asion set设置,key是name，value是asion</span><br><span class="line">&gt;incr age 	对key为age的value	+1操作</span><br><span class="line">&gt;decr age 	对key为age的value	-1操作</span><br><span class="line">&gt;incrby age  23 	对key为age的value+23</span><br><span class="line">&gt;decrby age  23 	对key为age的value-23</span><br><span class="line">&gt;keys *获取redis中所有key</span><br><span class="line">&gt;del age 对key为age的进行删除操作</span><br></pre></td></tr></table></figure>
 
 <p>redis中对key的设计</p>
 <p>场景-&gt;获得最新的10个登录用户信息：select * from user order by logintime desc limit 10;</p>
@@ -140,7 +140,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">it_user:id:1:username 保存username,若保存email,则将username换成email</span><br><span class="line">表名：主键字段：主键值：其他字段</span><br><span class="line">&gt;set it_user:id:1:username asion	设置key为it_user:id:1:username，value为asion</span><br><span class="line">&gt;keys it_user:id:1*		h获取id为1的用户的信息</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557632184416.png" alt="1557632184416"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1Redis的数据是共享的</span><br><span class="line">    如果将用户信息存储在web服务的本地缓存，则每个web服务都会缓存一份，当用户修改昵称时，需要通知其它web服务更新用户缓存。</span><br><span class="line">    如果将用户信息存储在Redis，则只有一份缓存，所有的web访问的都是同一份缓存，当用户修改昵称时，所有web服务都能同时访问到最新的缓存。</span><br><span class="line">2Redis是单线程的</span><br><span class="line">    由于Redis的性能瓶颈在于内存读写速度，而不是CPU，设计者将Redis设计成了单线程模式，其所有操作都是原子性的，避免了多线程带来的复杂性。</span><br><span class="line"></span><br><span class="line">应用场景</span><br><span class="line">1计数器</span><br><span class="line">    string类型的incr和decr命令的作用是将key中储存的数字值加一/减一，这两个操作具有原子性，总能安全地进行加减操作，因此可以用string类型进行计数，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。</span><br><span class="line">2分布式锁</span><br><span class="line">    string类型的setnx的作用是“当key不存在时，设值并返回1，当key已经存在时，不设值并返回0”，“判断key是否存在”和“设值”两个操作是原子性地执行的，因此可以用string类型作为分布式锁，返回1表示获得锁，返回0表示没有获得锁。例如，为了保证定时任务的高可用，往往会同时部署多个具备相同定时任务的服务，但是业务上只希望其中的某一台服务执行定时任务，当定时任务的时间点触发时，多个服务同时竞争一个分布式锁，获取到锁的执行定时任务，没获取到的放弃执行定时任务。定时任务执行完时通过del命令删除key即释放锁，如果担心del命令操作失败而导致锁一直未释放，可以通过expire命令给锁设置一个合理的自动过期时间，确保即使del命令失败，锁也能被释放。不过expire命令同样存在失败的可能性，如果你用的是Java语言，建议使用JedisCommands接口提供的String set(String key, String value, String nxxx, String expx, long time)方法，这个方法可以将setnx和expire原子性地执行，具体使用方式如下（相信其它语言的Redis客户端也应当提供了类似的方法）。</span><br><span class="line">3存储对象</span><br><span class="line">    利用JSON强大的兼容性、可读性和易用性，将对象转换为JSON字符串，再存储在string类型中，是个不错的选择，如用户信息、商品信息等。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1Redis的数据是共享的:</span><br><span class="line">redis集群，如果将用户信息存储在web服务的本地缓存，则每个web服务都会缓存一份，当用户修改昵称时，需要通知其它web服务更新用户缓存。</span><br><span class="line">如果将用户信息存储在Redis，则只有一份缓存，所有的web访问的都是同一份缓存，当用户修改昵称时，所有web服务都能同时访问到最新的缓存。</span><br><span class="line"></span><br><span class="line">2Redis是单线程的</span><br><span class="line">    由于Redis的性能瓶颈在于内存读写速度，而不是CPU，设计者将Redis设计成了单线程模式，其所有操作都是原子性的，避免了多线程带来的复杂性。</span><br><span class="line"></span><br><span class="line">应用场景</span><br><span class="line">1计数器</span><br><span class="line">    string类型的incr和decr命令的作用是将key中储存的数字值加一/减一，这两个操作具有原子性，总能安全地进行加减操作，因此可以用string类型进行计数，如微博的评论数、点赞数、分享数，抖音作品的收藏数，京东商品的销售量、评价数等。</span><br><span class="line">2分布式锁</span><br><span class="line">    string类型的setnx的作用是“当key不存在时，设值并返回1，当key已经存在时，不设值并返回0”，“判断key是否存在”和“设值”两个操作是原子性地执行的，因此可以用string类型作为分布式锁，返回1表示获得锁，返回0表示没有获得锁。</span><br><span class="line">    例如，为了保证定时任务的高可用，往往会同时部署多个具备相同定时任务的服务，但是业务上只希望其中的某一台服务执行定时任务，当定时任务的时间点触发时，多个服务同时竞争一个分布式锁，获取到锁的执行定时任务，没获取到的放弃执行定时任务。定时任务执行完时通过del命令删除key即释放锁，如果担心del命令操作失败而导致锁一直未释放，可以通过expire命令给锁设置一个合理的自动过期时间，确保即使del命令失败，锁也能被释放。不过expire命令同样存在失败的可能性，如果你用的是Java语言，建议使用JedisCommands接口提供的String set(String key, String value, String nxxx, String expx, long time)方法，这个方法可以将setnx和expire原子性地执行，其它语言的Redis客户端也应当提供了类似的方法。</span><br><span class="line">3存储对象</span><br><span class="line">    利用JSON强大的兼容性、可读性和易用性，将对象转换为JSON字符串，再存储在string类型中，是个不错的选择，如用户信息、商品信息等。</span><br></pre></td></tr></table></figure>
 
 <p>string底层是简单动态字符串(simple dynamic string, SDS)</p>
 <table>
@@ -174,18 +174,16 @@
 <p>参考链接：<a href="https://blog.csdn.net/pugongying_95/article/details/99718749">https://blog.csdn.net/pugongying_95/article/details/99718749</a></p>
 <h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;hset userInfo name asion</span><br><span class="line">hsetd命令设置单个，key为userInfo,value为name asion</span><br><span class="line">类似于php中关联数组$userInfo=array(&#x27;name&#x27;=&gt;&#x27;asion&#x27;)</span><br><span class="line">&gt;hget userInfo name	获取单个值value</span><br><span class="line">&gt;hmset userInfo age 12 email gogo@163.com</span><br><span class="line">hmset设置多个，获取单个值value是一样的操作，获取userInfo全部value值，用hgetall</span><br><span class="line">&gt;hgetall userInfo</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1购物车</span><br><span class="line">以用户id为key，商品id为field，商品数量为value，恰好构成了购物车的3个要素。</span><br><span class="line">2存储对象</span><br><span class="line">hash类型的(key, field, value)的结构与对象的(对象id, 属性, 值)的结构相似，也可以用来存储对象。</span><br><span class="line">参考：https://www.cnblogs.com/pangzizhe/p/10657801.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1购物车</span><br><span class="line">以用户id为key，商品id为field，商品数量为value，恰好构成了购物车的3个要素。</span><br><span class="line">2存储对象</span><br><span class="line">hash类型的(key, field, value)的结构与对象的(对象id, 属性, 值)的结构相似，也可以用来存储对象。</span><br></pre></td></tr></table></figure>
 
-
-
+<p>参考：<a href="https://www.cnblogs.com/pangzizhe/p/10657801.html">https://www.cnblogs.com/pangzizhe/p/10657801.html</a></p>
 <h5 id="list链表"><a href="#list链表" class="headerlink" title="list链表"></a>list链表</h5><p>左侧头部，右侧尾部</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lpush link1 a	从左侧（头部）向链表link1压入a</span><br><span class="line">rpush link2 A	从右侧（尾部）向链表link2压入a</span><br><span class="line">lrang link1 0 -1从左侧开始取link1数据，0是第一个单元，-1代表最后一个单元</span><br><span class="line">lpop link1	弹出link1左侧第一个元素</span><br><span class="line">rpop link1	弹出link1右侧第一个元素</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557648966813.png" alt="1557648966813"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1消息队列</span><br><span class="line">list类型的lpop和rpush（或者反过来，lpush和rpop）能实现队列的功能，故而可以用Redis的list类型实现简单的点对点的消息队列。不过我不推荐在实战中这么使用，因为现在已经有Kafka、NSQ、RabbitMQ等成熟的消息队列了，它们的功能已经很完善了，除非是为了更深入地理解消息队列，不然我觉得没必要去重复造轮子。</span><br><span class="line">2排行版</span><br><span class="line">list类型的lrange命令可以分页查看队列中的数据。感觉用zset会更好</span><br><span class="line">3最新列表</span><br><span class="line">list类型的lpush命令和lrange命令能实现最新列表的功能，每次通过lpush命令往列表里插入新的元素，然后通过lrange命令读取最新的元素列表，如朋友圈的点赞列表、评论列表</span><br><span class="line">https://www.cnblogs.com/pangzizhe/p/10674501.html</span><br><span class="line">秒杀场景的使用，作为参考：</span><br><span class="line">https://blog.csdn.net/a7442358/article/details/102463137</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1消息队列</span><br><span class="line">list类型的lpop和rpush（或者反过来，lpush和rpop）能实现队列的功能，故而可以用Redis的list类型实现简单的点对点的消息队列。不过我不推荐在实战中这么使用，因为现在已经有Kafka、NSQ、RabbitMQ等成熟的消息队列了，它们的功能已经很完善了，除非是为了更深入地理解消息队列，不然我觉得没必要去重复造轮子。</span><br><span class="line">2排行版</span><br><span class="line">list类型的lrange命令可以分页查看队列中的数据。</span><br><span class="line">3最新列表</span><br><span class="line">list类型的lpush命令和lrange命令能实现最新列表的功能，每次通过lpush命令往列表里插入新的元素，然后通过lrange命令读取最新的元素列表，如朋友圈的点赞列表、评论列表</span><br></pre></td></tr></table></figure>
 
-
-
+<p><a href="https://www.cnblogs.com/pangzizhe/p/10674501.html">https://www.cnblogs.com/pangzizhe/p/10674501.html</a><br>秒杀场景的使用，作为参考：<br><a href="https://blog.csdn.net/a7442358/article/details/102463137">https://blog.csdn.net/a7442358/article/details/102463137</a></p>
 <h5 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a>set集合</h5><p>三特定：</p>
 <p>1、数据彼此没有顺序之分</p>
 <p>2、数据彼此不重复</p>
@@ -198,10 +196,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sinter set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的共同好友（求交集）</span><br><span class="line">sunion set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">3号用户和45号用户的全部好友（并集）</span><br><span class="line">sdiff set:user:id:3:friend set:user:id:45:friend</span><br><span class="line">让3号用户给45号用户推荐好友（差集）</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557650784445.png" alt="1557650784445"></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1好友/关注/粉丝/感兴趣的人</span><br><span class="line">set类型唯一的特点使得其适合用于存储好友/关注/粉丝/感兴趣的人集合，集合中的元素数量可能很多，每次全部取出来成本不小，set类型提供了一些很实用的命令用于直接操作这些集合，如</span><br><span class="line">a. sinter命令可以获得A和B两个用户的共同好友</span><br><span class="line">b. sismember命令可以判断A是否是B的好友</span><br><span class="line">c. scard命令可以获取好友数量</span><br><span class="line">d. 关注时，smove命令可以将B从A的粉丝集合转移到A的好友集合</span><br><span class="line">2随机展示</span><br><span class="line">通常，app首页的展示区域有限，但是又不能总是展示固定的内容，一种做法是先确定一批需要展示的内容，再从中随机获取</span><br><span class="line">3黑名单/白名单</span><br><span class="line">经常有业务出于安全性方面的考虑，需要设置用户黑名单、ip黑名单、设备黑名单等，set类型适合存储这些黑名单数据，sismember命令可用于判断用户、ip、设备是否处于黑名单之中</span><br><span class="line">参考链接：https://www.cnblogs.com/pangzizhe/p/10723019.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1好友/关注/粉丝/感兴趣的人</span><br><span class="line">set类型唯一的特点使得其适合用于存储好友/关注/粉丝/感兴趣的人集合，集合中的元素数量可能很多，每次全部取出来成本不小，set类型提供了一些很实用的命令用于直接操作这些集合，如</span><br><span class="line">a. sinter命令可以获得A和B两个用户的共同好友</span><br><span class="line">b. sismember命令可以判断A是否是B的好友</span><br><span class="line">c. scard命令可以获取好友数量</span><br><span class="line">d. 关注时，smove命令可以将B从A的粉丝集合转移到A的好友集合</span><br><span class="line">2随机展示</span><br><span class="line">通常，app首页的展示区域有限，但是又不能总是展示固定的内容，一种做法是先确定一批需要展示的内容，再从中随机获取</span><br><span class="line">3黑名单/白名单</span><br><span class="line">经常有业务出于安全性方面的考虑，需要设置用户黑名单、ip黑名单、设备黑名单等，set类型适合存储这些黑名单数据，sismember命令可用于判断用户、ip、设备是否处于黑名单之中</span><br></pre></td></tr></table></figure>
 
-
-
+<p>参考链接：<a href="https://www.cnblogs.com/pangzizhe/p/10723019.html">https://www.cnblogs.com/pangzizhe/p/10723019.html</a></p>
 <h5 id="zset-sort-set"><a href="#zset-sort-set" class="headerlink" title="zset(sort set)"></a>zset(sort set)</h5><p>三特点：</p>
 <p>1、数据彼此有顺序之分（权重：如1-9阿拉伯数字或者 a-z字母顺序等）</p>
 <p>2、数据彼此不重复</p>
@@ -210,29 +207,25 @@
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557652211423.png" alt="1557652211423"></p>
 <p>应用场景</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1延时队列</span><br><span class="line">score作为时间戳，自动按照时间最近的进行排序，启一个线程持续poll并设置park时间，完成延迟队列的设计</span><br><span class="line">2排行榜</span><br><span class="line">score作为浏览次数，自动进行排序，但要注意冷数据</span><br><span class="line">3滑动窗口限流</span><br><span class="line">score作为时间戳，可统计最近一段时间内内的成员数量，实现滑动窗口限流</span><br><span class="line">参考链接：https://zhuanlan.zhihu.com/p/147912757</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1延时队列</span><br><span class="line">score作为时间戳，自动按照时间最近的进行排序，启一个线程持续poll并设置park时间，完成延迟队列的设计</span><br><span class="line">2排行榜</span><br><span class="line">score作为浏览次数，自动进行排序，但要注意冷数据</span><br><span class="line">3滑动窗口限流</span><br><span class="line">score作为时间戳，可统计最近一段时间内内的成员数量，实现滑动窗口限流</span><br></pre></td></tr></table></figure>
 
-
-
-
-
-
-
+<p>参考链接：<a href="https://zhuanlan.zhihu.com/p/147912757">https://zhuanlan.zhihu.com/p/147912757</a></p>
 <h4 id="phpc操作redis"><a href="#phpc操作redis" class="headerlink" title="phpc操作redis"></a>phpc操作redis</h4><p>wamp安装redis以及虚拟主机安装redis</p>
 <h4 id="redis持久化功能"><a href="#redis持久化功能" class="headerlink" title="redis持久化功能"></a>redis持久化功能</h4><p>redis为了本身数据的安全和完整性，会将内存中的数据按照一定的方法同步到电脑的磁盘中，这个过程被称为持久化操作；下次再次启动redis服务时，会将磁盘上保存的数据重新的加载到内存中。</p>
 <p>常见的持久化操作方式有两种：</p>
-<p>a基于快照的方式：按照一定周期把将内存中的数据同步到磁盘文件中</p>
-<p>b基于日志文件的追加：把对redis数据造成更改的命令记录到日志文件里面，然后在再一次重启的时候，执行一下日志文件里面对redis写的操作，达到数据还原的目的</p>
+<p>a基于快照的方式：按照一定周期把将内存中的数据同步到磁盘文件中。</p>
+<p>b基于日志文件的追加：把对redis数据造成更改的命令记录到日志文件里面，然后在再一次重启的时候，执行一下日志文件里面对redis写的操作，达到数据还原的目的。</p>
+<p>持久化技术对于Redis服务性能来说是有损的</p>
 <h5 id="基于快照的方式"><a href="#基于快照的方式" class="headerlink" title="基于快照的方式"></a>基于快照的方式</h5><p>1、修改配置文件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#vim /etc/redis/redis.conf</span><br><span class="line">:/save搜索save,按n下一个</span><br><span class="line">找到内容-&gt;基于周期性持久化，只要任何一个条件达到，就会触发</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557670734545.png" alt="1557670734545"></p>
 <p>save 900 1 含义，如果在900s内对redis的key进行过1次操作，则会把内存里面的数据同步到磁盘文件</p>
-<p>save 300 1 含义，如果在300s内对redis的key进行过10次操作，则会把内存里面的数据同步到磁盘文件</p>
+<p>save 300 10 含义，如果在300s内对redis的key进行过10次操作，则会把内存里面的数据同步到磁盘文件</p>
 <p>save 60 10000 含义，如果在60s内对redis的key进行过10000次操作，则会把内存里面的数据同步到磁盘文件</p>
 <p>保存磁盘的文件位置</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671170647.png" alt="1557671170647"></p>
-<p>尝试：</p>
+<p>实操：</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671358424.png" alt="1557671358424"></p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671431153.png" alt="1557671431153"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;bgsave	人为的触发基于快照的持久化操作</span><br><span class="line">#pkill -9 redis -sever 人为的模拟服务宕机</span><br></pre></td></tr></table></figure>
@@ -243,16 +236,47 @@
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671823506.png" alt="1557671823506"></p>
 <p>备份文件的周期</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557671849089.png" alt="1557671849089"></p>
-<p>appendfsync always  含义 只要存在对redis数据造成更改的操作，都要记录到磁盘文件上</p>
-<p>appendfsync everysec  含义 每1s进行一次，把对redis数据造成更改的操作，都要记录到磁盘文件上</p>
-<p>appendfsync no  含义	完全交给操作系统 来完成，即当操作系统不繁忙的时候会把，对redis数据造成更改的操作，都要记录到磁盘文件上，这种操作最不靠谱。</p>
+<p>appendfsync always  只要存在对redis数据造成更改的操作，都要记录到磁盘文件上</p>
+<p>appendfsync everysec  每1s进行一次，把对redis数据造成更改的操作，都要记录到磁盘文件上</p>
+<p>appendfsync no  完全交给操作系统来完成，即当操作系统不繁忙的时候，会把对redis数据造成更改的操作，都要记录到磁盘文件上，这种操作最不靠谱。</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672637713.png" alt="1557672637713"></p>
-<p>发现基于文件追加方式的文件已经存在</p>
+<p>实操：基于文件追加方式的文件已经存在</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1557672744263.png" alt="1557672744263"></p>
 <h4 id="基于快照和日志文件的持久化场景"><a href="#基于快照和日志文件的持久化场景" class="headerlink" title="基于快照和日志文件的持久化场景"></a>基于快照和日志文件的持久化场景</h4><p>RDB(快照)和AOF(日志)区别场景分析</p>
 <p><img src="/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/WeChat424e10f43e5f0ebdc097cf275dd8a1cb.png" alt="WeChat424e10f43e5f0ebdc097cf275dd8a1cb"></p>
-<p>RDB和AOF的选择之感</p>
-<p>对数据非常敏感，建议使用默认的AOF持久化方案<br>AOF持久化策略使用erverysecond，每秒钟fsync一次。该策略redis任然可以保持很好的处理性能，当出现问题时，最多丢失0-1秒中的数据。<br>注意：由于AOF文件存储体积较大，且恢复数据较慢<br>数据呈现阶段有效性，建议使用RDB持久化方案<br>数据可以良好的做到阶段内无丢失（该阶段是开发者或运维人工手工维护的），且恢复速度较快，阶段点数据恢复通常采用RDB方案<br>注意：利用RDB实现紧凑的数据持久化会使Redis降得很低<br>综合对比<br>RDB与AOF得选择实际上是在做一种权衡，每种都有利弊<br>如不能承受数分钟以内得数据丢失，对业务数据非常敏感，选用AOF<br>如能承受数分钟以内数据丢失，且追求大数据集得恢复速度，选用RDB<br>灾难恢复选用RDB<br>双保险策略，同时开启RDB和AOF，重启后，Redis优先使用AOF来恢复数据，降低丢失数据的量</p>
+<p><strong>RDB</strong></p>
+<p>优点：</p>
+<ul>
+<li>RDB快照是一个压缩过的非常紧凑的文件，保存着某个时间点的数据集，适合做数据的备份，灾难恢复；</li>
+<li>可以最大化Redis的的性能，在保存RDB文件，服务器进程只需要fork一个子进程来完成RDB文件的创建，父进程不需要做IO操作；</li>
+<li>与AOF相比，恢复大数据集的时候会更快；</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>RDB的数据安全性是不如AOF的，保存整个数据集的过程是比繁重的，根据配置可能要几分钟才快照一次，如果服务器宕机，那么就可能丢失几分钟的数据；</li>
+<li>Redis数据集较大时，fork的子进程要完成快照会比较耗CPU、耗时；</li>
+</ul>
+<p><strong>AOF</strong></p>
+<p>优点：</p>
+<ul>
+<li>数据更完整，安全性更高，秒级数据丢失（取决fsync策略，如果是everysec，最多丢失1秒的数据）；</li>
+<li>AOF文件是一个只进行追加的日志文件，且写入操作是以Redis协议格式保存，内容是可读的，适合误删紧急恢复；</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>对于相同的数据集，AOF文件的体积要大于RDB文件，数据恢复也会比较慢；</li>
+<li>根据所使用的fsync策略，AOF的速度可能会慢于RDB（性能降低的影响）。 不过在一般情况下，每秒fsync的性能依然非常高；</li>
+</ul>
+<p><strong>RDB和AOF的选择</strong>：</p>
+<p>通常来说，应该同时使用两种持久化方案，以保证数据安全。</p>
+<ul>
+<li>如果数据不敏感，且可以从其他地方重新生成，可以关闭持久化。</li>
+<li>如果数据比较重要，且能够承受几分钟的数据丢失，比如缓存等，只需要使用RDB即可。如果不能承受数分钟以内得数据丢失，对业务数据非常敏感，选用AOF</li>
+<li>如果是用做内存数据，要使用Redis的持久化，建议是RDB和AOF都开启。</li>
+<li>如果只用AOF，优先使用everysec的配置选择，因为它在可靠性和性能之间取了一个平衡。</li>
+</ul>
+<p>灾难恢复选用RDB双保险策略，当RDB与AOF两种方式都开启时，Redis会优先使用AOF恢复数据，因为AOF保存的文件比RDB文件更完整。</p>
+<p>参考，官网：<a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/</a></p>
 <p><strong>持久化应用场景</strong></p>
 <p>1Redis应用于抢购、限购、限量发放优惠券、激活等业务的数据存储设计</p>
 <p>2Redis应用于具有操作先后顺序的数据控制</p>
@@ -266,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="clqw3on5f000h9jvn9jc638ah" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/Redis%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="cm4dztqk0000hjali82el8kqt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>

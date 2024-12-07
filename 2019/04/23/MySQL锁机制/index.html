@@ -7,12 +7,12 @@
   
   <title>MySQL锁机制 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="msql锁机制概述 锁的定义 锁是计算机协调多个进程或线程并发访问某一资源的机制。 在数据库中，除传统计算机资源（如CPU、RAM、I&#x2F;O等）的争用以外，数据也是一种供许多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突是影响数据库并发性能的一个重要因素，从这个角度来书，锁对数据库而言显得尤其重要，也更加复杂。">
+  <meta name="description" content="msql锁机制概述 锁的定义 锁是计算机协调多个进程或线程并发访问某一资源的机制。 在数据库中，除传统计算机资源（如CPU、RAM、I&#x2F;O等）的争用以外，数据也是一种供许多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突是影响数据库并发性能的一个重要因素，从这个角度来说，锁对数据库而言显得尤其重要，也更加复杂。 RAM：Random Access">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL锁机制">
 <meta property="og:url" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="msql锁机制概述 锁的定义 锁是计算机协调多个进程或线程并发访问某一资源的机制。 在数据库中，除传统计算机资源（如CPU、RAM、I&#x2F;O等）的争用以外，数据也是一种供许多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突是影响数据库并发性能的一个重要因素，从这个角度来书，锁对数据库而言显得尤其重要，也更加复杂。">
+<meta property="og:description" content="msql锁机制概述 锁的定义 锁是计算机协调多个进程或线程并发访问某一资源的机制。 在数据库中，除传统计算机资源（如CPU、RAM、I&#x2F;O等）的争用以外，数据也是一种供许多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突是影响数据库并发性能的一个重要因素，从这个角度来说，锁对数据库而言显得尤其重要，也更加复杂。 RAM：Random Access">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555853034727.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555853393947.png">
@@ -29,8 +29,6 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902379731.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555900725335.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555901956463.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902613406.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902670964.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903451452.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903650349.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903844294.png">
@@ -41,7 +39,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555922910440.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555923423854.png">
 <meta property="article:published_time" content="2019-04-23T02:04:40.000Z">
-<meta property="article:modified_time" content="2023-12-18T02:36:00.562Z">
+<meta property="article:modified_time" content="2024-09-12T09:09:33.339Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -119,13 +117,18 @@
         <h4 id="msql锁机制"><a href="#msql锁机制" class="headerlink" title="msql锁机制"></a>msql锁机制</h4><p><strong>概述</strong></p>
 <p>锁的定义</p>
 <p>锁是计算机协调多个进程或线程并发访问某一资源的机制。</p>
-<p>在数据库中，除传统计算机资源（如CPU、RAM、I&#x2F;O等）的争用以外，数据也是一种供许多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突是影响数据库并发性能的一个重要因素，从这个角度来书，锁对数据库而言显得尤其重要，也更加复杂。</p>
+<p>在数据库中，除传统计算机资源（如CPU、RAM、I&#x2F;O等）的争用以外，数据也是一种供许多用户共享的资源，如何保证数据并发访问的一致性、有效性是所有数据库必须解决的一个问题，锁冲突是影响数据库并发性能的一个重要因素，从这个角度来说，锁对数据库而言显得尤其重要，也更加复杂。</p>
+<p>RAM：Random Access Memory，随机存取存储器。</p>
 <span id="more"></span>
 
 <p><strong>锁的分类</strong></p>
 <p>XXXXXXXX</p>
-<h6 id="MyISAM的锁机制"><a href="#MyISAM的锁机制" class="headerlink" title="MyISAM的锁机制"></a>MyISAM的锁机制</h6><p><strong>表锁（偏读）</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表锁</span><br><span class="line">读锁：当前线程能读不能写，未解锁前不能查看其它未锁定的表。其它线程可读不能写，写操作时会出现等待</span><br><span class="line"></span><br><span class="line">加写锁：当前能读和写，阻塞其他线程的读和写（等待）。</span><br></pre></td></tr></table></figure>
+<h6 id="MyISAM的锁机制"><a href="#MyISAM的锁机制" class="headerlink" title="MyISAM的锁机制"></a>MyISAM的锁机制</h6><h6 id="MYSQL事务"><a href="#MYSQL事务" class="headerlink" title="MYSQL事务"></a>MYSQL事务</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1、用 BEGIN, ROLLBACK, COMMIT 来实现</span><br><span class="line"></span><br><span class="line">BEGIN 或 START TRANSACTION：开用于开始一个事务。</span><br><span class="line">ROLLBACK 事务回滚，取消之前的更改。</span><br><span class="line">COMMIT：事务确认，提交事务，使更改永久生效。</span><br><span class="line"></span><br><span class="line">2、直接用 SET 来改变 MySQL 的自动提交模式:</span><br><span class="line"></span><br><span class="line">SET AUTOCOMMIT=0 禁止自动提交</span><br><span class="line">SET AUTOCOMMIT=1 开启自动提交</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>表锁（偏读）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表锁</span><br><span class="line">读锁（共享锁）：对同一个数据，多个读操作可以同时进行，互不干扰。加锁的会话只能对此表进行读操作,其他会话也只能进行读操作。MyISAM的读默认是加读锁。</span><br><span class="line"></span><br><span class="line">加写锁（互斥锁）：当前能读和写，阻塞其他线程的读和写（等待）。</span><br></pre></td></tr></table></figure>
 
 <p>建表sql</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555853034727.png" alt="1555853034727"></p>
@@ -144,17 +147,32 @@
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856148934.png" alt="1555856148934"></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856215379.png" alt="1555856215379"></p>
 <h6 id="lnnoDB的锁机制"><a href="#lnnoDB的锁机制" class="headerlink" title="lnnoDB的锁机制"></a>lnnoDB的锁机制</h6><p><strong>行锁(偏写)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">行锁</span><br><span class="line">共享锁又称：读锁。当一个事务对某几行上读锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作，也不允许其他事务给这几行上写锁，但允许上读锁。</span><br><span class="line">排它锁又称：写锁。当一个事务对某几个上写锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作。也不允许其他事务给这几行上任何锁。</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line"></span><br><span class="line">1.两个事务不能锁同一个索引。</span><br><span class="line">2.insert ，delete ， update在事务中都会自动默认加上排它锁。</span><br><span class="line">3.行锁必须有索引才能实现，否则会自动锁全表，那么就不是行锁了。</span><br><span class="line">4.InnoDb表锁和MyISAM差别不大 。注意：开启一个新事务的时候会解锁表</span><br><span class="line">参考：https://blog.csdn.net/FMC_WBL/article/details/88831294</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">共享锁（读锁）：简称S锁，当一个事务对某几行上读锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作，允许其他事务上读锁，但不允许给这几行上写锁。</span><br><span class="line"></span><br><span class="line">排他锁（写锁）：简称X锁，当一个事务对某几个上写锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作。也不允许其他事务给这几行上任何锁。</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">1.两个事务不能锁同一个索引。</span><br><span class="line">2.insert ，delete ， update在事务中都会自动默认加上排它锁。</span><br><span class="line">3.行锁必须有索引才能实现，否则会自动锁全表，那么就不是行锁了。</span><br><span class="line">4.InnoDb表锁和MyISAM差别不大 。注意：开启一个新事务的时候会解锁表</span><br><span class="line">参考：https://blog.csdn.net/FMC_WBL/article/details/88831294</span><br></pre></td></tr></table></figure>
 
+<p>什么情况会加锁：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及的数据集加排他锁；</span><br><span class="line">对于普通SELECT语句，InnoDB不会加任何锁；</span><br><span class="line">共享锁，只有主动触发才会加锁，比如加了lock in share mode 的 select 语句</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://www.cnblogs.com/hi3254014978/p/17107610.html">https://www.cnblogs.com/hi3254014978/p/17107610.html</a></p>
 <p>事物的ACID</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856569535.png" alt="1555856569535"></p>
+<p><strong>并发事务</strong>会导致数据脏读、不可重复读、幻读、更新丢失</p>
 <p>更新丢失（Lost Update）</p>
+<p>两个事务在并发下同时进行更新，后一个事务的更新覆盖了前一个事务更新的情况，丢失更新是数据没有保证一致性导致的。比如，事务A 修改了一条记录，事务B 在 事务A 提交的同时也进行了一次修改并且提交。当事务A查询的时候，会发现刚才修改的内容没有被修改，好像丢失了更新。</p>
+<p>解决办法：</p>
+<p>1悲观锁</p>
+<p>2乐观锁</p>
+<p><a href="https://blog.csdn.net/sun8112133/article/details/89853755">https://blog.csdn.net/sun8112133/article/details/89853755</a></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856824265.png" alt="1555856824265"></p>
 <p><strong>事物隔离级别与脏读、不可重复读、幻读的关系</strong></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555861329078.png" alt="1555861329078"></p>
 <p>mysql的InnoDB事务的隔离级别 默认是“可重复读”（REPEATABLE READ）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1）未提交读（READUNCOMMITTED）。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据（脏读）( 隔离级别最低，并发性能高 )。</span><br><span class="line">2）提交读（READCOMMITTED）。本事务读取到的是最新的数据（其他事务提交后的）。问题是，在同一个事务里，前后两次相同的SELECT会读到不同的结果（不重复读）。会出现不可重复读、幻读问题（锁定正在读取的行）</span><br><span class="line">3）可重复读（REPEATABLEREAD）。在同一个事务里，SELECT的结果是事务开始时时间点的状态，因此，同样的SELECT操作读到的结果会是一致的。但是，会有幻读现象（稍后解释）。会出幻读（锁定所读取的所有行）。</span><br><span class="line">4）串行化（SERIALIZABLE）。读操作会隐式获取共享锁，可以保证不同事务间的互斥（锁表）。serializable时会锁表，因此不会出现幻读的情况，这种隔离级别并发性极低，开发中很少会用到</span><br><span class="line"></span><br><span class="line">四个级别逐渐增强，每个级别解决一个问题。</span><br><span class="line">1）脏读。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据。</span><br><span class="line">2）不重复读。解决了脏读后，会遇到，同一个事务执行过程中，另外一个事务提交了新数据，因此本事务先后两次读到的数据结果会不一致。</span><br><span class="line">3）幻读。解决了不重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。但是，如果另一个事务同时提交了新数据，本事务再更新时，就会“惊奇的”发现了这些新数据，貌似之前读到的数据是“鬼影”一样的幻觉。</span><br><span class="line"></span><br><span class="line">脏读和幻读的区别：脏读是事务b修改了数据，幻读是事务b新增了数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">参考链接：https://blog.csdn.net/ccfeng2008/article/details/51760350</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1）未提交读（READ UNCOMMITTED）。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据（脏读）( 隔离级别最低，并发性能高 )。</span><br><span class="line">2）提交读（READ COMMITTED）。本事务读取到的是最新的数据（其他事务提交后的）。问题是，在同一个事务里，前后两次相同的SELECT会读到不同的结果（不重复读）。会出现不可重复读、幻读问题（锁定正在读取的行）</span><br><span class="line">3）可重复读（REPEATABLE READ）。在同一个事务里，SELECT的结果是事务开始时时间点的状态，因此，同样的SELECT操作读到的结果会是一致的。但是，会有幻读现象（稍后解释）。会出幻读（锁定所读取的所有行）。</span><br><span class="line">4）串行化（SERIALIZABLE）。读操作会隐式获取共享锁，可以保证不同事务间的互斥（锁表）。serializable时会锁表，因此不会出现幻读的情况，包括更新丢失也能解决，但这种隔离级别并发性极低，开发中很少会用到</span><br><span class="line"></span><br><span class="line">四个级别逐渐增强，每个级别解决一个问题。</span><br><span class="line">1）脏读。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据。</span><br><span class="line">2）不重复读。解决了脏读后，会遇到，同一个事务执行过程中，另外一个事务提交了新数据，因此本事务先后两次读到的数据结果会不一致。</span><br><span class="line">3）幻读。解决了不重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。但是，如果另一个事务同时提交了新数据，本事务再更新时，就会“惊奇的”发现了这些新数据，貌似之前读到的数据是“鬼影”一样的幻觉。</span><br><span class="line"></span><br><span class="line">脏读和幻读的区别：脏读是事务b修改了数据，幻读是事务b新增了数据</span><br><span class="line"></span><br><span class="line">隔离级别越高的数据库越安全，能解决的并发*一致性*问题也就越多。</span><br><span class="line">隔离级别越高，就代表着越安全，但是同时性能效率也就越低。</span><br><span class="line"></span><br><span class="line">参考链接：https://blog.csdn.net/ccfeng2008/article/details/51760350</span><br></pre></td></tr></table></figure>
 
+<p>  <strong>InnoDB引擎通过MVCC，解决了脏读、不可重复读，通过MVCC + Next-Key Lock(临键锁)来解决幻读，实现了事务的隔离级别Repeatable Read（可重复读）。</strong></p>
+<p><strong>可重复读隔离级别下，并发问题需要靠开发者显式或隐式使用锁来自行解决。</strong></p>
+<p>RR防止幻读的讨论：</p>
+<p><a href="https://github.com/Yhzhtk/note/issues/42">https://github.com/Yhzhtk/note/issues/42</a></p>
+<p>结论：Innodb 的 RR 隔离界别对范围会加上 GAP，理论上不会存在幻读，但是是否有例外，还需要进一步求证。</p>
 <p>nosql CAP 理论</p>
 <p><a href="http://www.cnblogs.com/gudi/p/8183548.html">http://www.cnblogs.com/gudi/p/8183548.html</a></p>
 <p>一致性C（Consistency）、可用性A（Availability）和分区容错性P（Tolerance of network Partition）</p>
@@ -164,14 +182,25 @@
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902379731.png" alt="1555902379731"></p>
 <p>取消自动提交就是设置了行锁，不提交前具有己读性（只有自己能看到修改后的数据，其他人看旧数据）</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555900725335.png" alt="1555900725335"></p>
-<p>若两边动不同的行，则不阻塞，提交后能看到修改的数据</p>
-<p>无索引行锁升级为表锁：</p>
+<p>若两边操作不同的行，则不阻塞，提交后能看到修改的数据</p>
+<p>无索引，行锁升级为表锁：</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555901956463.png" alt="1555901956463"></p>
 <p>设置了行锁，但session1更新时b为varchar却没有加单引号，导致索引失效，未提交，导致升级为表锁，session2出现等待，session1提交后，session2恢复</p>
-<p>间隙锁带来的危害</p>
-<p>索引范围是a&gt;1and a&lt;5 但是表中并没有a&#x3D;2的数据，出现间隙锁</p>
-<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902613406.png" alt="1555902613406"></p>
-<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902670964.png" alt="1555902670964"></p>
+<p><strong>间隙锁</strong></p>
+<p>范围检索数据时，对于键值在条件范围内但并不存在的记录，叫做”间隙（ GAP )”， InnoDB 也会对这个”间隙”加锁，叫间隙锁。这种锁机制就是所谓的Next - Key 锁。</p>
+<p>Record Lock：即行锁或排他锁，锁定一个记录上的索引，而不是记录本身。如果表没有设置索引，InnoDB 会自动在主键上创建隐藏的聚簇索引，因此 Record Locks依然可以使用。</p>
+<p>Gap Lock：间隙锁，锁定一个范围，但不包括记录本身。GAP锁的目的，是为了防止同一事务的两次当前读，出现幻读的情况。是一个左开右闭的区间，即(x,y]的形式。</p>
+<p>Next-Key Lock：锁定的是当前值和前面的范围，即锁定一个范围的记录和间隙，是Record Lock和Gap Lock的组合。对于行的查询，都是采用该方法，主要目的是解决幻读的问题。</p>
+<p><strong>GAP锁和Next Key Lock区别</strong></p>
+<p>区别在于锁定范围，Gap锁只锁定索引记录之间的间隙，而Next Key Lock则同时锁定索引记录和间隙。另外，Next Key Lock是MySQL中的一种锁机制，它是在Gap锁的基础上引入的。</p>
+<p>当我们用范围条件，而不是使用相等条件检索数据（select），并请求共享或排他锁时， InnoDB 会给符合条件的已有数据进行加锁；即，一个事务在一个范围内的索引记录上执行<code>SELECT ... FOR UPDATE</code>语句时，MySQL会在该范围内的所有记录和间隙上设置Next Key Lock。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;set autocommit =0;</span><br><span class="line">&gt;update products set name= &#x27;nums&#x27; where id &lt; 10;</span><br><span class="line">&gt;commit;</span><br><span class="line"></span><br><span class="line">会话1：用update语句更新符合条件的数据的某个字段值，更新条件为id&lt;10，目前表中id只有1、2、3、4、6、9的数据，那么id=5,7,8的行数据也会被锁，即间隙行被锁（虽然实际数据不存在）</span><br><span class="line">会话2：插入不存在但是处以id&lt;10条件的行数据时，会进入阻塞状态，直到会话1提交事务。</span><br><span class="line">如何避免：</span><br><span class="line">尽量缩小where后面条件的范围。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 <p><strong>如何主动锁定一行</strong>：</p>
 <p>select .. … for update（排它锁）; select ….. lock in share mode(共享锁)</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903451452.png" alt="1555903451452"></p>
@@ -217,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/" data-id="clqw3on59000a9jvn4wo9h5hg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/" data-id="cm4dztqju000ajalifkhedjjc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>

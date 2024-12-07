@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585621617.jpg">
 <meta property="og:image" content="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585624623.jpg">
 <meta property="article:published_time" content="2021-09-12T15:17:30.000Z">
-<meta property="article:modified_time" content="2021-11-30T11:47:06.879Z">
+<meta property="article:modified_time" content="2024-09-19T02:30:49.498Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="algorithm-data_structure">
 <meta name="twitter:card" content="summary">
@@ -113,6 +113,7 @@
 <h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h4><p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585812424.jpg" alt="image-20200402152728506"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">O(1):</span><br><span class="line">int n=1000</span><br><span class="line">system.out.println(&#x27;print:&#x27;+n);</span><br><span class="line"></span><br><span class="line">O(n)</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(n^2)</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i+&#x27;and&#x27;+j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">O(log n)//若n=4,则以下执行2次，而不是4次,即logn(底数为2)</span><br><span class="line">     for(int i=1;i&lt;=n;i=i*2)&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(k^n)</span><br><span class="line">    for(int i=1;i&lt;=Math.pow(2,n);i++&#123;//终止条件2^n</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(n！)</span><br><span class="line">    for(int i=1;i&lt;=factorial(n);i++&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
+<p>log n 底数直接由分治的复杂度决定，采用二分法,那么就会以2为底数,三分法就会以3为底数，其他亦然。当n趋于无穷大时logx(n)&#x2F;logy(n)的极限可以发现，极限等于lny&#x2F;lnx（自然对数,底数为e，e&#x3D;2.71828…），也就是一个常数，也就是说，在n趋于无穷大的时候，这两个东西仅差一个常数。所以从研究算法的角度log的底数不重要。</p>
 <p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585621617.jpg" alt="image-20200331102706328"></p>
 <p>横坐标：n   纵坐标：运行次数</p>
 <p>常数、对数、线性、线性对数、平方、指数、阶乘</p>
@@ -125,7 +126,7 @@
 
 <p>二分查找(Binary search)O(logn):一分为二，只查一边</p>
 <p>二叉树遍历(Binary tree traversal):每个节点遍历一次且仅遍历一次O(n)</p>
-<p>排序查找(Optimal sorted matrix serach):（一维数组二分查找是O(logn）或排好序的二维矩阵的查找(O(n))</p>
+<p>排序查找(Optimal sorted matrix serach):一维数组二分查找是O(logn）或排好序的二维矩阵的查找(O(n))</p>
 <p>排序(Merge sort):（快排，归并排）O(nlogn)</p>
 <p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585624623.jpg" alt="image-20200331111710507"></p>
 <p>做自己不熟悉的算法题，比如常见的：动态规划，搜索，回溯，递归</p>
@@ -146,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" data-id="clqw3on67001p9jvn036lg59x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" data-id="cm4dztqkt001ojalifrf7fw5t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>

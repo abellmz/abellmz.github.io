@@ -7,22 +7,22 @@
   
   <title>PDO | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PDO概念PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：*mysql_connect* mssql：*mssql_connect* Oracle：*oci_c">
+  <meta name="description" content="PDO概念PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：mysql_connect mssql：mssql_connect Oracle：oci_connec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PDO">
 <meta property="og:url" content="http://yoursite.com/2020/05/03/PDO/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="PDO概念PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：*mysql_connect* mssql：*mssql_connect* Oracle：*oci_c">
+<meta property="og:description" content="PDO概念PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：mysql_connect mssql：mssql_connect Oracle：oci_connec">
 <meta property="og:locale">
-<meta property="og:image" content="http://yoursite.com/2020/05/03/PDO/PDO%5C1578973184.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/05/03/PDO/1578973184.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/05/03/PDO/1578973501.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/05/03/PDO/1578973649.jpg">
 <meta property="article:published_time" content="2020-05-03T14:50:31.000Z">
-<meta property="article:modified_time" content="2020-09-15T15:00:36.081Z">
+<meta property="article:modified_time" content="2024-12-07T09:08:47.353Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="PDO">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/03/PDO/PDO%5C1578973184.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/03/PDO/1578973184.jpg">
   
     <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
   
@@ -94,9 +94,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="PDO概念"><a href="#PDO概念" class="headerlink" title="PDO概念"></a><strong>PDO概念</strong></h3><p>PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例：</p>
-<p>MySQL：<em><strong>*mysql_connect*</strong></em></p>
-<p>mssql：<em><strong>*mssql_connect*</strong></em></p>
-<p>Oracle：<em><strong>*oci_connect*</strong></em></p>
+<p>MySQL：<strong>mysql_connect</strong></p>
+<p>mssql：<strong>mssql_connect</strong></p>
+<p>Oracle：<strong>oci_connect</strong></p>
 <span id="more"></span>
 
 <p>所以，如果PHP要切换不同的数据库，就要切换不同的数据库操作函数：</p>
@@ -163,7 +163,7 @@
 <p><strong>事务：</strong>将上面的两个操作（两个update）认为是一个事务，其中有任意一条语句执行失败，我们就认为整个事务执行失败！应该回滚“恢复”到最初的状态！<strong>注意：</strong>目前只有InnoDB引擎才支持事务处理</p>
 <h4 id="MySQL的事务处理"><a href="#MySQL的事务处理" class="headerlink" title="MySQL的事务处理"></a><strong>MySQL的事务处理</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、开启事务</span><br><span class="line">语法形式：</span><br><span class="line">start transaction;</span><br><span class="line">mysql&gt;start transaction;</span><br><span class="line">2、执行sql语句</span><br><span class="line">mysql&gt;update student set money=money-1000 where name=&#x27;李四&#x27;；</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/05/03/PDO/PDO%5C1578973184.jpg" alt="image-20200114113957357"></p>
+<p><img src="/2020/05/03/PDO/1578973184.jpg" alt="image-20200114113957357"></p>
 <p><strong>注意：</strong>当我们开启一个事务的时候，我们对sql的操作都发生在内存中，但是没有真正的反馈到数据库磁盘的文件中！可以开启另外一个客户端进行查看数据，数据并没有变化，还是7000。所以，如果此时李四反悔了，可以进行回滚操作！</p>
 <p><strong>回滚事务</strong></p>
 <p>语法形式：rollback;</p>
@@ -227,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/03/PDO/" data-id="clqw3on5b000c9jvn8cy3af8s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/03/PDO/" data-id="cm4dztqjw000cjalift597k3b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li></ul>
