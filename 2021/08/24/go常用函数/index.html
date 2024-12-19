@@ -7,12 +7,12 @@
   
   <title>go常用函数 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用内置函数：close：用于管道通信 len&#x2F;cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）">
+  <meta name="description" content="常用内置函数： close：用于管道通信 len&#x2F;cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="go常用函数">
 <meta property="og:url" content="http://yoursite.com/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="常用内置函数：close：用于管道通信 len&#x2F;cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）">
+<meta property="og:description" content="常用内置函数： close：用于管道通信 len&#x2F;cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-08-24T09:03:54.000Z">
 <meta property="article:modified_time" content="2021-08-24T09:08:29.898Z">
@@ -89,60 +89,58 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="常用内置函数："><a href="#常用内置函数：" class="headerlink" title="常用内置函数："></a>常用内置函数：</h3><p>close：用于管道通信</p>
-<p>len&#x2F;cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）</p>
+        <h3 id="常用内置函数"><a class="markdownIt-Anchor" href="#常用内置函数"></a> 常用内置函数：</h3>
+<p>close：用于管道通信</p>
+<p>len/cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）</p>
 <span id="more"></span>
-
-<p>new&#x2F;make:new 和 make 均是用于分配内存：new 用于值类型和用户定义的类型，如自定义结构，make 用于内置引用类型（切片、map 和管道）。它们的用法就像是函数，但是将类型作为参数：new(type)、make(type)。new(T) 分配类型 T 的零值并返回其地址，也就是指向类型 T 的指针。它也可以被用于基本类型：v :&#x3D; new(int)。make(T) 返回类型 T 的初始化之后的值，因此它比 new 进行更多的工作。new() 是一个函数，不要忘记它的括号<br>copy&#x2F;append:用于复制和连接切片</p>
-<p>panic&#x2F;recover:两者均用于错误处理机制</p>
-<p>print&#x2F;println:底层打印函数，在部署环境中建议使用 fmt 包</p>
-<p>complex&#x2F;real imag:用于创建和操作复数</p>
+<p>new/make:new 和 make 均是用于分配内存：new 用于值类型和用户定义的类型，如自定义结构，make 用于内置引用类型（切片、map 和管道）。它们的用法就像是函数，但是将类型作为参数：new(type)、make(type)。new(T) 分配类型 T 的零值并返回其地址，也就是指向类型 T 的指针。它也可以被用于基本类型：v := new(int)。make(T) 返回类型 T 的初始化之后的值，因此它比 new 进行更多的工作。new() 是一个函数，不要忘记它的括号<br>
+copy/append:用于复制和连接切片</p>
+<p>panic/recover:两者均用于错误处理机制</p>
+<p>print/println:底层打印函数，在部署环境中建议使用 fmt 包</p>
+<p>complex/real imag:用于创建和操作复数</p>
 <p>参考：<a href="https://blog.csdn.net/weixin_44123908/article/details/107288543">https://blog.csdn.net/weixin_44123908/article/details/107288543</a></p>
-<h3 id="其他常用函数："><a href="#其他常用函数：" class="headerlink" title="其他常用函数："></a>其他常用函数：</h3><p>1.获取当前时间</p>
-<p>  时间戳(秒)：time.Now().Unix</p>
-<p>  日期：time.Now().Format(“2006-01-02 15:04:05”)</p>
-<p>  注意：参数必须是 2006-01-02 15:04:05 而不能是自定义的年月日时间，不然时间不准（一串神奇的数字）</p>
+<h3 id="其他常用函数"><a class="markdownIt-Anchor" href="#其他常用函数"></a> 其他常用函数：</h3>
+<p>1.获取当前时间</p>
+<p>时间戳(秒)：time.Now().Unix</p>
+<p>日期：time.Now().Format(“2006-01-02 15:04:05”)</p>
+<p>注意：参数必须是 2006-01-02 15:04:05 而不能是自定义的年月日时间，不然时间不准（一串神奇的数字）</p>
 <p>2.字符串与int转换</p>
-<p>  i,_ :&#x3D; strconv.Atoi(“3”)&#x2F;&#x2F;将字符串类型的整数转换为int类型</p>
-<p>  a :&#x3D; strconv.Itoa(32)  &#x2F;&#x2F;将int类型数据转换为对应的字符串表示</p>
-<p>3.结构体json序列化  </p>
-<p>  chatMsg :&#x3D; &amp;ChatMsg{}</p>
-<p>  err :&#x3D; json.Unmarshal([]byte(msg), chatMsg) &#x2F;&#x2F;json转结构体</p>
-<p>  buf, _ :&#x3D; json.Marshal(chatMsg) &#x2F;&#x2F;结构体转json</p>
+<p>i,_ := strconv.Atoi(“3”)//将字符串类型的整数转换为int类型</p>
+<p>a := strconv.Itoa(32)  //将int类型数据转换为对应的字符串表示</p>
+<p>3.结构体json序列化</p>
+<p>chatMsg := &amp;ChatMsg{}</p>
+<p>err := json.Unmarshal([]byte(msg), chatMsg) //json转结构体</p>
+<p>buf, _ := json.Marshal(chatMsg) //结构体转json</p>
 <p>4.删除切片元素</p>
-<p>  mySlice :&#x3D; make([]int, 5) &#x2F;&#x2F;创建一个初始元素个数为5的数组切片，元素初始值为0</p>
-<p>  mySlice &#x3D; append(mySlice[:i], mySlice[i+1:]…) &#x2F;&#x2F;删除下标为i的元素</p>
-<p>  mySlice &#x3D; append(mySlice[:0], mySlice[1:]…) &#x2F;&#x2F;删除第1个元素 </p>
-<p>5.url encode&#x2F;decode</p>
-<p>  encodeUrl:&#x3D; url.QueryEscape(urltest)</p>
-<p>  decodeUrl,err :&#x3D; url.QueryUnescape(encodeUrl)</p>
+<p>mySlice := make([]int, 5) //创建一个初始元素个数为5的数组切片，元素初始值为0</p>
+<p>mySlice = append(mySlice[:i], mySlice[i+1:]…) //删除下标为i的元素</p>
+<p>mySlice = append(mySlice[:0], mySlice[1:]…) //删除第1个元素</p>
+<p>5.url encode/decode</p>
+<p>encodeUrl:= url.QueryEscape(urltest)</p>
+<p>decodeUrl,err := url.QueryUnescape(encodeUrl)</p>
 <p>6.base64编码</p>
-<p>  encodeString :&#x3D; base64.StdEncoding.EncodeToString(input)</p>
-<p>  decodeBytes, err :&#x3D; base64.StdEncoding.DecodeString(encodeString)</p>
+<p>encodeString := base64.StdEncoding.EncodeToString(input)</p>
+<p>decodeBytes, err := base64.StdEncoding.DecodeString(encodeString)</p>
 <p>7.获取字符串长度</p>
-<p>  tips :&#x3D; “忍者”</p>
-<p>  len :&#x3D; len(tips) &#x2F;&#x2F;len&#x3D;6 字节数</p>
-<p>  len :&#x3D; utf8.RuneCountInString(tips)  &#x2F;&#x2F;len&#x3D;2 字符数</p>
-<p>8.SubString &#x2F;&#x2F;可用于字符串截取</p>
+<p>tips := “忍者”</p>
+<p>len := len(tips) //len=6 字节数</p>
+<p>len := utf8.RuneCountInString(tips)  //len=2 字符数</p>
+<p>8.SubString //可用于字符串截取</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">func SubString(str string, start int32, end int32) string &#123;</span><br><span class="line">    result := []rune(str)</span><br><span class="line">    length := int32(len(result))</span><br><span class="line">    if start &lt; 0 || start &gt; length &#123;</span><br><span class="line">        return str</span><br><span class="line">    &#125;</span><br><span class="line">    if end &lt; 0 || end &gt; length &#123;</span><br><span class="line">        return str</span><br><span class="line">    &#125;</span><br><span class="line">    return string(result[start:end])</span><br><span class="line">  &#125;</span><br><span class="line">  //注意end参数的取值</span><br><span class="line">  result = SubString(result, 0, int32(len([]rune(result)))-1)</span><br></pre></td></tr></table></figure>
-
 <p>9.结构体类型断言</p>
-<p>  logger :&#x3D; &amp;log.Logger{}</p>
-<p>  fl, ok :&#x3D; interface{}(logger).(*FileLogger)</p>
+<p>logger := &amp;log.Logger{}</p>
+<p>fl, ok := interface{}(logger).(*FileLogger)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.类型断言变量一定要是一个接口变量，否则报错 invalid type assertion: xxx (non-interface type xxx on left);</span><br><span class="line">2.使用类型断言的思路，应该是接收到一个接口值，但不确定这个值具体的类型，然后通过类型断言来判断;</span><br></pre></td></tr></table></figure>
-
 <p>参考：<a href="https://blog.csdn.net/Sunburst_Lf/article/details/104651511/">https://blog.csdn.net/Sunburst_Lf/article/details/104651511/</a></p>
 <p>10.将int切片转成以分号分隔的字符串</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    slice := []int&#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;</span><br><span class="line">    str := strings.Replace(strings.Trim(fmt.Sprint(slice), &quot;[]&quot;), &quot; &quot;, &quot;;&quot;, -1)</span><br><span class="line">    fmt.Println(&quot;string:&quot;, str)</span><br><span class="line">&#125;</span><br><span class="line">输出：</span><br><span class="line">1;2;3;4;5;6;7;8;9</span><br></pre></td></tr></table></figure>
-
 <p>11.将string切片转成以分号分隔的字符串</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">    slice :=      []string&#123;&quot;peer0.org1.example.com&quot;,&quot;peer1.org1.example.com&quot;&#125;</span><br><span class="line">    str := strings.Replace(strings.Trim(fmt.Sprint(slice), &quot;[]&quot;), &quot; &quot;, &quot;;&quot;, -1)</span><br><span class="line">    fmt.Println(&quot;string:&quot;, str)</span><br><span class="line">&#125;</span><br><span class="line">输出：</span><br><span class="line">peer0.org1.example.com;peer1.org1.example.com</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" data-id="cm4dztqka000yjaliasnv1wd5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" data-id="cm4uq3vo4000yd7li0so1h3rt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li></ul>

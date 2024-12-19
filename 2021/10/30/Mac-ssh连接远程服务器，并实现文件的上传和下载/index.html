@@ -89,17 +89,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Mac-ssh连接远程服务器，并实现文件的上传和下载"><a href="#Mac-ssh连接远程服务器，并实现文件的上传和下载" class="headerlink" title="Mac ssh连接远程服务器，并实现文件的上传和下载"></a>Mac ssh连接远程服务器，并实现文件的上传和下载</h4><span id="more"></span>
-
+        <h4 id="mac-ssh连接远程服务器并实现文件的上传和下载"><a class="markdownIt-Anchor" href="#mac-ssh连接远程服务器并实现文件的上传和下载"></a> Mac ssh连接远程服务器，并实现文件的上传和下载</h4>
+<span id="more"></span>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1、从服务器上下载文件 scp username@servername:/path/filename /Users/mac/Desktop（本地目录）</span><br><span class="line"></span><br><span class="line">例如:scp root@123.207.170.40:/root/test.txt /Users/mac/Desktop就是将服务器上的/root/test.txt下载到本地的/Users/mac/Desktop目录下。注意两个地址之间有空格！</span><br><span class="line"></span><br><span class="line">2、上传本地文件到服务器 scp /path/filename username@servername:/path ;</span><br><span class="line"></span><br><span class="line">例如scp /Users/mac/Desktop/test.txt root@123.207.170.40:/root/</span><br><span class="line"></span><br><span class="line">3、从服务器下载整个目录 scp -r username@servername:/root/（远程目录） /Users/mac/Desktop（本地目录）</span><br><span class="line"></span><br><span class="line">例如:scp -r root@192.168.0.101:/root/ /Users/mac/Desktop/</span><br><span class="line"></span><br><span class="line">4、上传目录到服务器 scp -r local_dir username@servername:remote_dir</span><br><span class="line"></span><br><span class="line">例如：scp -r test root@192.168.0.101:/root/ 把当前目录下的test目录上传到服务器的/root/ 目录</span><br><span class="line"></span><br><span class="line">注：目标服务器要开启写入权限。</span><br></pre></td></tr></table></figure>
-
 <p>参考链接：</p>
 <p><a href="https://www.cnblogs.com/king-peng/p/9964728.html">https://www.cnblogs.com/king-peng/p/9964728.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/10/30/Mac-ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%B9%B6%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="cm4dztqjq0007jalice804qb9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/10/30/Mac-ssh%E8%BF%9E%E6%8E%A5%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%B9%B6%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="cm4uq3vnn0007d7lia0f3gds0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>

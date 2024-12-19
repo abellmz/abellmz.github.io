@@ -92,8 +92,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="自动化部署流程："><a href="#自动化部署流程：" class="headerlink" title="自动化部署流程："></a>自动化部署流程：</h3><span id="more"></span>
-
+        <h3 id="自动化部署流程"><a class="markdownIt-Anchor" href="#自动化部署流程"></a> 自动化部署流程：</h3>
+<span id="more"></span>
 <p><img src="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/20200111112714243.png" alt="image-20200111112714243"></p>
 <p><strong>流程</strong></p>
 <p>在github上设置hook(钩子)，本地推送代码到github，会触发hook，github请求web服务器的webhook.php文件，服务器通过文件执行pull命令，拉取github最新代码。完成自动化部署.</p>
@@ -101,7 +101,6 @@
 <p><strong>1.本地创建webhook.php</strong></p>
 <p>使用纯php、若时候其他框架只需配置路由，配置控制器方法）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  //GitHub Webhook Secret</span><br><span class="line">  //GitHub项目 Settings/Webhooks 中的Secret   改</span><br><span class="line">  $secret=&quot;liminzhang&quot;;</span><br><span class="line">  </span><br><span class="line">  //Path to your respostory on your server.</span><br><span class="line">  //e.g. &quot;/var/www/respostory&quot;</span><br><span class="line">  //项目地址			改</span><br><span class="line">  //$path=&quot;/www/wwwroot/xj.houdunren.com&quot;;</span><br><span class="line">  $path=&quot;http://hdxj.houdunren.com/webhook.php&quot;;</span><br><span class="line">  //Headers deliveried from GitHub</span><br><span class="line">  $signature=$_SERVAR[&#x27;HTTP_X_HUB_SIGNATURE&#x27;];</span><br><span class="line">  </span><br><span class="line">  if($signature)&#123;</span><br><span class="line">      $hash=&quot;sha1=&quot; . hash_hmac(&#x27;sha1&#x27;,file_get_contents(&quot;</span><br><span class="line">          php://input&quot;),$secret);</span><br><span class="line">      if(strcmp($signature,$hash)==0)&#123;</span><br><span class="line">              echo shell_exec(&quot;cd &#123;$path&#125; &amp;&amp; /usr/bin/git reset</span><br><span class="line">              --hard origin/master &amp;&amp; /usr/bin/git clean -f &amp;&amp;</span><br><span class="line">              /usr/bin/git pull 2&gt;&amp;1&quot;);</span><br><span class="line">              exit();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  http_response_code(404);</span><br><span class="line">  ?&gt;</span><br></pre></td></tr></table></figure>
-
 <p>用的时候需要改webhook.php中的<code>secret</code>和<code>$path</code>，两者都来自gitHub-&gt;webhook的设置</p>
 <p><strong>2.github:</strong></p>
 <p>项目设置-》webhooks-&gt;add webhook 需要填写web服务器地址</p>
@@ -113,23 +112,21 @@
 <p><strong>3.服务器：</strong></p>
 <p>宝塔面板中创建一个服务器地址。</p>
 <p>远程操作</p>
-<p>ssh <a href="mailto:&#114;&#111;&#x6f;&#116;&#64;&#x68;&#100;&#120;&#x6a;&#46;&#x68;&#x6f;&#117;&#x64;&#117;&#110;&#114;&#x65;&#110;&#46;&#99;&#111;&#x6d;">&#114;&#111;&#x6f;&#116;&#64;&#x68;&#100;&#120;&#x6a;&#46;&#x68;&#x6f;&#117;&#x64;&#117;&#110;&#114;&#x65;&#110;&#46;&#99;&#111;&#x6d;</a> -p 71    &#x2F;&#x2F;p是port端口</p>
+<p>ssh <a href="mailto:root@hdxj.houdunren.com">root@hdxj.houdunren.com</a> -p 71    //p是port端口</p>
 <p>password:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br><span class="line">cd www</span><br><span class="line">ls</span><br><span class="line">cd wwwroot  该目录放置宝塔中创建的站点目录</span><br><span class="line">cd hdxj.houdunren.com</span><br><span class="line">ls -a  有.user.ini（定义这个站点可以访问哪些目录）和.htaccess两个隐藏文件</span><br><span class="line">mv hdxj.houdunren.com  hdxj.houdunren.com999 修改文件名，因为目录不为空无法克隆github的代码，这时候hdxj.houdunren.com已经访问不了了（我想知道改名后目录边控了吗？）</span><br><span class="line">克隆代码，使用https的方式</span><br><span class="line">git clone https://github.com/houdunwang/hdxj.git hdxj.houdunren.com</span><br><span class="line">后面的目录必须为hdxj.houdunren.com因为访问的时候，是走这个目录的</span><br></pre></td></tr></table></figure>
-
 <p><strong>另</strong>：</p>
 <p>开启服务器php的执行命令函数（宝塔），软件管理-》php7.2(因为站点使用的是7.2)-》设置-》禁用函数（将shell_exec()删除）</p>
 <p>root登录时</p>
 <p><code>#sudo -u www git pull</code></p>
 <p>www是web服务器的账号执行git pull</p>
-<p>命令报错无权限。其实需要指需要修改权限，返回wwwroot目录删除hdxj.houdunren.com，重新克隆</p>
+<p>命令报错无权限。其实需要指需要修改权限，<a href="http://xn--wwwroothdxj-ty8r460c931a877eui3dllxa.houdunren.com">返回wwwroot目录删除hdxj.houdunren.com</a>，重新克隆</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rm -rf hdxj.houdunren.com</span><br><span class="line">git clone https://github.com/houdunwang/hdxj.git hdxj.houdunren.com</span><br><span class="line">cd hdxj.houdunren.com</span><br><span class="line">ls -a</span><br><span class="line"></span><br><span class="line">查看权限</span><br><span class="line">ll -a</span><br><span class="line">//权限都是root  由于github上会使用apache或者nginx服务器账号去发送请求，但都无权限改动服务器文件.而webhook.php拉取代码的时候用的是www账号，所以需要修改权限</span><br><span class="line">chown -R www .</span><br><span class="line">chmod -R g+s .</span><br><span class="line">正常了</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" data-id="cm4dztqku001rjali3ny000mf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" data-id="cm4uq3vop001rd7li316hfpu8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>

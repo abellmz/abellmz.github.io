@@ -7,12 +7,12 @@
   
   <title>golangBasic10-20 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="10错误处理错误处理方式1234567891011121314package mainimport (	&quot;io&#x2F;ioutil&quot;	&quot;fmt&quot;)func main()&#123;	f, err :&#x3D; ioutil.ReadFile(&quot;test.txt&quot;)	if err !&#x3D; nil&#123;		fmt.Println(err)	&#125;">
+  <meta name="description" content="10错误处理  错误处理方式 1234567891011121314package mainimport (	&quot;io&#x2F;ioutil&quot;	&quot;fmt&quot;)func main()&#123;	f, err :&#x3D; ioutil.ReadFile(&quot;test.txt&quot;)	if err !&#x3D; nil&#123;		fmt.Println(err)	&amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="golangBasic10-20">
 <meta property="og:url" content="http://yoursite.com/2021/07/11/golangBasic10-20/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="10错误处理错误处理方式1234567891011121314package mainimport (	&quot;io&#x2F;ioutil&quot;	&quot;fmt&quot;)func main()&#123;	f, err :&#x3D; ioutil.ReadFile(&quot;test.txt&quot;)	if err !&#x3D; nil&#123;		fmt.Println(err)	&#125;">
+<meta property="og:description" content="10错误处理  错误处理方式 1234567891011121314package mainimport (	&quot;io&#x2F;ioutil&quot;	&quot;fmt&quot;)func main()&#123;	f, err :&#x3D; ioutil.ReadFile(&quot;test.txt&quot;)	if err !&#x3D; nil&#123;		fmt.Println(err)	&amp;#">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-07-11T03:41:02.000Z">
 <meta property="article:modified_time" content="2021-12-05T01:02:39.486Z">
@@ -89,47 +89,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="10错误处理"><a href="#10错误处理" class="headerlink" title="10错误处理"></a>10错误处理</h2><h3 id="错误处理方式"><a href="#错误处理方式" class="headerlink" title="错误处理方式"></a>错误处理方式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;io/ioutil&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main()&#123;</span><br><span class="line">	f, err := ioutil.ReadFile(&quot;test.txt&quot;)</span><br><span class="line">	if err != nil&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		fmt.Println(f)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+        <h2 id="10错误处理"><a class="markdownIt-Anchor" href="#10错误处理"></a> 10错误处理</h2>
+<h3 id="错误处理方式"><a class="markdownIt-Anchor" href="#错误处理方式"></a> 错误处理方式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;io/ioutil&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main()&#123;</span><br><span class="line">	f, err := ioutil.ReadFile(&quot;test.txt&quot;)</span><br><span class="line">	if err != nil&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		fmt.Println(f)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-
-<h3 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h3><p>Go语言的error类型实际上是一个接口，定义如下：<br>type error interface {<br>    Error() string<br>}<br>error接口包含Error方法，用来返回一个字符串。换言之，所有符合 Error()string 格式的方法，都能实现错误接口。</p>
+<h3 id="自定义错误"><a class="markdownIt-Anchor" href="#自定义错误"></a> 自定义错误</h3>
+<p>Go语言的error类型实际上是一个接口，定义如下：<br>
+type error interface {<br>
+Error() string<br>
+}<br>
+error接口包含Error方法，用来返回一个字符串。换言之，所有符合 Error()string 格式的方法，都能实现错误接口。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;errors&quot;</span><br><span class="line">)</span><br><span class="line">func main()&#123;</span><br><span class="line">	err := errors.New(&quot;this is an error&quot;)</span><br><span class="line">	var err2 error</span><br><span class="line">	fmt.Println(err.Error())</span><br><span class="line">	fmt.Println(err2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="宕机与恢复"><a href="#宕机与恢复" class="headerlink" title="宕机与恢复"></a>宕机与恢复</h3><p>一般而言，只有当程序发生不可逆的错误时，才会使用panic方法来触发宕机。panic方法是Go语言的一个内置函数，使用panic方法后，程序的执行将直接中断。<br>panic方法的源代码如下，由于其参数为空接口类型，因此我们可以传入任意类型的值作为宕机内容：<br>func panic(v interface{})</p>
+<h3 id="宕机与恢复"><a class="markdownIt-Anchor" href="#宕机与恢复"></a> 宕机与恢复</h3>
+<p>一般而言，只有当程序发生不可逆的错误时，才会使用panic方法来触发宕机。panic方法是Go语言的一个内置函数，使用panic方法后，程序的执行将直接中断。<br>
+panic方法的源代码如下，由于其参数为空接口类型，因此我们可以传入任意类型的值作为宕机内容：<br>
+func panic(v interface{})</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">func main()&#123;</span><br><span class="line">	panic(&quot;Serious bug&quot;)</span><br><span class="line">	fmt.Println(&quot;Invalid code&quot;)   //程序退出，无法执行该行代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>Go语言通过内置函数recover来捕获宕机，类似于其它编程语言中的try-catch机制。<br>在使用panic方法触发宕机后且在退出当前函数前会调用延迟执行语句defer，代码示例如下</p>
+<p>Go语言通过内置函数recover来捕获宕机，类似于其它编程语言中的try-catch机制。<br>
+在使用panic方法触发宕机后且在退出当前函数前会调用延迟执行语句defer，代码示例如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line">func protect()&#123; </span><br><span class="line">	defer func() &#123;          //protect函数退出前执行defer语句</span><br><span class="line">		fmt.Println(&quot;func protect exit&quot;)</span><br><span class="line">	&#125;()</span><br><span class="line">	panic(&quot;Serious bug&quot;)     //触发宕机</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	defer func() &#123;          //protect函数退出前执行defer语句</span><br><span class="line">		fmt.Println(&quot;func main exit&quot;)</span><br><span class="line">	&#125;()</span><br><span class="line">	protect()</span><br><span class="line">	fmt.Println(&quot;Invalid code&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Go语言错误应用"><a href="#Go语言错误应用" class="headerlink" title="Go语言错误应用"></a>Go语言错误应用</h3><p>panic()和recover() 虽然能模拟其他语言的异常机制，但是<strong>并不建议</strong>在Go语言编程中使用类似的方法。正如本章开篇所提到的，推荐使用<strong>多值返回</strong>来处理错误。</p>
+<h3 id="go语言错误应用"><a class="markdownIt-Anchor" href="#go语言错误应用"></a> Go语言错误应用</h3>
+<p>panic()和recover() 虽然能模拟其他语言的异常机制，但是<strong>并不建议</strong>在Go语言编程中使用类似的方法。正如本章开篇所提到的，推荐使用<strong>多值返回</strong>来处理错误。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;errors&quot;</span><br><span class="line">)</span><br><span class="line">func div(dividend int, divisor int) (int, error) &#123;</span><br><span class="line">	if divisor == 0&#123;   //除数为0则返回错误</span><br><span class="line">		return 0,errors.New(&quot;divisor is zero&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	return dividend/divisor,nil</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	res1,err:= div(4,2);if err != nil &#123;</span><br><span class="line">		fmt.Println(err.Error())</span><br><span class="line">	&#125;else &#123; fmt.Println(&quot;4/2 =&quot;,res1) &#125;</span><br><span class="line">	res2,err := div(1,0);if err != nil&#123;</span><br><span class="line">		fmt.Println(err.Error())</span><br><span class="line">	&#125;else &#123; fmt.Println(&quot;1/0 =&quot;,res2) &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="11文件操作"><a href="#11文件操作" class="headerlink" title="11文件操作"></a>11文件操作</h2><h3 id="目录基本操作"><a href="#目录基本操作" class="headerlink" title="目录基本操作"></a>目录基本操作</h3><p>文件是以硬盘为载体的信息存储集合，文件可以是文本、图片、程序。<br>系统为了更好的管理文件，便使用了目录。目录是存放文件的地方，为树形层次结构。<br>想要读取一个目录的内容，可以使用”io&#x2F;ioutil”库中的ReadDir方法，此方法返回一个有序列表。<br>对于创建目录可以使用“os“库的如下接口Mkdir。</p>
+<h2 id="11文件操作"><a class="markdownIt-Anchor" href="#11文件操作"></a> 11文件操作</h2>
+<h3 id="目录基本操作"><a class="markdownIt-Anchor" href="#目录基本操作"></a> 目录基本操作</h3>
+<p>文件是以硬盘为载体的信息存储集合，文件可以是文本、图片、程序。<br>
+系统为了更好的管理文件，便使用了目录。目录是存放文件的地方，为树形层次结构。<br>
+想要读取一个目录的内容，可以使用”io/ioutil”库中的ReadDir方法，此方法返回一个有序列表。<br>
+对于创建目录可以使用“os“库的如下接口Mkdir。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;io/ioutil&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	dir, err := ioutil.ReadDir(&quot;D:\\360&quot;)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	for _, file := range dir &#123;</span><br><span class="line">		fmt.Println(file.Name())</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;os&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func createDir(path string, dirName string)  &#123;</span><br><span class="line">	dirPath := path + &quot;\\&quot; + dirName</span><br><span class="line">	err := os.Mkdir(dirPath, 0777)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	os.Chmod(dirPath, 0777)</span><br><span class="line">	fmt.Println(&quot;Create Dir =&gt; &quot; + path + dirName)</span><br><span class="line">&#125;</span><br><span class="line">func main() &#123;</span><br><span class="line">	createDir(&quot;D:\\360&quot;,&quot;test&quot;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="文件基本操作"><a href="#文件基本操作" class="headerlink" title="文件基本操作"></a>文件基本操作</h3><p>对于文件的创建与打开使用的是标准库“os“中的OpenFile：<br>    func OpenFile(name string, flag int, perm FileMode) (file *File, err error)<br>想要读取文件可使用“os”库中的Read接口：<br>    func (f *File) Read(b []byte) (n int, err error)<br>比之前的文件读取，向文件写内容可用Write：<br>    func (f *File) Write(b []byte) (n int, err error)<br>删除文件使用的“os”库中的Remove：<br>    func Remove(name string) error </p>
+<h3 id="文件基本操作"><a class="markdownIt-Anchor" href="#文件基本操作"></a> 文件基本操作</h3>
+<p>对于文件的创建与打开使用的是标准库“os“中的OpenFile：<br>
+func OpenFile(name string, flag int, perm FileMode) (file *File, err error)<br>
+想要读取文件可使用“os”库中的Read接口：<br>
+func (f *File) Read(b []byte) (n int, err error)<br>
+比之前的文件读取，向文件写内容可用Write：<br>
+func (f *File) Write(b []byte) (n int, err error)<br>
+删除文件使用的“os”库中的Remove：<br>
+func Remove(name string) error</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">func ReadFile(path string) &#123;</span><br><span class="line">	file, err := os.Open(path)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	buf := make([]byte, 1024)</span><br><span class="line">	fmt.Println(&quot;以下是文件内容：&quot;)</span><br><span class="line">	for &#123;</span><br><span class="line">		//Read函数会改变文件当前偏移量</span><br><span class="line">		len, _ := file.Read(buf)</span><br><span class="line">		//读取字节数为0时跳出循环</span><br><span class="line">		if len == 0 &#123;</span><br><span class="line">			break</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println(string(buf))</span><br><span class="line">	&#125;</span><br><span class="line">	file.Close()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="处理json文件"><a href="#处理json文件" class="headerlink" title="处理json文件"></a>处理json文件</h3><p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。JSON最初是属于JavaScript的一部分，后来由于具有良好的可读和便于快速编写的特性，它现在已独立于语言</p>
-<p>标准库提供了”encoding&#x2F;json”库来处理JSON。编码JSON，即从其他的数据类型编码成JSON字符串，这个过程，我们会使用如下的接口：<br>    func Marshal(v interface{}) ([]byte, error)<br>解码JSON会使用到Unmarshal接口，也就是Marshal的反操作。<br>    func Unmarshal(data []byte, v interface{}) error</p>
+<h3 id="处理json文件"><a class="markdownIt-Anchor" href="#处理json文件"></a> 处理json文件</h3>
+<p>JSON(JavaScript Object Notation, JS 对象简谱) 是一种轻量级的数据交换格式。JSON最初是属于JavaScript的一部分，后来由于具有良好的可读和便于快速编写的特性，它现在已独立于语言</p>
+<p>标准库提供了&quot;encoding/json&quot;库来处理JSON。编码JSON，即从其他的数据类型编码成JSON字符串，这个过程，我们会使用如下的接口：<br>
+func Marshal(v interface{}) ([]byte, error)<br>
+解码JSON会使用到Unmarshal接口，也就是Marshal的反操作。<br>
+func Unmarshal(data []byte, v interface{}) error</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">func main()&#123;</span><br><span class="line">	jsonStr :=`</span><br><span class="line">&#123;   </span><br><span class="line">    &quot;name&quot;: &quot;小王&quot;,</span><br><span class="line">    &quot;age&quot;: 24,</span><br><span class="line">    &quot;sex&quot;: true,</span><br><span class="line">    &quot;birthday&quot;: &quot;1995-01-01&quot;,</span><br><span class="line">    &quot;company&quot;: &quot;喵喵公司&quot;,</span><br><span class="line">    &quot;language&quot; :[</span><br><span class="line">               &quot;Go&quot;,</span><br><span class="line">               &quot;PHP&quot;,</span><br><span class="line">               &quot;Python&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;`</span><br><span class="line">    m :=make(map[string]interface&#123;&#125;,6)</span><br><span class="line">    err := json.Unmarshal([]byte(jsonStr),&amp;m)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">    	fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(&quot;m = &quot;,m)</span><br><span class="line">    //类型断言</span><br><span class="line">    for key, value := range m&#123;</span><br><span class="line">    	switch data :=value.(type) &#123;</span><br><span class="line">		case string:</span><br><span class="line">			fmt.Printf(&quot;map[%s]的值类型为string,value = %s\n&quot;,key,data)</span><br><span class="line">		case float64:</span><br><span class="line">			fmt.Printf(&quot;map[%s]的值类型为int,value = %f\n&quot;,key,data)</span><br><span class="line">		case bool:</span><br><span class="line">			fmt.Printf(&quot;map[%s]的值类型为bool,value = %t\n&quot;,key,data)</span><br><span class="line">		case []string:</span><br><span class="line">			fmt.Printf(&quot;map[%s]的值类型为[]string,value = %v\n&quot;,key,data)</span><br><span class="line">		case []interface&#123;&#125;:</span><br><span class="line">			fmt.Printf(&quot;map[%s]的值类型为[]interface,value = %v\n&quot;,key,data)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">执行结果：</span><br><span class="line">m =  map[age:24 birthday:1995-01-01 company:喵喵公司 language:[Go PHP Python] name:小王 sex:true]</span><br><span class="line">map[name]的值类型为string,value = 小王</span><br><span class="line">map[age]的值类型为int,value = 24.000000</span><br><span class="line">map[sex]的值类型为bool,value = true</span><br><span class="line">map[birthday]的值类型为string,value = 1995-01-01</span><br><span class="line">map[company]的值类型为string,value = 喵喵公司</span><br><span class="line">map[language]的值类型为[]interface,value = [Go PHP Python]</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="12接口类型"><a href="#12接口类型" class="headerlink" title="12接口类型"></a>12接口类型</h2><h3 id="接口定义"><a href="#接口定义" class="headerlink" title="接口定义"></a>接口定义</h3><p>在Go语言中，接口是一个自定义类型，接口类型是一种抽象的类型，它不会暴露出他所代表的内部值的结构，它只会展示出它自己的方法，因此，接口类型不能将其实例化。<br>Go语言的接口是非常灵活的，它通过一种方式来声明对象的行为，谁实现了这些行为，就相当于实现了这个接口里面声明各种方法的集合，但接口本身不去实现这些方法所要的一些操作</p>
+<h2 id="12接口类型"><a class="markdownIt-Anchor" href="#12接口类型"></a> 12接口类型</h2>
+<h3 id="接口定义"><a class="markdownIt-Anchor" href="#接口定义"></a> 接口定义</h3>
+<p>在Go语言中，接口是一个自定义类型，接口类型是一种抽象的类型，它不会暴露出他所代表的内部值的结构，它只会展示出它自己的方法，因此，接口类型不能将其实例化。<br>
+Go语言的接口是非常灵活的，它通过一种方式来声明对象的行为，谁实现了这些行为，就相当于实现了这个接口里面声明各种方法的集合，但接口本身不去实现这些方法所要的一些操作</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type InterfaceName interface&#123;</span><br><span class="line">	Method()</span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="接口创建"><a href="#接口创建" class="headerlink" title="接口创建"></a>接口创建</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">type Mysql struct &#123;</span><br><span class="line">	DBName string</span><br><span class="line">	isConnect bool</span><br><span class="line">&#125;</span><br><span class="line">func (mysql *Mysql)Connect() error &#123;</span><br><span class="line">	fmt.Println(&quot;Mysql Connect DB =&gt; &quot;+ mysql.DBName)</span><br><span class="line">	mysql.isConnect = true</span><br><span class="line">	if mysql.isConnect &#123;</span><br><span class="line">		fmt.Println(&quot;Mysql Connect Success!&quot;)</span><br><span class="line">		return nil</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		return errors.New(&quot;Connect failure! &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (mysql *Mysql)Disconnect() error &#123;</span><br><span class="line">	fmt.Println(&quot;Mysql Disconnect Success!&quot;)</span><br><span class="line">	return nil</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	var mysql =Mysql&#123;DBName: &quot;student&quot;&#125;</span><br><span class="line">	fmt.Println(&quot;开始连接&quot;)</span><br><span class="line">	mysql.Connect()</span><br><span class="line">	fmt.Println(&quot;断开连接&quot;)</span><br><span class="line">	mysql.Disconnect()</span><br><span class="line">&#125;</span><br><span class="line">执行结果：</span><br><span class="line">开始连接</span><br><span class="line">Mysql Connect DB =&gt; student</span><br><span class="line">Mysql Connect Success!</span><br><span class="line">断开连接</span><br><span class="line">Mysql Disconnect Success!</span><br></pre></td></tr></table></figure>
-
+<h3 id="接口创建"><a class="markdownIt-Anchor" href="#接口创建"></a> 接口创建</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">type Mysql struct &#123;</span><br><span class="line">	DBName string</span><br><span class="line">	isConnect bool</span><br><span class="line">&#125;</span><br><span class="line">func (mysql *Mysql)Connect() error &#123;</span><br><span class="line">	fmt.Println(&quot;Mysql Connect DB =&gt; &quot;+ mysql.DBName)</span><br><span class="line">	mysql.isConnect = true</span><br><span class="line">	if mysql.isConnect &#123;</span><br><span class="line">		fmt.Println(&quot;Mysql Connect Success!&quot;)</span><br><span class="line">		return nil</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		return errors.New(&quot;Connect failure! &quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (mysql *Mysql)Disconnect() error &#123;</span><br><span class="line">	fmt.Println(&quot;Mysql Disconnect Success!&quot;)</span><br><span class="line">	return nil</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	var mysql =Mysql&#123;DBName: &quot;student&quot;&#125;</span><br><span class="line">	fmt.Println(&quot;开始连接&quot;)</span><br><span class="line">	mysql.Connect()</span><br><span class="line">	fmt.Println(&quot;断开连接&quot;)</span><br><span class="line">	mysql.Disconnect()</span><br><span class="line">&#125;</span><br><span class="line">执行结果：</span><br><span class="line">开始连接</span><br><span class="line">Mysql Connect DB =&gt; student</span><br><span class="line">Mysql Connect Success!</span><br><span class="line">断开连接</span><br><span class="line">Mysql Disconnect Success!</span><br></pre></td></tr></table></figure>
 <p><strong>接口赋值</strong>存在2种情况：</p>
 <p>1将对象实例赋值给接口</p>
 <p>只能是对象指针赋值，而不是对象直接赋值，否者会发生错误</p>
@@ -139,51 +151,49 @@
 <p><strong>接口嵌入（接口组合）</strong>：</p>
 <p>类似结构体的内嵌，是继承特性的实现，体现了非侵入式的风格</p>
 <p>接口不能嵌入自身，包括直接嵌入和间接嵌入</p>
-<h3 id="空接口"><a href="#空接口" class="headerlink" title="空接口"></a>空接口</h3><p>空接口（interface{}）是Go语言中最特殊的接口，在Java语言中，所有的类都继承自一个基类Object，而Go中的interface{}接口就相当于Java语言里的Object。<br>在Go语言中，空接口不包含任何方法，也正因如此，所有的类型都实现了空接口，因此空接口可以存储任意类型的数值。</p>
+<h3 id="空接口"><a class="markdownIt-Anchor" href="#空接口"></a> 空接口</h3>
+<p>空接口（interface{}）是Go语言中最特殊的接口，在Java语言中，所有的类都继承自一个基类Object，而Go中的interface{}接口就相当于Java语言里的Object。<br>
+在Go语言中，空接口不包含任何方法，也正因如此，所有的类型都实现了空接口，因此空接口可以存储任意类型的数值。</p>
 <p>*空接口不能直接赋值给变量，需要类型断言。</p>
 <p>空接口常见使用方式</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func Println(a ...interface&#123;&#125;)(n int, err error)&quot;...&quot;表示可变长参数</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h3><p>类型断言是使用在接口变量上的操作。简单来说，接口类型向普通类型的转换就是类型断言。<br>类型断言的语法是：</p>
+<h3 id="类型断言"><a class="markdownIt-Anchor" href="#类型断言"></a> 类型断言</h3>
+<p>类型断言是使用在接口变量上的操作。简单来说，接口类型向普通类型的转换就是类型断言。<br>
+类型断言的语法是：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t, ok := X.(T)//判断X的类型是否为T断言成功，则ok为true,t的值为接口变量X的动态值；断言失败则，则t的值为类型T的初始值，t的类型始终为T。例如：var X interface&#123;&#125;=1//空接口存储变量t0,ok=X.(string)断言失败，0为tring的初始值，即空字符串“”，t类型为string若t0,ok=X.(int)则断言成功，t0为X动态值X，t的类型为int,ok=true</span><br></pre></td></tr></table></figure>
-
 <p>类型断言有2中情况：</p>
 <p>1断言类型T是一个具体的类型</p>
 <p>2断言类型T是一个接口类型</p>
 <p>接口类型断言有2种方式：</p>
 <p>1ok-pattern</p>
-<p>2switch-type&#x2F;&#x2F;要断言的接口类型种类较多时使用</p>
+<p>2switch-type//要断言的接口类型种类较多时使用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">switch value := 接口变量.(type)&#123;    case 类型1：        //类型1时的处理    case 类型2：        //类型2时的处理    ...    default:       //默认时的处理&#125;</span><br></pre></td></tr></table></figure>
-
 <p>侵入式接口与非侵入式接口</p>
 <p>侵入式接口：需要显示的创建一个类去实现一个接口（大部分语言）</p>
 <p>非侵入式接口：与上相反，且接口设计更简洁、灵活，更注重实用性</p>
 <p>非侵入式的3大好处：。。。</p>
-<h2 id="13并发与通道"><a href="#13并发与通道" class="headerlink" title="13并发与通道"></a>13并发与通道</h2><p>并发编程包括多线程编程、多进程编程以及分布式程序，本章所所讲述的并发叫做<strong>协程</strong>，<strong>属于多线程编程</strong>。</p>
+<h2 id="13并发与通道"><a class="markdownIt-Anchor" href="#13并发与通道"></a> 13并发与通道</h2>
+<p>并发编程包括多线程编程、多进程编程以及分布式程序，本章所所讲述的并发叫做<strong>协程</strong>，<strong>属于多线程编程</strong>。</p>
 <p>调用栈：经常被用于存放子程序的返回地址</p>
 <p>CSP：go语言的并发基于CSP(communication Sequential Process,通讯顺序进程)模型，该模型提倡通过通信来共享内存，而非通过共享内存来通信。go基于CSP,意味着显示锁都是可以避免的</p>
-<h3 id="gorountine"><a href="#gorountine" class="headerlink" title="gorountine"></a>gorountine</h3><p>**并行(Parallelism)**：指在同一时刻，有多条指令在多个处理器上同时执行。</p>
-<p>**并发(Concurrency)**：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行，只是把时间片分成了若干段，使的多个进程快速交替的执行。</p>
+<h3 id="gorountine"><a class="markdownIt-Anchor" href="#gorountine"></a> gorountine</h3>
+<p><strong>并行(Parallelism)</strong>：指在同一时刻，有多条指令在多个处理器上同时执行。</p>
+<p><strong>并发(Concurrency)</strong>：指在同一时刻只能有一条指令执行，但多个进程指令被快速的轮换执行，使得在宏观上具有多个进程同时执行的效果，但在微观上并不是同时执行，只是把时间片分成了若干段，使的多个进程快速交替的执行。</p>
 <p>只需要在<strong>函数调用语句</strong>前面添加<strong>go关键字</strong>，就可以创建并发执行单元。开发人员无需了解任何执行细节，调度器会自动将其安排到合适的系统线程上去执行。</p>
 <p>gorountine是并发的核心，也叫协程，go内部已实现gorountine之间的内存共享，它比线程更加易用、高效和轻便。</p>
 <p>go语言中，每个并发执行单元叫作一个gorountine，在函数前加上go关键字，就能使这个函数以协程的方式运行</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go 函数名（函数参数）</span><br></pre></td></tr></table></figure>
-
 <p>一旦使用go，就不能使用函数返回值来与主进程进行数据交换，而只能使用channel</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">func Tesk1()&#123;</span><br><span class="line">	for &#123;</span><br><span class="line">		fmt.Println(time.Now().Format(&quot;15:04:05&quot;),&quot;正在处理Task1的任务！&quot;)</span><br><span class="line">		time.Sleep(time.Second *3)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">func Tesk2()&#123;</span><br><span class="line">	for &#123;</span><br><span class="line">		fmt.Println(time.Now().Format(&quot;15:04:05&quot;),&quot;正在处理Task2的任务！&quot;)</span><br><span class="line">		time.Sleep(time.Second *1)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main()&#123;</span><br><span class="line">	go Tesk1()</span><br><span class="line">	go Tesk2()</span><br><span class="line">	for  &#123;</span><br><span class="line">		fmt.Println(time.Now().Format(&quot;15:04:05&quot;),&quot;正在处理主进程的任务！&quot;)</span><br><span class="line">		time.Sleep(time.Second *2)</span><br><span class="line">	&#125;</span><br><span class="line">执行结果：</span><br><span class="line">22:03:50 正在处理主进程的任务！</span><br><span class="line">22:03:50 正在处理Task1的任务！</span><br><span class="line">22:03:50 正在处理Task2的任务！</span><br><span class="line">22:03:51 正在处理Task2的任务！</span><br><span class="line">22:03:52 正在处理主进程的任务！</span><br><span class="line">22:03:52 正在处理Task2的任务！</span><br><span class="line">22:03:53 正在处理Task1的任务！</span><br><span class="line">22:03:53 正在处理Task2的任务！</span><br><span class="line">22:03:54 正在处理主进程的任务！</span><br><span class="line">22:03:54 正在处理Task2的任务！</span><br></pre></td></tr></table></figure>
-
 <p>所有gorountine函数在main函数结束时会一并结束。虽然gorountine类似于线程概念，但调度上不如线程细腻，而细腻程度取决于gorountine调度器的实现和运行环境。终止gorountine最好的方法是直接在函数中自然返回。</p>
 <p>go关键字后也可以是匿名函数</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">go func(参数列表)&#123;</span><br><span class="line">    函数体</span><br><span class="line">&#125; (调用参数列表)</span><br></pre></td></tr></table></figure>
-
-<h4 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h4><p>runtime包实现了一个小型的任务调度器。</p>
+<h4 id="runtime"><a class="markdownIt-Anchor" href="#runtime"></a> runtime</h4>
+<p>runtime包实现了一个小型的任务调度器。</p>
 <p><strong>三大函数</strong>：</p>
 <p><strong>1Gosched()</strong></p>
 <p>使当前Go协程放弃处理器，以让其他Go协程运行。它不会挂起当前协程，因此当前Go协程会恢复执行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func main()&#123;</span><br><span class="line">	go func() &#123;</span><br><span class="line">		for i := 0;i &lt; 3;i++&#123;</span><br><span class="line">			fmt.Println(&quot;go&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	for i :=0;i&lt;2;i++&#123;</span><br><span class="line">		runtime.Gosched()//阻止获得CPU控制权  运行完协程后，继续进行</span><br><span class="line">		fmt.Println(&quot;main&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">执行结果：</span><br><span class="line">go</span><br><span class="line">go</span><br><span class="line">go</span><br><span class="line">main</span><br><span class="line">main</span><br></pre></td></tr></table></figure>
-
 <p>Go语言的协程是抢占式调度，当一下几种情况，会主动将CPU转让出去：</p>
 <p>*syscall</p>
 <p>*C函数调用（本质和syscall一样）</p>
@@ -194,67 +204,61 @@
 <p><strong>3GOMAXPROCS()</strong></p>
 <p>GOMAXPROCS(n int)函数可以设置程序在运行中所使用的CPU数。</p>
 <p>可用NumCPU查询本机器逻辑CPU数</p>
-<h3 id="channel"><a href="#channel" class="headerlink" title="channel"></a>channel</h3><p>goroutine运行在相同的地址空间,因此访问共享内存必须做好同步。引用类型channel是CSP模式的具体体现，用于多个goroutine之间的通讯。其内部实现了同步，确保并发安全。</p>
+<h3 id="channel"><a class="markdownIt-Anchor" href="#channel"></a> channel</h3>
+<p>goroutine运行在相同的地址空间,因此访问共享内存必须做好同步。引用类型channel是CSP模式的具体体现，用于多个goroutine之间的通讯。其内部实现了同步，确保并发安全。</p>
 <p>channel是一种特殊的类型，<strong>和map类似</strong>，channel也是一个对应make创建的底层数据结构的<strong>引用</strong>。声明一个channel的方式如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var 通道变量 chan 通道类型通道变量：是保存通道的引用变量通道类型：指该通道可传输的数据类型。</span><br></pre></td></tr></table></figure>
-
 <p>和其他引用类型一样，channel的零值也是nil</p>
 <p>make创建channel</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make(chan Type)//等价于make(chan Type,0)make(chan Type, capacity)capacity为0时，channel无缓冲阻塞读写，大于0时，是有缓冲非阻塞的，直到写满capacity个元素彩阻塞写入。默认情况下，channel接收和发送数据都是阻塞的，除非另一端已准备好接收，这样goroutine的同步更加简单，而不需要显式锁channel&lt;-value //发送value到channel&lt;-channel      //接收并将其丢弃x :=&lt;-channel  // 从channel中接收数据，并赋值给xx , ok :=&lt;-channel //同上，并检测通道是否关闭，将此状态赋值给ok</span><br></pre></td></tr></table></figure>
-
 <p><strong>缓冲机制：</strong></p>
 <p>无缓冲通道,接收前没有能力保存任何值的通道</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make(chan Type)//等价于make(chan Type,0)需要发送goroutine和接收goroutine同时准备好，才能完成发送和接收操作。若两个goroutine没同时准备好，则导致先执行发送或接收的goroutine阻塞等待例如：func main()&#123;	ch :=make(chan int,0)	go func() &#123;		for i :=0;i&lt;3;i++ &#123;			fmt.Printf(&quot;len(ch)=%v,cap(ch)=%v\n&quot;,len(ch),cap(ch))			ch &lt;- i  //发送		&#125;	&#125;()	for i :=0;i&lt;3;i++&#123;		time.Sleep(time.Second)  //沉默1s 协程运行		fmt.Println(&lt;-ch)//接收	&#125;&#125;执行结果len(ch)=0,cap(ch)=0 //无缓冲通道 打印通道len和cap,之后发送-阻塞0                   //无缓冲通道 接收-打印通道-阻塞len(ch)=0,cap(ch)=01len(ch)=0,cap(ch)=02无缓冲的通道，保证进行发送和接收的goroutine会在同一时间进行数据交换。有缓冲的通道，无法保证</span><br></pre></td></tr></table></figure>
-
 <p>有缓冲通道，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make(chan Type, capacity)存在缓存区，在缓存区为填满的情况下，程序不会被阻塞执行</span><br></pre></td></tr></table></figure>
-
 <p><strong>close和range</strong></p>
 <p>close关闭channel()需注意：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel不像文件需要经常关闭，只有确实没有任何需要发送的数据时，或者想要显示地结束range循环等时，才会去关闭channel关闭channel后，无法向channel再次发送数据，再次发送将引发panic错误关闭channel后，可以继续从channel接收数据对于nil channel,无论接收还是发送都会被阻塞</span><br></pre></td></tr></table></figure>
-
 <p>range遍历channel</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for data :=range ch &#123;&#125;当channel关闭后，range也能自动结束本次遍历</span><br></pre></td></tr></table></figure>
-
 <p><strong>单向channel</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ch1 chan int //ch1为一个双向通道var ch2 chan&lt;- int //ch2为一个只能接收的单向通道var &lt;-chan int //ch3为一个只能发送的单向通道普通双向channel能隐式的转换为单向channel，但单向channel不能转为双向channel</span><br></pre></td></tr></table></figure>
-
 <p><strong>定时器</strong></p>
 <p>定时器的实现就是使用了单向channel</p>
-<h3 id="select"><a href="#select" class="headerlink" title="select"></a>select</h3><p>Go语言提供一个关键字select，通过select可以监听channel上的数据流动，select的用法和switch非常相似，由select开始一个新的选择块，每个选择条件有case语句来描述。</p>
+<h3 id="select"><a class="markdownIt-Anchor" href="#select"></a> select</h3>
+<p>Go语言提供一个关键字select，通过select可以监听channel上的数据流动，select的用法和switch非常相似，由select开始一个新的选择块，每个选择条件有case语句来描述。</p>
 <p>与switch语句可以选择任何可使用相比较的条件相比，select有较多的限制，其中最大一条限制就是每个case语句里面必须是一个IO操作，大致结构如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select &#123;    case &lt;-chan1:	  // 如果chan1成功读到数据，则执行该case语句    case chan2 &lt;- 1:	  // 如果成功向chan2写入数据，则执行该case语句    default:	  //如果上面的case都没有执行成功，则执行该default语句	&#125;</span><br></pre></td></tr></table></figure>
-
 <p>沉默和阻塞（100ms&amp;&amp;调用了非内联函数）都对导致channel失去CPU控制权</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">func main()&#123;</span><br><span class="line">	ch :=make(chan int)</span><br><span class="line">	go func() &#123;</span><br><span class="line">		for i :=0;i&lt;3;i++&#123;</span><br><span class="line">			ch&lt;- i//2并阻塞</span><br><span class="line">			fmt.Println(&quot;通道&quot;)//6</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	for  &#123;</span><br><span class="line">		select &#123;//4</span><br><span class="line">		case msg := &lt;-ch://3</span><br><span class="line">		    fmt.Println(msg)</span><br><span class="line">		default://1 5</span><br><span class="line">			fmt.Println(&quot;默认&quot;)</span><br><span class="line">			time.Sleep(time.Second)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">执行结果：</span><br><span class="line">默认</span><br><span class="line">0</span><br><span class="line">默认</span><br><span class="line">通道</span><br><span class="line">1</span><br><span class="line">默认</span><br><span class="line">通道</span><br><span class="line">通道</span><br><span class="line">2</span><br><span class="line">默认</span><br><span class="line">默认</span><br><span class="line">默认</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>select实现阻塞超时机制</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">done :=make(chan bool)</span><br><span class="line">...</span><br><span class="line">case &lt;-time.After(time.Second *3)：</span><br><span class="line">   fmt.Println(&quot;已超时3秒&quot;)</span><br><span class="line">   done &lt;-true</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
 <p>死锁：非缓冲信道上若发生了流入无流出，或者流出无流入，都会导致死锁</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">func main()&#123;</span><br><span class="line">     ch :=make(chan int)</span><br><span class="line">	   &lt;- ch //阻塞main goroutine,信道ch被锁</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="14反射"><a href="#14反射" class="headerlink" title="14反射"></a>14反射</h2><p>fmt.Println(),fmt包使用了reflect的反射标准库</p>
+<h2 id="14反射"><a class="markdownIt-Anchor" href="#14反射"></a> 14反射</h2>
+<p>fmt.Println(),fmt包使用了reflect的反射标准库</p>
 <p>反射的强大之处在于它非常灵活，但同时也带来了弊端，比如代码的可读性和可维护性变差，性能也大大折扣</p>
 <p>reflect.TypeOf() 获取变量的值类型</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var typeOfNum reflect.type=reflect.TypeOf(num)typeameOfNum().Name() 获取类型的名称typeameOfNum().Kind() 获取类型的种类typeameOfNum().Elem() 对于指针类型变量，获取指针指向的元素类型获取结构体成员类型typeameOfNum().NumField()获取结构体成员数量typeameOfNum().Field()根据索引返回对应结构体字段的详细信息typeameOfNum().FieldByName(name string)查找字段名来获取字段信息typeameOfNum().FieldByIndex(index []int)通过索引获取字段信息</span><br></pre></td></tr></table></figure>
-
 <p>reflect.ValueOf() 获取变量的原始值</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var valueOfNum reflect.Value =reflect.ValueOf(num)valueOfNum.Int()用于获取int类型变量的值，若用于获取其他Kind的值，将会引发panic获取结构体成员字段的值valueOfNum.Field()通过索引返回对应结构体字段的valueOfNum反射值类型</span><br></pre></td></tr></table></figure>
-
-
-
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;    </span><br><span class="line">  <span class="keyword">var</span> a <span class="keyword">interface</span>&#123;&#125;=<span class="string">&quot;我是字符串&quot;</span>    </span><br><span class="line">  typeOfa :=reflect.TypeOf(a)    </span><br><span class="line">  fmt.Println(<span class="string">&quot;变量a的类型为：&quot;</span> +typeOfa.Name())    </span><br><span class="line">  valueOfa :=reflect.ValueOf(a)    <span class="comment">//类型的种类==string    </span></span><br><span class="line">  <span class="keyword">if</span> typeOfa.Kind() == reflect.String &#123; <span class="comment">//值的字符串     </span></span><br><span class="line">    fmt.Println(<span class="string">&quot;a变量的值为：&quot;</span> +valueOfa.String())    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">    执行结果：</span><br><span class="line">    变量a的类型为：stringa变量的值为:我是字符串Go语言不支持解析<span class="type">string</span>，反射机制稚嫩和作用于已经存在的对象上</span><br></pre></td></tr></table></figure>
-
 <p><strong>反射三定律</strong></p>
 <p>1反射可以将接口类型变量 转换为反射类型变量</p>
 <p>2反射可以将反射类型变量 转换为接口类型变量</p>
 <p>3想要使用反射来修改变量的值，其值必须是可写的（CanSet）。这个值需满足两个条件一是可以被寻址（CanAddr）,二是变量可导出（接固体字段首字母大写）</p>
 <p><strong>反射的性能</strong></p>
 <p>反射的性能的性能极差，在考虑性能的地方能不用反射就不用</p>
-<h2 id="15go命令行工具"><a href="#15go命令行工具" class="headerlink" title="15go命令行工具"></a>15go命令行工具</h2><p>相较于Java和C++的编译速度，Go的快速编译是一个主要的效率优势</p>
-<h3 id="编译相关指令"><a href="#编译相关指令" class="headerlink" title="编译相关指令"></a>编译相关指令</h3><p><strong>build</strong></p>
-<p>go build（无参编译）<br>如果我们在执行go build命令时不后跟任何代码包，那么命令将试图编译当前目录所对应的代码包。<br>go build + 文件列表<br>使用这种方式编译时，作为参数的多个Go源码文件必须在同一个目录中。<br>go build + 包<br>go build+包的方式编译需要将编译的包放到GOPATH下，否则编译器会找不到你想要编译的包。</p>
+<h2 id="15go命令行工具"><a class="markdownIt-Anchor" href="#15go命令行工具"></a> 15go命令行工具</h2>
+<p>相较于Java和C++的编译速度，Go的快速编译是一个主要的效率优势</p>
+<h3 id="编译相关指令"><a class="markdownIt-Anchor" href="#编译相关指令"></a> 编译相关指令</h3>
+<p><strong>build</strong></p>
+<p>go build（无参编译）<br>
+如果我们在执行go build命令时不后跟任何代码包，那么命令将试图编译当前目录所对应的代码包。<br>
+go build + 文件列表<br>
+使用这种方式编译时，作为参数的多个Go源码文件必须在同一个目录中。<br>
+go build + 包<br>
+go build+包的方式编译需要将编译的包放到GOPATH下，否则编译器会找不到你想要编译的包。</p>
 <p>减小体积。。。。</p>
 <p>源码分三类：</p>
 <p>1命令源码文件2库源码文件3测试源码文件</p>
@@ -262,19 +266,16 @@
 <p><code>go run</code> 该命令会编译执行Go源码文件，run的对象只能是单个或多个.go文件</p>
 <p>（必须同属于一个main包），且不能为测试文件，无法针对包运行这个命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-work 显示当前的编译目录</span><br><span class="line">-n 输出编译过程时所用到的命令</span><br></pre></td></tr></table></figure>
-
 <p><strong>install</strong></p>
 <p><code>go install</code>用于编译后安装，该命令依赖于GOPATH,是将编译的中间件放到pkg目录下，编译出的可执行文件放到bin目录下</p>
 <p><strong>交叉编译</strong></p>
 <p>在一个平台上生成另一个平台上的可执行代码，使同一个体系结构可以运行不同的操作系统。</p>
-<p>Go的交叉编译很方便，只需要编译前设置Go环境变量CGO_ENABLED&#x2F;GOOS&#x2F;GOARCH即可，在1.5以后得版本中，Go语言编译器使用Go语言编写，而不再使用C语言</p>
+<p>Go的交叉编译很方便，只需要编译前设置Go环境变量CGO_ENABLED/GOOS/GOARCH即可，在1.5以后得版本中，Go语言编译器使用Go语言编写，而不再使用C语言</p>
 <p><strong>代码获取（get）</strong></p>
 <p><code>go get</code>用于远程仓库中下载安装远程代码包</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
-
 <p><code>-n</code>查看运行过程中使用的命令，可以发现<code>go get</code>其实就是<code>git clone</code>下载源码，之后再对源码进行编译安装，使用时，可能会因网络问题下载失败，这时可以给git添加代理，加速下载</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http代理：。。。</span><br><span class="line">socket5代理：。。。</span><br></pre></td></tr></table></figure>
-
 <p><strong>格式化代码</strong></p>
 <p><code>gofmt</code> +文件路径   格式化这个文件</p>
 <p><code>gofmt</code> +目录   格式化这个目录所有.go文件</p>
@@ -284,70 +285,71 @@
 <p>Gp语言文档只需要 在每个函数上方 用注释的方式 介绍该函数的作用及使用方法 <code>go fmt</code>命令就会自动将这些注释转化为文档展示出来。</p>
 <p>gofmt命令有个非常重要的参数<code>-http</code>，作用是开启Web服务，提供交互式的文档查看页面</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">godoc-http :8080</span><br></pre></td></tr></table></figure>
-
-<p>运行后，浏览器访问http:127.0.0.1:8080&#x2F;即可以网页的方式查看Go语言文档</p>
-<h3 id="代码测试"><a href="#代码测试" class="headerlink" title="代码测试"></a>代码测试</h3><p><code>go test</code>命令用于对Go语言编写的代码包进行测试。可以指定要测试的文件，也可以直接对整个包进行测试，但需要包中含有测试文件，测试文件都是以“_test.go”结尾，其中的函数名以“Test”为前缀，需传入<code>*testing.T</code>类型的参数。</p>
+<p>运行后，浏览器访问http:127.0.0.1:8080/即可以网页的方式查看Go语言文档</p>
+<h3 id="代码测试"><a class="markdownIt-Anchor" href="#代码测试"></a> 代码测试</h3>
+<p><code>go test</code>命令用于对Go语言编写的代码包进行测试。可以指定要测试的文件，也可以直接对整个包进行测试，但需要包中含有测试文件，测试文件都是以“_test.go”结尾，其中的函数名以“Test”为前缀，需传入<code>*testing.T</code>类型的参数。</p>
 <p><strong>单元测试</strong>:目的是发现产品代码是否存在功能性问题、缺陷、以及是否符合预期的运行。结果要么PASS要么FALL,需用到testing测试框架</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Add</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span>&#123;    </span><br><span class="line">  <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestAdd</span><span class="params">(t *testing.T)</span></span>&#123;    </span><br><span class="line">  <span class="keyword">if</span> Add(<span class="number">1</span>,<span class="number">3</span>) != <span class="number">4</span>&#123;</span><br><span class="line">    t.Error(<span class="string">&quot;Add函数存在问题！&quot;</span>)    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&gt;<span class="keyword">go</span> test XXXX_test.<span class="keyword">go</span> -v-v 表示输出详细信息</span><br></pre></td></tr></table></figure>
-
 <p><strong>基准测试</strong></p>
 <p>可提供自定义的计时器和一套基准测试算法，能方便快速的分析一段代码可能存在的CPU性能和分配问题</p>
 <p>书写规范：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;Benchmark&quot;</span>为前缀，后加测试函数名，使用“*testing.B”作函数参数</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BenchmarkFunc</span><span class="params">(b *testing.B)</span></span>&#123;</span><br><span class="line">  b.ResetTimer()    XXXXXXX<span class="comment">//测试代码    </span></span><br><span class="line">  b.StopTimer()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>覆盖率测试</strong></p>
 <p>用于统计通过运行程序包的测试有多少代码得到执行，使用参数<code>-cover</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go test -cover xxx.go</span><br></pre></td></tr></table></figure>
-
 <p><strong>性能分析</strong></p>
 <p>Go语言支持使用<code>go tool pprof</code>工具 进行性能查看和调优，使用前序安装其依赖的图形绘制工具Graphviz</p>
 <p>1通过文件方式：</p>
 <p>输出CPU性能参数到文件cpu_file.prof，并对文件进行分析</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;go tool pprof cpu_file.prof</span><br></pre></td></tr></table></figure>
-
 <p>通过http方式：</p>
 <p>2需引入包</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import - &quot;net/http/pprof&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="16正则表达"><a href="#16正则表达" class="headerlink" title="16正则表达"></a>16正则表达</h2><h3 id="正则表达式介绍"><a href="#正则表达式介绍" class="headerlink" title="正则表达式介绍"></a>正则表达式介绍</h3><p>正则表达式顾名思义：符合一定规则的表达式，就是用于匹配字符串中字符组合的模式。正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些匹配某个模式的文本（字符串）</p>
-<h3 id="正则表达式语法"><a href="#正则表达式语法" class="headerlink" title="正则表达式语法"></a>正则表达式语法</h3><p>普通字符<br>字符转义<br>元字符<br>限定符<br>定位符<br>分组构造<br>匹配模式</p>
-<h3 id="regexp包"><a href="#regexp包" class="headerlink" title="regexp包"></a>regexp包</h3><p>MarchString函数接收一个要查找的正则表达式和目标字符串，并根据匹配结果返回true或flase，函数定义如下：</p>
+<h2 id="16正则表达"><a class="markdownIt-Anchor" href="#16正则表达"></a> 16正则表达</h2>
+<h3 id="正则表达式介绍"><a class="markdownIt-Anchor" href="#正则表达式介绍"></a> 正则表达式介绍</h3>
+<p>正则表达式顾名思义：符合一定规则的表达式，就是用于匹配字符串中字符组合的模式。正则表达式使用单个字符串来描述、匹配一系列符合某个句法规则的字符串。在很多文本编辑器里，正则表达式通常被用来检索、替换那些匹配某个模式的文本（字符串）</p>
+<h3 id="正则表达式语法"><a class="markdownIt-Anchor" href="#正则表达式语法"></a> 正则表达式语法</h3>
+<p>普通字符<br>
+字符转义<br>
+元字符<br>
+限定符<br>
+定位符<br>
+分组构造<br>
+匹配模式</p>
+<h3 id="regexp包"><a class="markdownIt-Anchor" href="#regexp包"></a> regexp包</h3>
+<p>MarchString函数接收一个要查找的正则表达式和目标字符串，并根据匹配结果返回true或flase，函数定义如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func MatchString(pattern string, s string) (matched bool, err error)</span><br></pre></td></tr></table></figure>
-
 <p>对于目标字符串：“hello world”，我们通过MatchString函数匹配其中的“hello”字符串，并返回匹配结果。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;regexp&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main()  &#123;</span><br><span class="line">	targetString := &quot;hello world&quot;</span><br><span class="line">	matchString := &quot;hello&quot;</span><br><span class="line">	match , err := regexp.MatchString(matchString,targetString)</span><br><span class="line">	if err != nil&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(match)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>FindStringIndex()&#x2F;Compile()&#x2F;MustCompile()</p>
+<p>FindStringIndex()/Compile()/MustCompile()</p>
 <p>ReplaceAllString()</p>
 <p>常用正则表达式参考。。。。。</p>
-<h2 id="17-18http编程"><a href="#17-18http编程" class="headerlink" title="17&#x2F;18http编程"></a>17&#x2F;18http编程</h2><h3 id="http简介"><a href="#http简介" class="headerlink" title="http简介"></a>http简介</h3><p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。它详细规定了浏览器和万维网服务器之间的相互通信规则，所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法</p>
+<h2 id="1718http编程"><a class="markdownIt-Anchor" href="#1718http编程"></a> 17/18http编程</h2>
+<h3 id="http简介"><a class="markdownIt-Anchor" href="#http简介"></a> http简介</h3>
+<p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。它详细规定了浏览器和万维网服务器之间的相互通信规则，所有的WWW文件都必须遵守这个标准。设计HTTP最初的目的是为了提供一种发布和接收HTML页面的方法</p>
 <p>我们在浏览网页时，从打开浏览器、输入网址到按下回车后网页上出现内容的过程中，浏览器到底做了哪些操作呢？</p>
-<h3 id="http客户端"><a href="#http客户端" class="headerlink" title="http客户端"></a>http客户端</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	client := &amp;http.Client&#123;&#125;</span><br><span class="line">	request, err := http.NewRequest(&quot;GET&quot;, &quot;http://www.baidu.com&quot;, nil)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	response, err := client.Do(request)</span><br><span class="line">	fmt.Println(response.StatusCode)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="colly框架"><a href="#colly框架" class="headerlink" title="colly框架"></a>colly框架</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;github.com/gocolly/colly&quot;</span><br><span class="line">)</span><br><span class="line">func main()  &#123;</span><br><span class="line">//初始化</span><br><span class="line">	c :=colly.NewCollector(</span><br><span class="line">		colly.UserAgent(&quot;Mozilla/5.0 (Windows NT 10.0;WOW64)&quot; +</span><br><span class="line">			&quot; AppleWebKit/537.36 (KHTML,like Gecko) Chrome/72.0.3626.121 Safari/537.36&quot;))</span><br><span class="line">	c.OnRequest(func(r *colly.Request) &#123;</span><br><span class="line">		r.Headers.Set(&quot;Connection&quot;,&quot;keep-alive&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Accept&quot;,&quot;*/*&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Origin&quot;,&quot;&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Accept-Encoding&quot;,&quot;gzip, deflate&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Accept-Language&quot;,&quot;zh-CN,zh;q=0.9&quot;)</span><br><span class="line">		fmt.Println(&quot;Visiting&quot;,r.URL)</span><br><span class="line">	&#125;)</span><br><span class="line">	c.OnResponse(func(r *colly.Response) &#123;</span><br><span class="line">		fmt.Println(&quot;response received&quot;,r.StatusCode)</span><br><span class="line">	&#125;)</span><br><span class="line">	c.OnHTML(&quot;title&quot;,func(e *colly.HTMLElement) &#123;</span><br><span class="line">		fmt.Println(&quot;title:&quot;,e.Text)</span><br><span class="line">	&#125;)</span><br><span class="line">	c.Visit(&quot;https://www.baidu.com&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">命令</span><br><span class="line">&gt;go build</span><br><span class="line">&gt;./awesomeProject1</span><br><span class="line"></span><br><span class="line">执行结果</span><br><span class="line">Visiting https://www.baidu.com</span><br><span class="line">response received 200</span><br><span class="line">title: 百度一下，你就知道</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="gin框架"><a href="#gin框架" class="headerlink" title="gin框架"></a>gin框架</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">项目名：awesomeProject1</span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">//引入gin包</span><br><span class="line">	&quot;github.com/gin-gonic/gin&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">)</span><br><span class="line">func main()  &#123;</span><br><span class="line">//初始化一个gin.Engine对象</span><br><span class="line">	router :=gin.Default()</span><br><span class="line">	router.GET(&quot;/user/:name&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		name :=c.Param(&quot;name&quot;)</span><br><span class="line">		c.String(http.StatusOK,&quot;hello %s&quot;,name)</span><br><span class="line"></span><br><span class="line">	&#125;)</span><br><span class="line">	router.GET(&quot;/user/:name/*action&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		name :=c.Param(&quot;name&quot;)</span><br><span class="line">		action :=c.Param(&quot;action&quot;)</span><br><span class="line">		message :=c.Request.Method + &quot; =&gt; &quot; +name + &quot; is &quot; + action</span><br><span class="line">		c.String(http.StatusOK,message)</span><br><span class="line">	&#125;)</span><br><span class="line">	router.POST(&quot;/user/:name/*action&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		name :=c.Param(&quot;name&quot;)</span><br><span class="line">		action :=c.Param(&quot;action&quot;)</span><br><span class="line">		message :=c.Request.Method + &quot; =&gt; &quot; +name + &quot; is &quot; + action</span><br><span class="line">		c.String(http.StatusOK,message)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	router.Run(&quot;:9090&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+<h3 id="http客户端"><a class="markdownIt-Anchor" href="#http客户端"></a> http客户端</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	client := &amp;http.Client&#123;&#125;</span><br><span class="line">	request, err := http.NewRequest(&quot;GET&quot;, &quot;http://www.baidu.com&quot;, nil)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">	response, err := client.Do(request)</span><br><span class="line">	fmt.Println(response.StatusCode)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="colly框架"><a class="markdownIt-Anchor" href="#colly框架"></a> colly框架</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	&quot;github.com/gocolly/colly&quot;</span><br><span class="line">)</span><br><span class="line">func main()  &#123;</span><br><span class="line">//初始化</span><br><span class="line">	c :=colly.NewCollector(</span><br><span class="line">		colly.UserAgent(&quot;Mozilla/5.0 (Windows NT 10.0;WOW64)&quot; +</span><br><span class="line">			&quot; AppleWebKit/537.36 (KHTML,like Gecko) Chrome/72.0.3626.121 Safari/537.36&quot;))</span><br><span class="line">	c.OnRequest(func(r *colly.Request) &#123;</span><br><span class="line">		r.Headers.Set(&quot;Connection&quot;,&quot;keep-alive&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Accept&quot;,&quot;*/*&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Origin&quot;,&quot;&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Accept-Encoding&quot;,&quot;gzip, deflate&quot;)</span><br><span class="line">		r.Headers.Set(&quot;Accept-Language&quot;,&quot;zh-CN,zh;q=0.9&quot;)</span><br><span class="line">		fmt.Println(&quot;Visiting&quot;,r.URL)</span><br><span class="line">	&#125;)</span><br><span class="line">	c.OnResponse(func(r *colly.Response) &#123;</span><br><span class="line">		fmt.Println(&quot;response received&quot;,r.StatusCode)</span><br><span class="line">	&#125;)</span><br><span class="line">	c.OnHTML(&quot;title&quot;,func(e *colly.HTMLElement) &#123;</span><br><span class="line">		fmt.Println(&quot;title:&quot;,e.Text)</span><br><span class="line">	&#125;)</span><br><span class="line">	c.Visit(&quot;https://www.baidu.com&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">命令</span><br><span class="line">&gt;go build</span><br><span class="line">&gt;./awesomeProject1</span><br><span class="line"></span><br><span class="line">执行结果</span><br><span class="line">Visiting https://www.baidu.com</span><br><span class="line">response received 200</span><br><span class="line">title: 百度一下，你就知道</span><br></pre></td></tr></table></figure>
+<h4 id="gin框架"><a class="markdownIt-Anchor" href="#gin框架"></a> gin框架</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">项目名：awesomeProject1</span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">//引入gin包</span><br><span class="line">	&quot;github.com/gin-gonic/gin&quot;</span><br><span class="line">	&quot;net/http&quot;</span><br><span class="line">)</span><br><span class="line">func main()  &#123;</span><br><span class="line">//初始化一个gin.Engine对象</span><br><span class="line">	router :=gin.Default()</span><br><span class="line">	router.GET(&quot;/user/:name&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		name :=c.Param(&quot;name&quot;)</span><br><span class="line">		c.String(http.StatusOK,&quot;hello %s&quot;,name)</span><br><span class="line"></span><br><span class="line">	&#125;)</span><br><span class="line">	router.GET(&quot;/user/:name/*action&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		name :=c.Param(&quot;name&quot;)</span><br><span class="line">		action :=c.Param(&quot;action&quot;)</span><br><span class="line">		message :=c.Request.Method + &quot; =&gt; &quot; +name + &quot; is &quot; + action</span><br><span class="line">		c.String(http.StatusOK,message)</span><br><span class="line">	&#125;)</span><br><span class="line">	router.POST(&quot;/user/:name/*action&quot;, func(c *gin.Context) &#123;</span><br><span class="line">		name :=c.Param(&quot;name&quot;)</span><br><span class="line">		action :=c.Param(&quot;action&quot;)</span><br><span class="line">		message :=c.Request.Method + &quot; =&gt; &quot; +name + &quot; is &quot; + action</span><br><span class="line">		c.String(http.StatusOK,message)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	router.Run(&quot;:9090&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>命令行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;go build</span><br><span class="line">&gt;./awesomeProject1</span><br></pre></td></tr></table></figure>
-
 <p>执行结果</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">浏览器</span><br><span class="line">http://127.0.0.1:9090/user/john</span><br><span class="line">hello john</span><br><span class="line">http://127.0.0.1:9090/user/john/send</span><br><span class="line">GET =&gt; john is /send</span><br><span class="line"></span><br><span class="line">postman-post</span><br><span class="line">POST =&gt; john is /send</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="19Socket编程"><a href="#19Socket编程" class="headerlink" title="19Socket编程"></a>19Socket编程</h2><h3 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h3><p>OSI是一个开放性的通信系统互连参考模型<br>OSI的7层从上到下分别是 7 应用层 6 表示层 5 会话层 4 传输层 3 网络层 2 数据链路层 1 物理层</p>
+<h2 id="19socket编程"><a class="markdownIt-Anchor" href="#19socket编程"></a> 19Socket编程</h2>
+<h3 id="osi七层模型"><a class="markdownIt-Anchor" href="#osi七层模型"></a> OSI七层模型</h3>
+<p>OSI是一个开放性的通信系统互连参考模型<br>
+OSI的7层从上到下分别是 7 应用层 6 表示层 5 会话层 4 传输层 3 网络层 2 数据链路层 1 物理层</p>
 <table>
 <thead>
 <tr>
 <th>应用层</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>表示层</td>
 </tr>
 <tr>
@@ -365,16 +367,18 @@
 <tr>
 <td>物理层</td>
 </tr>
-</tbody></table>
-<p>TCP&#x2F;IP模型是一个网络通信模型，以及一整个网络传输协议家族，为互联网的基础通信架构，常被视为是简化的七层OSI模型</p>
+</tbody>
+</table>
+<p>TCP/IP模型是一个网络通信模型，以及一整个网络传输协议家族，为互联网的基础通信架构，常被视为是简化的七层OSI模型</p>
 <table>
 <thead>
 <tr>
 <th>OSI七层模型</th>
-<th>TCP&#x2F;IP模型</th>
+<th>TCP/IP模型</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>应用层</td>
 <td>应用层</td>
 </tr>
@@ -402,27 +406,37 @@
 <td>物理层</td>
 <td></td>
 </tr>
-</tbody></table>
-<h3 id="SOCKET基础"><a href="#SOCKET基础" class="headerlink" title="SOCKET基础"></a>SOCKET基础</h3><p>网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个Socket。建立网络通信连接至少要一对端口号(Socket)。Socket本质是编程接口(API)，对TCP&#x2F;IP的封装，TCP&#x2F;IP也要提供可供程序员做网络开发所用的接口，这就是Socket编程接口</p>
-<h3 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h3><p>TCP（Transmission Control Protocol 传输控制协议）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义<br>TCP是因特网中的传输层协议，使用三次握手协议建立连接。当主动方发出SYN连接请求后，等待对方回答SYN+ACK，并最终对对方的 SYN 执行 ACK 确认。这种建立连接的方法可以防止产生错误的连接，TCP使用的流量控制协议是可变大小的滑动窗口协议。</p>
+</tbody>
+</table>
+<h3 id="socket基础"><a class="markdownIt-Anchor" href="#socket基础"></a> SOCKET基础</h3>
+<p>网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个Socket。建立网络通信连接至少要一对端口号(Socket)。Socket本质是编程接口(API)，对TCP/IP的封装，TCP/IP也要提供可供程序员做网络开发所用的接口，这就是Socket编程接口</p>
+<h3 id="tcp编程"><a class="markdownIt-Anchor" href="#tcp编程"></a> TCP编程</h3>
+<p>TCP（Transmission Control Protocol 传输控制协议）是一种面向连接的、可靠的、基于字节流的传输层通信协议，由IETF的RFC 793定义<br>
+TCP是因特网中的传输层协议，使用三次握手协议建立连接。当主动方发出SYN连接请求后，等待对方回答SYN+ACK，并最终对对方的 SYN 执行 ACK 确认。这种建立连接的方法可以防止产生错误的连接，TCP使用的流量控制协议是可变大小的滑动窗口协议。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;net&quot;</span><br><span class="line">	&quot;log&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	// 监听8080端口</span><br><span class="line">	l, err := net.Listen(&quot;tcp&quot;, &quot;:8080&quot;)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		log.Fatal(&quot;服务启动失败！&quot;, err)</span><br><span class="line">	&#125;</span><br><span class="line">	defer l.Close()</span><br><span class="line">	log.Println(&quot;服务启动成功！&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;net&quot;</span><br><span class="line">	&quot;log&quot;</span><br><span class="line">)</span><br><span class="line">func main() &#123;</span><br><span class="line">	// 尝试连接百度服务器</span><br><span class="line">	conn, err := net.Dial(&quot;tcp&quot;, &quot;www.baidu.com:80&quot;)</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		log.Fatal(&quot;连接失败！&quot;, err)</span><br><span class="line">	&#125;</span><br><span class="line">	defer conn.Close()</span><br><span class="line">	log.Println(&quot;连接成功！&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="20数据库编程"><a href="#20数据库编程" class="headerlink" title="20数据库编程"></a>20数据库编程</h2><h3 id="mysql简介"><a href="#mysql简介" class="headerlink" title="mysql简介"></a>mysql简介</h3><p>MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一</p>
-<p>MySQL有非常多的分支版本，官方版本（目前由Oracle维护）的下载地址为：<br><a href="https://www.mysql.com/downloads/">https://www.mysql.com/downloads/</a></p>
+<h2 id="20数据库编程"><a class="markdownIt-Anchor" href="#20数据库编程"></a> 20数据库编程</h2>
+<h3 id="mysql简介"><a class="markdownIt-Anchor" href="#mysql简介"></a> mysql简介</h3>
+<p>MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一</p>
+<p>MySQL有非常多的分支版本，官方版本（目前由Oracle维护）的下载地址为：<br>
+<a href="https://www.mysql.com/downloads/">https://www.mysql.com/downloads/</a></p>
 <p>安装完MySQL后，可以以使用如下格式连接MySQL服务器，需要注意的是-p后面与密码不能有空格。</p>
 <blockquote>
 <p>mysql -h主机地址 –u 用户名 -p用户密码</p>
 </blockquote>
-<h3 id="数据库基本操作"><a href="#数据库基本操作" class="headerlink" title="数据库基本操作"></a>数据库基本操作</h3><p>数据库的最基本的操作便是增（create）、删（delete）、改（update）、查（read），简称CURD。数据库中有8类对象，分别是数据库、数据表、记录、字段、索引、查询、过滤器、视图，</p>
-<p>Go语言中sql包提供了一个Open方法来创建一个数据库连接。<br>     func Open(driverName, dataSourceName string) (*DB, error)<br>使用Go语言进行创建数据表需要使用Exec函数。<br>func (db *DB) Exec(query string, args …interface{}) (Result, error)</p>
+<h3 id="数据库基本操作"><a class="markdownIt-Anchor" href="#数据库基本操作"></a> 数据库基本操作</h3>
+<p>数据库的最基本的操作便是增（create）、删（delete）、改（update）、查（read），简称CURD。数据库中有8类对象，分别是数据库、数据表、记录、字段、索引、查询、过滤器、视图，</p>
+<p>Go语言中sql包提供了一个Open方法来创建一个数据库连接。<br>
+func Open(driverName, dataSourceName string) (*DB, error)<br>
+使用Go语言进行创建数据表需要使用Exec函数。<br>
+func (db *DB) Exec(query string, args …interface{}) (Result, error)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	db, err := sql.Open(&quot;mysql&quot;, &quot;root:root@tcp(127.0.0.1:3306)/01kuaixue&quot;)</span><br><span class="line">	checkErr(err)</span><br><span class="line">	defer db.Close()</span><br><span class="line">	// 验证连接的可用性</span><br><span class="line">	err = db.Ping()</span><br><span class="line">	checkErr(err)</span><br><span class="line">	log.Println(&quot;数据库连接成功！&quot;)</span><br><span class="line">	stmt, err := db.Prepare(&quot;INSERT INTO `user`(username,gender,password,created) VALUES (?,?,?,?)&quot;)</span><br><span class="line">	defer stmt.Close()</span><br><span class="line">	rs, err := stmt.Exec(&quot;Ailsa&quot;,0,&quot;111111&quot;,time.Now())</span><br><span class="line">	checkErr(err)</span><br><span class="line">	rowCount, err := rs.RowsAffected()</span><br><span class="line">	checkErr(err)</span><br><span class="line">	log.Printf(&quot;插入了 %d 行&quot;, rowCount)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>MySQL 数据库中事务是用户一系列的数据库操作序列，这些操作要么全做要么全不做，是一个不可分割的工作单位。<br>事务具有 4 个特性：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）和持续性（Durability）。这 4 个特性简称为 ACID 原则。</p>
+<p>MySQL 数据库中事务是用户一系列的数据库操作序列，这些操作要么全做要么全不做，是一个不可分割的工作单位。<br>
+事务具有 4 个特性：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）和持续性（Durability）。这 4 个特性简称为 ACID 原则。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/07/11/golangBasic10-20/" data-id="cm4dztqk9000xjaligf2w4krq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/07/11/golangBasic10-20/" data-id="cm4uq3vo3000xd7li2f6zgrgx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li></ul>

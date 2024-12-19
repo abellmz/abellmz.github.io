@@ -7,12 +7,12 @@
   
   <title>Sessiong表配置 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主题部署： 12345采用经过dmstr&#x2F;yii2-adminlte-asset封装过的主题进行安装composer require dmstr&#x2F;yii2-adminlte-assetcomposer require mdmsoft&#x2F;yii2-admin 腾讯云cos存储插件，存储静态资源，如图片&#x2F;css&#x2F;jscomposer require qcloud&#x2F;cos-sdk-v5  由于开启动负载均">
+  <meta name="description" content="主题部署： 12345采用经过dmstr&#x2F;yii2-adminlte-asset封装过的主题进行安装composer require dmstr&#x2F;yii2-adminlte-assetcomposer require mdmsoft&#x2F;yii2-admin 腾讯云cos存储插件，存储静态资源，如图片&#x2F;css&#x2F;jscomposer require qcloud&#x2F;cos-sdk-v5 由于开启动负载均衡">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sessiong表配置">
 <meta property="og:url" content="http://yoursite.com/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="主题部署： 12345采用经过dmstr&#x2F;yii2-adminlte-asset封装过的主题进行安装composer require dmstr&#x2F;yii2-adminlte-assetcomposer require mdmsoft&#x2F;yii2-admin 腾讯云cos存储插件，存储静态资源，如图片&#x2F;css&#x2F;jscomposer require qcloud&#x2F;cos-sdk-v5  由于开启动负载均">
+<meta property="og:description" content="主题部署： 12345采用经过dmstr&#x2F;yii2-adminlte-asset封装过的主题进行安装composer require dmstr&#x2F;yii2-adminlte-assetcomposer require mdmsoft&#x2F;yii2-admin 腾讯云cos存储插件，存储静态资源，如图片&#x2F;css&#x2F;jscomposer require qcloud&#x2F;cos-sdk-v5 由于开启动负载均衡">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-06-15T14:33:54.000Z">
 <meta property="article:modified_time" content="2020-09-15T14:41:34.078Z">
@@ -91,19 +91,17 @@
       
         <p>主题部署：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">采用经过dmstr/yii2-adminlte-asset封装过的主题进行安装</span><br><span class="line">composer require dmstr/yii2-adminlte-asset</span><br><span class="line">composer require mdmsoft/yii2-admin </span><br><span class="line">腾讯云cos存储插件，存储静态资源，如图片/css/js</span><br><span class="line">composer require qcloud/cos-sdk-v5</span><br></pre></td></tr></table></figure>
-
 <p>由于开启动负载均衡，有几台服务器，所以session的存入服务器的对应session文件不一定在同一台服务器上，导致获取到的信息可能不对应（存的sessionid和取的sessionid不是同一个）。例如短信验证码</p>
 <span id="more"></span>
-
 <p>解决办法：</p>
 <p>1session配置数据表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">common\config\main-local.php</span><br><span class="line">components中添加</span><br><span class="line">&#x27;session&#x27; =&gt; [</span><br><span class="line">            &#x27;class&#x27; =&gt; &#x27;yii\web\DbSession&#x27;,</span><br><span class="line">             &#x27;db&#x27; =&gt; &#x27;db&#x27;,  // 数据库连接的应用组件ID，默认为&#x27;db&#x27;.</span><br><span class="line">             &#x27;sessionTable&#x27; =&gt; &#x27;session&#x27;, // session 数据表名，默认为&#x27;session&#x27;.</span><br><span class="line">        ],</span><br><span class="line">数据库添加表</span><br><span class="line">CREATE TABLE session</span><br><span class="line">(</span><br><span class="line">    id CHAR(40) NOT NULL PRIMARY KEY,</span><br><span class="line">    expire INTEGER,</span><br><span class="line">    data LONGBLOB</span><br><span class="line">)</span><br><span class="line">session代码，正常存取，不需要改动</span><br></pre></td></tr></table></figure>
-
 <p>2存入Redis缓存</p>
 <p><strong>主从复制:</strong></p>
 <p>读写分离，简单理解就是一份同样的数据，要放到两个数据库中，一个数据库是主数据库(master)，一个数据库是从数据库(follower),master库负责写入数据，然后将自己写入的数据复制到follower库中，而客户端读数据，就可以佛那个follower中直接读取，读和写就分开了。</p>
 <p><strong>负载均衡：</strong></p>
-<p>可分为DNS负载均衡，HTTP负载均衡，IP负载均衡，链路层负载均衡等。<br>负载均衡就理解成一台服务器支撑不住了，就需要多台服务器，每次请求，通过一个调度策略，来决定你的请求分发到具体哪一台服务器上，各个服务器根据调度策略来分摊请求。</p>
+<p>可分为DNS负载均衡，HTTP负载均衡，IP负载均衡，链路层负载均衡等。<br>
+负载均衡就理解成一台服务器支撑不住了，就需要多台服务器，每次请求，通过一个调度策略，来决定你的请求分发到具体哪一台服务器上，各个服务器根据调度策略来分摊请求。</p>
 <p><a href="http://blog.sina.com.cn/s/blog_77f88ea60102x5yd.html">http://blog.sina.com.cn/s/blog_77f88ea60102x5yd.html</a></p>
 <p>分库分表：</p>
 <p>可以理解成将大表拆开，然后把冷热数据分别存放到相应的小表中，或者不同的数据库中。</p>
@@ -111,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/" data-id="cm4dztqk3000mjaliciv2d98f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/" data-id="cm4uq3vny000md7lif3oi28jz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li></ul>

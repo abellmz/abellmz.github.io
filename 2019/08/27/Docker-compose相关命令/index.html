@@ -7,12 +7,12 @@
   
   <title>Docker-compose相关命令 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="docker-compose –help相关命令翻译 build创建或者再建服务服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它help 显示命令的帮助和使用信息kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过">
+  <meta name="description" content="docker-compose --help相关命令翻译 build 创建或者再建服务 服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它 help 显示命令的帮助和使用信息 kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker-compose相关命令">
 <meta property="og:url" content="http://yoursite.com/2019/08/27/Docker-compose%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="docker-compose –help相关命令翻译 build创建或者再建服务服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它help 显示命令的帮助和使用信息kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过">
+<meta property="og:description" content="docker-compose --help相关命令翻译 build 创建或者再建服务 服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它 help 显示命令的帮助和使用信息 kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-08-27T15:06:48.000Z">
 <meta property="article:modified_time" content="2020-09-01T15:13:06.362Z">
@@ -89,23 +89,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>docker-compose –help相关命令翻译</p>
-<p>build<br>创建或者再建服务<br>服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它<br>help 显示命令的帮助和使用信息<br>kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过，<br>比如： docker-compose kill -s SIGKINT</p>
+        <p>docker-compose --help相关命令翻译</p>
+<p>build<br>
+创建或者再建服务<br>
+服务被创建后会标记为project_service(比如composetest_db)，如果改变了一个服务的Dockerfile或者构建目录的内容，可以使用docker-compose build来重建它<br>
+help 显示命令的帮助和使用信息<br>
+kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可以选择性的通过，<br>
+比如： docker-compose kill -s SIGKINT</p>
 <span id="more"></span>
-
-<p>logs 显示服务的日志输出<br>port 为端口绑定输出公共信息<br>ps 显示容器<br>pull 拉取服务镜像<br>rm 删除停止的容器<br>run 在服务上运行一个一次性命令，<br>比如： docker-compose run web python manage.py shell<br>scale<br>设置为一个服务启动的容器数量，数量是以这样的参数形式指定的：service&#x3D;num<br>比如： docker-compose scale web&#x3D;2 worker&#x3D;3<br>start 启动已经存在的容器作为一个服务<br>stop 停止运行的容器而不删除它们，它们可以使用命令docker-compose start重新启动起来<br>up<br>为一个服务构建、创建、启动、附加到容器<br>连接的服务会被启动，除非它们已经在运行了<br>默认情况下，docker-compose up会集中每个容器的输出，当存在时，所有的容器会停止，运行docker-compose up -d会在后台启动容器并使它们运行<br>默认情况下，如果服务存在容器的话，docker-compose up会停止并再创建它们（使用了volumes-from会保留已挂载的卷），如果不想使容器停止并再创建的话，使用docker-compose up –no-recreate，如果有需要的话，这会启动任何停止的容器</p>
-<p>选项<br>–verbose 显示更多输出<br>-v,–version 显示版本号并退出<br>-f,–file FILE 指定一个可选的Compose yaml文件（默认：docker-compose.yml）<br>-p,–project-name NAME 指定可选的项目名称（默认：当前目录名称）<br>-H,–host HOST 连接的主机</p>
+<p>logs 显示服务的日志输出<br>
+port 为端口绑定输出公共信息<br>
+ps 显示容器<br>
+pull 拉取服务镜像<br>
+rm 删除停止的容器<br>
+run 在服务上运行一个一次性命令，<br>
+比如： docker-compose run web python <a href="http://manage.py">manage.py</a> shell<br>
+scale<br>
+设置为一个服务启动的容器数量，数量是以这样的参数形式指定的：service=num<br>
+比如： docker-compose scale web=2 worker=3<br>
+start 启动已经存在的容器作为一个服务<br>
+stop 停止运行的容器而不删除它们，它们可以使用命令docker-compose start重新启动起来<br>
+up<br>
+为一个服务构建、创建、启动、附加到容器<br>
+连接的服务会被启动，除非它们已经在运行了<br>
+默认情况下，docker-compose up会集中每个容器的输出，当存在时，所有的容器会停止，运行docker-compose up -d会在后台启动容器并使它们运行<br>
+默认情况下，如果服务存在容器的话，docker-compose up会停止并再创建它们（使用了volumes-from会保留已挂载的卷），如果不想使容器停止并再创建的话，使用docker-compose up --no-recreate，如果有需要的话，这会启动任何停止的容器</p>
+<p>选项<br>
+–verbose 显示更多输出<br>
+-v,–version 显示版本号并退出<br>
+-f,–file FILE 指定一个可选的Compose yaml文件（默认：docker-compose.yml）<br>
+-p,–project-name NAME 指定可选的项目名称（默认：当前目录名称）<br>
+-H,–host HOST 连接的主机</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker-compose start 开启服务</span><br><span class="line">docker-compose up -d nginx               构建启动nignx容器</span><br><span class="line">winpty docker-compose exec mysql bash      登录到mysql容器中</span><br><span class="line">(登不了nginx是由于引入的镜像是alpine的镜像,将bash改为sh就行了)</span><br><span class="line">数据库的密码在.yml中有设置</span><br><span class="line">https://blog.csdn.net/afc3275/article/details/101533348</span><br><span class="line">进入nginx容器</span><br><span class="line">winpty docker exec -it docker_nginx_1 sh</span><br><span class="line">docker-compose down                      删除所有nginx容器,镜像</span><br><span class="line">docker-compose ps                             显示所有容器</span><br><span class="line">docker-compose restart nginx                   重新启动nginx容器</span><br><span class="line">docker-compose run --no-deps --rm php-fpm php -v  </span><br><span class="line">在php-fpm中不启动关联容器，并容器执行php -v 执行完成后删除容器</span><br><span class="line">docker-compose build nginx                     构建镜像     </span><br><span class="line">docker-compose build --no-cache nginx   不带缓存的构建</span><br><span class="line">docker-compose logs  nginx                     查看nginx的日志</span><br><span class="line">docker-compose logs -f nginx                   查看nginx的实时日志</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/27/Docker-compose%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" data-id="cm4dztqjk0001jali6bj11nir" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/27/Docker-compose%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" data-id="cm4uq3vnh0001d7lie5ak40b8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>

@@ -7,12 +7,12 @@
   
   <title>散列表 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="散列表Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。">
+  <meta name="description" content="散列表 Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="散列表">
 <meta property="og:url" content="http://yoursite.com/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="散列表Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。">
+<meta property="og:description" content="散列表 Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-11-21T11:59:52.000Z">
 <meta property="article:modified_time" content="2024-12-07T09:17:04.546Z">
@@ -89,41 +89,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h4><p>Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。</p>
+        <h4 id="散列表"><a class="markdownIt-Anchor" href="#散列表"></a> 散列表</h4>
+<p>Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。</p>
 <span id="more"></span>
-
 <p><strong>散列冲突的原因</strong>：散列地址不同的结点争夺同一个后继散列地址的现象称为聚集或堆积(Clustering)。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1再好的散列函数也无法避免散列冲突</span><br><span class="line">2最常见的哈希算法是取模法</span><br></pre></td></tr></table></figure>
-
 <p>散列函数设计的基本要求</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1散列函数计算得到的散列值是一个非负整数；</span><br><span class="line">2如果 key1 = key2，那 hash(key1) == hash(key2)；</span><br><span class="line">3如果 key1 ≠ key2，那 hash(key1) ≠ hash(key2)。</span><br></pre></td></tr></table></figure>
-
 <p><strong>从解决冲突的角度</strong>，主要有开放寻址法和拉链法。</p>
-<p><strong>开放寻址-线性探测</strong>： </p>
+<p><strong>开放寻址-线性探测</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1插入：通过散列函数找到理想位置-&gt;发现被占-&gt;继续遍历直到寻到一个空位 </span><br><span class="line">2查找：查看散列位置-&gt;不匹配-&gt;继续找till第一个空位 </span><br><span class="line">3删除：不清空存储位置，而是标记deleted，以避免查找功能失效</span><br></pre></td></tr></table></figure>
-
 <p>存在问题：当散列表中插入的数据越来越多时，散列冲突发生的可能性就会越来越大，空闲位置会越来越少，最坏情况下的时间复杂度为 O(n)</p>
-<p><strong>开放寻址-二次探测</strong>： </p>
+<p><strong>开放寻址-二次探测</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">线性探测每次探测的步长是 1,即hash(key)+0，hash(key)+1，hash(key)+2……，而二次探测探测的步长就变成了原来的“二次方”,即下标序列就是 hash(key)+0，hash(key)+1&lt;sup&gt;2&lt;/sup&gt;，hash(key)+2&lt;sup&gt;2&lt;/sup&gt;...</span><br></pre></td></tr></table></figure>
-
 <p><strong>开放寻址-双重散列</strong>：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">不是使用一个散列函数，而是使用一组散列函数 hash1(key)，hash2(key)，hash3(key)……hash1(key)计算得到的存储位置已经被占用，再用第二个散列函数，依次类推，直到找到空闲的存储位置</span><br></pre></td></tr></table></figure>
-
 <p>装载因子</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">散列表的装载因子=填入表中的元素个数/散列表的长度</span><br><span class="line"></span><br><span class="line">装载因子越大，说明空闲位置越少，冲突越多，散列表的性能会下降。</span><br></pre></td></tr></table></figure>
-
 <p><strong>链表法</strong></p>
 <p>每个“桶（bucket）”或者“槽（slot）”会对应一条链表，所有散列值相同的元素我们都放到相同槽位对应的链表中</p>
-<p>hash冲突时，如何通过key，查询到对应的value?(即当key1 !&#x3D; key2 ，f(key1)&#x3D;&#x3D;f(key2),怎么找到key1、key2对应的value呢？)</p>
+<p>hash冲突时，如何通过key，查询到对应的value?(即当key1 != key2 ，f(key1)==f(key2),怎么找到key1、key2对应的value呢？)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">从解决冲突的角度，主要有开放定址法和拉链法。</span><br><span class="line">开放地址法：又分线性探查法和平方探查法。</span><br><span class="line"></span><br><span class="line">拉链法-查询：</span><br><span class="line">通过散列函数f(key)，返回一个地址（一个链表的指针，即链表的位置），再通过遍历链表匹配key,找到对应的value</span><br><span class="line">参考链接：https://blog.csdn.net/freedom_like_wind/article/details/71078188#commentBox</span><br></pre></td></tr></table></figure>
-
 <p>时间复杂度：与散列函数、装载因子、散列冲突等有关，不能笼统的说成O(1),最坏的情况是O(n)</p>
 <p>以上学于极客时间，做的笔记</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/" data-id="cm4dztqks001mjalibynj9t0f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/" data-id="cm4uq3vom001md7li6w0bcole" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>

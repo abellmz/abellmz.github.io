@@ -7,12 +7,12 @@
   
   <title>ThinkPHP | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="框架下载地址：版本5.0.24  http:&#x2F;&#x2F;www.thinkphp.cn&#x2F;down&#x2F;framework.html  TP5 1234567891011121314tp5├─application     应用目录├─extend          扩展类库目录（可定义）├─public         网站对外访问目录├─runtime         运行时目录（可定义）├─vendor">
+  <meta name="description" content="框架下载地址：版本5.0.24 http:&#x2F;&#x2F;www.thinkphp.cn&#x2F;down&#x2F;framework.html TP5 1234567891011121314tp5├─application     应用目录├─extend          扩展类库目录（可定义）├─public         网站对外访问目录├─runtime         运行时目录（可定义）├─vendor">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ThinkPHP">
 <meta property="og:url" content="http://yoursite.com/2020/04/13/ThinkPHP/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="框架下载地址：版本5.0.24  http:&#x2F;&#x2F;www.thinkphp.cn&#x2F;down&#x2F;framework.html  TP5 1234567891011121314tp5├─application     应用目录├─extend          扩展类库目录（可定义）├─public         网站对外访问目录├─runtime         运行时目录（可定义）├─vendor">
+<meta property="og:description" content="框架下载地址：版本5.0.24 http:&#x2F;&#x2F;www.thinkphp.cn&#x2F;down&#x2F;framework.html TP5 1234567891011121314tp5├─application     应用目录├─extend          扩展类库目录（可定义）├─public         网站对外访问目录├─runtime         运行时目录（可定义）├─vendor">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-04-13T14:19:24.000Z">
 <meta property="article:modified_time" content="2020-09-15T15:28:49.690Z">
@@ -90,111 +90,107 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>框架下载地址：版本5.0.24</p>
-<p> <a href="http://www.thinkphp.cn/down/framework.html">http://www.thinkphp.cn/down/framework.html</a> </p>
+<p><a href="http://www.thinkphp.cn/down/framework.html">http://www.thinkphp.cn/down/framework.html</a></p>
 <p>TP5</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tp5</span><br><span class="line">├─application     应用目录</span><br><span class="line">├─extend          扩展类库目录（可定义）</span><br><span class="line">├─public         网站对外访问目录</span><br><span class="line">├─runtime         运行时目录（可定义）</span><br><span class="line">├─vendor          第三方类库目录（Composer）</span><br><span class="line">├─thinkphp        框架核心目录</span><br><span class="line">├─build.php       自动生成定义文件（参考）</span><br><span class="line">├─composer.json   Composer定义文件</span><br><span class="line">├─LICENSE.txt     授权说明文件</span><br><span class="line">├─README.md       README 文件</span><br><span class="line">├─think           命令行工具入口</span><br><span class="line"></span><br><span class="line">如果在linux环境下面的话，需要给runtime目录755权限。</span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">├─thinkphp 框架系统目录</span><br><span class="line">│  ├─lang               语言包目录</span><br><span class="line">│  ├─library            框架核心类库目录</span><br><span class="line">│  │  ├─think           think 类库包目录</span><br><span class="line">│  │  └─traits          系统 traits 目录</span><br><span class="line">│  ├─tpl                系统模板目录</span><br><span class="line">│  │</span><br><span class="line">│  ├─.htaccess          用于 apache 的重写</span><br><span class="line">│  ├─.travis.yml        CI 定义文件</span><br><span class="line">│  ├─base.php           框架基础文件</span><br><span class="line">│  ├─composer.json      composer 定义文件</span><br><span class="line">│  ├─console.php        控制台入口文件</span><br><span class="line">│  ├─convention.php     惯例配置文件</span><br><span class="line">│  ├─helper.php         助手函数文件（可选）</span><br><span class="line">│  ├─LICENSE.txt        授权说明文件</span><br><span class="line">│  ├─phpunit.xml        单元测试配置文件</span><br><span class="line">│  ├─README.md          README 文件</span><br><span class="line">│  └─start.php          框架引导文件</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">├─application           应用目录（可设置）</span><br><span class="line">│  ├─index              模块目录(可更改)</span><br><span class="line">│  │  ├─config.php      模块配置文件</span><br><span class="line">│  │  ├─common.php      模块公共文件</span><br><span class="line">│  │  ├─controller      控制器目录</span><br><span class="line">│  │  ├─model           模型目录</span><br><span class="line">│  │  └─view            视图目录</span><br><span class="line">│  │</span><br><span class="line">│  ├─command.php        命令行工具配置文件</span><br><span class="line">│  ├─common.php         应用公共文件</span><br><span class="line">│  ├─config.php         应用配置文件</span><br><span class="line">│  ├─tags.php           应用行为扩展定义文件</span><br><span class="line">│  ├─database.php       数据库配置文件</span><br><span class="line">│  └─route.php          路由配置文件</span><br></pre></td></tr></table></figure>
-
-<p> <strong>引导文件</strong></p>
-<p>start.php文件就是系统默认的一个引导文件 </p>
+<p><strong>引导文件</strong></p>
+<p>start.php文件就是系统默认的一个引导文件</p>
 <p>在引导文件中，会依次执行下面操作：</p>
 <ul>
-<li>加载系统常量定义； </li>
-<li>加载环境变量定义文件； </li>
-<li>注册自动加载机制； </li>
-<li>注册错误和异常处理机制； </li>
-<li>加载惯例配置文件； </li>
+<li>加载系统常量定义；</li>
+<li>加载环境变量定义文件；</li>
+<li>注册自动加载机制；</li>
+<li>注册错误和异常处理机制；</li>
+<li>加载惯例配置文件；</li>
 <li>执行应用；</li>
 </ul>
-<p> start.php引导文件首先会调用base.php基础引导文件，某些特殊需求下面可能直接在入口文件中引入基础引导文件 </p>
-<h4 id="控制器与模板跳转"><a href="#控制器与模板跳转" class="headerlink" title="控制器与模板跳转"></a>控制器与模板跳转</h4><p><strong>控制器-&gt;模板</strong></p>
-<p> 内置了一个基于XML的编译型模板引擎 </p>
-<p> 控制器类继承think\Controller类之后，可以直接使用封装好的assign和fetch方法进行模板变量赋值和渲染输出 </p>
+<p>start.php引导文件首先会调用base.php基础引导文件，某些特殊需求下面可能直接在入口文件中引入基础引导文件</p>
+<h4 id="控制器与模板跳转"><a class="markdownIt-Anchor" href="#控制器与模板跳转"></a> 控制器与模板跳转</h4>
+<p><strong>控制器-&gt;模板</strong></p>
+<p>内置了一个基于XML的编译型模板引擎</p>
+<p>控制器类继承think\Controller类之后，可以直接使用封装好的assign和fetch方法进行模板变量赋值和渲染输出</p>
 <p>控制器</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public function index()</span><br><span class="line">&#123;</span><br><span class="line">$data = Db::name(&#x27;data&#x27;)---&gt;find();</span><br><span class="line">$this-&gt;assign(&#x27;result&#x27;, $data);</span><br><span class="line">$this-&gt;assign([</span><br><span class="line">&#x27;temp_id&#x27;=&gt;$temp_id,</span><br><span class="line">&#x27;templateinfo&#x27;=&gt;$temptinfo,</span><br><span class="line">&#x27;members&#x27;=&gt;$mems</span><br><span class="line">]);</span><br><span class="line">return $this-&gt;fetch();</span><br><span class="line">return $this-&gt;fetch(&#x27;add&#x27;);//</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>视图</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;$result.id&#125;--&#123;$result.data&#125;//1--thinkphp</span><br><span class="line"></span><br><span class="line">模板标签的用法和Smarty类似，就是用于输出数据的字段，这里表示输出think_data表的id和data字段的值。</span><br></pre></td></tr></table></figure>
-
-<p> 若fetch方法中没有指定任何模板，则按照系统默认的规则（视图目录&#x2F;控制器&#x2F;操作方法）输出了view&#x2F;index&#x2F;hello.html模板文件 </p>
+<p>若fetch方法中没有指定任何模板，则按照系统默认的规则（视图目录/控制器/操作方法）输出了view/index/hello.html模板文件</p>
 <p><strong>模板-&gt;控制器</strong></p>
-<p> 5.0的URL访问受路由决定，如果关闭路由或者没有匹配路由的情况下，则是基于 </p>
+<p>5.0的URL访问受路由决定，如果关闭路由或者没有匹配路由的情况下，则是基于</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://serverName/index.php（或者其它应用入口文件）/模块/控制器/操作/参数/值...</span><br></pre></td></tr></table></figure>
-
-<p>重定向：return  $this-&gt;redirect(‘index&#x2F;login&#x2F;index’);（模块名&#x2F;控制器&#x2F;方法）</p>
-<p>系统渲染模板 return view(‘index&#x2F;login&#x2F;index’);&#x2F;&#x2F;不经过方法，直达视图</p>
-<p>或者return $this-&gt;fetch()，默认模板。$this-&gt;fetch(‘XXX’)，指定跳到xxx模板，与view()相同</p>
+<p>重定向：return  $this-&gt;redirect(‘index/login/index’);（模块名/控制器/方法）</p>
+<p>系统渲染模板 return view(‘index/login/index’);//不经过方法，直达视图</p>
+<p>或者return <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mo>−</mo><mo>&gt;</mo><mi>f</mi><mi>e</mi><mi>t</mi><mi>c</mi><mi>h</mi><mo stretchy="false">(</mo><mo stretchy="false">)</mo><mtext>，默认模板。</mtext></mrow><annotation encoding="application/x-tex">this-&gt;fetch()，默认模板。</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">h</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord">−</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mopen">(</span><span class="mclose">)</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">模</span><span class="mord cjk_fallback">板</span><span class="mord cjk_fallback">。</span></span></span></span>this-&gt;fetch(‘XXX’)，指定跳到xxx模板，与view()相同</p>
 <p>thinkphp视图中{：url()}或者</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//配合ajax的提示后的加载</span><br><span class="line">        $(&quot;#addForm&quot;).submit(function()&#123;</span><br><span class="line">            // $(&#x27;#save&#x27;).attr(&#x27;disabled&#x27;,true);</span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">                url: &quot;&#123;:\\think\\Url::build(&#x27;contract/addfirst&#x27;)&#125;&quot;,</span><br><span class="line">                data: $(this).serialize(),</span><br><span class="line">                dataType: &quot;json&quot;,</span><br><span class="line">                type: &quot;post&quot;,</span><br><span class="line">                success: function(data)&#123;</span><br><span class="line">                    if (data.code==1) &#123;</span><br><span class="line">                        if (data.code === 1) &#123;</span><br><span class="line">                            parent.layer.msg(data.msg, &#123;icon: 1, time: 1500&#125;);</span><br><span class="line">                            window.location.href = &quot;&#123;:\\think\\Url::build(\&#x27;contract/contractfirst\&#x27;)&#125;&quot;;</span><br><span class="line">                        &#125; else &#123;</span><br><span class="line">                            parent.layer.msg(data.msg, &#123;icon: 2&#125;);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        parent.layer.msg(&#x27;服务器错误，请重试&#x27;, &#123;icon: 2&#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line"></span><br><span class="line">            &#125;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
-
 <p>模块和模块之间的关系</p>
-<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a><strong>其他</strong></h4><p> <strong>数据库配置</strong>文件application&#x2F;database.php中添加数据库的连接信息 </p>
+<h4 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> <strong>其他</strong></h4>
+<p><strong>数据库配置</strong>文件application/database.php中添加数据库的连接信息</p>
 <p><strong>添加模块</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php think build --module demo(模块名)</span><br></pre></td></tr></table></figure>
-
-<p><strong>调试模式：</strong> 应用配置文件（application&#x2F;config.php） </p>
+<p><strong>调试模式：</strong> 应用配置文件（application/config.php）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 关闭调试模式</span><br><span class="line">&#x27;app_debug&#x27; =&gt;  false,</span><br><span class="line">避免泄露你的服务器WEB目录信息等资料，一定记得正式部署的时候关闭调试模式。</span><br></pre></td></tr></table></figure>
-
-<p> <strong>命名空间</strong></p>
-<p>app命名空间通常表示文件的起始目录为application，而think命名空间则表示文件的目录为thinkphp&#x2F;library&#x2F;think </p>
-<p> <strong>有几个关键的路径</strong> </p>
+<p><strong>命名空间</strong></p>
+<p>app命名空间通常表示文件的起始目录为application，而think命名空间则表示文件的目录为thinkphp/library/think</p>
+<p><strong>有几个关键的路径</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tp5	            项目根目录	       ROOT_PATH</span><br><span class="line">tp5/application	应用目录	        APP_PATH</span><br><span class="line">tp5/thinkphp	框架核心目录	       THINK_PATH</span><br><span class="line">tp5/exend	    应用扩展目录	       EXTEND_PATH</span><br><span class="line">tp5/vendor	    Composer扩展目录	VENDOR_PATH</span><br></pre></td></tr></table></figure>
-
-<h4 id="路由共有4种形式"><a href="#路由共有4种形式" class="headerlink" title="路由共有4种形式"></a>路由共有4种形式</h4><ol>
-<li>基本get形式<br>http:&#x2F;&#x2F;域名&#x2F;index.php?m&#x3D;分组&amp;c&#x3D;控制器&amp;a&#x3D;操作方法<br>该方式是最底层的get形式、传统的参数传递方式，不时尚、不安全。</li>
-<li>pathinfo路径形式[默认方式]<br>http:&#x2F;&#x2F;域名&#x2F;index.php&#x2F;分组&#x2F;控制器&#x2F;操作方法<br>http:&#x2F;&#x2F;域名&#x2F;index.php&#x2F;Home&#x2F;Index&#x2F;advert</li>
-<li>rewrite重写形式(伪静态技术)省略index.php入口文件<br>http:&#x2F;&#x2F;域名&#x2F;分组模块&#x2F;控制器&#x2F;操作方法（用过了）<br>http:&#x2F;&#x2F;域名&#x2F;Home&#x2F;Index&#x2F;index</li>
-<li>兼容形式<br>http:&#x2F;&#x2F;域名&#x2F;index.php?s&#x3D;&#x2F;分组&#x2F;控制器&#x2F;操作方法<br>http:&#x2F;域名&#x2F;index.php?s&#x3D;&#x2F;Home&#x2F;Index&#x2F;advert</li>
+<h4 id="路由共有4种形式"><a class="markdownIt-Anchor" href="#路由共有4种形式"></a> 路由共有4种形式</h4>
+<ol>
+<li>基本get形式<br>
+<a href="http://xn--eqrt2g/index.php?m=%E5%88%86%E7%BB%84&amp;c=%E6%8E%A7%E5%88%B6%E5%99%A8&amp;a=%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95">http://域名/index.php?m=分组&amp;c=控制器&amp;a=操作方法</a><br>
+该方式是最底层的get形式、传统的参数传递方式，不时尚、不安全。</li>
+<li>pathinfo路径形式[默认方式]<br>
+<a href="http://xn--eqrt2g/index.php/%E5%88%86%E7%BB%84/%E6%8E%A7%E5%88%B6%E5%99%A8/%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95">http://域名/index.php/分组/控制器/操作方法</a><br>
+<a href="http://xn--eqrt2g/index.php/Home/Index/advert">http://域名/index.php/Home/Index/advert</a></li>
+<li>rewrite重写形式(伪静态技术)省略index.php入口文件<br>
+<a href="http://xn--eqrt2g/%E5%88%86%E7%BB%84%E6%A8%A1%E5%9D%97/%E6%8E%A7%E5%88%B6%E5%99%A8/%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95%EF%BC%88%E7%94%A8%E8%BF%87%E4%BA%86%EF%BC%89">http://域名/分组模块/控制器/操作方法（用过了）</a><br>
+<a href="http://xn--eqrt2g/Home/Index/index">http://域名/Home/Index/index</a></li>
+<li>兼容形式<br>
+<a href="http://xn--eqrt2g/index.php?s=/%E5%88%86%E7%BB%84/%E6%8E%A7%E5%88%B6%E5%99%A8/%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95">http://域名/index.php?s=/分组/控制器/操作方法</a><br>
+http:/域名/index.php?s=/Home/Index/advert</li>
 </ol>
 <p>参考链接：</p>
-<p> <a href="https://www.w3cschool.cn/thinkphp/xi581rtn.html">https://www.w3cschool.cn/thinkphp/xi581rtn.html</a> </p>
-<p><a href="https://blog.csdn.net/voke_/article/details/78766663">https://blog.csdn.net/voke_/article/details/78766663</a><br><a href="https://blog.csdn.net/weixin_39768635/article/details/78195443">https://blog.csdn.net/weixin_39768635/article/details/78195443</a></p>
+<p><a href="https://www.w3cschool.cn/thinkphp/xi581rtn.html">https://www.w3cschool.cn/thinkphp/xi581rtn.html</a></p>
+<p><a href="https://blog.csdn.net/voke_/article/details/78766663">https://blog.csdn.net/voke_/article/details/78766663</a><br>
+<a href="https://blog.csdn.net/weixin_39768635/article/details/78195443">https://blog.csdn.net/weixin_39768635/article/details/78195443</a></p>
 <p>数据库配置文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yunyi\application\extra\database_news.php(数据库配置文件)</span><br><span class="line">yunyi\application\database.php（这个才是）</span><br></pre></td></tr></table></figure>
-
-<h3 id="sql调用："><a href="#sql调用：" class="headerlink" title="sql调用："></a><strong>sql调用：</strong></h3><h5 id="原生的："><a href="#原生的：" class="headerlink" title="原生的："></a><strong>原生的：</strong></h5><p>TP的模型可以支持原生SQL操作，提供了query和execute两个方法 </p>
+<h3 id="sql调用"><a class="markdownIt-Anchor" href="#sql调用"></a> <strong>sql调用：</strong></h3>
+<h5 id="原生的"><a class="markdownIt-Anchor" href="#原生的"></a> <strong>原生的：</strong></h5>
+<p>TP的模型可以支持原生SQL操作，提供了query和execute两个方法</p>
 <p>query用于查询，返回的是数据集，和select或者findall一样，所以可以直接在模板里面使用volist标签输出query的查询结果，注意query是查功能、插入</p>
 <p>execute用于写操作，返回的是状态或者影响的记录数，注意execute是增删改功能</p>
 <p>只是需要new一个空的模型继承Model中的方法</p>
 <p><strong>查</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$Model = new Model();//或者 $Model = D(); 或者 $Model = M();</span><br><span class="line">$sql = &quot;select * from `order`&quot;;</span><br><span class="line">$voList = $Model-&gt;query($sql);</span><br><span class="line"></span><br><span class="line">Db::query(&quot;select * from think_user where status=1&quot;);</span><br><span class="line">如果你当前采用了分布式数据库，并且设置了读写分离的话，query方法始终是在读服务器执行，因此query方法对应的都是读操作，而不管你的SQL语句是什么。</span><br></pre></td></tr></table></figure>
-
 <p><strong>增删改</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$voList = $Model-&gt;execute(&#x27;update think_user set status=1 where id=1&#x27;);</span><br><span class="line"></span><br><span class="line">Db::execute(&quot;update think_user set name=&#x27;thinkphp&#x27; where status=1&quot;);</span><br><span class="line">如果你当前采用了分布式数据库，并且设置了读写分离的话，execute方法始终是在写服务器执行，因此execute方法对应的都是写操作，而不管你的SQL语句是什么。</span><br></pre></td></tr></table></figure>
-
-<h5 id="封装的："><a href="#封装的：" class="headerlink" title="封装的："></a><strong>封装的：</strong></h5><p><strong>增(add)</strong></p>
+<h5 id="封装的"><a class="markdownIt-Anchor" href="#封装的"></a> <strong>封装的：</strong></h5>
+<p><strong>增(add)</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$model = M(&#x27;WxuserCollection&#x27;);</span><br><span class="line">$data = array(&#x27;user_id&#x27; = &gt;$user_id, &#x27;store_id&#x27; = &gt;$store_id, &#x27;good_id&#x27; = &gt;$good_id, &#x27;addtime&#x27; = &gt;$addtime);</span><br><span class="line">$model - &gt;data($data) - &gt;add();</span><br><span class="line"></span><br><span class="line">$User = M(&quot;User&quot;); // 实例化User对象</span><br><span class="line">$User-&gt;where(&#x27;id=5&#x27;)-&gt;setInc(&#x27;score&#x27;,3); // 用户的积分加3</span><br><span class="line">$User-&gt;where(&#x27;id=5&#x27;)-&gt;setInc(&#x27;score&#x27;); // 用户的积分加1</span><br><span class="line">$User-&gt;where(&#x27;id=5&#x27;)-&gt;setDec(&#x27;score&#x27;,5); // 用户的积分减5</span><br><span class="line">$User-&gt;where(&#x27;id=5&#x27;)-&gt;setDec(&#x27;score&#x27;); // 用户的积分减1</span><br></pre></td></tr></table></figure>
-
 <p><strong>改(edit)</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$model = M(&#x27;WxuserCollection&#x27;);</span><br><span class="line">$data = array(&#x27;user_id&#x27; = &gt;$user_id, &#x27;store_id&#x27; = &gt;$store_id, &#x27;good_id&#x27; = &gt;$good_id, &#x27;addtime&#x27; = &gt;$addtime);</span><br><span class="line">$model - &gt;data($data) - &gt;where(&#x27;id=3&#x27;) - &gt;save();</span><br><span class="line"></span><br><span class="line">$goods=D(&quot;emptest&quot;);</span><br><span class="line">$goods-&gt;name=&quot;Cool&quot;;</span><br><span class="line">$goods-&gt;garde=&quot;2&quot;;</span><br><span class="line">$goods-&gt;email=&quot;Cool@qq.com&quot;;</span><br><span class="line">$goods-&gt;salary=&quot;7777&quot;;</span><br><span class="line">$goods-&gt;where(&#x27;id=2&#x27;)-&gt;save();</span><br><span class="line"></span><br><span class="line">$goods=M(&quot;emptest&quot;);</span><br><span class="line">$arr=array(&#x27;id&#x27;=&gt;&#x27;7&#x27;,&#x27;name&#x27;=&gt;&#x27;xu2xuning&#x27;,&#x27;salary&#x27;=&gt;5555);</span><br><span class="line">$res=$goods-&gt;save($arr);</span><br></pre></td></tr></table></figure>
-
 <p><strong>查（find与select,field,order,join,getField）</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$model = M(&#x27;WxuserCollection&#x27;);</span><br><span class="line">$res1 = $model - &gt;find(1);</span><br><span class="line">$res2 = $model - &gt;find(2);</span><br><span class="line">$res3 = $model - &gt;where(&#x27;good_id=1105 AND store_id = 1 AND user_id = 20&#x27;) - &gt;find();</span><br><span class="line"></span><br><span class="line">find(1)获取id为1的数据，find(2)获取id为2的数据。最后一个是获取条件为where的中的第一条数据</span><br><span class="line">$model = M(&#x27;WxuserCollection&#x27;);</span><br><span class="line">$res = $model - &gt;where(&#x27;good_id=1105 AND store_id = 1 AND user_id = 20&#x27;) - &gt;field(&#x27;id,good_id as good&#x27;) - &gt;select();</span><br><span class="line">获取所有数据。这里的好处就是，不用考虑sql语句的顺序了，随心所欲调用函数就可以了</span><br><span class="line"></span><br><span class="line">$res = $model - &gt;field(&#x27;id,good_id as good&#x27;) - &gt;select();</span><br><span class="line">$res = $model - &gt;field(array(&#x27;id&#x27;, &#x27;good_id&#x27; = &gt;&#x27;good&#x27;)) - &gt;select();</span><br><span class="line">$res = $model - &gt;field(&#x27;id&#x27;, true) - &gt;select();</span><br><span class="line">字符串，数组两种方式，第三个是表示获取处理id之外的所有字段</span><br><span class="line"></span><br><span class="line">$res = $model - &gt;order(&#x27;id desc&#x27;) - &gt;select();</span><br><span class="line">$res = $model - &gt;order(array(&#x27;id&#x27; = &gt;&#x27;desc&#x27;)) - &gt;select();</span><br><span class="line">字符串，数组两种方式，默认asc。</span><br><span class="line"></span><br><span class="line">$Model-&gt;join(&#x27; work ON artist.id = work.artist_id&#x27;)-&gt;join(&#x27;card ON artist.card_id = card.id&#x27;)-&gt;select();</span><br><span class="line">$Model-&gt;join(&#x27;RIGHT JOIN work ON artist.id = work.artist_id&#x27;)-&gt;select();</span><br><span class="line">$Model-&gt;join(array(&#x27; work ON artist.id = work.artist_id&#x27;,&#x27;card ON artist.card_id = card.id&#x27;))-&gt;select();</span><br><span class="line">默认采用LEFT JOIN 方式，如果需要用其他的JOIN方式，可以改成第二种，</span><br><span class="line">如果join方法的参数用数组的话，只能使用一次join方法，并且不能和字符串方式混合使用。</span><br></pre></td></tr></table></figure>
-
 <p>getfield</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 获取ID为3的用户的昵称 ,即使有满足条件的多个字段，也只会返回一个结果</span><br><span class="line">$nickname = $User-&gt;where(&#x27;id=3&#x27;)-&gt;getField(&#x27;nickname&#x27;);</span><br><span class="line">返回的nickname则是一个数组，包含了所有满足条件的昵称列表。</span><br><span class="line">$nickname = $User-&gt;where(&#x27;status=1&#x27;)-&gt;getField(&#x27;nickname&#x27;,true);</span><br><span class="line">限制返回结果数量</span><br><span class="line">$nickname = $User-&gt;where(&#x27;status=1&#x27;)-&gt;getField(&#x27;nickname&#x27;,8);</span><br><span class="line"></span><br><span class="line">2字段名称的话，默认返回一个关联数组，以第一个字段的值为索引（所以第一个字段要尽量选择不会重复的）</span><br><span class="line">$nickname = $User-&gt;where(&#x27;status=1&#x27;)-&gt;getField(&#x27;id,nickname&#x27;);</span><br><span class="line">2个以上的字段名，则返回一个二维关联数组（类似select方法的返回值，区别在于索引是二维数组的键名是第一个字段的值）</span><br><span class="line">$result = $User-&gt;where(&#x27;status=1&#x27;)-&gt;getField(&#x27;id,account,nickname&#x27;);</span><br></pre></td></tr></table></figure>
-
 <p><strong>删(delete)</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$model = M(&#x27;WxuserCollection&#x27;);</span><br><span class="line">$res = $model - &gt;where(&#x27;id=1&#x27;) - &gt;delete(); // 成功返回1 失败返回0</span><br><span class="line">$model-&gt;delete(9);//删除指定主键的数据行</span><br><span class="line">$model-&gt;delete(”1,2,3“);//也可以删除多个主键的值得行,一定要带引号</span><br><span class="line">$model-&gt;where(&quot;id&gt;=13 and id&lt;=18&quot;)-&gt;delete();//条件性的删除操作</span><br></pre></td></tr></table></figure>
-
 <p><strong>实践</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$where = array(&#x27;a.store_id&#x27; =&gt; $this-&gt;store_id, &#x27;a.user_id&#x27; =&gt; $this-&gt;user_id);</span><br><span class="line">$collects = $this-&gt;collectModel-&gt;table(&quot;sh_wxuser_collection a&quot;)-&gt;field(array(&#x27;b.name&#x27;,&#x27;b.price&#x27;,&#x27;b.oprice&#x27;,&#x27;b.logoimg&#x27;,&#x27;a.goods_id&#x27;))-&gt;limit($start, $offset)-&gt;order(&#x27;a.addtime DESC&#x27;)-&gt;where($where)-&gt;join(&#x27; sh_goods b ON a.goods_id = b.id&#x27;)-&gt;select();// 获取当前页的记录</span><br><span class="line">echo M()-&gt;getLastSql();  // 调试sql语句用</span><br><span class="line">$count = $this-&gt;collectModel-&gt;table(&quot;sh_wxuser_collection a&quot;)-&gt;where($where)-&gt;count(); // 获取总的记录数 </span><br></pre></td></tr></table></figure>
-
-<p>参考链接： <a href="https://www.cnblogs.com/jiqing9006/p/4975293.html">https://www.cnblogs.com/jiqing9006/p/4975293.html</a> </p>
-<h3 id="OOP与AOP"><a href="#OOP与AOP" class="headerlink" title="OOP与AOP"></a><strong>OOP与AOP</strong></h3><p> Aspect Oriented Programming（AOP） 面向切面编程</p>
+<p>参考链接： <a href="https://www.cnblogs.com/jiqing9006/p/4975293.html">https://www.cnblogs.com/jiqing9006/p/4975293.html</a></p>
+<h3 id="oop与aop"><a class="markdownIt-Anchor" href="#oop与aop"></a> <strong>OOP与AOP</strong></h3>
+<p>Aspect Oriented Programming（AOP） 面向切面编程</p>
 <p>例如：对 “权限检查”这一<strong>动作</strong>片断进行封装</p>
-<p> Object Oriented Programming （OOP）面向对象编程</p>
-<p>例如：将“雇员”相关的属性和行为封装入 “Employee”类中 </p>
+<p>Object Oriented Programming （OOP）面向对象编程</p>
+<p>例如：将“雇员”相关的属性和行为封装入 “Employee”类中</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/ThinkPHP/" data-id="cm4dztqk4000ojalia4xwhng3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/ThinkPHP/" data-id="cm4uq3vnz000od7lid0p6d7o8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li></ul>

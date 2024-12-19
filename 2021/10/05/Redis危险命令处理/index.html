@@ -7,12 +7,12 @@
   
   <title>Redis危险命令处理 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="注意：危险命令线上是不能执行 keys * 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！">
+  <meta name="description" content="注意：  危险命令 线上是不能执行 keys * 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis危险命令处理">
 <meta property="og:url" content="http://yoursite.com/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="注意：危险命令线上是不能执行 keys * 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！">
+<meta property="og:description" content="注意：  危险命令 线上是不能执行 keys * 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-10-05T10:04:27.000Z">
 <meta property="article:modified_time" content="2021-11-30T10:06:02.600Z">
@@ -89,25 +89,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><h4 id="危险命令"><a href="#危险命令" class="headerlink" title="危险命令"></a>危险命令</h4><p>线上是不能执行 <code>keys *</code> 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！</p>
+        <h3 id="注意"><a class="markdownIt-Anchor" href="#注意"></a> 注意：</h3>
+<h4 id="危险命令"><a class="markdownIt-Anchor" href="#危险命令"></a> 危险命令</h4>
+<p>线上是不能执行 <code>keys *</code> 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！</p>
 <span id="more"></span>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">keys  客户端可查询出所有存在的键。</span><br><span class="line">flushdb 删除 Redis 中当前所在数据库中的所有记录，并且此命令从不会执行失败。</span><br><span class="line">flushall 删除 Redis 中所有数据库中的所有记录，不只是当前所在数据库，并且此命令从不会执行失败。</span><br><span class="line">config 客户端可修改 Redis 配置</span><br></pre></td></tr></table></figure>
-
 <p>解决办法：</p>
-<p>1、打开redis配置文件<br>vim redis.conf<br>2、找到##SECURITY##区域，按照Example配置rename_command<br>:&#x2F;rename_command<br>#n下一个,N上一个</p>
+<p>1、打开redis配置文件<br>
+vim redis.conf<br>
+2、找到##SECURITY##区域，按照Example配置rename_command<br>
+:/rename_command<br>
+#n下一个,N上一个</p>
 <p>1禁用命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rename-command KEYS     &quot;&quot;</span><br><span class="line">rename-command FLUSHALL &quot;&quot;</span><br><span class="line">rename-command FLUSHDB  &quot;&quot;</span><br><span class="line">rename-command CONFIG   &quot;&quot;</span><br></pre></td></tr></table></figure>
-
 <p>2重命名命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rename-command KEYS     &quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><br><span class="line">rename-command FLUSHALL &quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><br><span class="line">rename-command FLUSHDB  &quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><br><span class="line">rename-command CONFIG   &quot;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&quot;</span><br></pre></td></tr></table></figure>
-
-<p>参考链接：<a href="https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247487198&idx=2&sn=eea95b2fbad114cabbfbcf1804b8b081&chksm=eb538be8dc2402fee685771deff4852214bc908448ca3cc3644794d66d72d8af843289f0d65d&scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247487198&amp;idx=2&amp;sn=eea95b2fbad114cabbfbcf1804b8b081&amp;chksm=eb538be8dc2402fee685771deff4852214bc908448ca3cc3644794d66d72d8af843289f0d65d&amp;scene=21#wechat_redirect</a></p>
+<p>参考链接：<a href="https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247487198&amp;idx=2&amp;sn=eea95b2fbad114cabbfbcf1804b8b081&amp;chksm=eb538be8dc2402fee685771deff4852214bc908448ca3cc3644794d66d72d8af843289f0d65d&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&amp;mid=2247487198&amp;idx=2&amp;sn=eea95b2fbad114cabbfbcf1804b8b081&amp;chksm=eb538be8dc2402fee685771deff4852214bc908448ca3cc3644794d66d72d8af843289f0d65d&amp;scene=21#wechat_redirect</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/" data-id="cm4dztqjz000gjali8xq39qdu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/" data-id="cm4uq3vnu000gd7lifuzq0nut" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>

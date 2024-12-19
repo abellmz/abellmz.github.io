@@ -7,12 +7,12 @@
   
   <title>MySQL基础 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一对一关联123select * from city;select code_id from city where city_name&#x3D;&#x27;北京&#x27;;  根据MySQL的设置，默认接受使用单引号或双引号来表示字符串。 将上面两句以子查询的方式合并一句">
+  <meta name="description" content="一对一关联 123select * from city;select code_id from city where city_name&#x3D;&#x27;北京&#x27;; 根据MySQL的设置，默认接受使用单引号或双引号来表示字符串。 将上面两句以子查询的方式合并一句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL基础">
 <meta property="og:url" content="http://yoursite.com/2019/03/04/mysql/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="一对一关联123select * from city;select code_id from city where city_name&#x3D;&#x27;北京&#x27;;  根据MySQL的设置，默认接受使用单引号或双引号来表示字符串。 将上面两句以子查询的方式合并一句">
+<meta property="og:description" content="一对一关联 123select * from city;select code_id from city where city_name&#x3D;&#x27;北京&#x27;; 根据MySQL的设置，默认接受使用单引号或双引号来表示字符串。 将上面两句以子查询的方式合并一句">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/mysql/articles.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/04/mysql/articles_tags.png">
@@ -93,123 +93,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="一对一关联"><a href="#一对一关联" class="headerlink" title="一对一关联"></a>一对一关联</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from city;</span><br><span class="line"></span><br><span class="line">select code_id from city where city_name=&#x27;北京&#x27;;</span><br></pre></td></tr></table></figure>
-
+        <h5 id="一对一关联"><a class="markdownIt-Anchor" href="#一对一关联"></a> 一对一关联</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from city;</span><br><span class="line"></span><br><span class="line">select code_id from city where city_name=&#x27;北京&#x27;;</span><br></pre></td></tr></table></figure>
 <p>根据MySQL的设置，默认接受使用单引号或双引号来表示字符串。</p>
 <p>将上面两句以子查询的方式合并一句</p>
 <span id="more"></span>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from code where id=(select code_id from city where city_name=&#x27;北京&#x27;);</span><br></pre></td></tr></table></figure>
-
 <p><code>on</code>和<code>where</code>后面所跟的条件不同：</p>
 <p><code>select</code>+查询字段+<code>from</code>+查询表+<code>join</code>+关联表+<code>on</code>+关联条件+<code>where</code>+筛选条件</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select city_name,code_name from city join code as c on code_id=c.id where city_name=&#x27;北京&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>表别名或字段别名，关键字“as”可以省略</p>
-<h5 id="一对多关联"><a href="#一对多关联" class="headerlink" title="一对多关联"></a>一对多关联</h5><p>多表需添加外键（XX_id）指向主表 ，例如：班级和学生，是一对多关系，学生表students表添加外键<code>class_id</code>,指向班级表class</p>
+<h5 id="一对多关联"><a class="markdownIt-Anchor" href="#一对多关联"></a> 一对多关联</h5>
+<p>多表需添加外键（XX_id）指向主表 ，例如：班级和学生，是一对多关系，学生表students表添加外键<code>class_id</code>,指向班级表class</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s.name from class c join students s on c.id=s.class_id where c.class_name = &quot;一班&quot;；</span><br></pre></td></tr></table></figure>
-
-<p>张三的同班同学（自关联）     </p>
+<p>张三的同班同学（自关联）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select s1.name ,s2.name from students s1 join students s2 on s1.class_id=s2.class_id where s2.name=&#x27;张三&#x27; and s1.name!=&#x27;张三&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="多对多关联"><a href="#多对多关联" class="headerlink" title="多对多关联"></a>多对多关联</h5><p>多对多关联需添加第三张表作为中间表，中间表至少包含两个字段，这两个字段分别作为外键，指向各自一方的主键。例如以下是articles与tags是多对多关系，添加中间表articles_tags，其中字段分别指向两表</p>
-<p>文章表articles<br><img src="/2019/03/04/mysql/articles.png"></p>
-<p>中间表articles_tags<br><img src="/2019/03/04/mysql/articles_tags.png"></p>
-<p>标签表    tags<br><img src="/2019/03/04/mysql/tags.png"></p>
+<h5 id="多对多关联"><a class="markdownIt-Anchor" href="#多对多关联"></a> 多对多关联</h5>
+<p>多对多关联需添加第三张表作为中间表，中间表至少包含两个字段，这两个字段分别作为外键，指向各自一方的主键。例如以下是articles与tags是多对多关系，添加中间表articles_tags，其中字段分别指向两表</p>
+<p>文章表articles<br>
+<img src="/2019/03/04/mysql/articles.png" alt></p>
+<p>中间表articles_tags<br>
+<img src="/2019/03/04/mysql/articles_tags.png" alt></p>
+<p>标签表    tags<br>
+<img src="/2019/03/04/mysql/tags.png" alt></p>
 <p>给每篇文章计数标签</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.title,count(*) from articles a join articles_tags at on a.id=at.articles_id group by a.title;</span><br></pre></td></tr></table></figure>
-
-<p>「马上雾霾就来了」文章有哪些标签              </p>
+<p>「马上雾霾就来了」文章有哪些标签</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a.title,t.name from articles a join articles_tags at on a.id=at.articles_id join tags t on at.tags_id=t.id where a.title=&#x27;马上雾霾就来了&#x27;;</span><br></pre></td></tr></table></figure>
-
-<h5 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h5><p>创建数据库两种方式</p>
+<h5 id="数据库操作"><a class="markdownIt-Anchor" href="#数据库操作"></a> 数据库操作</h5>
+<p>创建数据库两种方式</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create database testdb charset utf8;</span><br><span class="line">create database if not exists testdb charset utf8;</span><br></pre></td></tr></table></figure>
-
-<p>查看所有数据库以及数据库的设置             </p>
+<p>查看所有数据库以及数据库的设置</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br><span class="line">show create database +库名</span><br></pre></td></tr></table></figure>
-
 <p>进入（使用）数据库</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use testdb;</span><br></pre></td></tr></table></figure>
-
 <p>删除数据库的两种方式</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop database testdb;</span><br><span class="line">drop database if exists testdb;</span><br></pre></td></tr></table></figure>
-
 <p>数据库名字不可以修改,数据库的修改仅限库选项: 字符集和校对集(校对集依赖字符集)</p>
-<h5 id="表的操作"><a href="#表的操作" class="headerlink" title="表的操作"></a>表的操作</h5><p>创建表 </p>
+<h5 id="表的操作"><a class="markdownIt-Anchor" href="#表的操作"></a> 表的操作</h5>
+<p>创建表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">字段+数据类型+其他要求 </span><br><span class="line">create table empt(</span><br><span class="line">id int(11) not null primary key auto_increment,</span><br><span class="line">name varchar(20) not null comment &quot;姓名&quot;,</span><br><span class="line">gender tinyint(2) not null default 0 comment &quot;性别&quot;,</span><br><span class="line">dept_id int(11) not null,</span><br><span class="line">is_enable tinyint(2) not null comment &quot;是否启用，1启用，2关闭&quot;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">create table if not exists class(...</span><br><span class="line">未进数据库前创建数据表 </span><br><span class="line">create table if not exists testdb.students(...</span><br></pre></td></tr></table></figure>
-
-<p>删除表                  </p>
+<p>删除表</p>
 <pre><code>drop table students,...;
 </code></pre>
 <p>进数据库前不能使用命令<code>show tables</code></p>
-<p>查看表 </p>
+<p>查看表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure>
-
 <p>模糊查询</p>
-<pre><code>show tables like &#39;s%&#39;;
+<pre><code>show tables like 's%';
 </code></pre>
 <p>查看表结构 <code>\g</code>横向，默认设置;<code>\G</code>纵向;注意后面不能加分号</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">desc students;desc students\G</span><br><span class="line">describe students;</span><br><span class="line">show columns from students;</span><br></pre></td></tr></table></figure>
-
 <p>查看表结构创建语句</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show create table students;</span><br><span class="line">show create table students\G</span><br></pre></td></tr></table></figure>
-
 <p>复制表结构</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table stu_bak like students;</span><br></pre></td></tr></table></figure>
-
 <p>复制表数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu_bak select * from students;</span><br></pre></td></tr></table></figure>
-
 <p>复制表结构同时备份数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table stu_bak2 select * from students;</span><br></pre></td></tr></table></figure>
-
 <p>rename修改表名</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alter table 旧表名 rename 新表名;</span><br><span class="line">alter table students_copy1 rename sty_copy1;  </span><br><span class="line"></span><br><span class="line">rename 旧表名to 新表名;</span><br><span class="line">rename table stu to sstt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="字段操作"><a href="#字段操作" class="headerlink" title="字段操作"></a>字段操作</h5><p>修改字段名：<code>alter...change...</code></p>
+<h5 id="字段操作"><a class="markdownIt-Anchor" href="#字段操作"></a> 字段操作</h5>
+<p>修改字段名：<code>alter...change...</code></p>
 <p>修改字段修饰：<code>alter...modify...</code></p>
 <p>添加字段：<code>add</code></p>
 <p>删除字段：<code>drop</code></p>
 <p>修改字段名用<code>change</code>：</p>
 <p><code>Alter table</code> +表名+<code>change old_name new_name</code> +字段修饰;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students change username name varchar(100) not null default &#x27;&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>修改字段修饰用<code>modify</code>  :</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students modify name varchar(50) not null default &#x27;&#x27; comment &#x27;姓名&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>添加字段 用<code>add</code> (after&#x2F;before):</p>
+<p>添加字段 用<code>add</code> (after/before):</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students add time int not null default 0 after money;</span><br></pre></td></tr></table></figure>
-
 <p>删除字段<code>drop</code>:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students drop time;</span><br></pre></td></tr></table></figure>
-
 <p><strong>主键操作</strong></p>
 <p>添加主键自增：先添加主键 ，再添加自增</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table students add primary key(id);</span><br><span class="line">alter table students modify id int auto_increment;</span><br></pre></td></tr></table></figure>
-
 <p>删除主键：先删除自增，再删除主键</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table students modify id int;</span><br><span class="line">alter table students drop primary key;</span><br></pre></td></tr></table></figure>
-
-<h5 id="常用数据类型与修饰"><a href="#常用数据类型与修饰" class="headerlink" title="常用数据类型与修饰"></a>常用数据类型与修饰</h5><p>decimal(5,2):浮点型,指一共五位数字，其中两位小数,整数3位多了报错，小数多了四舍五入。相比于float，double类型，decimal类型属于精确类型，不会丢失精度，所以只要涉及到金钱，财务相关的数据，对应的类型一定要选择decimal。</p>
+<h5 id="常用数据类型与修饰"><a class="markdownIt-Anchor" href="#常用数据类型与修饰"></a> 常用数据类型与修饰</h5>
+<p>decimal(5,2):浮点型,指一共五位数字，其中两位小数,整数3位多了报错，小数多了四舍五入。相比于float，double类型，decimal类型属于精确类型，不会丢失精度，所以只要涉及到金钱，财务相关的数据，对应的类型一定要选择decimal。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Decimal(18,9)，18这个数代表最长可以到18位，而9这个数字表示小数点后面有9位数字，那么18-9=9，也就得出了整数位可以有9位。</span><br><span class="line">1个字节8位，4个字节也就是32位，算符号位也可以存21亿多，也就是可以存10位数字，那说明存9位数字绰绰有余。decimal(18.9)小数两边个存储9个数字，一共使用9个字节：小数点前的数用四个字节，小数点后用4个字节，小数点本身占一个字节。所以decimal(18,9)占用9个字节。</span><br></pre></td></tr></table></figure>
-
-<p>enum：枚举，单选型，用于存储单一值       </p>
+<p>enum：枚举，单选型，用于存储单一值</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students add gender1 ENUM(&#x27;男&#x27;, &#x27;女&#x27;)</span><br></pre></td></tr></table></figure>
-
 <p>set：集合类型，多选型，用于存储多个值</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table students add hobby1 set(&#x27;羽毛球&#x27;, &#x27;篮球&#x27;,&#x27;乒乓球&#x27;);</span><br></pre></td></tr></table></figure>
-
 <p>char(6) ：定长 效率高，最多存储6个字符</p>
 <p>varchar(30) ：变长，省空间</p>
 <p>Int(10):指定zerofill前导0填充,不足10位时，以0填充，超过则正常显示，不做宽度限制。无论int(9)还是int(3)，都是占用四个字节的空间</p>
-<p>unique：唯一约束 	</p>
+<p>unique：唯一约束</p>
 <p>primary key：主键，一个表最多只能有一个主键，主键列中不能null 0 重复值</p>
 <p>auto_increment：自增</p>
 <p>unsigned：非负修饰（设置前导零会自动设置上）</p>
-<p>not null：不为空 	</p>
+<p>not null：不为空</p>
 <p>default ：默认值</p>
 <p>如果是char或varchar类型，length可以小于字段规定长度。当varchar太大时，会自动转化为text。</p>
-<h5 id="Mysql-数据类型："><a href="#Mysql-数据类型：" class="headerlink" title="Mysql 数据类型："></a>Mysql 数据类型：</h5><p><strong>数值类型：</strong></p>
+<h5 id="mysql-数据类型"><a class="markdownIt-Anchor" href="#mysql-数据类型"></a> Mysql 数据类型：</h5>
+<p><strong>数值类型：</strong></p>
 <p>MySQL 支持所有标准 SQL 数值数据类型。</p>
 <p>这些类型包括严格数值数据类型( INTEGER、SMALLINT、DECIMAL 和 NUMERIC )，以及近似数值数据类型( FLOAT、REAL 和 DOUBLE PRECISION )。</p>
 <p>关键字 INT 是 INTEGER 的同义词，关键字 DEC 是 DECIMAL 的同义词。</p>
@@ -218,75 +200,76 @@
 <table>
 <thead>
 <tr>
-<th align="left">数据类型</th>
+<th style="text-align:left">数据类型</th>
 <th>大小</th>
 <th>范围（无符号）</th>
 <th>范围（有符号）</th>
-<th align="left">描     述</th>
+<th style="text-align:left">描     述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">TINYINT(size)</td>
+<tbody>
+<tr>
+<td style="text-align:left">TINYINT(size)</td>
 <td>1字节</td>
 <td>（0,255）</td>
 <td>（-125，127）</td>
-<td align="left">小整数值</td>
+<td style="text-align:left">小整数值</td>
 </tr>
 <tr>
-<td align="left">SMALLINT(size)</td>
+<td style="text-align:left">SMALLINT(size)</td>
 <td>2字节</td>
 <td>（0,65535）</td>
 <td>（-32768,32767）</td>
-<td align="left">大整数值，size 默认为9</td>
+<td style="text-align:left">大整数值，size 默认为9</td>
 </tr>
 <tr>
-<td align="left">MEDIUMINT(size)</td>
+<td style="text-align:left">MEDIUMINT(size)</td>
 <td>3字节</td>
 <td>（0，16777215）</td>
 <td>（-8388608，8388607）</td>
-<td align="left">大整数值，size 默认为 9</td>
+<td style="text-align:left">大整数值，size 默认为 9</td>
 </tr>
 <tr>
-<td align="left">INT(size)或INTEGER</td>
+<td style="text-align:left">INT(size)或INTEGER</td>
 <td>4字节</td>
 <td>（0，4294967295）</td>
 <td>（-2147483648，2147483647）</td>
-<td align="left">大整数值，size 默认为 11</td>
+<td style="text-align:left">大整数值，size 默认为 11</td>
 </tr>
 <tr>
-<td align="left">BIGINT(size)</td>
+<td style="text-align:left">BIGINT(size)</td>
 <td>8字节</td>
 <td>（0，18446744073709551615）</td>
 <td>（-9223372036854775808，9223372036854775807）</td>
-<td align="left">极大整数值，size 默认为 20</td>
+<td style="text-align:left">极大整数值，size 默认为 20</td>
 </tr>
 <tr>
-<td align="left">FLOAT(size,d)</td>
+<td style="text-align:left">FLOAT(size,d)</td>
 <td>4字节</td>
 <td>0，(1.175 494 351 E-38，3.402 823 466 E+38)</td>
 <td>(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)</td>
-<td align="left">单精度浮点数，size 参数中规定显示最大位数，d 参数中规定小数点右侧的最大位数</td>
+<td style="text-align:left">单精度浮点数，size 参数中规定显示最大位数，d 参数中规定小数点右侧的最大位数</td>
 </tr>
 <tr>
-<td align="left">DOUBLE(size,d)</td>
+<td style="text-align:left">DOUBLE(size,d)</td>
 <td>8字节</td>
 <td>0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
 <td>(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)</td>
-<td align="left">双精度浮点数，size 参数中规定显示最大位数，d 参数中规定小数点右侧的最大位数</td>
+<td style="text-align:left">双精度浮点数，size 参数中规定显示最大位数，d 参数中规定小数点右侧的最大位数</td>
 </tr>
 <tr>
-<td align="left">DECIMAL(M,D)</td>
-<td>默认M&#x3D;10，D&#x3D;0</td>
+<td style="text-align:left">DECIMAL(M,D)</td>
+<td>默认M=10，D=0</td>
 <td>依赖于size和d的值</td>
 <td>依赖于size和d的值</td>
-<td align="left"><code>size</code> 为精度；<code>d</code> 为保留的小数位数</td>
+<td style="text-align:left"><code>size</code> 为精度；<code>d</code> 为保留的小数位数</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>以上的 size 代表的并不是存储在数据库中的具体的长度，如 int(4) 并不是只能存储4个长度的数字。</p>
 <p>实际上int(size)所占多少存储空间并无任何关系。int(3)、int(4)、int(8) 在磁盘上都是占用 4 btyes 的存储空间。就是在显示给用户的方式有点不同外，int(M) 跟 int 数据类型是相同的。</p>
 <p>例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">int的值为10 （指定zerofill）</span><br><span class="line">int（9）显示结果为000000010</span><br><span class="line">int（3）显示结果为010</span><br><span class="line">显示的长度不一样,但都是占用四个字节的空间</span><br></pre></td></tr></table></figure>
-
 <p><strong>字符创类型：</strong></p>
 <p>指 CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM 和 SET</p>
 <table>
@@ -297,7 +280,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>CHAR(size)</td>
 <td>0-255字节</td>
 <td>定长字符串，保存固定长度的字符串（可包含字母、数字以及特殊字符），括号中指定字符串的长度，最多 255 个字符。</td>
@@ -305,7 +289,7 @@
 <tr>
 <td>VARCHAR(size)</td>
 <td>0-65535 字节</td>
-<td>变长字符串，保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。<strong>注释：</strong>如果值的长度大于 255，则被转换为 TEXT 类型。</td>
+<td>变长字符串，保存可变长度的字符串（可包含字母、数字以及特殊字符）。在括号中指定字符串的最大长度。最多 255 个字符。**注释：**如果值的长度大于 255，则被转换为 TEXT 类型。</td>
 </tr>
 <tr>
 <td>TINYTEXT</td>
@@ -350,14 +334,15 @@
 <tr>
 <td>ENUM(x,y,z,etc.)</td>
 <td>-</td>
-<td>允许您输入可能值的列表。可以在 ENUM 列表中列出最大 65535 个值。如果列表中不存在插入的值，则插入空值。<strong>注：</strong>这些值是按照您输入的顺序排序的。</td>
+<td>允许您输入可能值的列表。可以在 ENUM 列表中列出最大 65535 个值。如果列表中不存在插入的值，则插入空值。**注：**这些值是按照您输入的顺序排序的。</td>
 </tr>
 <tr>
 <td>SET</td>
 <td>-</td>
 <td>与 ENUM 类似，不同的是，SET 最多只能包含 64 个列表项且 SET 可存储一个以上的选择。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>CHAR 和 VARCHAR 类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。在存储或检索过程中不进行大小写转换。</p>
 <p>BINARY 和 VARBINARY 类类似于 CHAR 和 VARCHAR，不同的是它们包含二进制字符串而不是非二进制字符串。也就是说，它们包含字节字符串而不是字符字符串。这说明它们没有字符集，并且排序和比较基于列值字节的数值。</p>
 <p>BLOB 是一个二进制大对象，可以容纳可变数量的数据，可以存储图片，音视频等文件。有 4 种 BLOB 类型，它们只是可容纳值的最大长度不同。</p>
@@ -373,7 +358,7 @@
 <p>TINYTEXT：大小：0 - 255字节，用途：一般文本字符串</p>
 <p>TEXT：大小：0 - 65 535字节，用途：长文本字符串</p>
 <p>MEDIUMTEXT ：大小：0 - 16 772 150字节，用途：较大文本数据</p>
-<p> LONGTEXT：大小：0 - 4 294 967 295字节，用途：极大文本数据</p>
+<p>LONGTEXT：大小：0 - 4 294 967 295字节，用途：极大文本数据</p>
 </blockquote>
 <p>不过在日常场景中，存储字符串还是尽量用 varchar ，只有要存储长文本数据时，可以使用 text 类型。</p>
 <p>对比 varchar ，text 类型有以下特点</p>
@@ -390,7 +375,7 @@
 <p>数据库规范中一般不推荐使用 blob 及 text 类型，但由于一些历史遗留问题或是某些场景下，还是会用到这两类数据类型的。</p>
 <p><strong>日期时间类型：</strong></p>
 <p>表示时间值的日期和时间类型为 DATETIME、DATE、TIMESTAMP、TIME 和 YEAR。</p>
-<p>每个时间类型有一个有效值范围和一个”零”值，当指定不合法的 MySQL 不能表示的值时使用”零”值。</p>
+<p>每个时间类型有一个有效值范围和一个&quot;零&quot;值，当指定不合法的 MySQL 不能表示的值时使用&quot;零&quot;值。</p>
 <p>TIMESTAMP 类型有专有的自动更新特性。</p>
 <table>
 <thead>
@@ -402,142 +387,119 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>DATE</td>
 <td>3</td>
-<td>1000-01-01&#x2F;9999-12-31</td>
+<td>1000-01-01/9999-12-31</td>
 <td>YYYY-MM-DD</td>
 <td>日期</td>
 </tr>
 <tr>
 <td>DATETIME</td>
 <td>8</td>
-<td>1000-01-01 00:00:00&#x2F;9999-12-31 23:59:59</td>
+<td>1000-01-01 00:00:00/9999-12-31 23:59:59</td>
 <td>YYYY-MM-DD HH:MM:SS</td>
 <td>日期和时间的组合</td>
 </tr>
 <tr>
 <td>TIMESTAMP</td>
 <td>4</td>
-<td>‘1970-01-01 00:00:01’UTC&#x2F;‘2038-01-09 03:14:07’UTC</td>
+<td>'1970-01-01 00:00:01’UTC/'2038-01-09 03:14:07’UTC</td>
 <td>YYYY-MM-DD HH:MM:SS</td>
 <td>时间戳，使用 Unix 纪元(‘1970-01-01 00:00:00’ UTC) 至今的秒数来存储。</td>
 </tr>
 <tr>
 <td>TIME</td>
 <td>3</td>
-<td>‘-838:59:59’&#x2F;‘838:59:59’</td>
+<td>‘-838:59:59’/‘838:59:59’</td>
 <td>HH:MM:SS</td>
 <td>时间</td>
 </tr>
 <tr>
 <td>YEAR</td>
 <td>1</td>
-<td>1901&#x2F;2155</td>
+<td>1901/2155</td>
 <td>YYYY</td>
 <td>2 位或 4 位格式的年份值。4 位格式所允许的值：1901 到 2155。2 位格式所允许的值：70 到 69，表示从 1970 到 2069。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>即便 DATETIME 和 TIMESTAMP 返回相同的格式，它们的工作方式很不同。在 INSERT 或 UPDATE 查询中，TIMESTAMP 自动把自身设置为当前的日期和时间。TIMESTAMP 也接受不同的格式，比如 YYYYMMDDHHMMSS、YYMMDDHHMMSS、YYYYMMDD 或 YYMMDD。</p>
-<h5 id="数据操作"><a href="#数据操作" class="headerlink" title="数据操作"></a>数据操作</h5><p>别名设置，left(),mid(),right(),count(),year(),max(),avg(),sum()函数，if(条件，成立反值，不成立反值)</p>
+<h5 id="数据操作"><a class="markdownIt-Anchor" href="#数据操作"></a> 数据操作</h5>
+<p>别名设置，left(),mid(),right(),count(),year(),max(),avg(),sum()函数，if(条件，成立反值，不成立反值)</p>
 <p>显示表所有数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students;</span><br></pre></td></tr></table></figure>
-
 <p>在字段中查找set类型数据</p>
-<p>find_in_set(s1,s2):返回在字符串s2中与s1匹配的字符串的位置,列中逗号需得是英文”,”</p>
+<p>find_in_set(s1,s2):返回在字符串s2中与s1匹配的字符串的位置,列中逗号需得是英文&quot;,&quot;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在表students中筛选出字段hobby中包含“篮球”的数据</span><br><span class="line">select * from students where find_in_set(&#x27;篮球&#x27;,hobby);</span><br><span class="line">select * from students where age&gt;30 and sex=&#x27;女&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>连接字符串concat</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(username,&#x27;-&#x27;,age) from students;</span><br></pre></td></tr></table></figure>
-
 <p>distinct去重相同数据，后面数据和前面数据合并为一个数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct sex from students;</span><br></pre></td></tr></table></figure>
-
 <p>if表达式  i作为if(条件,成立反值，不成立反值)的字段名，显示大于小于</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select age,if(age&gt;30,&#x27;大于30&#x27;,&#x27;小于等于30&#x27;) i from students;</span><br></pre></td></tr></table></figure>
-
 <p>order排序  desc 降序  asc升序  默认升序可以省略，有重复age时可以用到</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students order by age desc，id desc;</span><br></pre></td></tr></table></figure>
-
 <p><strong>随机获取</strong>3个数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">select * from students order by rand() limit 3;</span><br><span class="line"></span><br><span class="line">rand([seed])可选,如果指定了seed，则返回可重复的随机数序列。如果未指定种子，则返回完全随机的数字。</span><br><span class="line"></span><br><span class="line">返回一个随机十进制数（没有种子值 - 所以它返回一个完全随机的数字&gt; = 0且&lt;1）</span><br><span class="line">&gt;select rand();// 0.10445088809770614</span><br><span class="line"></span><br><span class="line">&gt;select rand(8);//0.15668530311126755</span><br><span class="line">&gt;select rand(8);//再来一次，值还是0.15668530311126755</span><br><span class="line"></span><br><span class="line">返回一个随机十进制数&gt; = 5且&lt;10：rand()*(j-i)+i</span><br><span class="line">&gt;SELECT RAND()*(10-5)+5; //8.627276326182557</span><br><span class="line"></span><br><span class="line">返回一个随机数&gt; = 5且&lt;= 10：floor(rand()*(j-i+1)+i)</span><br><span class="line">&gt;SELECT FLOOR(RAND()*(10-5+1)+5); //10</span><br></pre></td></tr></table></figure>
-
 <p>年龄在10-55之间的同学 between… and…</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from students where age between 10 and 55;</span><br><span class="line">select * from students where age&gt;=10 and age&lt;=55;</span><br></pre></td></tr></table></figure>
-
 <p>查询年龄在23,34,45岁的同学</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students where age in (23,34,45);</span><br></pre></td></tr></table></figure>
-
 <p>字符串截取 left(str,length)，mid(str,pos,len)，right(str,length)</p>
 <p>截取左边开始的2个字符</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select left(username,2) from students;</span><br></pre></td></tr></table></figure>
-
 <p>截取左边第2个字开始的1个字符长度</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select mid(username,2,1) from students;</span><br><span class="line">select * from students where hobby like &#x27;%羽毛球%&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>as+别名：查询结果字段显示别名，as可以省略</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select username as u,age as a from students;</span><br></pre></td></tr></table></figure>
-
-<p> 获得所有人出生年份</p>
+<p>获得所有人出生年份</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select year(birthday) from students;</span><br></pre></td></tr></table></figure>
-
 <p>查看班级有多少男同学</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select count(*) from students where sex=&#x27;男&#x27;;</span><br><span class="line">select count(name) from students where sex=&#x27;男&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>max()最大，sum()求和，avg()求平均值</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select max(age) from students;</span><br><span class="line">错误书写：</span><br><span class="line">select name,max(age) a from students;</span><br><span class="line">由于max()是聚合函数max(age)属于聚合列，而name不是，不兼容报错</span><br></pre></td></tr></table></figure>
-
 <p>男生有多少人</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select sex,count(*) from students group by sex having sex=&#x27;男&#x27;;</span><br></pre></td></tr></table></figure>
-
 <p>插入数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into students set age=18,money=100;</span><br></pre></td></tr></table></figure>
-
 <p>写入多条数据：省略字段名，则默认所有字段</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into students (username,age,sex) values (&#x27;超人&#x27;,18,&#x27;男&#x27;),(&#x27;葫芦娃&#x27;,18,&#x27;男&#x27;)...;</span><br></pre></td></tr></table></figure>
-
 <p>更新数据必须要有主键 ,即主键id,否则视为插入数据</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace into students (id,username,age,sex) values (32,&#x27;超人复仇者联盟222&#x27;,18,&#x27;男&#x27;)</span><br></pre></td></tr></table></figure>
-
 <p>update:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//所有男变为女</span><br><span class="line">update stu_bak set sex=&#x27;女&#x27; where sex=&#x27;男&#x27;;</span><br><span class="line">//更新一条数据的多个字段</span><br><span class="line">update stu set name=&quot;小明&quot;, age=19 where tel=&quot;13288097888&quot;;</span><br></pre></td></tr></table></figure>
-
 <p>replace into 与 update的区别：</p>
 <p><code>REPLACE INTO</code> 和 <code>UPDATE</code> 都是在数据库中更新数据的操作，但<code>REPLACE INTO</code>语句首先尝试插入一条新记录，如果已存在具有相同主键（或唯一键）的记录，则先删除旧记录，然后再插入新记录。 而  <code>UPDATE</code>  语句仅更新现有记录的某些列，不会删除或重新插入记录。</p>
-<p>删除数据<br> delete from 表名  条件</p>
+<p>删除数据<br>
+delete from 表名  条件</p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from students where id=19;</span><br></pre></td></tr></table></figure>
-
 <p>清空所有数据，让id重新从1开始</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truncate students;</span><br></pre></td></tr></table></figure>
-
 <p>显示警告：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show warnings；</span><br></pre></td></tr></table></figure>
-
-<h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5><p>select now();	获得当前日期时间</p>
+<h5 id="其他"><a class="markdownIt-Anchor" href="#其他"></a> 其他</h5>
+<p>select now();	获得当前日期时间</p>
 <p>顺序:where—group by having—order by—limit</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from students where id&gt;4 group by gender having gender=&#x27;女&#x27; order by age limit 1;</span><br></pre></td></tr></table></figure>
-
-<p>使用关键字  需加上”&#96;&#96;”</p>
+<p>使用关键字  需加上&quot;``&quot;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create database `databases`;</span><br><span class="line">drop database `databases`;</span><br></pre></td></tr></table></figure>
-
 <p>查看服务器识别的字符集</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show charset;</span><br></pre></td></tr></table></figure>
-
 <p>服务器默认的跟客户端打交道的字符集</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &#x27;character_set%&#x27;;</span><br></pre></td></tr></table></figure>
-
-<p>查看mysql中的存储过程和函数状态 </p>
+<p>查看mysql中的存储过程和函数状态</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW PROCEDURE STATUS LIKE &#x27;insert_%&#x27;\G</span><br></pre></td></tr></table></figure>
-
-<p>查看设置的过程 </p>
+<p>查看设置的过程</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE PROCEDURE insert_d(过程名)\G</span><br></pre></td></tr></table></figure>
-
-<p>MySQL在<strong>windows</strong>下是不区分大小写的，将script文件导入MySQL后<strong>表名</strong>也会<strong>自动转化</strong>为小写。但再将数据库导出放到linux服务器中使用时就报错了，<br>因为在<strong>linux</strong>下，<strong>表名</strong>区分<strong>大小写</strong>而找不到表，即大小写敏感。可以在linux下更改MySQL的设置使其也不区分大小写，反之要使得在windows下大小写敏感，相应的更改windows中MySQL的设置就行了。</p>
+<p>MySQL在<strong>windows</strong>下是不区分大小写的，将script文件导入MySQL后<strong>表名</strong>也会<strong>自动转化</strong>为小写。但再将数据库导出放到linux服务器中使用时就报错了，<br>
+因为在<strong>linux</strong>下，<strong>表名</strong>区分<strong>大小写</strong>而找不到表，即大小写敏感。可以在linux下更改MySQL的设置使其也不区分大小写，反之要使得在windows下大小写敏感，相应的更改windows中MySQL的设置就行了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="cm4dztqkf0012jali8jjhfwjn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/04/mysql/" data-id="cm4uq3voa0012d7lib8adcwrb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>

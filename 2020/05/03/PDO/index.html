@@ -7,12 +7,12 @@
   
   <title>PDO | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PDO概念PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：mysql_connect mssql：mssql_connect Oracle：oci_connec">
+  <meta name="description" content="PDO概念 PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：mysql_connect mssql：mssql_connect Oracle：oci_conn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PDO">
 <meta property="og:url" content="http://yoursite.com/2020/05/03/PDO/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="PDO概念PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：mysql_connect mssql：mssql_connect Oracle：oci_connec">
+<meta property="og:description" content="PDO概念 PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例： MySQL：mysql_connect mssql：mssql_connect Oracle：oci_conn">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2020/05/03/PDO/1578973184.jpg">
 <meta property="og:image" content="http://yoursite.com/2020/05/03/PDO/1578973501.jpg">
@@ -93,12 +93,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="PDO概念"><a href="#PDO概念" class="headerlink" title="PDO概念"></a><strong>PDO概念</strong></h3><p>PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例：</p>
+        <h3 id="pdo概念"><a class="markdownIt-Anchor" href="#pdo概念"></a> <strong>PDO概念</strong></h3>
+<p>PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例：</p>
 <p>MySQL：<strong>mysql_connect</strong></p>
 <p>mssql：<strong>mssql_connect</strong></p>
 <p>Oracle：<strong>oci_connect</strong></p>
 <span id="more"></span>
-
 <p>所以，如果PHP要切换不同的数据库，就要切换不同的数据库操作函数：</p>
 <p>这样，无论从程序员学习的角度，还是从程序员开发的角度，都很麻烦！</p>
 <p>于是PDO就问世了，能把对所有数据库都统一成相同的操作以实现相同的目的</p>
@@ -106,24 +106,22 @@
 <p>在新版本的PHP（PHP5以上）中，PHP为用户封装了一套PDO扩展库，专门用来操作不同类型的数据库！</p>
 <p><strong>同php需要开启MySQL扩展和GD库扩展一样,以前需要手动的在php.ini中开启PDO扩展，现在默认开启</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extension=php_pdo.dll  现在已经没有这行，默认开启pdo</span><br></pre></td></tr></table></figure>
-
 <p>我们首先应该学习pdo的构造方法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PDO::__construct(string $dsn[,string $username[,string $password[,array $driver _options]]])</span><br><span class="line"></span><br><span class="line">$dsn：data source name数据源名称，其实就是告诉PDO类应该选择哪种类型的数据库，主机名和端口号是什么，选择哪个数据库以及采用什么样的字符编码！</span><br><span class="line">$username：数据库的用户名</span><br><span class="line">$password：数据库的密码</span><br><span class="line">$driver_options：附加驱动信息，暂时用默认</span><br><span class="line"></span><br><span class="line">$dbms=&#x27;mysql&#x27;;//哪种类型的数据库</span><br><span class="line">$host=&#x27;localhost&#x27;;//主机名</span><br><span class="line">$port=&#x27;3306&#x27;;//端口号</span><br><span class="line">$dbname=&#x27;php2017&#x27;;//哪个数据库</span><br><span class="line">$charset=&#x27;utf8&#x27;;//字符编码</span><br><span class="line">$dsn=&quot;$dbms:host=$host;port=$port;dbname=$dbname;charset=$charset&quot;;</span><br></pre></td></tr></table></figure>
-
 <p><strong>dpo实现-增删改</strong></p>
-<p>$pdo&#x3D;new PDO($dsn.$user,$pass);</p>
-<p>$sql&#x3D;”insert into student values(null,’如来’，‘丽丽’)”；</p>
-<p>$result&#x3D;$pdo-&gt;exec($sql)</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>d</mi><mi>o</mi><mo>=</mo><mi>n</mi><mi>e</mi><mi>w</mi><mi>P</mi><mi>D</mi><mi>O</mi><mo stretchy="false">(</mo></mrow><annotation encoding="application/x-tex">pdo=new PDO(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">d</span><span class="mord mathnormal">o</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span></span></span></span>dsn.<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mi>s</mi><mi>e</mi><mi>r</mi><mo separator="true">,</mo></mrow><annotation encoding="application/x-tex">user,</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">u</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mpunct">,</span></span></span></span>pass);</p>
+<p>$sql=“insert into student values(null,‘如来’，‘丽丽’)”；</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mi>u</mi><mi>l</mi><mi>t</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">result=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>pdo-&gt;exec($sql)</p>
 <p>PDO::exec()在执行一条sql语句，返回受此语句影响的行数</p>
-<p>PDO::lastInstertId([string $name&#x3D;null]),返回最后插入的记录的主键id号</p>
+<p>PDO::lastInstertId([string $name=null]),返回最后插入的记录的主键id号</p>
 <p>删除和更新，其实就是修改$sql语句就行了！</p>
 <p><strong>dpo实现-查</strong></p>
-<p>$sql&#x3D;“select * from student”;</p>
-<p>$result&#x3D;$pdo-&gt;query($sql);&#x2F;&#x2F;执行一条sql查询语句,返回一个PDOStatement类的对象，也叫作结果对象。</p>
+<p>$sql=“select * from student”;</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>e</mi><mi>s</mi><mi>u</mi><mi>l</mi><mi>t</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">result=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>pdo-&gt;query($sql);//执行一条sql查询语句,返回一个PDOStatement类的对象，也叫作结果对象。</p>
 <p>rowCount  获取查询结果中的总记录数（总行数）</p>
 <p>columnCount  获取查询结果中的总字段数（总列数）</p>
 <p>在实际的应用中，获取总记录数的操作比较多</p>
-<p><strong>fetch</strong> </p>
+<p><strong>fetch</strong></p>
 <p>每次从PDOStatement结果集中，获取<strong>一条</strong>记录，同时将指针下移，其中该方法有一个参数，可以控制返回值的类型！</p>
 <p>PDO::FETCH_ASSOC返回一个<strong>关联型的数组</strong>，数组的下标就是字段的名字！效果类似于以前的mysql_fetch_assoc</p>
 <p>PDO::FETCH_NUM 返回一 个<strong>索引数组</strong>，效果类似于以前的mysql_fetch_row</p>
@@ -131,64 +129,59 @@
 <p>PDO::FETCH_OBJ 返回一个对象，其中对象的属性就是字段的值！</p>
 <p>FETCH_ASSOC使用最多，利用fetch方法实现对结果集的遍历！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$rows=[];</span><br><span class="line">while($row=$stmt-&gt;fetch(PDO::FETCH_ASSOC))&#123;</span><br><span class="line">    $rows[]=$row;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>fetchAll 返回一个结果集中所有的记录，形成一个二维数组，比较适合多行多列的结果集的提取</p>
 <p>fetchcolumn 每次获取指定的某一列信息中的一条记录，并将指针下移！第一列参数为0，第二列为1，依次类推！例如：var_dump($stmt-&gt;fetchcolumn (5))可用于遍历</p>
 <p>fetchobject 每次读取一条记录放到一个对象中，并使指针下移！</p>
-<h3 id="mysql、pdo的预处理技术"><a href="#mysql、pdo的预处理技术" class="headerlink" title="mysql、pdo的预处理技术"></a><strong>mysql、pdo的预处理技术</strong></h3><h4 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h4><p>插入多条数据</p>
+<h3 id="mysql-pdo的预处理技术"><a class="markdownIt-Anchor" href="#mysql-pdo的预处理技术"></a> <strong>mysql、pdo的预处理技术</strong></h3>
+<h4 id="mysql"><a class="markdownIt-Anchor" href="#mysql"></a> mysql</h4>
+<p>插入多条数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into php_student values(null,&#x27;孙悟空&#x27;，&#x27;&#x27;XXXX)</span><br><span class="line">insert into php_student values(null,&#x27;孙悟空&#x27;，&#x27;&#x27;XXXX)</span><br><span class="line">.....</span><br></pre></td></tr></table></figure>
-
 <p>每次执行的sql语句的命令和结构都是一样的，只是其中的数据不同,采用传统的执行方式，每次都必须传输整条sql语句，对于MySQL服务器而言，得到的每一次的命令都是全新，都是根据sql语句从0解析并执行！</p>
 <p>（实际上我使用以下方法，照样一次执行，这里是做个历史介绍）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO `yy_news`(`logo`, `title`, `keywords`, `digest`, `content`, `type`, `addtime`, `recommend`) VALUES ( &#x27;kj&#x27;, &#x27;设备&#x27;, &#x27;45sjksdj&#x27;, &#x27;Shopset&#x27;, &#x27;printer&#x27;,1, 56555448, 1),(&#x27;kj2&#x27;, &#x27;打备3&#x27;, &#x27;45sjksdj&#x27;, &#x27;Shopset&#x27;, &#x27;printer&#x27;,1, 56555448, 1);</span><br></pre></td></tr></table></figure>
-
 <p>采用预处理机制优化</p>
 <p>将前面相同的命令和结构部分发送给MySQL服务器，让MySQL服务器事先进行一次预处理（此时并没有真正的执行sql语句），而为了保证sql语句的结构完整性，在第一次发送sql语句的时候将其中可变的数据部分都用一个数据占位符来表示,比如问号？就是常见的数据占位符！</p>
 <p><strong>不带参数的预处理</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1、准备预处理语句</span><br><span class="line">语法形式:prepare 语句名称 from “预处理的sql语句”;</span><br><span class="line">mysql&gt;prepare sql_1 from “select * from student”;</span><br><span class="line">2、执行预处理语句</span><br><span class="line">语法形式：execute 语句名称；</span><br><span class="line">execute sql_1;</span><br><span class="line">mysql&gt;execute sql_1;</span><br><span class="line">3、删除预处理</span><br><span class="line">语法形式：drop prepare 语句名称;</span><br><span class="line">mysql&gt;drop prepare sql_1;</span><br><span class="line">删除之后，就不能再执行预处理语句了！</span><br></pre></td></tr></table></figure>
-
 <p><strong>传参的预处理</strong></p>
 <p>以之前不带参数的差不多，只是其中可变的数据部分用一个数据占位符来表示</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1、准备预处理语句</span><br><span class="line">mysql&gt;prepare sql_1 from “select * from student where id=?”;//?为数据占位符</span><br><span class="line">2、定义参数变量</span><br><span class="line">语法形式：set @变量名 = 值；//@是在MySQL中定义变量的一种语法形式（类比php中的$符号）</span><br><span class="line">mysql&gt;set @id=5;</span><br><span class="line">3、传递参数变量并执行预处理语句</span><br><span class="line">语法形式：execute 语句名称 using 参数变量;//注意：using后面只能是参数变量不能是一个常量！</span><br><span class="line">mysql&gt;execute sql_2 using @id;//想查询其他的记录，只需要修改@id的值就行了</span><br><span class="line">数据占位符不止一个，就按数据占位符的顺序传参就行了</span><br><span class="line">mysql&gt;prepare sql_1 from “select * from student where id=? &amp;&amp; score&lt;?”;</span><br><span class="line">mysql&gt;set @id=5;</span><br><span class="line">mysql&gt;set @score=55;</span><br><span class="line">mysql&gt;execute sql_2 using @id,@score;</span><br><span class="line">4、删除预处理</span><br><span class="line">语法形式：drop prepare 语句名称;</span><br><span class="line">（传入变量可以使用增删改）</span><br></pre></td></tr></table></figure>
-
-<h4 id="PDO"><a href="#PDO" class="headerlink" title="PDO"></a>PDO</h4><p>基本的原理和mysql预处理都是一样的，只不过就是把前面所有命令行的语法封装成了PDO对象的几个公开的方法而已</p>
+<h4 id="pdo"><a class="markdownIt-Anchor" href="#pdo"></a> PDO</h4>
+<p>基本的原理和mysql预处理都是一样的，只不过就是把前面所有命令行的语法封装成了PDO对象的几个公开的方法而已</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">1、发送预处理语句</span><br><span class="line">调用pdo对象的prepare方法，得到一个PDOStatement结果对象</span><br><span class="line">$pdo=new PDO($dsn.$user,$pass);</span><br><span class="line">$stmt=$pdo-&gt;prepare($sql);</span><br><span class="line">2、绑定参数</span><br><span class="line">调用PDOStatement对象中的bindParam方法</span><br><span class="line">$stmt-&gt;bindParam(1,$name)//1代表第一个数据占位符</span><br><span class="line">使用bindParam方法绑定的时候不能使用常量直接绑定，因为此时绑定的数据与数据占位符之间是一种引用传递，只能用变量；另外，还可用bindValue，与前者的区别是后者与数据占位符之间是一种值传递</span><br><span class="line">3、执行预处理语句</span><br><span class="line">调用PDOStatement对象中的execute方法，如果执行成功，就返回true，如果执行失败就返回false！</span><br><span class="line">$result=$stmt-&gt;execute();</span><br><span class="line">if(result)&#123;</span><br><span class="line">    echo &#x27;执行成功！&#x27;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    echo &#x27;执行失败！&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-------------------------------使用变量 作为数据占位符</span><br><span class="line">$sql=&quot;insert into php_student values</span><br><span class="line">    (null,:name.:gender,:class_id,.....)&quot;</span><br><span class="line">$stmt=$pdo-&gt;prepare($sql);</span><br><span class="line">$name=&#x27;观世音&#x27;；</span><br><span class="line">$gender=&#x27;female&#x27;；</span><br><span class="line">$class_id=23;</span><br><span class="line">...</span><br><span class="line">$stmt-&gt;bindParam(&#x27;:name&#x27;,$name);</span><br><span class="line">$stmt-&gt;bindParam(&#x27;:gender&#x27;,$gender);</span><br><span class="line">$stmt-&gt;bindParam(&#x27;:class_id&#x27;,$class_id);</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">-----------------------------------使用数组 绑定参数</span><br><span class="line">使用数组以键值对的形式，实现保存数据占位符与值的对应关系</span><br><span class="line">$arr=[</span><br><span class="line">    &#x27;:name&#x27;    =&gt;$name,</span><br><span class="line">    &#x27;:gender&#x27;  =&gt;$gender，</span><br><span class="line">    &#x27;:class_id&#x27;=&gt;$class_id,</span><br><span class="line">    .....</span><br><span class="line">];</span><br><span class="line">$result=$stmt-&gt;execute($arr);</span><br><span class="line">if(result)&#123;</span><br><span class="line">    echo &#x27;执行成功！&#x27;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    echo &#x27;执行失败！&#x27;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="PDO事务处理"><a href="#PDO事务处理" class="headerlink" title="PDO事务处理"></a>PDO事务处理</h3><p>student表有id&#x2F;name&#x2F;money字段</p>
-<p>inster into student （id,name,money）values (1,’张三’,2000),(2,’李四‘，7000)；</p>
+<h3 id="pdo事务处理"><a class="markdownIt-Anchor" href="#pdo事务处理"></a> PDO事务处理</h3>
+<p>student表有id/name/money字段</p>
+<p>inster into student （id,name,money）values (1,‘张三’,2000),(2,'李四‘，7000)；</p>
 <p>线张三找李四借1000，则</p>
-<p>update student set money&#x3D;money-1000 where name&#x3D;’李四’；</p>
-<p>update student set money&#x3D;money+1000 where name&#x3D;’张三’；</p>
+<p>update student set money=money-1000 where name=‘李四’；</p>
+<p>update student set money=money+1000 where name=‘张三’；</p>
 <p>update语句是两个独立的sql语句，MySQL服务器需要独立的执行两次！但是从业务逻辑上看，这两个sql语句必须全部执行成功整个业务逻辑才算是执行成功！只要有一个执行失败，就不符合正常的业务逻辑！</p>
-<p><strong>事务：</strong>将上面的两个操作（两个update）认为是一个事务，其中有任意一条语句执行失败，我们就认为整个事务执行失败！应该回滚“恢复”到最初的状态！<strong>注意：</strong>目前只有InnoDB引擎才支持事务处理</p>
-<h4 id="MySQL的事务处理"><a href="#MySQL的事务处理" class="headerlink" title="MySQL的事务处理"></a><strong>MySQL的事务处理</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、开启事务</span><br><span class="line">语法形式：</span><br><span class="line">start transaction;</span><br><span class="line">mysql&gt;start transaction;</span><br><span class="line">2、执行sql语句</span><br><span class="line">mysql&gt;update student set money=money-1000 where name=&#x27;李四&#x27;；</span><br></pre></td></tr></table></figure>
-
+<p>**事务：**将上面的两个操作（两个update）认为是一个事务，其中有任意一条语句执行失败，我们就认为整个事务执行失败！应该回滚“恢复”到最初的状态！**注意：**目前只有InnoDB引擎才支持事务处理</p>
+<h4 id="mysql的事务处理"><a class="markdownIt-Anchor" href="#mysql的事务处理"></a> <strong>MySQL的事务处理</strong></h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、开启事务</span><br><span class="line">语法形式：</span><br><span class="line">start transaction;</span><br><span class="line">mysql&gt;start transaction;</span><br><span class="line">2、执行sql语句</span><br><span class="line">mysql&gt;update student set money=money-1000 where name=&#x27;李四&#x27;；</span><br></pre></td></tr></table></figure>
 <p><img src="/2020/05/03/PDO/1578973184.jpg" alt="image-20200114113957357"></p>
-<p><strong>注意：</strong>当我们开启一个事务的时候，我们对sql的操作都发生在内存中，但是没有真正的反馈到数据库磁盘的文件中！可以开启另外一个客户端进行查看数据，数据并没有变化，还是7000。所以，如果此时李四反悔了，可以进行回滚操作！</p>
+<p>**注意：**当我们开启一个事务的时候，我们对sql的操作都发生在内存中，但是没有真正的反馈到数据库磁盘的文件中！可以开启另外一个客户端进行查看数据，数据并没有变化，还是7000。所以，如果此时李四反悔了，可以进行回滚操作！</p>
 <p><strong>回滚事务</strong></p>
 <p>语法形式：rollback;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;rollback;</span><br></pre></td></tr></table></figure>
-
 <p>所谓的事务的回滚，就是恢复到事务开启之前的最原始的状态！</p>
-<p><strong>注意：</strong>回滚操作会自动的关闭一个事务，如果想再次执行事务，需要重新开启事务！</p>
+<p>**注意：**回滚操作会自动的关闭一个事务，如果想再次执行事务，需要重新开启事务！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt;start transaction;</span><br><span class="line">mysql&gt;update student set money=money-1000 where name=&#x27;李四&#x27;；</span><br><span class="line">mysql&gt;update student set money=money+1000 where name=&#x27;张三&#x27;；</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/05/03/PDO/1578973501.jpg" alt="image-20200114114457458"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3、执行事务</span><br><span class="line">语法形式：</span><br><span class="line">commit;</span><br><span class="line">mysql&gt;commit;</span><br><span class="line">到此为止，整个事务处理完毕！通过另外一个客户端进行查看</span><br></pre></td></tr></table></figure>
-
 <p><img src="/2020/05/03/PDO/1578973649.jpg" alt="image-20200114114725386"></p>
-<p><strong>原理：</strong>普通的执行，之所以是立即执行并生效，因为默认的，MySQL对sql语句的执行是自动提交的！</p>
+<p>**原理：**普通的执行，之所以是立即执行并生效，因为默认的，MySQL对sql语句的执行是自动提交的！</p>
 <p>所以，开启一个事务的本质，就是关闭了以前的自动提交的功能，而是由用户手动提交（利用commit语句）！</p>
 <p>开启事务的另一种方式，关闭自动提交的功能关闭！</p>
-<p>语法形式为：set autocommit &#x3D; 0;</p>
-<p>mysql&gt;set autocommit &#x3D; 0;</p>
+<p>语法形式为：set autocommit = 0;</p>
+<p>mysql&gt;set autocommit = 0;</p>
 <p>此时，每次执行sql语句都需要手动的进行提交</p>
-<h4 id="PDO的事务处理"><a href="#PDO的事务处理" class="headerlink" title="PDO的事务处理"></a><strong>PDO的事务处理</strong></h4><p>基本原理和步骤其实都是一样的，就是调用PDO对象的三个方法：</p>
+<h4 id="pdo的事务处理"><a class="markdownIt-Anchor" href="#pdo的事务处理"></a> <strong>PDO的事务处理</strong></h4>
+<p>基本原理和步骤其实都是一样的，就是调用PDO对象的三个方法：</p>
 <p>开启事务：beginTransaction</p>
 <p>回滚操作：rollBack</p>
 <p>执行操作：commit\</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$pdo-&gt;beginTransaction();</span><br><span class="line">$falg=true;</span><br><span class="line">$sql=&quot;update student set money=money-1000 where name=&#x27;李四&#x27;&quot;;</span><br><span class="line">$result=$pdo-&gt;exec($sql);</span><br><span class="line">if($result)&#123;</span><br><span class="line">    $flag=false;</span><br><span class="line">&#125;</span><br><span class="line">$sql=&quot;update student set money=money+1000 where name=&#x27;张三&#x27;&quot;;</span><br><span class="line">$result=$pdo-&gt;exec($sql);</span><br><span class="line">if($result)&#123;</span><br><span class="line">    $flag=false;</span><br><span class="line">&#125;</span><br><span class="line">if($flag)&#123;</span><br><span class="line">    $pdo-&gt;commit()</span><br><span class="line">    echo &#x27;成功&#x27;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    $pdo-&gt;rollBack();</span><br><span class="line">    echo &#x27;失败&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>PDO相关属性（参数）</p>
 <p>虽然PDO所有的属性都不是public型，但是还是可以通过两个<strong>方法</strong>来设置和查看PDO的属性：</p>
 <p>setAttribute：设置属性</p>
@@ -202,32 +195,29 @@
 <p>CASE_UPPER：返回的结果集全部大写！</p>
 <p>CASE_NATURAL：返回的结果集正常（默认值，原来数据库中什么样现在返回的还是什么样）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$pdo=new PDO($dsn,$user,$pass);</span><br><span class="line">$pdo-&gt;setAttribute(PDO::ATTRCASE,DO：：CASE_UPPER);//设置结果集全部为大写</span><br></pre></td></tr></table></figure>
-
 <p><u>PDO::ATTR_ERRMODE：</u>返回的错误模式</p>
-<h3 id="pdo异常处理"><a href="#pdo异常处理" class="headerlink" title="pdo异常处理"></a>pdo异常处理</h3><p><strong>异常的概念:</strong></p>
+<h3 id="pdo异常处理"><a class="markdownIt-Anchor" href="#pdo异常处理"></a> pdo异常处理</h3>
+<p><strong>异常的概念:</strong></p>
 <p>异常，其实就是错误，不过是在面向对象编程语言中的一种典型的错误处理方式！所谓的异常，就是把错误信息，放到一个 对象中！</p>
 <p>但是，异常的发生有一个前提，就是必须保证语法是正确的！</p>
 <p><strong>异常的处理:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">首先要发生异常！</span><br><span class="line"></span><br><span class="line">**所谓的发生**，指的是抛出一个异常！</span><br><span class="line"></span><br><span class="line">然后是处理异常！</span><br><span class="line"></span><br><span class="line">**所谓的处理**，就是一旦异常出现，要得到并处理这个异常，通常有两个阶段组成：监听和捕获！</span><br></pre></td></tr></table></figure>
-
 <p><strong>抛出异常，throw</strong></p>
 <p>抛出异常其实就是利用throw关键字来完成的，语法形式为：throw 异常;</p>
 <p>注意：</p>
 <p>这里的异常，其实就是一个异常对象，这个对象必须是由系统预定义的异常类（类名为Exception）或者其子类实例化出来的！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class Goods &#123;</span><br><span class="line">    public function getPrice()&#123;</span><br><span class="line">        if($price&lt;0)&#123;</span><br><span class="line">            $e=new Exception($message=&#x27;价格不能为负值&#x27;);</span><br><span class="line">            throw $e;//抛出异常对象</span><br><span class="line">         &#125;else&#123;</span><br><span class="line">                echo $price;//正常情况</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>以上只是抛出了一个异常，并没有进行监听和捕获！（类比抛绣球招亲）</p>
 <p><strong>异常监听，try</strong></p>
 <p>利用关键字try可以监听一段有可能出现异常的代码内，来监听是否发生了异常！</p>
 <p>语法为：try{被监听的代码段;}catch(){}</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">try&#123;//对代码进行监听</span><br><span class="line">    $book=new Goods;</span><br><span class="line">    $book=getPrice();</span><br><span class="line">&#125;catch(Exception $e)&#123;//捕获异常</span><br><span class="line">    echo $e-&gt;getmessage(),&#x27;&lt;br/&gt;&#x27;;</span><br><span class="line">    echo $e-&gt;getCode(),&#x27;&lt;br/&gt;&#x27;;</span><br><span class="line">    echo $e-&gt;getFile(),&#x27;&lt;br/&gt;&#x27;;</span><br><span class="line">    echo $e-&gt;getLine(),&#x27;&lt;br/&gt;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>PDO中处理错误的方式，即设置PDO::ATTR_ERRMODE</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/03/PDO/" data-id="cm4dztqjw000cjalift597k3b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/03/PDO/" data-id="cm4uq3vnr000cd7li8hs1fgcz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li></ul>

@@ -7,12 +7,12 @@
   
   <title>mongoDB02 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mongodb与Redis应用指标对比MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式">
+  <meta name="description" content="Mongodb与Redis应用指标对比 MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于 二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mongoDB02">
 <meta property="og:url" content="http://yoursite.com/2021/03/10/mongoDB02/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="Mongodb与Redis应用指标对比MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式">
+<meta property="og:description" content="Mongodb与Redis应用指标对比 MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于 二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2021/03/10/mongoDB02/1585194946.jpg">
 <meta property="og:image" content="http://yoursite.com/2021/03/10/mongoDB02/1585195293.jpg">
@@ -96,9 +96,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Mongodb与Redis应用指标对比"><a href="#Mongodb与Redis应用指标对比" class="headerlink" title="Mongodb与Redis应用指标对比"></a><strong>Mongodb与Redis应用指标对比</strong></h3><p>MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于<br>二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式</p>
+        <h3 id="mongodb与redis应用指标对比"><a class="markdownIt-Anchor" href="#mongodb与redis应用指标对比"></a> <strong>Mongodb与Redis应用指标对比</strong></h3>
+<p>MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于<br>
+二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式</p>
 <span id="more"></span>
-
 <table>
 <thead>
 <tr>
@@ -108,10 +109,11 @@
 <th>比较说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>实现语言</td>
 <td>C++</td>
-<td>C&#x2F;C++</td>
+<td>C/C++</td>
 <td>-</td>
 </tr>
 <tr>
@@ -168,24 +170,26 @@
 <td>较小数据量的性能及运算</td>
 <td>MongoDB优于Redis</td>
 </tr>
-</tbody></table>
-<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><p>接口开发分类：</p>
+</tbody>
+</table>
+<h2 id="mongodb"><a class="markdownIt-Anchor" href="#mongodb"></a> mongodb</h2>
+<p>接口开发分类：</p>
 <p>1调用第三方接口</p>
 <p>2编写自己程序或产品的接口，给第三方用</p>
 <p>循环中添入实例化redis对象，会导致内存耗尽，发生ddos</p>
-<h3 id="nosql相关"><a href="#nosql相关" class="headerlink" title="nosql相关"></a>nosql相关</h3><p>Mongodb是一种数据库，nosql(not only sql),不仅仅sql。Nosql叫做非关系型数据库。</p>
+<h3 id="nosql相关"><a class="markdownIt-Anchor" href="#nosql相关"></a> nosql相关</h3>
+<p>Mongodb是一种数据库，nosql(not only sql),不仅仅sql。Nosql叫做非关系型数据库。</p>
 <p>关系型数据库：mysql(sun公司（做java的）-》oracle[甲骨文]),oracle（甲骨文公司），mariadb（mysql的一个分支），DB2(IBM[蓝色巨人]),sqlserver（c#,微软.net开发平台），sqlite(手机用的)</p>
-<p>同为Nosql的产品:redis(key-vlaue,登录list双向链表，set集合合并（好友，朋友圈，共同的好友[交集]）),memcache(key&#x3D;&gt;value缓存服务).</p>
+<p>同为Nosql的产品:redis(key-vlaue,登录list双向链表，set集合合并（好友，朋友圈，共同的好友[交集]）),memcache(key=&gt;value缓存服务).</p>
 <p><strong>数据存储量</strong></p>
 <p>mysql数据库存储的数据量：1000万以内，数据库性能都可以，上亿条则数据库性能有降低，进行mysql优化，当然和服务器性能有关系</p>
-<p>oracle：几亿—-几十亿 ，数据库性能有保障，商业付费高</p>
+<p>oracle：几亿----几十亿 ，数据库性能有保障，商业付费高</p>
 <p>mongodb单表存储的数据可以是PB级的</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1024B---&gt;1kb</span><br><span class="line">1024KB---&gt;1M</span><br><span class="line">1024M------&gt;1G</span><br><span class="line">1024G------&gt;1T</span><br><span class="line">1024T------&gt;1PB</span><br><span class="line">1024PB-----&gt;1EB</span><br><span class="line">1024EB-----&gt;1ZB</span><br><span class="line">1024ZB----&gt;1YB</span><br></pre></td></tr></table></figure>
-
 <p>加索引，牺牲写入的速度，提高查询的速度</p>
 <p><img src="/2021/03/10/mongoDB02/1585194946.jpg" alt="1585194946"></p>
 <p><strong>结构特点</strong></p>
-<p>Mysql 需要前期设计数据库，库-&gt;表-&gt;字段。多个表的设计，关联操作（连表查询，union，left，right）。每个字段都有一个类型（char，varchar，int, date…..)</p>
+<p>Mysql 需要前期设计数据库，库-&gt;表-&gt;字段。多个表的设计，关联操作（连表查询，union，left，right）。每个字段都有一个类型（char，varchar，int, date…)</p>
 <p>mysql：数据库、数据表、记录</p>
 <p>mongodb: 数据库、集合、文档(document)。不支持联表</p>
 <p><img src="/2021/03/10/mongoDB02/1585195293.jpg" alt="1585194946"></p>
@@ -194,133 +198,122 @@
 <p>重要：行的余额信息，事务（后一个任务执行没成功，前一个就回滚）</p>
 <p>不太重要：微博的评论，淘宝的评论，网站流量的统计</p>
 <p><img src="/2021/03/10/mongoDB02/1585203681.jpg" alt="1585208299"></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>Mysql 先得去创建一个库，然后创建一个表，设计字段</p>
+<h3 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h3>
+<h3 id="基本操作"><a class="markdownIt-Anchor" href="#基本操作"></a> 基本操作</h3>
+<p>Mysql 先得去创建一个库，然后创建一个表，设计字段</p>
 <p>Mongodb ‘无状态模式’，不用去设计，直接用，存什么东西，取决于前边传后边存什么。</p>
-<p>Mongodb node.js(javascript语法的后端语言)，切图仔（html&#x2F;css），大前端（懂后端，应用js、js框架）,全栈工程师(前后端)。架构师（主要后端+服务器优化设置）</p>
+<p>Mongodb node.js(javascript语法的后端语言)，切图仔（html/css），大前端（懂后端，应用js、js框架）,全栈工程师(前后端)。架构师（主要后端+服务器优化设置）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.getName()//获取当前数据库名称</span><br><span class="line">test</span><br><span class="line">&gt;use php48//创建数据库  有就用，没有自动创建一个</span><br><span class="line">php48</span><br><span class="line">&gt;db.getName()</span><br><span class="line">php48</span><br><span class="line">&gt;db.stats()//查看数据库状态</span><br><span class="line">。。。</span><br><span class="line">&gt;x=100//简单运算</span><br><span class="line">100</span><br><span class="line">&gt;y=100</span><br><span class="line">100</span><br><span class="line">&gt;x+y</span><br><span class="line">200</span><br><span class="line">&gt;z=2</span><br><span class="line">2</span><br><span class="line">&gt;z*y</span><br><span class="line">200</span><br><span class="line">&gt;y-z</span><br><span class="line">98</span><br><span class="line">&gt;db.help()查看数据库相关帮助信息</span><br><span class="line">。。。</span><br></pre></td></tr></table></figure>
-
-<h4 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a><strong>写入数据</strong></h4><p>Bson格式（类Json格式）</p>
+<h4 id="写入数据"><a class="markdownIt-Anchor" href="#写入数据"></a> <strong>写入数据</strong></h4>
+<p>Bson格式（类Json格式）</p>
 <p>当前数据库.集合.行为（{)}</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">示例：&gt;db.goods.insert(&#123;name:&#x27;huawei01&#x27;,price:1000,weight:135,number:35&#125;)//插入</span><br><span class="line">&gt;</span><br><span class="line">&gt;db.goods.insert(&#123;name:&#x27;xiaomi5&#x27;,price:1999,weight:156,number:45,area:&#123;province:&#x27;beijing&#x27;,city:&#x27;beijing&#x27;&#125;&#125;)//插入多维数据对象</span><br><span class="line">&gt;db.数据表.insert([&#123;&#125;,&#123;&#125;,&#123;&#125;.......])一次性插入多条数据</span><br><span class="line">&gt;db.goods.insert(&#123;name:&#x27;xiaomimax&#x27;,price:2000,weight:180,number:100,area:&#123;province:&#x27;beijing&#x27;,city:&#x27;beijing&#x27;&#125;,color:[&#x27;blank&#x27;,&#x27;white&#x27;,&#x27;red&#x27;]&#125;)//插入数组信息</span><br><span class="line">db.集合名称.save(文档)</span><br><span class="line">_id如果数据不存在则添加，如果数据存在则修改（必须是下划线_id,不能是id）</span><br><span class="line"></span><br><span class="line">新增数据的另外一种方法，使用一个变量接收</span><br><span class="line">&gt;stu=&#123;name:&#x27;tom&#x27;,age:12&#125;</span><br><span class="line">&gt;db.text.insert(stu)</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.goods.find()//db.数据表.find() 查询数据表的全部数据</span><br><span class="line">&gt;db.数据表.findOne()  //查询数据表的第一条数据</span><br><span class="line">&gt;db.goods.find(&#123;name:huawei01&#125;)//查询name=huawei01的记录信息 Bson格式</span><br><span class="line">&gt; db.数据表.findOne(条件)//返回满足结果里的第一条信息</span><br><span class="line"></span><br><span class="line">mongodb的find().pretty()方法的作用。</span><br><span class="line">使得查询出来的数据在命令行中更加美观的显示，不至于太紧凑。</span><br></pre></td></tr></table></figure>
-
+<h4 id="查询"><a class="markdownIt-Anchor" href="#查询"></a> 查询</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.goods.find()//db.数据表.find() 查询数据表的全部数据</span><br><span class="line">&gt;db.数据表.findOne()  //查询数据表的第一条数据</span><br><span class="line">&gt;db.goods.find(&#123;name:huawei01&#125;)//查询name=huawei01的记录信息 Bson格式</span><br><span class="line">&gt; db.数据表.findOne(条件)//返回满足结果里的第一条信息</span><br><span class="line"></span><br><span class="line">mongodb的find().pretty()方法的作用。</span><br><span class="line">使得查询出来的数据在命令行中更加美观的显示，不至于太紧凑。</span><br></pre></td></tr></table></figure>
 <p><img src="/2021/03/10/mongoDB02/1585208299.jpg" alt="1585208299"></p>
 <p>该id字段的内容值 是mongodb本身算法获得出来的，该id对应的值信息在”全球唯一”；相当于我们mysql表里的主键id,是唯一的。</p>
 <p>好处：mongo的数据做升级、迁移比较方便，该_id可以自行设置，但是不推荐</p>
 <p><img src="/2021/03/10/mongoDB02/1585208299.jpg" alt="1585208299"></p>
-<h5 id="范围条件查询"><a href="#范围条件查询" class="headerlink" title="范围条件查询"></a><strong>范围条件查询</strong></h5><p>关键字：$gt  $lt  $gte  $lte  mysql关键字： &gt;  &lt;  &gt;&#x3D;  &lt;&#x3D;</p>
+<h5 id="范围条件查询"><a class="markdownIt-Anchor" href="#范围条件查询"></a> <strong>范围条件查询</strong></h5>
+<p>关键字：$gt  $lt  $gte  $lte  mysql关键字： &gt;  &lt;  &gt;=  &lt;=</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.goods.find(&#123;price:&#123;‘$gt’:1005&#125;&#125;)//查询价格大于1005元的商品</span><br><span class="line">注意:关键字$gt左右必须有引号，单双都可以  命令行：单双引号都可以</span><br><span class="line">                                      php：只能使用单引号</span><br></pre></td></tr></table></figure>
-
-<h5 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a><strong>多条件查询</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.数据表.find(&#123;条件,条件,条件&#125;)//相当于mysql里面的and条件操作</span><br><span class="line">第一个参数必须要有，如果没有条件的话，就是&#123;&#125;</span><br><span class="line">db.goods.find(&#123;price:&#123;‘$gt’:1000&#125;,weight:&#123;‘$lt’:100&#125;&#125;)</span><br><span class="line">db.goods.find(&#123;price:&#123;&#x27;$gt&#x27;:1000&#125;,weight:50&#125;)//严格等于的条件</span><br></pre></td></tr></table></figure>
-
-<h5 id="多维字段的查询"><a href="#多维字段的查询" class="headerlink" title="多维字段的查询"></a><strong>多维字段的查询</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.表.find(&#123;‘key.name’:值&#125;)</span><br><span class="line">&gt;db.goods.find(&#123;&#x27;area.city&#x27;:nanjing&#125;)</span><br><span class="line">db.表.find(&#123;key.name:&#123;‘$gt’:值&#125;&#125;)</span><br><span class="line">db.表.find(&#123;key.name:&#123;‘$gt’:值&#125;,key2.name2:&#123;‘$lt’:值&#125;&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="数组条件"><a href="#数组条件" class="headerlink" title="数组条件"></a><strong>数组条件</strong></h4><p>db.表.find({字段(数组):val})   &#x2F;&#x2F;数组元素值  有 val 即可(存在一个元素)</p>
-<p>db.表.find({字段(数组):{‘$all’:[v1,v2]}})  &#x2F;&#x2F;&#x2F;&#x2F;数组元素值  存在 v1和v2 即可(v1,v2顺序不做要求)(存在多个元素)</p>
+<h5 id="多条件查询"><a class="markdownIt-Anchor" href="#多条件查询"></a> <strong>多条件查询</strong></h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.数据表.find(&#123;条件,条件,条件&#125;)//相当于mysql里面的and条件操作</span><br><span class="line">第一个参数必须要有，如果没有条件的话，就是&#123;&#125;</span><br><span class="line">db.goods.find(&#123;price:&#123;‘$gt’:1000&#125;,weight:&#123;‘$lt’:100&#125;&#125;)</span><br><span class="line">db.goods.find(&#123;price:&#123;&#x27;$gt&#x27;:1000&#125;,weight:50&#125;)//严格等于的条件</span><br></pre></td></tr></table></figure>
+<h5 id="多维字段的查询"><a class="markdownIt-Anchor" href="#多维字段的查询"></a> <strong>多维字段的查询</strong></h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.表.find(&#123;‘key.name’:值&#125;)</span><br><span class="line">&gt;db.goods.find(&#123;&#x27;area.city&#x27;:nanjing&#125;)</span><br><span class="line">db.表.find(&#123;key.name:&#123;‘$gt’:值&#125;&#125;)</span><br><span class="line">db.表.find(&#123;key.name:&#123;‘$gt’:值&#125;,key2.name2:&#123;‘$lt’:值&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="数组条件"><a class="markdownIt-Anchor" href="#数组条件"></a> <strong>数组条件</strong></h4>
+<p>db.表.find({字段(数组):val})   //数组元素值  有 val 即可(存在一个元素)</p>
+<p>db.表.find({字段(数组):{‘$all’:[v1,v2]}})  ////数组元素值  存在 v1和v2 即可(v1,v2顺序不做要求)(存在多个元素)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.goods.find(&#123;color:’red’&#125;)//查询颜色有红色记录条数，满足一个元素即可</span><br><span class="line">db.goods.find(&#123;color:&#123;‘$all’:[‘green’,’black’]&#125;&#125;)</span><br><span class="line">// 同时all   同时有黑色和绿色</span><br></pre></td></tr></table></figure>
-
-<h5 id="or查询"><a href="#or查询" class="headerlink" title="$or查询"></a><strong>$or查询</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.goods.find(&#123;“$or”:[&#123;price:2000&#125;,&#123;num:&#123;‘$lt’:100&#125;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="限制查询字段"><a href="#限制查询字段" class="headerlink" title="限制查询字段"></a><strong>限制查询字段</strong></h5><p>字段输出查询,不一定需要全部取出（对于内存和带宽有影响），按需取出</p>
+<h5 id="or查询"><a class="markdownIt-Anchor" href="#or查询"></a> <strong>$or查询</strong></h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.goods.find(&#123;“$or”:[&#123;price:2000&#125;,&#123;num:&#123;‘$lt’:100&#125;&#125;]&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="限制查询字段"><a class="markdownIt-Anchor" href="#限制查询字段"></a> <strong>限制查询字段</strong></h5>
+<p>字段输出查询,不一定需要全部取出（对于内存和带宽有影响），按需取出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.表.find(&#123;条件&#125;,&#123;字段：1/0,字段：1/0&#125;</span><br><span class="line">1: 查询此字段  0: 排除此字段</span><br><span class="line">查询price=2000的数据中的name字段，排除_id字段</span><br><span class="line">&gt;db.goods.find(&#123;price:2000&#125;,&#123;name:1,_id:0&#125;)</span><br><span class="line">规则：</span><br><span class="line">就是要输出就全部输出，要不输出就全部不输出。_id除外，可以随意设置0,1——要是0都是0，要是1都是1</span><br></pre></td></tr></table></figure>
-
-<h4 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a><strong>修改数据</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.表.update(&#123;条件&#125;,&#123;‘$set’:&#123;字段：值,字段:值......&#125;&#125;)</span><br><span class="line">&gt; db.表.update(&#123;条件&#125;,&#123;字段：值,字段:值......&#125;)</span><br><span class="line">① 有$set的修改：只修改设置的字段，其他字段不变化</span><br><span class="line">② 没有$set的修改：只修改设置的字段，没有修改的字段就删除了(除了_id字段)</span><br><span class="line">(字段有则直接修改，没有则添加为新字段)</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a><strong>删除数据</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">删除记录  db.表.remove(条件)</span><br><span class="line">删除字段 db.表.update(&#123;条件&#125;,&#123;‘$unset’:&#123;字段:1/字段:0&#125;&#125;)</span><br><span class="line">》db.goods.update(&#123;name:&#x27;huawei10&#x27;&#125;,&#123;&#x27;$unse&#x27;:&#123;name:1&#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>mongodb文档类似于json，但不是完全的json。 json只有六种类型：null， bool， 数字，字符串，数组，对象。但是mongo的文档在json的基础上还扩展了几种类型， 比如，日期类型，整数，浮点数。<br>mongodb真正存储在磁盘上是使用bson（binary json）。</p>
+<h4 id="修改数据"><a class="markdownIt-Anchor" href="#修改数据"></a> <strong>修改数据</strong></h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.表.update(&#123;条件&#125;,&#123;‘$set’:&#123;字段：值,字段:值......&#125;&#125;)</span><br><span class="line">&gt; db.表.update(&#123;条件&#125;,&#123;字段：值,字段:值......&#125;)</span><br><span class="line">① 有$set的修改：只修改设置的字段，其他字段不变化</span><br><span class="line">② 没有$set的修改：只修改设置的字段，没有修改的字段就删除了(除了_id字段)</span><br><span class="line">(字段有则直接修改，没有则添加为新字段)</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据"><a class="markdownIt-Anchor" href="#删除数据"></a> <strong>删除数据</strong></h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">删除记录  db.表.remove(条件)</span><br><span class="line">删除字段 db.表.update(&#123;条件&#125;,&#123;‘$unset’:&#123;字段:1/字段:0&#125;&#125;)</span><br><span class="line">》db.goods.update(&#123;name:&#x27;huawei10&#x27;&#125;,&#123;&#x27;$unse&#x27;:&#123;name:1&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型"></a> 数据类型</h3>
+<p>mongodb文档类似于json，但不是完全的json。 json只有六种类型：null， bool， 数字，字符串，数组，对象。但是mongo的文档在json的基础上还扩展了几种类型， 比如，日期类型，整数，浮点数。<br>
+mongodb真正存储在磁盘上是使用bson（binary json）。</p>
 <p>常用数据类型：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">null： 表示空值或者不存在的字段           &#123;&quot;a&quot; : null&#125;</span><br><span class="line">bool ： true 和 false。 与java的boolean一样  &#123;&quot;a&quot; : true&#125;</span><br><span class="line">string： 字符串，UTF-8的字符串 用引号包含。&#123;&quot;a&quot; : &quot;string&quot;&#125;</span><br></pre></td></tr></table></figure>
-
 <p>数字(不区分整数或浮点数)：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">json中只有数字类型。而mongodb中有三种： 32位整数 64位整数 64为浮点数数字默认是按照浮点数存储的。</span><br><span class="line">但是对于整数类型可以用下面方式表示  </span><br><span class="line">&#123;&quot;a&quot; : NumberInt(&quot;3&quot;)&#125;          表示4字节的整数</span><br><span class="line">&#123;&quot;a&quot; : NumberLong(&quot;3&quot;)&#125;         表示8字节的整数</span><br></pre></td></tr></table></figure>
-
 <p>日期:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">日期类型存储从标准纪元开始的毫秒数</span><br><span class="line">&#123;&quot;x&quot; : new Date()&#125;</span><br></pre></td></tr></table></figure>
-
 <p>数组:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;x&quot; : [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]&#125;</span><br></pre></td></tr></table></figure>
-
 <p>内嵌文档:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">把一个文档作为另一个文档的一个值。</span><br><span class="line">&#123;“x” : &#123;&quot;foo&quot; : &quot;bar&quot;,&#x27;d&#x27;:&#x27;e&#x27;&#125;&#125;</span><br></pre></td></tr></table></figure>
-
 <p>对象__id:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mongdb文档必须有个“_id”key，默认是个ObjectId对象。 ObjectId使用12个字节存储空间，每个字节两位16进制数字，是24位字符串。</span><br><span class="line">0-3:时间戳 4-6：机器 7-8：pid 9-11:计数器</span><br><span class="line">前四个字节为时间戳。由于在前面，使Objectid大概按照时间戳排序。将其作为索引提高效率。 pid为进程标识符，计数器为每秒的计数器。每秒可以生成（16*16 = 256）的三次方。</span><br><span class="line">_id可以程序来生成，不用系统自动，这就需要保证每个id不能重复。</span><br></pre></td></tr></table></figure>
-
 <p><strong>其他:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文档中还可以包含正则表达式， javascript代码，二进制数据</span><br></pre></td></tr></table></figure>
-
 <p>二进制：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以用UTF-8字符串保存到文档中，不能使用shell进行保存</span><br></pre></td></tr></table></figure>
-
 <p>代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;a&quot; : function() &#123; /*     ...      */ &#125;&#125; </span><br><span class="line">后续在创建副本集、分片时会经常使用代码类型。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="php客户端"><a href="#php客户端" class="headerlink" title="php客户端"></a>php客户端</h3><h3 id="php具体操作mongodb"><a href="#php具体操作mongodb" class="headerlink" title="php具体操作mongodb"></a>php具体操作mongodb</h3><p>实际使用mongo拓展，然后实例化一个mongodb类的对象，再去调用其属性方法</p>
+<h3 id="php客户端"><a class="markdownIt-Anchor" href="#php客户端"></a> php客户端</h3>
+<h3 id="php具体操作mongodb"><a class="markdownIt-Anchor" href="#php具体操作mongodb"></a> php具体操作mongodb</h3>
+<p>实际使用mongo拓展，然后实例化一个mongodb类的对象，再去调用其属性方法</p>
 <p>Php操作mongodb的方法，和命令行操作的方法基本一致。</p>
 <p><a href="http://php.net/manual/zh/mongo.tutorial.php">http://php.net/manual/zh/mongo.tutorial.php</a></p>
 <p>对象能够便利，不是必须要数组。用数组的“[]”代替“{}”，用“-&gt;”代替了“.”的链接</p>
 <p><strong>插入</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//实例化一个mongo客户端</span><br><span class="line">$connection = new MongoClient();</span><br><span class="line">//选择数据库</span><br><span class="line">$db = $connection-&gt;php49;</span><br><span class="line">//插入数据</span><br><span class="line">$rs = $db-&gt;goods-&gt;insert(array(&#x27;name&#x27;=&gt;&#x27;redhat&#x27;,&#x27;msg&#x27;=&gt;&#x27;i will go to nainai home&#x27;));</span><br><span class="line">var_dump($rs);</span><br></pre></td></tr></table></figure>
-
 <p><strong>查询</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//实例化一个mongo客户端</span><br><span class="line">$connection = new MongoClient(&quot;mongodb://root:root@localhost:27017&quot;);</span><br><span class="line">// $connection = new MongoClient();</span><br><span class="line">//选择数据库</span><br><span class="line">$db = $connection-&gt;php49;</span><br><span class="line">//查询数据</span><br><span class="line">$rs = $db-&gt;goods-&gt;find(array(&#x27;name&#x27;=&gt;&#x27;huawei03&#x27;));</span><br><span class="line">// var_dump($rs);</span><br><span class="line">// die();</span><br><span class="line">//循环遍历处理</span><br><span class="line">foreach ($rs as $key =&gt; $value) &#123;</span><br><span class="line">  // var_dump($value);</span><br><span class="line">  echo &#x27;name:&#x27;.$value[&#x27;name&#x27;].&#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">  echo &#x27;price:&#x27;.$value[&#x27;price&#x27;].&#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">  echo &#x27;weight:&#x27;.$value[&#x27;weight&#x27;].&#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">  echo &#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>更新</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//实例化一个mongo客户端</span><br><span class="line">$connection = new MongoClient();</span><br><span class="line">//选择数据库</span><br><span class="line">$db = $connection-&gt;php49;</span><br><span class="line">//修改数据</span><br><span class="line">$rs = $db-&gt;goods-&gt;update(array(&#x27;name&#x27;=&gt;&#x27;huawei03&#x27;),array(&#x27;$set&#x27;=&gt;array(&#x27;price&#x27;=&gt;2005)));</span><br><span class="line">var_dump($rs);</span><br></pre></td></tr></table></figure>
-
 <p><strong>删除</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//实例化一个mongo客户端</span><br><span class="line">$connection = new MongoClient();</span><br><span class="line">//选择数据库</span><br><span class="line">$db = $connection-&gt;php49;</span><br><span class="line">//删除数据</span><br><span class="line">$rs = $db-&gt;goods-&gt;remove(array(&#x27;name&#x27;=&gt;&#x27;redhat&#x27;));</span><br><span class="line">var_dump($rs);</span><br></pre></td></tr></table></figure>
-
-<h3 id="账号权限"><a href="#账号权限" class="headerlink" title="账号权限"></a>账号权限</h3><p><strong>账号：</strong></p>
+<h3 id="账号权限"><a class="markdownIt-Anchor" href="#账号权限"></a> 账号权限</h3>
+<p><strong>账号：</strong></p>
 <p>root:root   管理员账号(admin数据库)  可以 读、写</p>
 <p>“xiaohong:1234”   普通账号(php49数据库)  可以读，因为xiaohong是领导(可能不懂技术)，只需查看就可以，不需要进行写操作</p>
 <p>“xiaoming:1234”   普通账号(php49数据库)  可以读、写</p>
 <p><strong>权限说明</strong>：</p>
-<p>普通账号：只能操作本身数据库        管理员账号：可以操作全部的数据库  </p>
+<p>普通账号：只能操作本身数据库        管理员账号：可以操作全部的数据库</p>
 <p><strong>账号设置的顺序：</strong></p>
 <p>必须先设置root管理员账号，其次再设置普通账号 xiaohong和 xiaoming</p>
 <p><strong>创建账号指令：</strong></p>
-<p>db.addUser(username, password[, readOnly&#x3D;false])</p>
+<p>db.addUser(username, password[, readOnly=false])</p>
 <p>db.addUser(name,password,true(只读))</p>
-<p>db.addUser(name,password,[false(读&#x2F;写)])</p>
+<p>db.addUser(name,password,[false(读/写)])</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;use admin//创建管理员账号  </span><br><span class="line">&gt;db.adduserr(&#x27;root&#x27;,&#x27;root&#x27;)</span><br><span class="line">&gt;use php49//创建普通账号</span><br><span class="line">&gt;db.adduserr(&#x27;xiaoming&#x27;,&#x27;1234&#x27;,true)</span><br><span class="line">&gt;db.adduserr(&#x27;xiaohong&#x27;,&#x27;1234&#x27;,false)</span><br></pre></td></tr></table></figure>
-
 <p>重启mongodb服务：关闭服务-》做卸载服务-》重新加入–auth权限参数，进行重新加入服务，重新启动mongodb服务（使用管理员权限的cmd）》需要登录才能操作</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;db.auth(&#x27;xiaohong&#x27;,&#x27;1234&#x27;)//登录</span><br><span class="line">1</span><br><span class="line">&gt;db.logout()//退出</span><br></pre></td></tr></table></figure>
-
 <p>之前的监本运行报错（加了权限），php修改代码实现</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$connection = new MongoClient(&#x27;mongodb://root:root@localhost:27017&#x27;);//管理员登录</span><br><span class="line">。。。。</span><br></pre></td></tr></table></figure>
-
 <p>php版本的SQL 到 Mongo 的对应表</p>
 <p><a href="http://php.net/manual/zh/mongo.sqltomongo.php">http://php.net/manual/zh/mongo.sqltomongo.php</a></p>
-<h3 id="实际使用mongodb实例"><a href="#实际使用mongodb实例" class="headerlink" title="实际使用mongodb实例"></a>实际使用mongodb实例</h3><p>A.把mysql里的归属地信息数据插入到Mongodb里</p>
+<h3 id="实际使用mongodb实例"><a class="markdownIt-Anchor" href="#实际使用mongodb实例"></a> 实际使用mongodb实例</h3>
+<p>A.把mysql里的归属地信息数据插入到Mongodb里</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//把mysql号码归属地数据存放到mongodb里</span><br><span class="line">      public function doDataToMongodb()&#123;</span><br><span class="line">        //设置脚本永不超时</span><br><span class="line">        set_time_limit(0);</span><br><span class="line">        //改变脚本可用内存,默认是128M,改为500M</span><br><span class="line">        ini_set(&quot;memory_limit&quot;,&quot;500M&quot;);</span><br><span class="line">        //把mysql里的mobile数据全部取出来</span><br><span class="line">        //取出mysql的数据信息</span><br><span class="line">        $data = M(&quot;mobile&quot;)-&gt;select();</span><br><span class="line">        //连接mongodb</span><br><span class="line">        $connection = new \MongoClient(&quot;mongodb://root:root@localhost:27017&quot;);</span><br><span class="line">        //创建一个数据库</span><br><span class="line">        //选择数据库</span><br><span class="line">        $db = $connection-&gt;api49;</span><br><span class="line">        $i = 1;</span><br><span class="line">        //循环插入数据</span><br><span class="line">        foreach ($data as $key =&gt; $value) &#123;</span><br><span class="line">          //插入数据</span><br><span class="line">          $rs = $db-&gt;mobile-&gt;insert(array(&#x27;id&#x27;=&gt;$value[&#x27;id&#x27;],&#x27;mobile&#x27;=&gt;$value[&#x27;mobile&#x27;],&#x27;province&#x27;=&gt;$value[&#x27;province&#x27;],&#x27;city&#x27;=&gt;$value[&#x27;city&#x27;],&#x27;sp&#x27;=&gt;$value[&#x27;sp&#x27;]));</span><br><span class="line">          $i++;</span><br><span class="line">        &#125;</span><br><span class="line">        echo $i;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
 <p>b.查询归属地信息</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">//获取电话号码归属地信息通过Mongodb</span><br><span class="line">     public function getAreaByMongoDB()&#123;</span><br><span class="line">       G(&quot;begin&quot;);</span><br><span class="line">       $phone = I(&#x27;get.phone&#x27;);</span><br><span class="line">       //截取区域码</span><br><span class="line">       $areaNum = substr($phone,0,7);</span><br><span class="line">       //参数校验</span><br><span class="line">       if(empty($phone))&#123;</span><br><span class="line">         $dataArray = array(</span><br><span class="line">           &#x27;errocode&#x27;=&gt;&#x27;1&#x27;,      //参数错误</span><br><span class="line">           &#x27;time&#x27;=&gt;time(),       //返回一个时间戳</span><br><span class="line">           );</span><br><span class="line">         //输出json格式</span><br><span class="line">         echo json_encode($dataArray);</span><br><span class="line">       &#125;else&#123;</span><br><span class="line">         //查询MongoDB</span><br><span class="line">         //实例化一个mongo客户端</span><br><span class="line">         $connection = new \MongoClient(&quot;mongodb://root:root@localhost:27017&quot;);</span><br><span class="line">         // $connection = new MongoClient();</span><br><span class="line">         //选择数据库</span><br><span class="line">         $db = $connection-&gt;api49;</span><br><span class="line">         //查询数据</span><br><span class="line">         $data = $db-&gt;mobile-&gt;find(array(&#x27;mobile&#x27;=&gt;$areaNum));</span><br><span class="line">         //查询结果为对象，所以要遍历，然后进行数据的重组</span><br><span class="line">         foreach ($data as $key =&gt; $value) &#123;</span><br><span class="line">           $province = $value[&#x27;province&#x27;];</span><br><span class="line">           $city = $value[&#x27;city&#x27;];</span><br><span class="line">           $sp = $value[&#x27;sp&#x27;];</span><br><span class="line">         &#125;</span><br><span class="line">         //组合输出数据</span><br><span class="line">         $dataArray = array(</span><br><span class="line">           &#x27;errocode&#x27;=&gt;&#x27;0&#x27;,</span><br><span class="line">           &#x27;time&#x27;=&gt;time(),</span><br><span class="line">           &#x27;province&#x27;=&gt;$province,</span><br><span class="line">           &#x27;city&#x27;=&gt;$city,</span><br><span class="line">           &#x27;sp&#x27;=&gt;$sp</span><br><span class="line">           );</span><br><span class="line">         //输出返回json格式数据</span><br><span class="line">         echo json_encode($dataArray);</span><br><span class="line">       &#125;</span><br><span class="line">       //调试结束点</span><br><span class="line">       G(&#x27;end&#x27;);</span><br><span class="line">       echo &#x27;&lt;br /&gt;&#x27;;</span><br><span class="line">       //脚本执行时间</span><br><span class="line">       echo G(&#x27;begin&#x27;,&#x27;end&#x27;).&#x27;s&lt;br /&gt;&#x27;;</span><br><span class="line">       //脚本占用内存大小</span><br><span class="line">       echo G(&#x27;begin&#x27;,&#x27;end&#x27;,&#x27;m&#x27;).&#x27;kb&#x27;;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
-
 <p>返回结果。。。。</p>
 <p><img src="/2021/03/10/mongoDB02/1585194946.jpg" alt="1585194946"></p>
-<h4 id="ORM与ODM"><a href="#ORM与ODM" class="headerlink" title="ORM与ODM"></a>ORM与ODM</h4><p>ORM(Object Relational Mapping):</p>
+<h4 id="orm与odm"><a class="markdownIt-Anchor" href="#orm与odm"></a> ORM与ODM</h4>
+<p>ORM(Object Relational Mapping):</p>
 <p>MySQL是关系数据库的一个例子 - 你可以使用ORM(对象关系映射器)</p>
 <p>ODM(Object Document Mapping):</p>
 <p>MongoDB是文档数据库的一个示例 - 您可以使用ODM(对象文档映射器)在代码中的对象和数据的文档表示之间进行转换（如果需要）,本质也属于一种ORM，不过是基于MongoDB、Redis这种NoSQL。</p>
 <p>如果ORM、ODM一起用，需要考虑好：</p>
 <p>1字段和文档的装换，以及一对多，多对多，多对一的处理</p>
-<p>2设计手动&#x2F;自动更新缓存机制,保证数据的一致性</p>
+<p>2设计手动/自动更新缓存机制,保证数据的一致性</p>
 <p>3设计过期机制</p>
-<h3 id="答疑："><a href="#答疑：" class="headerlink" title="答疑："></a>答疑：</h3><h5 id="mongoDB高频数据加载于内存的原理："><a href="#mongoDB高频数据加载于内存的原理：" class="headerlink" title="mongoDB高频数据加载于内存的原理："></a>mongoDB高频数据加载于内存的原理：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mongodb默认存储引擎是memory-mapped,即内存映射存储引擎，内存的管理大部分工作是交由操作系统进行，它会把磁盘IO操作转换成内存操作，如果是读操作，内存中的数据起到缓存的作用，如果是写操作，内存还可以把随机的写操作转换成顺序的写操作，总之可以大幅度提升性能。</span><br><span class="line">这样的好处是简化了MongoDB的工作，事实上MongoDB会占用所有能用的内存OOM(Linux的Out Of Memory Killer机制，即将将占用内存最好的程序kill掉（躺枪）)</span><br><span class="line"></span><br><span class="line">内存映射存储引擎：当mongod服务启动后，将所有数据文件映射到内存中。操作系统的任务是刷新数据到磁盘和管理页数据的输入输出。</span><br><span class="line"></span><br><span class="line">解决办法：</span><br><span class="line">1限制虚拟内存的大小所致</span><br><span class="line">操作系统缺省都是把它设置成unlimited   shell&gt; ulimit -v unlimited</span><br><span class="line">  注：ulimit的使用是有上下文的，最好放在MongoDB的启动脚本里。</span><br><span class="line">2 每个连接都是一个线程，需要一个Stack，把Stack设置小一点，比如说1024</span><br><span class="line">3如何释放内存？-》</span><br><span class="line">a使用MongoDB内置的closeAllDatabases命令达到目的</span><br><span class="line">mongo&gt; use admin</span><br><span class="line">mongo&gt; db.runCommand(&#123;closeAllDatabases:1&#125;)</span><br><span class="line">b 通过调整内核参数drop_caches也可以释放缓存</span><br><span class="line">shell&gt; sysctl -w vm.drop_caches=1</span><br></pre></td></tr></table></figure>
-
+<h3 id="答疑"><a class="markdownIt-Anchor" href="#答疑"></a> 答疑：</h3>
+<h5 id="mongodb高频数据加载于内存的原理"><a class="markdownIt-Anchor" href="#mongodb高频数据加载于内存的原理"></a> mongoDB高频数据加载于内存的原理：</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mongodb默认存储引擎是memory-mapped,即内存映射存储引擎，内存的管理大部分工作是交由操作系统进行，它会把磁盘IO操作转换成内存操作，如果是读操作，内存中的数据起到缓存的作用，如果是写操作，内存还可以把随机的写操作转换成顺序的写操作，总之可以大幅度提升性能。</span><br><span class="line">这样的好处是简化了MongoDB的工作，事实上MongoDB会占用所有能用的内存OOM(Linux的Out Of Memory Killer机制，即将将占用内存最好的程序kill掉（躺枪）)</span><br><span class="line"></span><br><span class="line">内存映射存储引擎：当mongod服务启动后，将所有数据文件映射到内存中。操作系统的任务是刷新数据到磁盘和管理页数据的输入输出。</span><br><span class="line"></span><br><span class="line">解决办法：</span><br><span class="line">1限制虚拟内存的大小所致</span><br><span class="line">操作系统缺省都是把它设置成unlimited   shell&gt; ulimit -v unlimited</span><br><span class="line">  注：ulimit的使用是有上下文的，最好放在MongoDB的启动脚本里。</span><br><span class="line">2 每个连接都是一个线程，需要一个Stack，把Stack设置小一点，比如说1024</span><br><span class="line">3如何释放内存？-》</span><br><span class="line">a使用MongoDB内置的closeAllDatabases命令达到目的</span><br><span class="line">mongo&gt; use admin</span><br><span class="line">mongo&gt; db.runCommand(&#123;closeAllDatabases:1&#125;)</span><br><span class="line">b 通过调整内核参数drop_caches也可以释放缓存</span><br><span class="line">shell&gt; sysctl -w vm.drop_caches=1</span><br></pre></td></tr></table></figure>
 <p><strong>高频数据会加载于内存中，那么低频数据会从内存中删除</strong></p>
 <p>参考链接：<a href="https://www.cnblogs.com/jecob/p/5085781.html">https://www.cnblogs.com/jecob/p/5085781.html</a></p>
-<h5 id="nodejs如何参与mongoDB的开发："><a href="#nodejs如何参与mongoDB的开发：" class="headerlink" title="nodejs如何参与mongoDB的开发："></a>nodejs如何参与mongoDB的开发：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实际上是使用node.js去操控mongoDB，因为mongodb是一个文档型的数据库，里面的数据存储和查询基本上是json格式的，mongodb和nodejs就好像皮蛋和豆腐天生一对</span><br></pre></td></tr></table></figure>
-
-<h5 id="MongoDB-Mysql这样架构，mysql的作用是什么"><a href="#MongoDB-Mysql这样架构，mysql的作用是什么" class="headerlink" title="MongoDB+Mysql这样架构，mysql的作用是什么"></a>MongoDB+Mysql这样架构，mysql的作用是什么</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a.如果需要将mongodb作为后端db来代替mysql使用，即这里mysql与mongodb 属于平行级别，那么，这样的使用可能有以下几种情况的考量：</span><br><span class="line">(1)mongodb所负责部分以文档形式存储，能够有较好的代码亲和性，json格式的直接写入方便。(如日志之类)</span><br><span class="line">(2)从data models设计阶段就将原子性考虑于其中，无需事务之类的辅助。开发用如nodejs之类的语言来进行开发，对开发比较方便。</span><br><span class="line">(3)mongodb本身的failover机制，无需使用如MHA之类的方式实现。</span><br><span class="line"></span><br><span class="line">这种情况也是不少的，我手上的游戏就是有nodejs+mongodb的，用户总量也是千万级别的，流水什么还不错。</span><br><span class="line"></span><br><span class="line">b.将mongodb作为类似redis ，memcache来做缓存db，为mysql提供服务，或是后端日志收集分析。</span><br><span class="line">考虑到mongodb属于nosql型数据库，sql语句与数据结构不如mysql那么亲和 ，也会有很多时候将mongodb做为辅助mysql而使用的类redis memcache 之类的缓存db来使用。</span><br><span class="line">亦或是仅作日志收集分析</span><br></pre></td></tr></table></figure>
-
+<h5 id="nodejs如何参与mongodb的开发"><a class="markdownIt-Anchor" href="#nodejs如何参与mongodb的开发"></a> nodejs如何参与mongoDB的开发：</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实际上是使用node.js去操控mongoDB，因为mongodb是一个文档型的数据库，里面的数据存储和查询基本上是json格式的，mongodb和nodejs就好像皮蛋和豆腐天生一对</span><br></pre></td></tr></table></figure>
+<h5 id="mongodbmysql这样架构mysql的作用是什么"><a class="markdownIt-Anchor" href="#mongodbmysql这样架构mysql的作用是什么"></a> MongoDB+Mysql这样架构，mysql的作用是什么</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">a.如果需要将mongodb作为后端db来代替mysql使用，即这里mysql与mongodb 属于平行级别，那么，这样的使用可能有以下几种情况的考量：</span><br><span class="line">(1)mongodb所负责部分以文档形式存储，能够有较好的代码亲和性，json格式的直接写入方便。(如日志之类)</span><br><span class="line">(2)从data models设计阶段就将原子性考虑于其中，无需事务之类的辅助。开发用如nodejs之类的语言来进行开发，对开发比较方便。</span><br><span class="line">(3)mongodb本身的failover机制，无需使用如MHA之类的方式实现。</span><br><span class="line"></span><br><span class="line">这种情况也是不少的，我手上的游戏就是有nodejs+mongodb的，用户总量也是千万级别的，流水什么还不错。</span><br><span class="line"></span><br><span class="line">b.将mongodb作为类似redis ，memcache来做缓存db，为mysql提供服务，或是后端日志收集分析。</span><br><span class="line">考虑到mongodb属于nosql型数据库，sql语句与数据结构不如mysql那么亲和 ，也会有很多时候将mongodb做为辅助mysql而使用的类redis memcache 之类的缓存db来使用。</span><br><span class="line">亦或是仅作日志收集分析</span><br></pre></td></tr></table></figure>
 <p>symfony之mongoDB:</p>
 <p><a href="https://www.doctrine-project.org/projects/doctrine-mongodb-odm/en/2.1/reference/aggregation-builder.html#aggregation-builder">https://www.doctrine-project.org/projects/doctrine-mongodb-odm/en/2.1/reference/aggregation-builder.html#aggregation-builder</a></p>
 <p>set注入和__construct()</p>
@@ -328,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/03/10/mongoDB02/" data-id="cm4dztqkf0011jali4o1y3euh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/03/10/mongoDB02/" data-id="cm4uq3vo90011d7li69rbb2bt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>

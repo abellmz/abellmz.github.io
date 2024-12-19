@@ -7,12 +7,12 @@
   
   <title>PhpStorm中相关设置 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PhpStrom连接远程服务器ftp:">
+  <meta name="description" content="PhpStrom  连接远程服务器ftp:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PhpStorm中相关设置">
 <meta property="og:url" content="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="PhpStrom连接远程服务器ftp:">
+<meta property="og:description" content="PhpStrom  连接远程服务器ftp:">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600264482.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600296741.png">
@@ -103,13 +103,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="PhpStrom"><a href="#PhpStrom" class="headerlink" title="PhpStrom"></a>PhpStrom</h2><h5 id="连接远程服务器ftp"><a href="#连接远程服务器ftp" class="headerlink" title="连接远程服务器ftp:"></a>连接远程服务器ftp:</h5><span id="more"></span>
-
+        <h2 id="phpstrom"><a class="markdownIt-Anchor" href="#phpstrom"></a> PhpStrom</h2>
+<h5 id="连接远程服务器ftp"><a class="markdownIt-Anchor" href="#连接远程服务器ftp"></a> 连接远程服务器ftp:</h5>
+<span id="more"></span>
 <p>ftp:</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600264482.png" alt="1551600264482"></p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600296741.png" alt="1551600296741"></p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551600315521.png" alt="1551600315521"></p>
-<h5 id="连接远程数据库："><a href="#连接远程数据库：" class="headerlink" title="连接远程数据库："></a>连接远程数据库：</h5><p>点击右侧栏中的“+”，选择Data Source-&gt;MySQL或者</p>
+<h5 id="连接远程数据库"><a class="markdownIt-Anchor" href="#连接远程数据库"></a> 连接远程数据库：</h5>
+<p>点击右侧栏中的“+”，选择Data Source-&gt;MySQL或者</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1551602521875.png" alt="1551602521875"></p>
 <p>菜单栏view-&gt;Tool Windows-&gt;Database</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1561710474971.png" alt="1561710474971"></p>
@@ -123,40 +125,48 @@
 <p>代码提示：<a href="https://packagist.org/packages/barryvdh/laravel-ide-helper">https://packagist.org/packages/barryvdh/laravel-ide-helper</a>  解决route空间名提示IdeHelperServiceProvider需要在app.php中注册</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1563461669832.png" alt="1563461669832"></p>
 <p>解决路由，代码提示问题</p>
-<p>中间件：注册-》Kernel	守卫拦截-》config &#x2F;auth.php</p>
+<p>中间件：注册-》Kernel	守卫拦截-》config /auth.php</p>
 <p>建立Requests及LoginRequest.php  用于登录账号密码为空时报错，用户名密码输入错误在控制器设置</p>
 <p>建立AdminAuthMiddleware 中间件  为了拦截地址栏的输入  ，需要在Kernel中注册</p>
 <p>IdeHelperServiceProvider提供</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1563461858409.png" alt="1563461858409"></p>
-<h5 id="代码高亮："><a href="#代码高亮：" class="headerlink" title="代码高亮："></a>代码高亮：</h5><p>选择Files-&gt;Settings-&gt;File Types</p>
+<h5 id="代码高亮"><a class="markdownIt-Anchor" href="#代码高亮"></a> 代码高亮：</h5>
+<p>选择Files-&gt;Settings-&gt;File Types</p>
 <p>查看上面的框，不高亮的后缀的文件  的格式在不在下面，不在的话，就添加进去。</p>
 <p><a href="https://blog.csdn.net/sinat_37390744/article/details/66478336">https://blog.csdn.net/sinat_37390744/article/details/66478336</a></p>
 <p>依赖composer:</p>
-<h5 id="命令行工具提示："><a href="#命令行工具提示：" class="headerlink" title="命令行工具提示："></a>命令行工具提示：</h5><p>File&#x3D;&gt;setting&#x3D;&gt;Languages&amp;Frameworks&#x3D;&gt;php&#x3D;&gt;larsvel:两个复选框勾选，应用，ok</p>
-<h5 id="command-Line-Tools-Consol之artisan命令设置"><a href="#command-Line-Tools-Consol之artisan命令设置" class="headerlink" title="command Line Tools Consol之artisan命令设置"></a>command Line Tools Consol之artisan命令设置</h5><p>每一个项目都有各自的artisan命令文件，若copy项目后不改，则迁移时会报：Nothing to migrate.因为你的artisan命令文件用的是原文件的。设置方法：</p>
+<h5 id="命令行工具提示"><a class="markdownIt-Anchor" href="#命令行工具提示"></a> 命令行工具提示：</h5>
+<p>File=&gt;setting=&gt;Languages&amp;Frameworks=&gt;php=&gt;larsvel:两个复选框勾选，应用，ok</p>
+<h5 id="command-line-tools-consol之artisan命令设置"><a class="markdownIt-Anchor" href="#command-line-tools-consol之artisan命令设置"></a> command Line Tools Consol之artisan命令设置</h5>
+<p>每一个项目都有各自的artisan命令文件，若copy项目后不改，则迁移时会报：Nothing to migrate.因为你的artisan命令文件用的是原文件的。设置方法：</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1558259326941.png" alt="1558259326941"></p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1558259411890.png" alt="1558259411890"></p>
-<h5 id="basc设置快捷键"><a href="#basc设置快捷键" class="headerlink" title="basc设置快捷键:"></a>basc设置快捷键:</h5><p>File&#x3D;&gt;setting中搜索keymap-&gt;main menu-&gt;code-&gt;completion-&gt;basc</p>
-<h5 id="后台初始化生成一个admin"><a href="#后台初始化生成一个admin" class="headerlink" title="后台初始化生成一个admin"></a>后台初始化生成一个admin</h5><p>在命令行中输入artisan db:seed</p>
+<h5 id="basc设置快捷键"><a class="markdownIt-Anchor" href="#basc设置快捷键"></a> basc设置快捷键:</h5>
+<p>File=&gt;setting中搜索keymap-&gt;main menu-&gt;code-&gt;completion-&gt;basc</p>
+<h5 id="后台初始化生成一个admin"><a class="markdownIt-Anchor" href="#后台初始化生成一个admin"></a> 后台初始化生成一个admin</h5>
+<p>在命令行中输入artisan db:seed</p>
 <p><code>db:seed</code> 命令将运行 <code>DatabaseSeeder</code>类，这个类可以用来调用其它 Seed 类。不过，你也可以使用 <code>--class</code> 选项来指定一个特定的 seeder 类。</p>
 <p><img src="/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/1558260747153.png" alt="1558260747153"></p>
-<h5 id="还有些插件："><a href="#还有些插件：" class="headerlink" title="还有些插件："></a>还有些插件：</h5><p>file&#x3D;&gt;setting&#x3D;&gt;Plugins&#x3D;&gt;&#x3D;&gt;Browse repositories…&#x3D;&gt;搜索.env files support 下载后重启	</p>
-<p>​									。。。&#x3D;&gt;.ignore</p>
-<p>​									。。。。&#x3D;&gt;laravel plugin</p>
-<p>中国镜像：&#x3D;&gt;安装包列表&#x3D;&gt;搜索laravel-ide-helper：install(根据步骤操作)复制到composer中</p>
+<h5 id="还有些插件"><a class="markdownIt-Anchor" href="#还有些插件"></a> 还有些插件：</h5>
+<p>file=&gt;setting=&gt;Plugins=&gt;=&gt;Browse repositories…=&gt;搜索.env files support 下载后重启</p>
+<p>​									。。。=&gt;.ignore</p>
+<p>​									。。。。=&gt;laravel plugin</p>
+<p>中国镜像：=&gt;安装包列表=&gt;搜索laravel-ide-helper：install(根据步骤操作)复制到composer中</p>
 <p>点谁跳谁的样式：</p>
 <p><a href="https://www.hieule.info/products/laravel-active-version-3-released">https://www.hieule.info/products/laravel-active-version-3-released</a></p>
 <p>根据步骤下载，并在config 的app.php中注册，及设置别名</p>
 <p>三级城市联动：</p>
 <p>1、github中搜索distpicker，根据步骤操作。</p>
 <p>2、bootCDN中搜索distpicker  直接在模板中引入-》<a href="https://cdn.bootcss.com/distpicker/2.0.5/distpicker.min.js">https://cdn.bootcss.com/distpicker/2.0.5/distpicker.min.js</a></p>
-<h2 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h2><p>如何检测接口：</p>
-<h2 id="Navicat-for-MySQL"><a href="#Navicat-for-MySQL" class="headerlink" title="Navicat for MySQL"></a>Navicat for MySQL</h2><p>如何操作数据库：</p>
+<h2 id="postman"><a class="markdownIt-Anchor" href="#postman"></a> Postman</h2>
+<p>如何检测接口：</p>
+<h2 id="navicat-for-mysql"><a class="markdownIt-Anchor" href="#navicat-for-mysql"></a> Navicat for MySQL</h2>
+<p>如何操作数据库：</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" data-id="cm4dztqjx000djalidd3i5fl2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" data-id="cm4uq3vns000dd7li340rejci" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li></ul>

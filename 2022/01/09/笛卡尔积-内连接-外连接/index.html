@@ -7,12 +7,12 @@
   
   <title>笛卡尔积/内连接/外连接 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="笛卡尔积、内连接和外连接的关系笛卡尔积与内连接笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：">
+  <meta name="description" content="笛卡尔积、内连接和外连接的关系  笛卡尔积与内连接 笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笛卡尔积&#x2F;内连接&#x2F;外连接">
 <meta property="og:url" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="笛卡尔积、内连接和外连接的关系笛卡尔积与内连接笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：">
+<meta property="og:description" content="笛卡尔积、内连接和外连接的关系  笛卡尔积与内连接 笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/empt-table.png">
 <meta property="og:image" content="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/dept-table.png">
@@ -100,64 +100,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="笛卡尔积、内连接和外连接的关系"><a href="#笛卡尔积、内连接和外连接的关系" class="headerlink" title="笛卡尔积、内连接和外连接的关系"></a>笛卡尔积、内连接和外连接的关系</h3><h4 id="笛卡尔积与内连接"><a href="#笛卡尔积与内连接" class="headerlink" title="笛卡尔积与内连接"></a>笛卡尔积与内连接</h4><p>笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：</p>
+        <h3 id="笛卡尔积-内连接和外连接的关系"><a class="markdownIt-Anchor" href="#笛卡尔积-内连接和外连接的关系"></a> 笛卡尔积、内连接和外连接的关系</h3>
+<h4 id="笛卡尔积与内连接"><a class="markdownIt-Anchor" href="#笛卡尔积与内连接"></a> 笛卡尔积与内连接</h4>
+<p>笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：</p>
 <span id="more"></span>
-
-<p>A&#x3D;{1,2},B&#x3D;{a,b,c},笛卡尔积就是{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)}，MySQL中的笛卡尔积（交叉连接）也是类似的。</p>
+<p>A={1,2},B={a,b,c},笛卡尔积就是{(1,a),(1,b),(1,c),(2,a),(2,b),(2,c)}，MySQL中的笛卡尔积（交叉连接）也是类似的。</p>
 <p><strong>笛卡尔积</strong>结果集：行数为两表的行数相乘，列数为两个表的所有列。</p>
 <p><strong>内连接</strong>结果集：行数是满足关联条件的行对数，列数是满足条件的两表行中所选取的两表列数。</p>
 <p>empt表：</p>
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/empt-table.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/empt-table.png" alt></p>
 <p>dept表：</p>
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/dept-table.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/dept-table.png" alt></p>
 <p>如果我们执⾏如下语句，将产⽣所有⾏的联合集即笛卡尔积</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select * From empt,dept;</span><br><span class="line">或者</span><br><span class="line">Select * From empt JOIN dept;</span><br><span class="line">或者</span><br><span class="line">Select * From empt INNER JOIN dept;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/cartesian-product.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/cartesian-product.png" alt></p>
 <p>显然，以上结果是没有什么意义的，一般会对以上查询增加条件以产⽣有价值的数据集合，比如关联条件</p>
 <p>内连接：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.*,b.id,b.name FROM empt a JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/inner-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/inner-join.png" alt></p>
 <p>再者，笛卡尔积是对两表进行全表扫描,会产生大量冗余数据，查询效率较低。而内连接利用连接条件进行筛选，可以减少不必要的数据处理，查询效率较高。若on条件是非唯一字段，则会出现局部笛卡尔积。</p>
-<p>笛卡尔积产生条件：<br>1.省略多个表的连接条件（或关联条件）。</p>
+<p>笛卡尔积产生条件：<br>
+1.省略多个表的连接条件（或关联条件）。</p>
 <p>例如：没有关联条件</p>
 <p>2.连接条件（或关联条件）无效。</p>
 <p>例如：on条件是非唯一字段，会出现局部笛卡尔积</p>
 <p>3.所有表中的所有行互相连接。</p>
-<h4 id="内连接和外连接"><a href="#内连接和外连接" class="headerlink" title="内连接和外连接"></a>内连接和外连接</h4><p>内连接（INNER JOIN,INNER可以省略），它只返回两个表中满足连接条件的行，内连接的优点是操作简单、效率较高，缺点是可能会丢失不符合连接条件的数据。</p>
+<h4 id="内连接和外连接"><a class="markdownIt-Anchor" href="#内连接和外连接"></a> 内连接和外连接</h4>
+<p>内连接（INNER JOIN,INNER可以省略），它只返回两个表中满足连接条件的行，内连接的优点是操作简单、效率较高，缺点是可能会丢失不符合连接条件的数据。</p>
 <p>外连接（OUTER JOIN,OUTER 可以省略），包括左(外)连接、右(外)连接、全(外)连接，它返回两个表中的所有行（比如全连接），并根据连接条件进行匹配，两边记录空缺的地方均为NULL。与内连接不同，外连接不会剔除不符合连接条件的行，而是将它们保留在结果集中。外连接的优点是能够保留更多的数据，缺点是操作相对复杂且效率较低。</p>
 <p>左连接：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a LEFT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/left-outer-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/left-outer-join.png" alt></p>
 <p>右连接：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a RIGHT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/right-outer-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/right-outer-join.png" alt></p>
 <p>Oracle支持的全连接(FULL JOIN)，MySQL却不支持全连接，但可以使用UNION ALL进行模拟全连接。需要注意的是，ALL用在UNION子句里，省略与否的输出结果是不一样的。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a LEFT JOIN dept b ON a.dept_id = b.id</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a RIGHT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
-
 <p>有ALL，将保留所有的记录行，不会剔除有重复的行</p>
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-all-full-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-all-full-join.png" alt></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a LEFT JOIN dept b ON a.dept_id = b.id</span><br><span class="line">UNION</span><br><span class="line">SELECT a.name,a.dept_id,b.id,b.name FROM empt a RIGHT JOIN dept b ON a.dept_id = b.id;</span><br></pre></td></tr></table></figure>
-
 <p>省略ALL关键字，系统会自动去重。</p>
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-full-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/union-full-join.png" alt></p>
 <p>若全连接的两条sql是同一张表的不同条件，则结果数据以第一条sql为基准，且两条sql的select字段顺序最好相同，否则结果数据容易错乱，可读性差。</p>
 <p>相同顺序：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from empt where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select id，name,gender,dept_id,is_enable from empt where dept_id = 2；</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/same-order-full-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/same-order-full-join.png" alt></p>
 <p>不同顺序：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select * from empt where dept_id = 1</span><br><span class="line">union</span><br><span class="line">select name,id,gender,dept_id,is_enable from empt where dept_id = 2；</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/different-order-full-join.png"></p>
+<p><img src="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/different-order-full-join.png" alt></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/" data-id="cm4dztqku001qjali1ikqc6fr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/" data-id="cm4uq3voo001qd7ligyrw2vqm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>

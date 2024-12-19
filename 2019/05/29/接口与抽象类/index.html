@@ -7,12 +7,12 @@
   
   <title>接口与抽象类 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="抽象类：abstract来修饰一个类&#x2F;方法就叫抽象类&#x2F;抽象方法">
+  <meta name="description" content="抽象类： abstract来修饰一个类&#x2F;方法就叫抽象类&#x2F;抽象方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="接口与抽象类">
 <meta property="og:url" content="http://yoursite.com/2019/05/29/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="抽象类：abstract来修饰一个类&#x2F;方法就叫抽象类&#x2F;抽象方法">
+<meta property="og:description" content="抽象类： abstract来修饰一个类&#x2F;方法就叫抽象类&#x2F;抽象方法">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-05-29T02:07:15.000Z">
 <meta property="article:modified_time" content="2019-06-05T02:23:10.000Z">
@@ -89,15 +89,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="抽象类："><a href="#抽象类：" class="headerlink" title="抽象类："></a>抽象类：</h5><p>abstract来修饰一个类&#x2F;方法就叫抽象类&#x2F;抽象方法</p>
+        <h5 id="抽象类"><a class="markdownIt-Anchor" href="#抽象类"></a> 抽象类：</h5>
+<p>abstract来修饰一个类/方法就叫抽象类/抽象方法</p>
 <span id="more"></span>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">abstract class User</span><br><span class="line">&#123;</span><br><span class="line">	protected $sal = 0;</span><br><span class="line">	//这里定义的抽象方法。</span><br><span class="line">	//注意抽象方法没有方法体&#123;&#125;，而且方法结束使用 ; 号。</span><br><span class="line">	abstract function getSal();</span><br><span class="line">	abstract function setSal();</span><br><span class="line">	//定义它的__tostring方法</span><br><span class="line">	public function __toString() &#123;</span><br><span class="line">		return get_class($this);</span><br><span class="line">	&#125; </span><br><span class="line">&#125; </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
 <p>抽象类抽象类不能被直接实例化，必须继承。</p>
 <p>一个类中，只要有一个抽象方法，这个类必须被声明为抽象类。抽象方法在子类中必须被重写，重写的抽象方法也没有方法体{}，但参数数量需要一致（名称可以不一样）。</p>
 <p>单独设置一个抽象类是没有意义的，只有有了抽象方法，抽象类才有了血肉。</p>
-<h5 id="接口与抽象类连联系与区别"><a href="#接口与抽象类连联系与区别" class="headerlink" title="接口与抽象类连联系与区别"></a>接口与抽象类连联系与区别</h5><p><strong>简单概括：</strong></p>
+<h5 id="接口与抽象类连联系与区别"><a class="markdownIt-Anchor" href="#接口与抽象类连联系与区别"></a> 接口与抽象类连联系与区别</h5>
+<p><strong>简单概括：</strong></p>
 <p>抽象类是一种不能被实例化的类，只能作为其他类的父类来使用。</p>
 <p>抽象类是通过关键字 abstract 来声明的。</p>
 <p>抽象类与普通类相似，都包含成员变量和成员方法，两者的区别在于，抽象类中至少要包含一个抽象方法，</p>
@@ -131,10 +131,10 @@
 <p>(2)interface 实现类及 abstract class 的子类都必须要实现已经声明的抽象方法。</p>
 <p><em>不同点：</em></p>
 <p>interface 需要实现，要用 implements ，而 abstract class 需要继承，要用 extends 。</p>
-<p>  一个类可以实现多个 interface ，但一个类只能继承一个 abstract class 。</p>
-<p> interface 强调特定功能的实现，而 abstract class 强调所属关系。</p>
+<p>一个类可以实现多个 interface ，但一个类只能继承一个 abstract class 。</p>
+<p>interface 强调特定功能的实现，而 abstract class 强调所属关系。</p>
 <p>尽管 interface 实现类及 abstract class 的子类都必须要实现相应的抽象方法，但实现的形式不同。 interface 中的每一个方法都是抽象方法，都只是声明的 (declaration, 没有方法体 ) ，实现类必须要实现。而 abstract class 的子类可以有选择地实现。这个选择有两点含义：</p>
-<p> a) abstract class 中并非所有的方法都是抽象的，只有那些冠有 abstract 的方法才是抽象的，子类必须实现。那些没有 abstract 的方法，在 abstract class 中必须定义方法体； </p>
+<p>a) abstract class 中并非所有的方法都是抽象的，只有那些冠有 abstract 的方法才是抽象的，子类必须实现。那些没有 abstract 的方法，在 abstract class 中必须定义方法体；</p>
 <p>b) abstract class 的子类在继承它时，对非抽象方法既可以直接继承，也可以覆盖；而对抽象方法，可以选择实现，也可以留给其子类来实现，但此类必须也声明为抽象类。既是抽象类，当然也不能实例化。</p>
 <p>(1)      abstract class 是 interface 与 class 的中介。 abstract class 在 interface 及 class 中起到了承上启下的作用。一方面， abstract class 是抽象的，可以声明抽象方法，以规范子类必须实现的功能；另一方面，它又可以定义缺省的方法体，供子类直接使用或覆盖。另外，它还可以定义自己的实例变量，以供子类通过继承来使用。</p>
 <p>(2)      接口中的抽象方法前不用也不能加 abstract 关键字，默认隐式就是抽象方法，也不能加 final 关键字来防止抽象方法的继承。而抽象类中抽象方法前则必须加上 abstract 表示显示声明为抽象方法。</p>
@@ -153,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="cm4dztqkr001ljali0kxnew44" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="cm4uq3vom001ld7lialo5424g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>

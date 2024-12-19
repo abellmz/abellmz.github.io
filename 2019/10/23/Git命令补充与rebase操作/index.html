@@ -7,12 +7,12 @@
   
   <title>Git命令补充与rebase操作 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git知识补充删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’ git rm –cached readme.txt 修改提交的描述 git log">
+  <meta name="description" content="git知识补充 删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’ git rm --cached readme.txt 修改提交的描述 git log">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git命令补充与rebase操作">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="git知识补充删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’ git rm –cached readme.txt 修改提交的描述 git log">
+<meta property="og:description" content="git知识补充 删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’ git rm --cached readme.txt 修改提交的描述 git log">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/9c09f688223bacb8f507722c76d868e.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/f44241bff094030b414d6ed6600f999.png">
@@ -94,32 +94,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git知识补充"><a href="#git知识补充" class="headerlink" title="git知识补充"></a>git知识补充</h3><p>删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’</p>
-<p>git rm –cached readme.txt</p>
+        <h3 id="git知识补充"><a class="markdownIt-Anchor" href="#git知识补充"></a> git知识补充</h3>
+<p>删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’</p>
+<p>git rm --cached readme.txt</p>
 <p>修改提交的描述</p>
 <p>git log</p>
 <span id="more"></span>
-
-<p>git commot –amend-&gt;自动调用vi编辑器</p>
+<p>git commot --amend-&gt;自动调用vi编辑器</p>
 <p>别名设置(将add设置别名 a)</p>
-<p>git config –global alias.a  add  或者直接在.gitconfig文件中直接添加（git全局配置）</p>
+<p>git config --global alias.a  add  或者直接在.gitconfig文件中直接添加（git全局配置）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.gitconfig文件中直接添加（git全局配置）</span><br><span class="line">[alias]</span><br><span class="line">    a=add</span><br><span class="line">    c=commit</span><br><span class="line"></span><br><span class="line">系统别名定义git全局命令</span><br><span class="line">.bash_profile</span><br><span class="line">alias gs=&quot;git status&quot;</span><br><span class="line">alias gc=&quot;git commit -m&quot;</span><br><span class="line">alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%&#x27;&quot;</span><br><span class="line">alias gb=&quot;git branch&quot;</span><br><span class="line">alias ga=&quot;git add .&quot;</span><br><span class="line">alias go=&quot;git checkout&quot;</span><br></pre></td></tr></table></figure>
-
 <p>创建分支ask</p>
 <p>git branch ask</p>
 <p>删除分支ask</p>
 <p>git branch -d ask 内容若有修改提交，切换master删除ask分支，会提示未合并master,不能删除</p>
 <p>强制删除分支</p>
-<p>git branch -D ask </p>
+<p>git branch -D ask</p>
 <p>创建并切换到ask</p>
 <p>git checkout  -b ask</p>
 <p>检查master分支的合并情况（指针在master）</p>
-<p>git branch –merged(已合并分支)</p>
-<p>git branch –no-merged（未合并分支）</p>
+<p>git branch --merged(已合并分支)</p>
+<p>git branch --no-merged（未合并分支）</p>
 <p>拉取远程分支master和ask</p>
 <p>git pull origin ask:ask</p>
 <p>删除远程分支</p>
-<p>git push origin –delete ask</p>
+<p>git push origin --delete ask</p>
 <p>删除本地分支</p>
 <p>git branch -d ask</p>
 <p><strong>冲突：</strong></p>
@@ -129,14 +128,13 @@
 <p>git stash(存储状态，需要在add之后才可使用)，而后可以切换分支</p>
 <p>git stash list（存储列表）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stash@&#123;0&#125;:WIP ...</span><br></pre></td></tr></table></figure>
-
 <p>git stash apply stash@{0}（恢复暂存区stash@{0},无stash@{0}则默认最新的stash@{0}）</p>
 <p>git stash drop stash@{0}（删除暂存区状态stash@{0}）</p>
 <p>git stash pop（恢复并删除暂存区状态stash@{0}，最新的存储状态）</p>
 <p><strong>标签</strong></p>
 <p>git  tag [v1.0] (无【】则为显示标签列表)  标签是稳定的代码才能打上</p>
 <p>开发好后，发布代码，生成zip压缩包。（master分支的所有代码）</p>
-<p>git archive master –prefix&#x3D;’cms&#x2F;‘ –forma&#x3D;zip &gt; cms.zip</p>
+<p>git archive master --prefix=‘cms/’ --forma=zip &gt; cms.zip</p>
 <p>master:分支名</p>
 <p>prefix：压缩后文件名</p>
 <p>forma：后缀</p>
@@ -150,13 +148,13 @@
 <p>master日志中只有master的提交记录，ask日志中有master的提交记录（只包含创建ask时master的提交点）</p>
 <p>在ask分支：git rebase master 在ask日志中插入最新的master提交，使原来的ask提交往 后移动</p>
 <p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103231788.png" alt="image-20200111103231788"></p>
-<p>ask提交后 git rebase –master,这样原本的提交不会丢失，保证了主分支的干净（不保证不冲突）</p>
+<p>ask提交后 git rebase --master,这样原本的提交不会丢失，保证了主分支的干净（不保证不冲突）</p>
 <p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103813810.png" alt="image-20200111103813810"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/" data-id="cm4dztqjn0004jalibse2ezo7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/" data-id="cm4uq3vnk0004d7li02rgg0ly" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>

@@ -7,12 +7,12 @@
   
   <title>SQL注入与XSS攻击 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="sql注入以下以Yii2.0为例 SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。">
+  <meta name="description" content="sql注入 以下以Yii2.0为例 SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL注入与XSS攻击">
 <meta property="og:url" content="http://yoursite.com/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="sql注入以下以Yii2.0为例 SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。">
+<meta property="og:description" content="sql注入 以下以Yii2.0为例 SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2020-02-15T13:56:52.000Z">
 <meta property="article:modified_time" content="2020-09-15T14:23:00.873Z">
@@ -89,38 +89,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h3><p>以下以Yii2.0为例</p>
+        <h3 id="sql注入"><a class="markdownIt-Anchor" href="#sql注入"></a> sql注入</h3>
+<p>以下以Yii2.0为例</p>
 <p>SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。</p>
 <span id="more"></span>
-
-<p>典型的例子就是当对SQL语句进行字符串拼接的时候，直接使用未转义的用户输入内容作为变量。这时，只要在sql语句的中间做修改，比如加上drop、delete等关键字，执行之后后果不堪设想。<br>如何处理：<br>1、过滤用户输入参数中的特殊字符，降低风险。（前、后端）<br>2、禁止通过字符串拼接sql语句，要严格使用 参数绑定 来传入参数。<br>3、合理使用数据库框架提供的机制。就比如Mybatis提供的传入参数的方式 #{}，禁止使用${}，后者相当于是字符串拼接sql，要使用参数化的语句。</p>
+<p>典型的例子就是当对SQL语句进行字符串拼接的时候，直接使用未转义的用户输入内容作为变量。这时，只要在sql语句的中间做修改，比如加上drop、delete等关键字，执行之后后果不堪设想。<br>
+如何处理：<br>
+1、过滤用户输入参数中的特殊字符，降低风险。（前、后端）<br>
+2、禁止通过字符串拼接sql语句，要严格使用 参数绑定 来传入参数。<br>
+3、合理使用数据库框架提供的机制。就比如Mybatis提供的传入参数的方式 #{}，禁止使用${}，后者相当于是字符串拼接sql，要使用参数化的语句。</p>
 <p>总结下，就是要正确使用【参数化绑定sql变量】。</p>
 <p>后台注入代码示例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$data=[</span><br><span class="line">&#x27;str&#x27;=&gt;&#x27;hello world &lt;script&gt;alert(1)&lt;/script&gt;&#x27;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">sql注入 or 1=1或  &#x27;；drop table user;--&#x27;</span><br><span class="line">控制器  访问数据库  占位符‘：‘         </span><br><span class="line">$id=1</span><br><span class="line">$sql=&#x27;select * from article where id=:id&#x27;;</span><br><span class="line">$r=Article::findBySql($sql，[&#x27;:id&#x27;=&gt;$id])-&gt;all();</span><br><span class="line">dd($r);</span><br></pre></td></tr></table></figure>
-
 <p>Yii2.0-advanced绑定变量</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$this-&gt;pageinfo=$pageinfo-&gt;find()-&gt;select([&#x27;title&#x27;,&#x27;keywords&#x27;,&#x27;description&#x27;])-&gt;where(&#x27;file_name =:file_name and is_delete=:is_delete&#x27;)</span><br><span class="line">            -&gt;addParams([&#x27;:file_name&#x27;=&gt;&#x27;cate&#x27;,&#x27;:is_delete&#x27;=&gt;0])-&gt;asArray()-&gt;one();</span><br></pre></td></tr></table></figure>
-
 <p>xss攻击与sql注入</p>
 <p>想用sql查询请尽量用占位去操作</p>
 <p>yii中纯文本输出，对要输出的内容 <code>CHtml::encode()</code> 即可</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?= Html::a(&#x27;text&#x27;, &#x27;url&#x27;, [</span><br><span class="line">    &#x27;data&#x27; =&gt; [</span><br><span class="line">        &#x27;method&#x27; =&gt; &#x27;post&#x27;,</span><br><span class="line">        &#x27;params&#x27; =&gt; [</span><br><span class="line">            &#x27;params_key&#x27; =&gt; &#x27;params_val&#x27;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">])?&gt;</span><br><span class="line"></span><br><span class="line">1.use yii\helpers\Html;</span><br><span class="line">   &lt;?php echo Html::a(&#x27;编辑&#x27;,[&#x27;edit&#x27;,&#x27;id&#x27;=&gt;$info[&#x27;goods_id&#x27;]])?&gt;</span><br><span class="line">2.有确认框的删除操作提示信息（其中delete为该控制器中对应的删除的方法）</span><br><span class="line">&lt;?php echo Html::a(&#x27;删除&#x27;,[&#x27;delete&#x27;,&#x27;id&#x27;=&gt;$info[&#x27;goods_id&#x27;]],[&#x27;onclick&#x27;=&gt;&#x27;return confirm(&quot;aaaaa&quot;)&#x27;])?&gt;a</span><br><span class="line"></span><br><span class="line">$purifier = new CHtmlPurifier;echo $purifier-&gt;purify($content);</span><br></pre></td></tr></table></figure>
-
-<h3 id="防止XSS攻击"><a href="#防止XSS攻击" class="headerlink" title="防止XSS攻击"></a>防止XSS攻击</h3><p>XSS：跨站脚本攻击，Cross-Site Scripting，为了和前端的css避免重名，简称为XSS，是指通过技术手段，向正常用户请求的HTML页面中插入恶意脚本，执行。</p>
+<h3 id="防止xss攻击"><a class="markdownIt-Anchor" href="#防止xss攻击"></a> 防止XSS攻击</h3>
+<p>XSS：跨站脚本攻击，Cross-Site Scripting，为了和前端的css避免重名，简称为XSS，是指通过技术手段，向正常用户请求的HTML页面中插入恶意脚本，执行。</p>
 <p>这种攻击主要是用于信息窃取和破坏等目的。比如2011年的微博XSS攻击事件，攻击者利用了微博发布功能中未对action-data漏洞做有效的过滤，在发布微博信息的时候带上了包含攻击脚本的URL，用户访问就会加载恶意脚本，导致大量用户被攻击。</p>
 <p>关于防范XSS上，主要就是通过对用户输入的数据做过滤或者是转义，可以使用框架提供的工具类HtmlUtil。另外前端在浏览器展示数据的时候，要使用安全的API展示数据。比如使用innerText而不是innerHTML。</p>
-<p>输出的内容包含脚本，从而对请求的用户进行攻击破坏或窃取信息。<br>主要预防方式是：通过对用户输入的数据做过滤或者是转义</p>
+<p>输出的内容包含脚本，从而对请求的用户进行攻击破坏或窃取信息。<br>
+主要预防方式是：通过对用户输入的数据做过滤或者是转义</p>
 <p>例如视图输出：字符串过滤</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">use \yii\helpers\Html;</span><br><span class="line">user \yii\helpers\HtmlPurifier;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br><span class="line">&lt;P&gt;&lt;?=Html::encode($user-&gt;name)?&gt;&lt;/P&gt; 实体化</span><br><span class="line">&lt;?=HtmlPurifier::process($post-&gt;text)?&gt;  去除标签，html显示的文本,更好</span><br><span class="line">&lt;?= Html::encode(&quot;&#123;$country-&gt;name&#125; (&#123;$country-&gt;code&#125;)&quot;) ?&gt;:</span><br><span class="line">&lt;?= $country-&gt;population ?&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h3><p>跨站请求伪造，在用户并不知情的情况下，冒充用户发送请求，在当前已经登录的web网站上执行恶意操作，比如恶意发帖，修改密码等。</p>
+<h3 id="csrf"><a class="markdownIt-Anchor" href="#csrf"></a> CSRF</h3>
+<p>跨站请求伪造，在用户并不知情的情况下，冒充用户发送请求，在当前已经登录的web网站上执行恶意操作，比如恶意发帖，修改密码等。</p>
 <p>大致来看，与XSS有重合的地方，前者是黑客盗用用户浏览器中的登录信息，冒充用户去执行操作。后者是在正常用户请求的HTML中放入恶意代码，XSS问题出在用户数据没有转义，过滤；CSRF问题出现在HTTP接口没有防范不守信用的调用。</p>
-<p>防范CSRF的漏洞方式：<br>1、CSRF Token验证，利用浏览器的同源限制，在HTTP接口执行前验证Cookie中的Token，验证通过才会继续执行请求<br>2、人机交互，例如短信验证码、界面的滑块</p>
+<p>防范CSRF的漏洞方式：<br>
+1、CSRF Token验证，利用浏览器的同源限制，在HTTP接口执行前验证Cookie中的Token，验证通过才会继续执行请求<br>
+2、人机交互，例如短信验证码、界面的滑块</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" data-id="cm4dztqk2000kjali1zescwu9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" data-id="cm4uq3vnw000kd7libksp6tnl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li></ul>

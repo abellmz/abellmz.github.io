@@ -7,12 +7,12 @@
   
   <title>时间复杂度与空间复杂度 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="复杂度 时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。 空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述">
+  <meta name="description" content="复杂度  时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。 空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间复杂度与空间复杂度">
 <meta property="og:url" content="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="复杂度 时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。 空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述">
+<meta property="og:description" content="复杂度  时间维度：是指执行当前算法所消耗的时间，我们通常用「时间复杂度」来描述。 空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「空间复杂度」来描述">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585812424.jpg">
 <meta property="og:image" content="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585621617.jpg">
@@ -93,12 +93,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><ul>
+        <h4 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度</h4>
+<ul>
 <li>时间维度：是指执行当前算法所消耗的时间，我们通常用「<strong>时间复杂度</strong>」来描述。</li>
 <li>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「<strong>空间复杂度</strong>」来描述</li>
 </ul>
 <span id="more"></span>
-
 <p>—What is Big O?—</p>
 <p>O(1):Constant Complexity:Constant 常数复杂度     一次运算</p>
 <p>O(log n):Logarithmic Complexity:对数复杂度</p>
@@ -109,21 +109,19 @@
 <p>O(n^k):k次方阶</p>
 <p>O(2^n):Exponential Growth:指数</p>
 <p>O(n！):Factorial 阶乘</p>
-<p>注意：多块代码一起时，只看最高复杂度的运算   </p>
-<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h4><p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585812424.jpg" alt="image-20200402152728506"></p>
+<p>注意：多块代码一起时，只看最高复杂度的运算</p>
+<h4 id="时间复杂度"><a class="markdownIt-Anchor" href="#时间复杂度"></a> <strong>时间复杂度</strong></h4>
+<p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585812424.jpg" alt="image-20200402152728506"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">O(1):</span><br><span class="line">int n=1000</span><br><span class="line">system.out.println(&#x27;print:&#x27;+n);</span><br><span class="line"></span><br><span class="line">O(n)</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(n^2)</span><br><span class="line">    for(int i=1;i&lt;=n;i++)&#123;</span><br><span class="line">        for(int j=1;j&lt;=n;j++)&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i+&#x27;and&#x27;+j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">O(log n)//若n=4,则以下执行2次，而不是4次,即logn(底数为2)</span><br><span class="line">     for(int i=1;i&lt;=n;i=i*2)&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(k^n)</span><br><span class="line">    for(int i=1;i&lt;=Math.pow(2,n);i++&#123;//终止条件2^n</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br><span class="line">O(n！)</span><br><span class="line">    for(int i=1;i&lt;=factorial(n);i++&#123;</span><br><span class="line">        system.out.println(&#x27;print:&#x27;+i);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>log n 底数直接由分治的复杂度决定，采用二分法,那么就会以2为底数,三分法就会以3为底数，其他亦然。当n趋于无穷大时logx(n)&#x2F;logy(n)的极限可以发现，极限等于lny&#x2F;lnx（自然对数,底数为e，e&#x3D;2.71828…），也就是一个常数，也就是说，在n趋于无穷大的时候，这两个东西仅差一个常数。所以从研究算法的角度log的底数不重要。</p>
+<p>log n 底数直接由分治的复杂度决定，采用二分法,那么就会以2为底数,三分法就会以3为底数，其他亦然。当n趋于无穷大时logx(n)/logy(n)的极限可以发现，极限等于lny/lnx（自然对数,底数为e，e=2.71828…），也就是一个常数，也就是说，在n趋于无穷大的时候，这两个东西仅差一个常数。所以从研究算法的角度log的底数不重要。</p>
 <p><img src="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/1585621617.jpg" alt="image-20200331102706328"></p>
 <p>横坐标：n   纵坐标：运行次数</p>
 <p>常数、对数、线性、线性对数、平方、指数、阶乘</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">计算：1+2+3+...+n</span><br><span class="line">y=0</span><br><span class="line">for i=1 to n</span><br><span class="line">    y=i+y</span><br><span class="line">//硬循环,累加n次</span><br><span class="line">求和公式：</span><br><span class="line">    y=n*(n+1)/2</span><br><span class="line">//只运行1次</span><br><span class="line">时间复杂度由O(n)降为O(1)</span><br></pre></td></tr></table></figure>
-
 <p>用算法提高效率</p>
 <p>斐波那锲数列（Fibonacci sequence）1、1、2、3、5、8、13、21、34…n</p>
-<p>f(n)&#x3D;f(n-1)+f(n-2)</p>
+<p>f(n)=f(n-1)+f(n-2)</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">递归</span><br><span class="line">function fn(n)&#123;</span><br><span class="line">    if(n==1|n==2)&#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    return fn(n-1)+fn(n-2);</span><br><span class="line">&#125;</span><br><span class="line">时间复杂度是2^n，或者说是O(k^n)</span><br><span class="line">现实中n=6的话只需要计算6次，但计算机中算了不止6次，所以代码不是最优的</span><br><span class="line">公司：Master Theorem（主定律）提供了用渐近符号表示许多由分治法得到的递推关系式的方法</span><br></pre></td></tr></table></figure>
-
 <p>二分查找(Binary search)O(logn):一分为二，只查一边</p>
 <p>二叉树遍历(Binary tree traversal):每个节点遍历一次且仅遍历一次O(n)</p>
 <p>排序查找(Optimal sorted matrix serach):一维数组二分查找是O(logn）或排好序的二维矩阵的查找(O(n))</p>
@@ -138,16 +136,17 @@
 <p><strong>图的遍历</strong>：时间复杂度是多少？-》同理可得是O(n)，n代表图中节点总数</p>
 <p><strong>搜索算法</strong>：DFS（深度优先）、BFS（广度优先）时间复杂度是多少？-》同理可得是O(n)，n代表搜索空间里的节点总数</p>
 <p><strong>二分查找</strong>：时间复杂度是多少？-》logn</p>
-<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><p>与时间复杂度类似，但更加简单，主要两条原则：</p>
+<h4 id="空间复杂度"><a class="markdownIt-Anchor" href="#空间复杂度"></a> 空间复杂度</h4>
+<p>与时间复杂度类似，但更加简单，主要两条原则：</p>
 <p>1数组的长度：</p>
-<p>例如一维数组，长度为传入元素的个数，一般来说空间复杂度就是O(n),如果是二维数组，数组的长度为n^2,空间复杂度就是O(n^2)</p>
+<p>例如一维数组，长度为传入元素的个数，一般来说空间复杂度就是O(n),如果是二维数组，数组的长度为n<sup>2,空间复杂度就是O(n</sup>2)</p>
 <p>2递归的深度（特殊说明）</p>
 <p>递归的深度就是空间复杂度的最大值，若递归中又开数组，那么两者之间的最大值就是你的空间复杂度。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" data-id="cm4dztqkt001ojalifrf7fw5t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" data-id="cm4uq3von001od7li22x7ao5q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>

@@ -7,12 +7,12 @@
   
   <title>Composer | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="composercomposer是 PHP 用来管理依赖（dependency）关系的工具。 Java有Maven，Python有pip，Nodejs有npm, 而在composer出现之前，PHP只有被广为诟病的Pear。  composer中文文档：https:&#x2F;&#x2F;learnku.com&#x2F;docs&#x2F;composer&#x2F;2018&#x2F;03-cli&#x2F;2084">
+  <meta name="description" content="composer composer是 PHP 用来管理依赖（dependency）关系的工具。 Java有Maven，Python有pip，Nodejs有npm, 而在composer出现之前，PHP只有被广为诟病的Pear。 composer中文文档：https:&#x2F;&#x2F;learnku.com&#x2F;docs&#x2F;composer&#x2F;2018&#x2F;03-cli&#x2F;2084">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Composer">
 <meta property="og:url" content="http://yoursite.com/2019/06/23/Composer/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="composercomposer是 PHP 用来管理依赖（dependency）关系的工具。 Java有Maven，Python有pip，Nodejs有npm, 而在composer出现之前，PHP只有被广为诟病的Pear。  composer中文文档：https:&#x2F;&#x2F;learnku.com&#x2F;docs&#x2F;composer&#x2F;2018&#x2F;03-cli&#x2F;2084">
+<meta property="og:description" content="composer composer是 PHP 用来管理依赖（dependency）关系的工具。 Java有Maven，Python有pip，Nodejs有npm, 而在composer出现之前，PHP只有被广为诟病的Pear。 composer中文文档：https:&#x2F;&#x2F;learnku.com&#x2F;docs&#x2F;composer&#x2F;2018&#x2F;03-cli&#x2F;2084">
 <meta property="og:locale">
 <meta property="article:published_time" content="2019-06-23T14:33:10.000Z">
 <meta property="article:modified_time" content="2019-06-23T14:38:06.000Z">
@@ -89,19 +89,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="composer"><a href="#composer" class="headerlink" title="composer"></a>composer</h1><p>composer是 PHP 用来管理依赖（dependency）关系的工具。</p>
-<p>Java有Maven，Python有pip，Nodejs有npm, 而在composer出现之前，PHP只有被广为诟病的Pear。 </p>
+        <h1 id="composer"><a class="markdownIt-Anchor" href="#composer"></a> composer</h1>
+<p>composer是 PHP 用来管理依赖（dependency）关系的工具。</p>
+<p>Java有Maven，Python有pip，Nodejs有npm, 而在composer出现之前，PHP只有被广为诟病的Pear。</p>
 <p>composer中文文档：<a href="https://learnku.com/docs/composer/2018/03-cli/2084">https://learnku.com/docs/composer/2018/03-cli/2084</a></p>
 <span id="more"></span>
-
-<h2 id="composer下载安装："><a href="#composer下载安装：" class="headerlink" title="composer下载安装："></a>composer下载安装：</h2><p>参考链接：<a href="https://www.jianshu.com/p/adcae6213e9b">https://www.jianshu.com/p/adcae6213e9b</a></p>
-<h3 id="composer-json文件说明："><a href="#composer-json文件说明：" class="headerlink" title="composer.json文件说明："></a>composer.json文件说明：</h3><p>以下内容为json格式，以下是通过修改composer.json文件+运行命令完成</p>
+<h2 id="composer下载安装"><a class="markdownIt-Anchor" href="#composer下载安装"></a> composer下载安装：</h2>
+<p>参考链接：<a href="https://www.jianshu.com/p/adcae6213e9b">https://www.jianshu.com/p/adcae6213e9b</a></p>
+<h3 id="composerjson文件说明"><a class="markdownIt-Anchor" href="#composerjson文件说明"></a> composer.json文件说明：</h3>
+<p>以下内容为json格式，以下是通过修改composer.json文件+运行命令完成</p>
 <p>require对应：composer install</p>
 <p>autoload对应：composer dump-autoload</p>
 <p>参考链接：<a href="https://blog.csdn.net/qq_35655945/article/details/79694249">https://blog.csdn.net/qq_35655945/article/details/79694249</a></p>
-<h4 id="基本键值对"><a href="#基本键值对" class="headerlink" title="基本键值对"></a>基本键值对</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;:             &quot;meta/silk&quot;,</span><br><span class="line">    &quot;description&quot;:      &quot;another e-commerce website&quot;,</span><br><span class="line">    &quot;keywords&quot;:         [&quot;silk&quot;, &quot;online shop&quot;, &quot;good&quot;],</span><br><span class="line">    &quot;homepage&quot;:         &quot;http://www.xxx.com &quot;,</span><br><span class="line">    &quot;time&quot;:             &quot;2014-12-30&quot;,</span><br><span class="line">    &quot;license&quot;:          &quot;MIT&quot;,</span><br><span class="line">    &quot;authors&quot;: [&#123;</span><br><span class="line">        &quot;name&quot;:         &quot;Elvis Lim&quot;,</span><br><span class="line">        &quot;email&quot;:        &quot;elvis@xxx.com&quot;,</span><br><span class="line">        &quot;homepage&quot;:     &quot;http://www.xxx.com&quot;,</span><br><span class="line">        &quot;role&quot;:         &quot;Engineer&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;，</span><br><span class="line">    &quot;require&quot;: &#123;</span><br><span class="line">        &quot;swiftmailer/swiftmailer&quot;: 5.3.*@dev,</span><br><span class="line">        &quot;phpoffice/phpexcel&quot;: &quot;dev-master&quot;</span><br><span class="line">    &#125;，</span><br><span class="line">    &quot;require-dev&quot;: &#123;</span><br><span class="line">    &quot;codeception/codeception&quot;: &quot;2.0.0 &quot;</span><br><span class="line">&#125;，</span><br><span class="line">&quot;autoload&quot;: &#123;</span><br><span class="line">        &quot;classmap&quot;: [</span><br><span class="line">            &quot;database/seeds&quot;,</span><br><span class="line">            &quot;database/factories&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;App\\&quot;: &quot;app/&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;files&quot;:[</span><br><span class="line">            &quot;app/helper.php&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;autoload-dev&quot;: &#123;</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;Tests\\&quot;: &quot;tests/&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>name：表示包的名称，包名包含两部分，并且以 &#x2F; 分隔。斜杆前面部分，代表包的所有者，可用Github的用户名作为这部分的值。斜杆后面部分代表包的名称，可以用Github的代码库名称来命名，这种情况下，代码在Github上比较有意义的比较好。（name为键，后面为值）</p>
+<h4 id="基本键值对"><a class="markdownIt-Anchor" href="#基本键值对"></a> 基本键值对</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;name&quot;:             &quot;meta/silk&quot;,</span><br><span class="line">    &quot;description&quot;:      &quot;another e-commerce website&quot;,</span><br><span class="line">    &quot;keywords&quot;:         [&quot;silk&quot;, &quot;online shop&quot;, &quot;good&quot;],</span><br><span class="line">    &quot;homepage&quot;:         &quot;http://www.xxx.com &quot;,</span><br><span class="line">    &quot;time&quot;:             &quot;2014-12-30&quot;,</span><br><span class="line">    &quot;license&quot;:          &quot;MIT&quot;,</span><br><span class="line">    &quot;authors&quot;: [&#123;</span><br><span class="line">        &quot;name&quot;:         &quot;Elvis Lim&quot;,</span><br><span class="line">        &quot;email&quot;:        &quot;elvis@xxx.com&quot;,</span><br><span class="line">        &quot;homepage&quot;:     &quot;http://www.xxx.com&quot;,</span><br><span class="line">        &quot;role&quot;:         &quot;Engineer&quot;</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;，</span><br><span class="line">    &quot;require&quot;: &#123;</span><br><span class="line">        &quot;swiftmailer/swiftmailer&quot;: 5.3.*@dev,</span><br><span class="line">        &quot;phpoffice/phpexcel&quot;: &quot;dev-master&quot;</span><br><span class="line">    &#125;，</span><br><span class="line">    &quot;require-dev&quot;: &#123;</span><br><span class="line">    &quot;codeception/codeception&quot;: &quot;2.0.0 &quot;</span><br><span class="line">&#125;，</span><br><span class="line">&quot;autoload&quot;: &#123;</span><br><span class="line">        &quot;classmap&quot;: [</span><br><span class="line">            &quot;database/seeds&quot;,</span><br><span class="line">            &quot;database/factories&quot;</span><br><span class="line">        ],</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;App\\&quot;: &quot;app/&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;files&quot;:[</span><br><span class="line">            &quot;app/helper.php&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;autoload-dev&quot;: &#123;</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;Tests\\&quot;: &quot;tests/&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+<p>name：表示包的名称，包名包含两部分，并且以 / 分隔。斜杆前面部分，代表包的所有者，可用Github的用户名作为这部分的值。斜杆后面部分代表包的名称，可以用Github的代码库名称来命名，这种情况下，代码在Github上比较有意义的比较好。（name为键，后面为值）</p>
 <p>description：应用简介，这部分尽量简洁介绍下项目，别长篇大论。如果确实有很多话要说，那么可以写在README.md文件里。</p>
 <p>keywords：关键词的值是一个字符串数组，在发布成公用库的是时候，作为元数据信息，有利于包的搜索和发现。</p>
 <p>homepage：主页，可以放你想放的任何页面地址。</p>
@@ -109,47 +111,49 @@
 <p>authors：作者字段，可以包含一个对象数组，也就是说可以提供多个作者信息。</p>
 <p>建一个新的 JavaScript 变量，然后将 JSON 格式的数据字符串直接赋值给它：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var people = &#123; &quot;programmers&quot;: [ &#123; &quot;firstName&quot;: &quot;Brett&quot;, &quot;lastName&quot;:&quot;McLaughlin&quot;, &quot;email&quot;: &quot;aaaa&quot; &#125;,</span><br><span class="line">&#123; &quot;firstName&quot;: &quot;Jason&quot;, &quot;lastName&quot;:&quot;Hunter&quot;, &quot;email&quot;: &quot;bbbb&quot; &#125;,</span><br><span class="line">&#123; &quot;firstName&quot;: &quot;Elliotte&quot;, &quot;lastName&quot;:&quot;Harold&quot;, &quot;email&quot;: &quot;cccc&quot; &#125;</span><br><span class="line">],</span><br><span class="line">&quot;authors&quot;: [......</span><br></pre></td></tr></table></figure>
-
 <p>JavaScript 要想访问 programmers 列表的第一个条目的姓氏，只需在 JavaScript 中使用下面这样的代码：people.programmers[0].lastName;（类似于多维数组）</p>
-<h4 id="依赖管理require"><a href="#依赖管理require" class="headerlink" title="依赖管理require"></a>依赖管理require</h4><p>使用现有的库来实现发送电子邮件等功能，可以使用现有的库来实现这些功能。要获取这些库，最简单的方式是，搜索下这些库，找到下载地址，下载个zip包，然后解压到相应目录下，根据文档引入相应的文件。使用Composer，可以更加自动和优雅地完成这个过程，这就是Composer的依赖管理。</p>
+<h4 id="依赖管理require"><a class="markdownIt-Anchor" href="#依赖管理require"></a> 依赖管理require</h4>
+<p>使用现有的库来实现发送电子邮件等功能，可以使用现有的库来实现这些功能。要获取这些库，最简单的方式是，搜索下这些库，找到下载地址，下载个zip包，然后解压到相应目录下，根据文档引入相应的文件。使用Composer，可以更加自动和优雅地完成这个过程，这就是Composer的依赖管理。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;require&quot;: &#123;</span><br><span class="line">    &quot;swiftmailer/swiftmailer&quot;: ^5.3.*@dev,</span><br><span class="line">    &quot;phpoffice/phpexcel&quot;: &quot;dev-master&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>以swiftmailer为例，swiftmailer&#x2F;swiftmailer 代表的是包名称，5.3.*@dev , 是版本信息。合起来的意思就是说，我们将要开发的应用，依赖于swiftmailer的5.3.版本。</p>
+<p>以swiftmailer为例，swiftmailer/swiftmailer 代表的是包名称，5.3.*@dev , 是版本信息。合起来的意思就是说，我们将要开发的应用，依赖于swiftmailer的5.3.版本。</p>
 <p>其中：</p>
-<p>‘^’表示除了大版本号以外，小版本号和补丁版本号都可以变:^1.2.3 代表 1.2.3 &lt;&#x3D; 版本号 &lt; 2.0.0</p>
-<p>5.3.*表示，可以使用5.3.1版本，也可以使用5.3.2版本，composer在获取的时候，将寻找5.3版本下最新的版本。版本号支持一些更加宽泛的约束，比如&gt;&#x3D;1.0, &gt;&#x3D;1.0, &lt;2.0，</p>
+<p>'<sup>'表示除了大版本号以外，小版本号和补丁版本号都可以变:</sup>1.2.3 代表 1.2.3 &lt;= 版本号 &lt; 2.0.0</p>
+<p>5.3.*表示，可以使用5.3.1版本，也可以使用5.3.2版本，composer在获取的时候，将寻找5.3版本下最新的版本。版本号支持一些更加宽泛的约束，比如&gt;=1.0, &gt;=1.0, &lt;2.0，</p>
 <p>@dev（稳定性标签）表示可以获取开发版本。通常，开发版本意味非稳定版本，很可能存在bug。稳定性标签可以作用于特定的依赖项，也可以作用于全局。</p>
 <p>作用于特定依赖项（@dev的作用）：默认情况下，composer只会获取稳定版本，如果这个例子我们不加@dev约束，而5.3.*版本都是开发版本，那么在获取的时候composer就会报错，指出改版本不符合要求。如果确定这个开发版本没有问题，那么就可以通过加@dev ，让Composer获取这个开发版本。</p>
 <p>运行Composer包更新命令，看看效果。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer install</span><br></pre></td></tr></table></figure>
-
 <p>会在根目录下发现vendor文件夹，里面包含了刚刚我们列出来的两个包文件代码。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;require-dev&quot;: &#123;</span><br><span class="line">    &quot;codeception/codeception&quot;: &quot;2.0.0 &quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>有些包依赖只会在开发过程中使用，正式发布的程序不需要这些包。可运行composer install查看效果.</p>
-<h4 id="自动加载autoload"><a href="#自动加载autoload" class="headerlink" title="自动加载autoload"></a>自动加载autoload</h4><p>file&gt;classmap&gt;psr-0&#x2F;psr-0   路径都是相对于应用(项目)的根目录</p>
+<h4 id="自动加载autoload"><a class="markdownIt-Anchor" href="#自动加载autoload"></a> 自动加载autoload</h4>
+<p>file&gt;classmap&gt;psr-0/psr-0   路径都是相对于应用(项目)的根目录</p>
 <p>调用PHPExcel库</p>
 <p>只要引入vendor目录下的autoload.php文件就可以了,可以在根目录下（public目录），建一个index.php文件，加入以下内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include “vendor/autoload.php”</span><br><span class="line">$excel = new PHPExcel();</span><br><span class="line">var_dump($excel);浏览器访问一下这个页面，就会发现PHPExcel对象已经被成功创建</span><br></pre></td></tr></table></figure>
-
-<h5 id="file"><a href="#file" class="headerlink" title="file"></a>file</h5><p>想让composer帮我们自动加载我们自己定义的类的时候</p>
+<h5 id="file"><a class="markdownIt-Anchor" href="#file"></a> file</h5>
+<p>想让composer帮我们自动加载我们自己定义的类的时候</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;autoload&quot;:&#123;</span><br><span class="line">    &quot;files&quot;:[&quot;lib/OrderManager.php&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>files键对应的值是一个数组，数组元素是文件的路径，路径是相对于应用(项目)的根目录。file通常作为函数库的载入方式（而非类库）</p>
 <p>运行：composer dump-autoload	重建自动加载的信息，完成之后就可以在index.php里调用OrderManager类,但一个个加载文件太麻烦，怎么办？</p>
-<h5 id="classmap"><a href="#classmap" class="headerlink" title="classmap"></a>classmap</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;classmap&quot;:[&quot;lib&quot;]</span><br></pre></td></tr></table></figure>
-
+<h5 id="classmap"><a class="markdownIt-Anchor" href="#classmap"></a> classmap</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;classmap&quot;:[&quot;lib&quot;]</span><br></pre></td></tr></table></figure>
 <p>所有lib目录下的文件进行引入。当程序需要OrderManager类时，compoer的自动加载类通过查找OrderManager类所在的文件，然后再将改文件include进来。因此，这又导致了一个问题，那就是每加一个新类，就需要运行一次composer dump-autoload来创建类到文件到对应关系。怎么办？</p>
-<h5 id="PSR0-4加载方式"><a href="#PSR0-4加载方式" class="headerlink" title="PSR0&#x2F;4加载方式"></a>PSR0&#x2F;4加载方式</h5><p>FIG组织制定的一组PHP相关规范，简称PSR，其中</p>
-<p>PSR-0自动加载 （可以不用composer dump-autoload）<br>PSR-1基本代码规范<br>PSR-2代码样式<br>PSR-3日志接口<br>PSR-4 自动加载</p>
+<h5 id="psr04加载方式"><a class="markdownIt-Anchor" href="#psr04加载方式"></a> PSR0/4加载方式</h5>
+<p>FIG组织制定的一组PHP相关规范，简称PSR，其中</p>
+<p>PSR-0自动加载 （可以不用composer dump-autoload）<br>
+PSR-1基本代码规范<br>
+PSR-2代码样式<br>
+PSR-3日志接口<br>
+PSR-4 自动加载</p>
 <p>目前就这五个规范，乍一看，PSR-0和PSR-4是重复了，实际上，在功能上确实有所重复。区别在于PSR-4的规范比较干净，去除了兼容PHP 5.3以前版本的内容，有一点PSR-0升级版的感觉。当然，PSR-4也不是要完全替代PSR-0，而是在必要的时候补充PSR-0——当然，如果你愿意，PSR-4也可以替代PSR-0。PSR-4可以和包括PSR-0在内的其他自动加载机制共同使用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;autoload&quot;: &#123;</span><br><span class="line">        &quot;psr-4&quot;: &#123;</span><br><span class="line">            &quot;App\\&quot;: &quot;app/&quot;		规定命名空间名称,结尾必须跟上&quot;\\&quot;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>APP为空间名（类中的namespace），<code>\\</code>为分隔符，app&#x2F;是目录。即搜索文件在app&#x2F;APP目录下</p>
+<p>APP为空间名（类中的namespace），<code>\\</code>为分隔符，app/是目录。即搜索文件在app/APP目录下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;autoload&quot;:&#123;</span><br><span class="line">    &quot;psr-0&quot;:&#123;</span><br><span class="line">        &quot;Silk\\lib&quot;:&quot;lib/&quot;	成功，不过很少用了有个说法是它的命名空间结尾也需要‘\\’</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>文件搜索是在：lib&#x2F;SilkLib&#x2F; 目录下</p>
-<h3 id="composer命令介绍"><a href="#composer命令介绍" class="headerlink" title="composer命令介绍"></a>composer命令介绍</h3><h5 id="composer-update与composer-install"><a href="#composer-update与composer-install" class="headerlink" title="composer update与composer install"></a>composer update与composer install</h5><p>简单点说就是：</p>
+<p>文件搜索是在：lib/SilkLib/ 目录下</p>
+<h3 id="composer命令介绍"><a class="markdownIt-Anchor" href="#composer命令介绍"></a> composer命令介绍</h3>
+<h5 id="composer-update与composer-install"><a class="markdownIt-Anchor" href="#composer-update与composer-install"></a> composer update与composer install</h5>
+<p>简单点说就是：</p>
 <p>update作用于文件composer.json；</p>
 <p>install作用于composer.lock精确下载不更新，但没composer.lock时，效果和update一样</p>
 <p>参考链接:<a href="https://blog.csdn.net/qq_28787211/article/details/79357879">https://blog.csdn.net/qq_28787211/article/details/79357879</a></p>
@@ -158,17 +162,20 @@
 <p>所以只要你本地有一份composer.lock，你就可以保证无论过去了多久，你都能拉到相同的依赖。</p>
 <p>当你修改了你的依赖关系，不管是新增了依赖，还是修改了依赖的版本，又或者是删除了依赖执行composer install的时，会得到一个警告信息，并且不会有任何变更。因为composer.lock对应的那份依赖会出现哈希字段段，值不一致自然而然就知道发生了变更了，这时用update就行了。</p>
 <p><strong>仅仅更新修改的部分</strong>，可通过指定白名单来确定要更新的范围：</p>
-<p>composer update monolog&#x2F;monolog仅会更新monolog&#x2F;monlog这个依赖，别的依赖哪怕有更新也会被忽略</p>
-<h5 id="composer-dump"><a href="#composer-dump" class="headerlink" title="composer dump"></a>composer dump</h5><p>相当于调用 <code>composer dump-autoload</code></p>
-<h5 id="composer-require"><a href="#composer-require" class="headerlink" title="composer require"></a>composer require</h5><p>composer require +类库名		将没有的类库写入composer .json</p>
-<h5 id="composer-remove"><a href="#composer-remove" class="headerlink" title="composer remove"></a>composer remove</h5><p>composer remove +类库名		删除类库</p>
+<p>composer update monolog/monolog仅会更新monolog/monlog这个依赖，别的依赖哪怕有更新也会被忽略</p>
+<h5 id="composer-dump"><a class="markdownIt-Anchor" href="#composer-dump"></a> composer dump</h5>
+<p>相当于调用 <code>composer dump-autoload</code></p>
+<h5 id="composer-require"><a class="markdownIt-Anchor" href="#composer-require"></a> composer require</h5>
+<p>composer require +类库名		将没有的类库写入composer .json</p>
+<h5 id="composer-remove"><a class="markdownIt-Anchor" href="#composer-remove"></a> composer remove</h5>
+<p>composer remove +类库名		删除类库</p>
 <p><strong>更多命令看composer中文文档的composer 命令的使用</strong></p>
 <p>可以在中国镜像中寻找类库</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/23/Composer/" data-id="cm4dztqje0000jalid1h70oct" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/23/Composer/" data-id="cm4uq3vn90000d7ligjwrbr2f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>

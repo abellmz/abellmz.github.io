@@ -89,36 +89,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 这里运用的是Laravel框架，工具是PhpStorm.</p>
+        <p>这里运用的是Laravel框架，工具是PhpStorm.</p>
 <p>1、前往 <a href="https://www.algolia.com/">https://www.algolia.com/</a> 注册账号，可以使用免费版，当然你也可以买一个，然后在账户的API Keys菜单获取Application ID和Admin API Key，后面会用到的</p>
 <span id="more"></span>
-
 <p>2、</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">composer require algolia/algoliasearch-client-php</span><br><span class="line"></span><br><span class="line">composer require laravel/scout（如果担心版本过新，容易出问题的话，这两条不用执行，直接跳过这两条命令）</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">在composer.json的require加入以下2条</span><br><span class="line">&quot;laravel/scout&quot;: &quot;^5.0&quot;,</span><br><span class="line">&quot;algolia/algoliasearch-client-php&quot;: &quot;^1.2.7&quot;</span><br></pre></td></tr></table></figure>
-
 <p>3、运行 composer install(若不行，删除composer.lock后再运行)，Scout 安装完成后，使用 <code>vendor:publish</code> Artisan 命令来生成 Scout 配置文件。这个命令将生成 <code>scout.php</code> 配置文件到你的 <code>config</code> 目录：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan vendor:publish --provider=&quot;Laravel\Scout\ScoutServiceProvider&quot;</span><br></pre></td></tr></table></figure>
-
 <p>4、将scout.php中algolia的两个值ALGOLIA_APP_ID、ALGOLIA_SECRET复制到.env文件 ，并赋值相应的Application ID和Admin API Key（不要引号，14 天过期）</p>
-<p>5、运行 php artisan vendor:publish –provider&#x3D;”Laravel\Scout\ScoutServiceProvider”</p>
-<p>——————————–上面按步骤操作，下面涉及到逻辑方法</p>
+<p>5、运行 php artisan vendor:publish --provider=“Laravel\Scout\ScoutServiceProvider”</p>
+<p>--------------------------------上面按步骤操作，下面涉及到逻辑方法</p>
 <p>最后，在你想要做搜索的模型中添加 <code>Laravel\Scout\Searchable</code> trait。这个 trait 会注册一个模型观察者来保持模型和搜索驱动的同步：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">namespace App;</span><br><span class="line">use Laravel\Scout\Searchable;</span><br><span class="line">use Illuminate\Database\Eloquent\Model;</span><br><span class="line"></span><br><span class="line">class Post extends Model</span><br><span class="line">&#123;</span><br><span class="line">    use Searchable;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>Scout 提供了 Artisan 命令 <code>import</code> 用来导入所有已存在的记录到搜索索引：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php artisan scout:import &quot;App\Post&quot;（空间\类）</span><br><span class="line">如果ALGOLIA_APP_ID、ALGOLIA_SECRET过期，报错：超出操作限额</span><br></pre></td></tr></table></figure>
-
 <p>执行搜索:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$orders = App\Order::search(&#x27;Star Trek&#x27;)-&gt;get();</span><br></pre></td></tr></table></figure>
-
 <p>需建立方法HomeController下建立search方法，填写  “执行搜索”    还有添加入模板页面</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/20/Scout%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" data-id="cm4dztqk2000ljali0kt68dfi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/20/Scout%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" data-id="cm4uq3vnx000ld7li0dz54mbo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
