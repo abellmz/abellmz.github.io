@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Smarty" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Redis危险命令处理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/25/Smarty/" class="article-date">
-  <time datetime="2020-04-25T13:23:27.000Z" itemprop="datePublished">2020-04-25</time>
+    <a href="/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/" class="article-date">
+  <time datetime="2021-10-05T10:04:27.000Z" itemprop="datePublished">2021-10-05</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/Smarty/">Smarty</a>
+      <a class="article-title" href="/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/">Redis危险命令处理</a>
     </h1>
   
 
@@ -86,20 +86,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>模板（html+css）引擎技术之一</p>
-<p>可以使得“php代码”与“html代码”分离的技术都称为模板引擎技术。</p>
+        <h3 id="注意"><a class="markdownIt-Anchor" href="#注意"></a> 注意：</h3>
+<h4 id="危险命令"><a class="markdownIt-Anchor" href="#危险命令"></a> 危险命令</h4>
+<p>线上是不能执行 <code>keys *</code> 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！</p>
         
           <p class="article-more-link">
-            <a href="/2020/04/25/Smarty/#more">Read More</a>
+            <a href="/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/Smarty/" data-id="cm4wg2zr0000na9lico6nef1d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/" data-id="cm4wk1ebw000k58lieuwkcshm" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
 
     </footer>
   </div>
@@ -108,10 +109,10 @@
 
 
   
-    <article id="post-ThinkPHP" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Redis点赞设计" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/04/13/ThinkPHP/" class="article-date">
-  <time datetime="2020-04-13T14:19:24.000Z" itemprop="datePublished">2020-04-13</time>
+    <a href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2021-09-26T09:58:39.000Z" itemprop="datePublished">2021-09-26</time>
 </a>
     
   </div>
@@ -122,7 +123,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/13/ThinkPHP/">ThinkPHP</a>
+      <a class="article-title" href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/">Redis点赞设计</a>
     </h1>
   
 
@@ -130,22 +131,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>框架下载地址：版本5.0.24</p>
-<p><a href="http://www.thinkphp.cn/down/framework.html">http://www.thinkphp.cn/down/framework.html</a></p>
-<p>TP5</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tp5</span><br><span class="line">├─application     应用目录</span><br><span class="line">├─extend          扩展类库目录（可定义）</span><br><span class="line">├─public         网站对外访问目录</span><br><span class="line">├─runtime         运行时目录（可定义）</span><br><span class="line">├─vendor          第三方类库目录（Composer）</span><br><span class="line">├─thinkphp        框架核心目录</span><br><span class="line">├─build.php       自动生成定义文件（参考）</span><br><span class="line">├─composer.json   Composer定义文件</span><br><span class="line">├─LICENSE.txt     授权说明文件</span><br><span class="line">├─README.md       README 文件</span><br><span class="line">├─think           命令行工具入口</span><br><span class="line"></span><br><span class="line">如果在linux环境下面的话，需要给runtime目录755权限。</span><br></pre></td></tr></table></figure>
+        <h2 id="点赞设计"><a class="markdownIt-Anchor" href="#点赞设计"></a> 点赞设计</h2>
+<h3 id="方案一"><a class="markdownIt-Anchor" href="#方案一"></a> 方案一</h3>
+<p><code>考虑：此方案不针对于排行榜，只是文章的点赞。</code></p>
+<p>缺点：redis挂掉的时候会丢失数据， 同时不及时同步redis中的数据， 可能会在redis内存置换的时候被淘汰掉;</p>
+<p>不过对于我们点赞而已， 稍微丢失一点数据问题不大;</p>
         
           <p class="article-more-link">
-            <a href="/2020/04/13/ThinkPHP/#more">Read More</a>
+            <a href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/ThinkPHP/" data-id="cm4wg2zr1000oa9licbsn4zz9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/" data-id="cm4wk1ebx000n58lif1bi48at" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
 
     </footer>
   </div>
@@ -154,10 +156,10 @@
 
 
   
-    <article id="post-Yii-basic与advanced及SQL调用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-反向代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" class="article-date">
-  <time datetime="2020-02-15T14:24:09.000Z" itemprop="datePublished">2020-02-15</time>
+    <a href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="article-date">
+  <time datetime="2021-09-20T09:26:17.000Z" itemprop="datePublished">2021-09-20</time>
 </a>
     
   </div>
@@ -168,7 +170,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/">Yii-basic与advanced及SQL调用</a>
+      <a class="article-title" href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">反向代理</a>
     </h1>
   
 
@@ -176,91 +178,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="下载版本basic与advanced区别"><a class="markdownIt-Anchor" href="#下载版本basic与advanced区别"></a> 下载版本basic与advanced区别</h4>
-<table>
-<thead>
-<tr>
-<th>Codeception 测试</th>
-<th>/</th>
-<th>/</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>功能</td>
-<td>Basic</td>
-<td>advanced</td>
-</tr>
-<tr>
-<td>Project 结构</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>网站控制器</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>用户登录/登出</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>表单</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>数据库连接</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>命令控制台</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>资源包</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>Bootstrap</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>前后台应用</td>
-<td></td>
-<td>/</td>
-</tr>
-<tr>
-<td>可用的 User 模型</td>
-<td></td>
-<td>/</td>
-</tr>
-<tr>
-<td>用户注册和密码恢复</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出、和数据库连接等功能。但是，</p>
+        <h3 id="正向代理与反向代理"><a class="markdownIt-Anchor" href="#正向代理与反向代理"></a> 正向代理与反向代理</h3>
+<p>正向代理：</p>
+<p>正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
+<p>反向代理：</p>
         
           <p class="article-more-link">
-            <a href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/#more">Read More</a>
+            <a href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" data-id="cm4wg2zr2000ra9li6ali7o14" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" data-id="cm4wk1eck001o58li6rih1wjp" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -269,10 +202,10 @@
 
 
   
-    <article id="post-Yii的布局与表单提交" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Ubuntu进程查看和软件卸载" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" class="article-date">
-  <time datetime="2020-02-15T14:05:32.000Z" itemprop="datePublished">2020-02-15</time>
+    <a href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="article-date">
+  <time datetime="2021-09-19T09:47:04.000Z" itemprop="datePublished">2021-09-19</time>
 </a>
     
   </div>
@@ -283,7 +216,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/">Yii的布局与表单提交</a>
+      <a class="article-title" href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/">Ubuntu进程查看和软件卸载</a>
     </h1>
   
 
@@ -291,21 +224,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="布局"><a class="markdownIt-Anchor" href="#布局"></a> 布局</h3>
-<p>定义父模板</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在类中定义</span><br><span class="line">public $layout=&#x27;home&#x27;;</span><br><span class="line">view的 layout目录添加home.php</span><br><span class="line">body中+&lt;?=$content ;?&gt;</span><br><span class="line"></span><br><span class="line">页面中引入其他页面  &lt;php echo $this-&gt;render(&#x27;about&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
+        <h4 id="ubuntu进程查看及相关处理"><a class="markdownIt-Anchor" href="#ubuntu进程查看及相关处理"></a> ubuntu进程查看及相关处理</h4>
+<p><code>gnome-system-monitor</code>是Ubuntu系统自带的资源管理器，可以让我们在界面中动态查看所有进程资源以及计算内存消耗情况，可直接在命令行中输入<code>gnome-system-monitor</code>：</p>
         
           <p class="article-more-link">
-            <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/#more">Read More</a>
+            <a href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" data-id="cm4wg2zr3000ta9li34xid66z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" data-id="cm4wk1ec2000v58lie8u20a7o" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -314,10 +246,10 @@
 
 
   
-    <article id="post-SQL注入与XSS攻击" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-定时任务" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" class="article-date">
-  <time datetime="2020-02-15T13:56:52.000Z" itemprop="datePublished">2020-02-15</time>
+    <a href="/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" class="article-date">
+  <time datetime="2021-09-19T08:59:56.000Z" itemprop="datePublished">2021-09-19</time>
 </a>
     
   </div>
@@ -328,7 +260,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/">SQL注入与XSS攻击</a>
+      <a class="article-title" href="/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">定时任务</a>
     </h1>
   
 
@@ -336,21 +268,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="sql注入"><a class="markdownIt-Anchor" href="#sql注入"></a> sql注入</h3>
-<p>以下以Yii2.0为例</p>
-<p>SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。</p>
+        <h3 id="binbash"><a class="markdownIt-Anchor" href="#binbash"></a> #! /bin/bash</h3>
+<p>linux shell脚本中的开头 <code>#! /bin/bash</code>的含义</p>
+<p>很多时候不规范的写法可以忽略掉这一句，执行起来好像也是ok，结果没什么不一样 。这只是因为在我们常用 的linux系统上默认都是执行/bin/bash来执行我们的shell脚本，但是如果有些用户使用的是csh，那么缺少第一行的“#！/bin/bash的shell脚本执行结果就可能存在语法不兼容的问题，导致结果异常或者根本不能执行。</p>
         
           <p class="article-more-link">
-            <a href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/#more">Read More</a>
+            <a href="/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" data-id="cm4wg2zqz000ka9li04dka8bn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" data-id="cm4wk1ecm001t58lig22e8ajy" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -359,10 +291,10 @@
 
 
   
-    <article id="post-Yii2-0基本使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-时间复杂度与空间复杂度" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-01-25T13:40:33.000Z" itemprop="datePublished">2020-01-25</time>
+    <a href="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="article-date">
+  <time datetime="2021-09-12T15:17:30.000Z" itemprop="datePublished">2021-09-12</time>
 </a>
     
   </div>
@@ -373,7 +305,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">Yii2.0基本使用</a>
+      <a class="article-title" href="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">时间复杂度与空间复杂度</a>
     </h1>
   
 
@@ -381,23 +313,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Yii2-advanced与yii2basic的区别</p>
+        <h4 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度</h4>
 <ul>
-<li><strong>basic</strong> 更适合新手，特别是刚刚接触 yii 的入门开发人员。</li>
-<li><strong>adavanced</strong> 随包自带两个应用：前台应用 <strong>frontend</strong> 和后台应用 <strong>backend</strong>，basic 中只有一个应用 <strong>web</strong>。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的</li>
+<li>时间维度：是指执行当前算法所消耗的时间，我们通常用「<strong>时间复杂度</strong>」来描述。</li>
+<li>空间维度：是指执行当前算法需要占用多少内存空间，我们通常用「<strong>空间复杂度</strong>」来描述</li>
 </ul>
         
           <p class="article-more-link">
-            <a href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more">Read More</a>
+            <a href="/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" data-id="cm4wg2zr3000sa9li6yxz86pl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/12/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" data-id="cm4wk1ecr002458lidnhqgs4m" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
 
     </footer>
   </div>
@@ -406,10 +338,10 @@
 
 
   
-    <article id="post-rebase与merge" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-os与strings常用函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/12/25/rebase%E4%B8%8Emerge/" class="article-date">
-  <time datetime="2019-12-25T14:40:29.000Z" itemprop="datePublished">2019-12-25</time>
+    <a href="/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2021-08-24T09:06:58.000Z" itemprop="datePublished">2021-08-24</time>
 </a>
     
   </div>
@@ -420,7 +352,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/25/rebase%E4%B8%8Emerge/">rebase与merge</a>
+      <a class="article-title" href="/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">os与strings常用函数</a>
     </h1>
   
 
@@ -428,21 +360,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git-rebase-与git-merge"><a class="markdownIt-Anchor" href="#git-rebase-与git-merge"></a> git rebase 与git merge</h3>
-<p><strong>git rebase</strong> 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。<br>
-原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。</p>
+        <h3 id="os包中的一些常用函数"><a class="markdownIt-Anchor" href="#os包中的一些常用函数"></a> os包中的一些常用函数</h3>
+<p>fmt.Println(os.Hostname())//获取主机名</p>
+<p>fmt.Println(os.Getwd());//获取当前目录</p>
+<p>fmt.Println(os.Getuid());//获取用户ID</p>
         
           <p class="article-more-link">
-            <a href="/2019/12/25/rebase%E4%B8%8Emerge/#more">Read More</a>
+            <a href="/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/25/rebase%E4%B8%8Emerge/" data-id="cm4wg2zrd0017a9li3pg647ry" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/08/24/os%E4%B8%8Estrings%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" data-id="cm4wk1ece001c58licbys9992" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
 
     </footer>
   </div>
@@ -451,10 +384,10 @@
 
 
   
-    <article id="post-reset使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-go常用函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/12/03/reset%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2019-12-03T04:35:29.000Z" itemprop="datePublished">2019-12-03</time>
+    <a href="/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" class="article-date">
+  <time datetime="2021-08-24T09:03:54.000Z" itemprop="datePublished">2021-08-24</time>
 </a>
     
   </div>
@@ -465,7 +398,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/reset%E4%BD%BF%E7%94%A8/">reset使用</a>
+      <a class="article-title" href="/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/">Go常用函数</a>
     </h1>
   
 
@@ -473,23 +406,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="git-reset三种模式hardmixedsoft"><a class="markdownIt-Anchor" href="#git-reset三种模式hardmixedsoft"></a> git reset三种模式（–hard/–mixed/–soft）</h3>
-<p>Git会有三个区域：</p>
-<p>1.Working Tree 当前的工作区域(本地代码存放位置)</p>
-<p>2.Index/Stage 暂存区域，和git stash命令暂存的地方不一样。使用git add xx，就可以将xx添加进Stage里面（暂存区域）</p>
-<p>Repository 提交的历史，即使用git commit提交后的结果（类似本地仓库）</p>
+        <h3 id="常用内置函数"><a class="markdownIt-Anchor" href="#常用内置函数"></a> 常用内置函数：</h3>
+<p>close：用于管道通信</p>
+<p>len/cap：len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）</p>
         
           <p class="article-more-link">
-            <a href="/2019/12/03/reset%E4%BD%BF%E7%94%A8/#more">Read More</a>
+            <a href="/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/03/reset%E4%BD%BF%E7%94%A8/" data-id="cm4wg2zre0019a9liadrnetc9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/08/24/go%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" data-id="cm4wk1ec9001458lic2ry4k52" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
 
     </footer>
   </div>
@@ -498,10 +429,10 @@
 
 
   
-    <article id="post-Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-golangBasic10-20" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/" class="article-date">
-  <time datetime="2019-11-30T14:23:18.000Z" itemprop="datePublished">2019-11-30</time>
+    <a href="/2021/07/11/golangBasic10-20/" class="article-date">
+  <time datetime="2021-07-11T03:41:02.000Z" itemprop="datePublished">2021-07-11</time>
 </a>
     
   </div>
@@ -512,7 +443,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
+      <a class="article-title" href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
     </h1>
   
 
@@ -520,20 +451,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="标题1-6阶1~6个空格标题"><a class="markdownIt-Anchor" href="#标题1-6阶1~6个空格标题"></a> 标题1-6阶：1~6个#+空格+标题</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级</span><br><span class="line">## 二级</span><br><span class="line">### 三级</span><br><span class="line">#### 四级</span><br><span class="line">##### 五级</span><br><span class="line">###### 六级</span><br></pre></td></tr></table></figure>
+        <h2 id="10错误处理"><a class="markdownIt-Anchor" href="#10错误处理"></a> 10错误处理</h2>
+<h3 id="错误处理方式"><a class="markdownIt-Anchor" href="#错误处理方式"></a> 错误处理方式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;io/ioutil&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main()&#123;</span><br><span class="line">	f, err := ioutil.ReadFile(&quot;test.txt&quot;)</span><br><span class="line">	if err != nil&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		fmt.Println(f)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a href="/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/#more">Read More</a>
+            <a href="/2021/07/11/golangBasic10-20/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/" data-id="cm4wg2zqq0008a9li8kd92jss" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/07/11/golangBasic10-20/" data-id="cm4wk1ec8001358li338d0488" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
 
     </footer>
   </div>
@@ -542,10 +474,10 @@
 
 
   
-    <article id="post-自动化部署" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-golangBasic1-9" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" class="article-date">
-  <time datetime="2019-11-16T14:57:02.000Z" itemprop="datePublished">2019-11-16</time>
+    <a href="/2021/07/05/golangBasic1-9/" class="article-date">
+  <time datetime="2021-07-05T03:30:18.000Z" itemprop="datePublished">2021-07-05</time>
 </a>
     
   </div>
@@ -556,7 +488,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">自动化部署</a>
+      <a class="article-title" href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
     </h1>
   
 
@@ -564,19 +496,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="自动化部署流程"><a class="markdownIt-Anchor" href="#自动化部署流程"></a> 自动化部署流程：</h3>
+        <p>GOPATH目录下主要包含三个重要目录：<br>
+（1）bin：Go编译可执行文件的存放路径。<br>
+（2）pkg：Go编译包时生成的.a中间文件存放路径。<br>
+（3）src：Go标准库源码路径。</p>
         
           <p class="article-more-link">
-            <a href="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/#more">Read More</a>
+            <a href="/2021/07/05/golangBasic1-9/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" data-id="cm4wg2zro001sa9lico5chchl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/07/05/golangBasic1-9/" data-id="cm4wk1ec8001258licnjegh7k" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
 
     </footer>
   </div>
@@ -589,7 +524,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -603,7 +538,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
     </div>
   </div>
 
@@ -613,7 +548,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.5px;">Front-end</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.75px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.75px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 17.5px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Tool/" style="font-size: 11.25px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 17.78px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 14.44px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 16.67px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 13.33px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
     </div>
   </div>
 
@@ -622,7 +557,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -635,23 +570,23 @@
       <ul>
         
           <li>
-            <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/">笛卡尔积/内连接/外连接</a>
+            <a href="/2024/11/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5/">常见的负载均衡策略</a>
           </li>
         
           <li>
-            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+            <a href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">如何实现浏览器跨域请求</a>
           </li>
         
           <li>
-            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+            <a href="/2024/08/01/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP三次握手与四次挥手</a>
           </li>
         
           <li>
-            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+            <a href="/2024/07/30/TCP%E4%B8%8EUDP/">TCP与UDP</a>
           </li>
         
           <li>
-            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+            <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/">IPV4默认网关-ipv4-网卡-MAC地址</a>
           </li>
         
       </ul>

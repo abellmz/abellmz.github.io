@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>OSI七层模型 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="七层模型从上到下依次为应用层（HTTP(80) HTTPS(443) SMTP(25) FTP(21) Telnet(23)、ssh(22)）、表示层、会话层、传输层（UDP TCP）、网络层（IP）、数据链路层（MAC）、物理层">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSI七层模型">
+<meta property="og:url" content="http://yoursite.com/2024/07/26/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="七层模型从上到下依次为应用层（HTTP(80) HTTPS(443) SMTP(25) FTP(21) Telnet(23)、ssh(22)）、表示层、会话层、传输层（UDP TCP）、网络层（IP）、数据链路层（MAC）、物理层">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-07-26T08:38:25.000Z">
+<meta property="article:modified_time" content="2024-12-20T08:40:43.392Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="ComputerNetwork">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-OSI七层模型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/07/26/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time datetime="2024-07-26T08:38:25.000Z" itemprop="datePublished">2024-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      OSI七层模型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>七层模型从上到下依次为应用层（HTTP(80) HTTPS(443) SMTP(25) FTP(21) Telnet(23)、ssh(22)）、表示层、会话层、传输层（UDP TCP）、网络层（IP）、数据链路层（MAC）、物理层</p>
+<span id="more"></span>
+<p>**物理层：**网线、路由器、光缆、电缆、双绞线、无线电波等物理层方面的连通。</p>
+<p>常用的物理层协议和标准包括：Ethernet、Wi-Fi、蓝牙等</p>
+<p><strong>数据链路层：<strong>将电信号010010…，按统一的方式分组，即标准（标准就是协议），即以太网协议Ethernet，一组电信号称之为一个数据包，或者叫做一个</strong>“帧”</strong>。</p>
+<p>互联网是由一个个局域网组成，局域网内的计算机不管是对内还是对外都是靠吼，这就是数据链路层的工作方式-----广播，广播出去以后，所有人都听得见，所有人都会拆开这个包，读发送者是谁，接收者是谁，<strong>只要接收者不是自己就丢弃掉</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">每一数据帧分成：报头head和数据data两部分</span><br><span class="line"></span><br><span class="line">head包含：（固定18个字节）</span><br><span class="line"></span><br><span class="line">发送者（源地址，6个字节）</span><br><span class="line">接收者（目标地址，6个字节）</span><br><span class="line">数据类型（6个字节）</span><br><span class="line"></span><br><span class="line">data包含：（最短46字节，最长1500字节）</span><br><span class="line"></span><br><span class="line">数据包的具体内容</span><br><span class="line">head长度+data长度=最短64字节，最长1518字节，超过最大限制就分片发送。</span><br><span class="line"></span><br><span class="line">发送者的地址（源地址）就是你家的地址，接收者地址（目标地址）就是对方的收信地址，你家的路由器就相当于邮局。其实在计算机通信中的源地址和目标地址指的是mac地址。</span><br><span class="line"></span><br><span class="line">Mac地址的由来：</span><br><span class="line"></span><br><span class="line">head中包含的源和目标地址由来：Ethernet规定接入Internet的设备都必须具备网卡，发送端的和接收端的地址便是指网卡的地址，即Mac地址。</span><br><span class="line"></span><br><span class="line">每块网卡出厂时都被烧录上一个实际上唯一的Mac地址，长度为48位2进制，通常由12位16进制数表示，（前六位是厂商编码，后六位是流水线号）</span><br></pre></td></tr></table></figure>
+<p>常用的数据链路层协议和标准包括：以太网协议（Ethernet）、无线局域网协议（Wi-Fi）、透明传输协议（PPP）等。</p>
+<p><strong>网络层：</strong></p>
+<p>基于广播的通信可以实现全世界通信，但全世界的计算机都在吼，这就是一个灾难了，因此，全世界不能是一个局域网。于是就有了网络层。</p>
+<p>你在教室1（局域网1）吼，教室2（局域网2）的人肯定是听不见的。这就是跨网络进行通信，数据链路层就解决不了这个问题，就得靠网络层出面了。</p>
+<p>对外的东西广播失效，就将外传的东西交给负责人就可以了，负责人就是<strong>网关</strong>，网关即网络关口的意思。</p>
+<p><u>Mac地址</u>是用来标识你这个教室的某个位置，<u>IP地址</u>是用来标识你在哪个教室（哪个局域网）</p>
+<p>常用的网络层协议和标准包括：互联网协议（IP）、网际控制报文协议（<a href="https://www.hqchip.com/app/1726">IC</a>MP）、网际组管理协议（IGMP）等</p>
+<p>**传输层：**端口是应用程序与网卡关联的编号，传输层功能是建立端口到端口的通信，端口范围0-65535，0-1023为系统占用端口。</p>
+<p>常用的传输层协议和标准包括：传输控制协议（TCP）、用户数据报协议（UDP）等。</p>
+<p>**会话层：**是用户应用程序和网络之间的接口，主要任务是：向两个实体的表示层提供建立和使用连接的方法。将不同实体之间的表示层的连接称为会话。因此会话层的任务就是组织和协调两个会话进程之间的通信，并对数据交换进行管理。</p>
+<p>常用的会话层协议和标准包括：传输控制协议（TCP）、网络磁盘协议（NFS）等。</p>
+<p>**表示层：**它对来自应用层的命令和数据进行解释，对各种语法赋予相应的含义，并按照一定的格式传送给会话层。其主要功能是“处理用户信息的表示问题，如编码、数据格式转换和加密解密”等。</p>
+<p>常用的表示层标准和协议包括：压缩和解压缩技术、加密协议等。</p>
+<p><strong>应用层：</strong></p>
+<p>A.（后三层）一起规定应用程序的数据格式，以便于开发。不同协议规定电子邮件、网页、FTP数据的格式，这些应用程序协议就构成了”应用层”。</p>
+<p>B.（单独应用层）功能是直接向用户提供服务，完成用户希望在网络上完成的各种工作。它在其他6层工作的基础上，负责完成网络中应用程序与网络操作系统之间的联系，建立与结束使用者之间的联系，并完成网络用户提出的各种网络服务及应用所需的监督、管理和服务等各种协议。此外，该层还负责协调各个应用程序间的工作。</p>
+<p>常用的应用层协议和标准包括：超文本传输协议（HTTP）、文件传输协议（FTP）、域名系统（DNS）等。</p>
+<p><strong>互联网和以太网</strong></p>
+<p>互联网与以太网是两个不同的概念，前者是<strong>范围概念</strong>，后者是<strong>技术概念</strong>。互联网（Internet）、广域网（WAN）、局域网（LAN）可以算作一类，它们都是按照区域和范围来分类的。而以太网（Ethernet）、ATM网和FDDI网可以算作一类，它们是按照传输技术分类的。以太网是最通用的通信协议标准，使用CSMA/CD技术，并以10M/s或…的速率运行在多种类型的电缆上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/07/26/OSI%E4%B8%83%E5%B1%82%E6%A8%A1%E5%9E%8B/" data-id="cm4wk1ebs000e58lic3jwhmd7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          IPV4默认网关-ipv4-网卡-MAC地址
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/07/25/HTTP%E4%B8%8EHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HTTP与HTTPS的区别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 17.78px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 14.44px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 16.67px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 13.33px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5/">常见的负载均衡策略</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">如何实现浏览器跨域请求</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/01/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP三次握手与四次挥手</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/30/TCP%E4%B8%8EUDP/">TCP与UDP</a>
+          </li>
+        
+          <li>
+            <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/">IPV4默认网关-ipv4-网卡-MAC地址</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
