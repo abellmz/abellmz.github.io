@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>CPU与应用程序/进程/线程 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="应用程序与进程 一个应用程序（application，比如浏览器）可以包含多个程序（program），一个程序只能有一个进程，即一个应用程序可以拥有多个进程（一个计算机可以有多个进程，称之为多任务）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPU与应用程序&#x2F;进程&#x2F;线程">
+<meta property="og:url" content="http://yoursite.com/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="应用程序与进程 一个应用程序（application，比如浏览器）可以包含多个程序（program），一个程序只能有一个进程，即一个应用程序可以拥有多个进程（一个计算机可以有多个进程，称之为多任务）。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-08-17T10:16:46.000Z">
+<meta property="article:modified_time" content="2024-12-20T11:03:14.131Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="OperatingSystem">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-CPU与应用程序-进程-线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2024-08-17T10:16:46.000Z" itemprop="datePublished">2024-08-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CPU与应用程序/进程/线程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>应用程序与进程</strong></p>
+<p><strong>一个应用程序</strong>（application，比如浏览器）可以包含多个程序（program），一个程序只能有一个<strong>进程</strong>，即一个应用程序可以拥有多个进程（一个计算机可以有多个进程，称之为多任务）。</p>
+<span id="more"></span>
+<p>进程之间的关系只有父子关系，没有主从关系，他们之间共享CPU,硬盘，打印机，显示器，但他们的内存是独立的，所以需要进程间通信。</p>
+<p><strong>进程与线程</strong></p>
+<p><strong>进程是操作系统分配和管理资源的基本单位</strong>，每一个进程都有一个自己的地址空间 。进程至少有 5 种基本状态，它们是：创建态，等待态，执行状态，阻塞态，终止状态。</p>
+<p>进程之间可以通过信号量、共享地址、管道、信号等多种方式进行通信。</p>
+<p>一个进程可以有多个<strong>线程</strong>，这称之为多线程，线程间共享内存（包括程序、数据和堆栈），主要是为了满足并行运算时共享数据，无需额外的通信，但会造成资源的竞争。线程间有主从关系，一个进程内至少会有一个主线程，与其他线程间的关系，就好比大脑与四肢和身体其他部分的关系。大脑就是主线程，其他部分就是子线程。子线程由主线程派生，而依附于主线程。主线程一旦over，进程就over了，其他子线程更是over了。</p>
+<p><strong>线程是CPU调度和分配的基本单位与进程是操作系统进行资源分配（包括cpu、内存、磁盘IO等）的最小单位</strong></p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">假设我是CPU，我闭着眼，操作系统调度器将一个进程分配给我之后，我拿到进程睁开眼，我看到的是什么？我看到的是进程中的很多线程，那么我现在能调度和分配的是什么？进程？不行，因为我看不到其他进程，何来调度分配，只能调度我看到的那些线程，如果我是4核的话，把线程ABCD分配到核心1234，其他的线程依然要等待分配，至于等待多久</span><br></pre></td></tr></table></figure>
+<p><strong>CPU与进程和线程</strong></p>
+<p>同一个进程同一时间段只能在一个cpu中运行，一般来说，一个内核一个线层，Intel引入超线程技术后，使核心数与线程数形成1:2的关系，如一个cpu四核Core i7支持八线程 。</p>
+<p>（<strong>多核处理器：<strong>CPU最初发展的时候是一个CPU一个处理核心,CPU的性能主要靠提高核心工作频率来提高,由于物理限制,不能把CPU的核心频率无限提高,所以发展出来双核心或多核心的CPU。一个核对应一个线程。两个核心一起工作需要靠软件的支持。软件要明白怎么把任务分给两个核心让他们一起工作，这样变相的提高了CPU的处理性能，现在新出的软件都支持多核心了。本来是一个核心一个线程，intel发明了一个核心跑出两个线程，这叫</strong>超线程技术</strong>，所以有双核4线程的说法。）</p>
+<p>一个cpu能同时运行多个进程原因（宏观上并行，微观上串行），进程是程序的一次执行</p>
+<ol>
+<li>
+<p>把进程运行时间分为一段段的时间片</p>
+</li>
+<li>
+<p>OS调度系统依次选择每个进程，最多执行时间片指定的时长</p>
+</li>
+</ol>
+<p><strong>高并发 ≠ 多线程</strong></p>
+<p>多线程对应的是cpu，高并发对应的是访问请求，可以用单线程处理所有访问请求，也可以用多线程同时处理访问请求；线程池通过复用可以大大减少线程频繁创建与销毁带来的性能上的损耗。</p>
+<p>并发与并行</p>
+<ol>
+<li>单CPU中进程只能是并发，多CPU计算机中进程可以并行。</li>
+<li>单CPU单核中线程只能并发，单CPU多核中线程可以并行。</li>
+</ol>
+<p><strong>DNS和CDN</strong></p>
+<p><strong>DNS:</strong> 是域名系统 (Domain Name System) 的缩写，是因特网的一项核心服务，它作为可以将域名和IP地址相互映射的一个分布式数据库，能够使人更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。</p>
+<p>再简单点：将域名解析为机器可读的IP 地址。</p>
+<p>**CDN：**內容分发网络（英语：Content Delivery Network或Content Distribution Network，缩写：CDN），是一个互连服务器网络，可加快数据密集型应用程序的网页加载速度。</p>
+<p>详情：CDN是一组分布在不同地理位置的服务器，它将 Web 内容存放在更靠近用户的位置，从而加速 Web 内容的交付。</p>
+<p>CDN 依赖于缓存，将文件副本临时存储在全球的多个数据中心内，就能够从就近的服务器访问互联网内容。从最近的服务器交付内容可以缩短页面加载时间，实现更快的高性能 Web 体验。通过在靠近用户实际位置的服务器中缓存网页、图片和视频等内容，CDN 让用户可以顺畅地进行观看电影、下载软件、查看银行账户余额、在社交媒体上发帖或购物等活动，而不必等待内容加载完成。</p>
+<p><strong>其他问题：</strong></p>
+<p>一个http请求是一个线程吗?</p>
+<p>一个请求，就对应了一个线程。Java的tomcat会维护线程池，每个一个http请求，会从线程池中取出一个线程。</p>
+<p>Java的服务是每收到一个请求就新开一个线程来处理？</p>
+<p>不一定，因为受到tomcat启动的“最大线程数”和“接受排队请求个数”的制约。当已经开启的线程数目小于“最大线程数”时，自然是来一个请求，就会开启一个线程来处理这个请求。但是一旦超过了最大线程数，而又小于允许排队个数，就可以在那排着队，等待着前面的请求执行完了，空出来线程再分配给这些处于等待状态的请求。而如果处于等待的http请求已经等于了允许等待个数，便会直接拒绝此次请求。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" data-id="cm4wohny00001vhlid9ja04g9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/09/21/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          内存溢出的解决思路
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">内存与磁盘</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 17px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/Golang/" style="font-size: 13px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 19px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 16px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/29/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/27/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E7%89%B9%E7%82%B9/">分布式的概念和特点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
