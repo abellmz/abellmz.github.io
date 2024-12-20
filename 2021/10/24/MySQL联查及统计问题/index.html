@@ -7,15 +7,15 @@
   
   <title>MySQL联查及统计问题 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1mysql左连接，where的条件筛选，使得原来带有null值的列消失最终-导致造成数据缺失 解决办法：解决方案是把右表的筛选条件放到前面去，也就是连表的地方去。即on后面，用and连接">
+  <meta name="description" content="1.mysql左连接，where的条件筛选，使得原来带有null值的列消失最终-导致造成数据缺失 解决办法：解决方案是把右表的筛选条件放到前面去，也就是连表的地方去。即on后面，用and连接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL联查及统计问题">
 <meta property="og:url" content="http://yoursite.com/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="1mysql左连接，where的条件筛选，使得原来带有null值的列消失最终-导致造成数据缺失 解决办法：解决方案是把右表的筛选条件放到前面去，也就是连表的地方去。即on后面，用and连接">
+<meta property="og:description" content="1.mysql左连接，where的条件筛选，使得原来带有null值的列消失最终-导致造成数据缺失 解决办法：解决方案是把右表的筛选条件放到前面去，也就是连表的地方去。即on后面，用and连接">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-10-24T10:21:15.000Z">
-<meta property="article:modified_time" content="2024-12-07T08:55:43.047Z">
+<meta property="article:modified_time" content="2024-12-20T06:48:28.683Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -89,14 +89,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1mysql左连接，<code>where</code>的条件筛选，使得原来带有<code>null</code>值的列消失最终-导致造成数据缺失</p>
+        <p>1.mysql左连接，<code>where</code>的条件筛选，使得原来带有<code>null</code>值的列消失最终-导致造成数据缺失</p>
 <p>解决办法：解决方案是把右表的筛选条件放到前面去，也就是连表的地方去。即on后面，用and连接</p>
 <span id="more"></span>
 <p><a href="https://blog.csdn.net/LJFPHP/article/details/103753929">https://blog.csdn.net/LJFPHP/article/details/103753929</a></p>
-<p>2左链接，数据列count()的数量翻倍，解决count(DISTINCT <a href="http://b.id">b.id</a>)去重</p>
-<p>3MySQL Left Join左连接后对数据做SUM汇总处理时出现数据倍数增长问题（左连接SUM数据重复问题）</p>
+<p>2.左链接，数据列count()的数量翻倍，解决count(DISTINCT <a href="http://b.id">b.id</a>)去重</p>
+<p>3.MySQL Left Join左连接后对数据做SUM汇总处理时出现数据倍数增长问题（左连接SUM数据重复问题）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">select b.id,b.plate_number,SUM( bx.pay_money),SUM(o.money)</span><br><span class="line">from base b</span><br><span class="line">left join baoxian bx</span><br><span class="line">on b.id=bx.plate_number</span><br><span class="line">left join oil o </span><br><span class="line">on b.id=o.plate_number</span><br><span class="line">GROUP BY b.id</span><br><span class="line"></span><br><span class="line">select b.*,bx.bx_money,o.oil_money,jq.jq_money</span><br><span class="line">from base b</span><br><span class="line">left join (select SUM(pay_money) AS bx_money,plate_number from baoxian GROUP BY plate_number) AS bx</span><br><span class="line">on b.id=bx.plate_number</span><br><span class="line">left join (select SUM(money) AS oil_money,plate_number from oil GROUP BY plate_number) AS o</span><br><span class="line">on b.id=o.plate_number</span><br><span class="line">left join (select SUM(money) AS jq_money,plate_number from jiaoqiang GROUP BY plate_number) AS jq</span><br><span class="line">on b.id=jq.plate_number</span><br></pre></td></tr></table></figure>
-<p>参考链接：<a href="https://blog.csdn.net/chang100111/article/details/117017988">https://blog.csdn.net/chang100111/article/details/117017988</a></p>
+<p>参考：<a href="https://blog.csdn.net/chang100111/article/details/117017988">https://blog.csdn.net/chang100111/article/details/117017988</a></p>
 <p>实际操作一下，以下数据表皆是模拟的数据表和字段，用于示例</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SELECT </span><br><span class="line">a.uid,a.user_name,count(DISTINCT b.id) as task_num,count(DISTINCT d.id) as task_pass_num,count(DISTINCT e.id) as test_pass_num,c.template_total_money,count(DISTINCT f.id) as market_template_num FROM hh_xxx_designer_ranking a </span><br><span class="line">left join hh_xxx_designer_task_project b on</span><br><span class="line">a.uid=b.uid and b.receive_time &gt; 0 </span><br><span class="line">LEFT JOIN (select sum(money) as template_total_money,uid,create_time,type from hh_xxx_payment_log group by uid ) as c on a.uid=c.uid and c.create_time &gt; 1635945200000 and c.type = 2 </span><br><span class="line">LEFT JOIN hh_xxx_designer_task_project d on a.uid=d.uid and d.complete_time &gt; 0 </span><br><span class="line">LEFT JOIN hh_xxx_designer_task_project e ON a.uid=e.uid and e.test_adopt_time &gt; 0</span><br><span class="line">LEFT JOIN hh_xxx_market_template f ON a.uid=f.uid and f.adopt_time &gt; 0 </span><br><span class="line">where a.uid = 999 GROUP BY a.id;</span><br></pre></td></tr></table></figure>
 <p>出现template_total_money=0的状况，与实际并不符合，排除原因，发现是由于分组 在筛选之前的原因，修改为</p>
@@ -126,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/" data-id="cm4v60uzr0009osli4svj8g0u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/" data-id="cm4wg2zqq0009a9lifpbo6yq6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
@@ -168,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
     </div>
   </div>
 
@@ -178,7 +178,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.5px;">Front-end</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.75px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.75px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 17.5px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Tool/" style="font-size: 11.25px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a>
     </div>
   </div>
 

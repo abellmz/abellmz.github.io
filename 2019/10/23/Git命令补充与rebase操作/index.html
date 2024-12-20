@@ -7,19 +7,19 @@
   
   <title>Git命令补充与rebase操作 | abellmz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="git知识补充 删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’ git rm --cached readme.txt 修改提交的描述 git log">
+  <meta name="description" content="git知识补充 123&#x2F;&#x2F;从 Git 仓库的索引（暂存区）中移除一个文件，但不删除工作目录中的文件。&#x2F;&#x2F;这个命令常用于取消对文件的跟踪，同时保留文件在本地。&gt;git rm --cached &lt;file&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git命令补充与rebase操作">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="abellmz">
-<meta property="og:description" content="git知识补充 删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’ git rm --cached readme.txt 修改提交的描述 git log">
+<meta property="og:description" content="git知识补充 123&#x2F;&#x2F;从 Git 仓库的索引（暂存区）中移除一个文件，但不删除工作目录中的文件。&#x2F;&#x2F;这个命令常用于取消对文件的跟踪，同时保留文件在本地。&gt;git rm --cached &lt;file&gt;">
 <meta property="og:locale">
 <meta property="og:image" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/9c09f688223bacb8f507722c76d868e.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/f44241bff094030b414d6ed6600f999.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103231788.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103813810.png">
 <meta property="article:published_time" content="2019-10-23T03:46:57.000Z">
-<meta property="article:modified_time" content="2020-09-02T05:09:59.061Z">
+<meta property="article:modified_time" content="2024-12-20T06:31:15.525Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -95,32 +95,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="git知识补充"><a class="markdownIt-Anchor" href="#git知识补充"></a> git知识补充</h3>
-<p>删除暂存区的文件，本地留存着，记得commit -m ‘历史树。版本库’</p>
-<p>git rm --cached readme.txt</p>
-<p>修改提交的描述</p>
-<p>git log</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//从 Git 仓库的索引（暂存区）中移除一个文件，但不删除工作目录中的文件。</span><br><span class="line">//这个命令常用于取消对文件的跟踪，同时保留文件在本地。</span><br><span class="line">&gt;git rm --cached &lt;file&gt;</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
-<p>git commot --amend-&gt;自动调用vi编辑器</p>
-<p>别名设置(将add设置别名 a)</p>
-<p>git config --global alias.a  add  或者直接在.gitconfig文件中直接添加（git全局配置）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.gitconfig文件中直接添加（git全局配置）</span><br><span class="line">[alias]</span><br><span class="line">    a=add</span><br><span class="line">    c=commit</span><br><span class="line"></span><br><span class="line">系统别名定义git全局命令</span><br><span class="line">.bash_profile</span><br><span class="line">alias gs=&quot;git status&quot;</span><br><span class="line">alias gc=&quot;git commit -m&quot;</span><br><span class="line">alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%&#x27;&quot;</span><br><span class="line">alias gb=&quot;git branch&quot;</span><br><span class="line">alias ga=&quot;git add .&quot;</span><br><span class="line">alias go=&quot;git checkout&quot;</span><br></pre></td></tr></table></figure>
-<p>创建分支ask</p>
-<p>git branch ask</p>
-<p>删除分支ask</p>
-<p>git branch -d ask 内容若有修改提交，切换master删除ask分支，会提示未合并master,不能删除</p>
-<p>强制删除分支</p>
-<p>git branch -D ask</p>
-<p>创建并切换到ask</p>
-<p>git checkout  -b ask</p>
-<p>检查master分支的合并情况（指针在master）</p>
-<p>git branch --merged(已合并分支)</p>
-<p>git branch --no-merged（未合并分支）</p>
-<p>拉取远程分支master和ask</p>
-<p>git pull origin ask:ask</p>
-<p>删除远程分支</p>
-<p>git push origin --delete ask</p>
-<p>删除本地分支</p>
+<p>修改提交的描述</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;git log</span><br><span class="line">&gt;git commit --amend -m &quot;New commit message&quot; //修改最近一次提交</span><br><span class="line">//别名设置(将add设置别名 a)  或者直接在.gitconfig文件中直接添加（git全局配置）</span><br><span class="line">&gt;git config --global alias.a  add  </span><br></pre></td></tr></table></figure>
+<p>.gitconfig文件中直接添加（git全局配置）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[alias]</span><br><span class="line">    a=add</span><br><span class="line">    c=commit</span><br></pre></td></tr></table></figure>
+<p>系统别名定义，git全局命令，文件.bash_profile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">alias gs=&quot;git status&quot;</span><br><span class="line">alias gc=&quot;git commit -m&quot;</span><br><span class="line">alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%&#x27;&quot;</span><br><span class="line">alias gb=&quot;git branch&quot;</span><br><span class="line">alias ga=&quot;git add .&quot;</span><br><span class="line">alias go=&quot;git checkout&quot;</span><br></pre></td></tr></table></figure>
+<p>git branch ask   //创建分支ask</p>
+<p>//删除分支ask，内容若有修改提交，切换master删除ask分支，会提示未合并master,不能删除</p>
 <p>git branch -d ask</p>
+<p>git branch -D ask  //强制删除分支</p>
+<p>git checkout  -b ask  //创建并切换到ask</p>
+<p>git branch --merged(已合并分支) //检查master分支的合并情况（指针在master）</p>
+<p>git branch --no-merged（未合并分支）</p>
+<p>git pull origin ask:ask //拉取远程分支master和ask</p>
+<p>git push origin --delete ask //删除远程分支</p>
+<p>git branch -d ask//删除本地分支</p>
 <p><strong>冲突：</strong></p>
 <p>master分支上创建ask分支和bbs分支，两分支同时对xx.php文件进行修改，切换到master分之后合并bbs分支，自动合并提交，合并ask分支，产生冲突（文件基线已经变了（提交点）），需要打开该文件（文件内容显示两分支内容，调整——调整共同的基线），手动提交历史树。</p>
 <p><strong>暂存区：</strong></p>
@@ -140,21 +132,21 @@
 <p>forma：后缀</p>
 <p><strong>Rebase</strong>(本地rebase)</p>
 <p>master分支上创建ask分支，master分支本身提交代码，导致master像前移动，切换master合并ask时会弹出窗体合并消息，日志上产生新的合并消息，而不是快速合并，多出一个合并的分支</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/9c09f688223bacb8f507722c76d868e.png" alt="image-20200111100317902"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/9c09f688223bacb8f507722c76d868e.png" alt></p>
 <p>看图，以时间为轴</p>
 <p>期望的合并状态</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/f44241bff094030b414d6ed6600f999.png" alt="image-20200111100721055"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/f44241bff094030b414d6ed6600f999.png" alt></p>
 <p>rebase可理解为replace base</p>
 <p>master日志中只有master的提交记录，ask日志中有master的提交记录（只包含创建ask时master的提交点）</p>
 <p>在ask分支：git rebase master 在ask日志中插入最新的master提交，使原来的ask提交往 后移动</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103231788.png" alt="image-20200111103231788"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103231788.png" alt></p>
 <p>ask提交后 git rebase --master,这样原本的提交不会丢失，保证了主分支的干净（不保证不冲突）</p>
-<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103813810.png" alt="image-20200111103813810"></p>
+<p><img src="/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/20200111103813810.png" alt></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/" data-id="cm4v60uzl0004oslieksrddoo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/23/Git%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%85%E4%B8%8Erebase%E6%93%8D%E4%BD%9C/" data-id="cm4wg2zqn0004a9li7ba18tur" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
@@ -196,7 +188,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
     </div>
   </div>
 
@@ -206,7 +198,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.5px;">Front-end</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.75px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.75px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 17.5px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Tool/" style="font-size: 11.25px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a>
     </div>
   </div>
 

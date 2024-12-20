@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550591956.jpg">
 <meta property="og:image" content="http://yoursite.com/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550593694.jpg">
 <meta property="article:published_time" content="2019-02-19T15:52:33.000Z">
-<meta property="article:modified_time" content="2020-02-08T06:38:38.194Z">
+<meta property="article:modified_time" content="2024-12-20T04:21:39.596Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -97,36 +97,38 @@
 <span id="more"></span>
 <p>点击图片可以预览所有者的博客</p>
 <p>点击图片下方的文字可以进入主题对应的github代码</p>
-<p><img src="/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550591956.jpg" alt="1550591956"></p>
-<p>2、克隆（复制）代码</p>
-<p>在项目文件夹下点开git bash</p>
+<p><img src="/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550591956.jpg" alt></p>
+<p>2、拉取代码</p>
+<p>在项目文件夹下打开终端</p>
 <p><code>hexo clone git@github.com:wizardforcel/hexo-theme-landfarz.git</code></p>
-<p>克隆得到一个文件夹名为hexo-theme-landfarz，将其剪切放入theme文件夹中</p>
+<p>得到一个文件夹名为hexo-theme-landfarz，剪切放入博客下theme文件夹</p>
 <p>修改_config.yml中的theme： hexo-theme-landfarz（文件夹什么名，就改什么名，注意空格）</p>
 <p>3、清空public</p>
 <p>hexo clean</p>
 <p>4、生成</p>
-<p>hexo g（hexo generate生成  静态文件）</p>
+<p>hexo g（hexo generate生成静态文件）</p>
 <p>5、启动服务器</p>
 <p>hexo s</p>
 <p>6、打开浏览器，查看本地主题是否更改</p>
 <p>localhost:4000(localhos+t你本地仓库服务的端口号)</p>
 <p>7、改变后，上传远程仓库</p>
 <p>hexo d</p>
-<p>8、输入域名<a href="https://abellmz.github.io/%E5%AE%8C%E6%88%90">https://abellmz.github.io/完成</a></p>
+<p>8、浏览器打开你的线上博客，例如<a href="https://abellmz.github.io/%EF%BC%8C%E5%AE%8C%E6%88%90">https://abellmz.github.io/，完成</a></p>
 <h5 id="二-上传图片"><a class="markdownIt-Anchor" href="#二-上传图片"></a> 二、上传图片</h5>
-<p>1、在_config.yml文件  post_asset_folder 字段设置为true</p>
-<p>2、设置 后，建立文件时Hexo 会生成一个与文章同名的文件夹，可以把与本文章相关的所有图片等资源都放到此文件夹内，更方便的调用资源。</p>
+<p>1.在_config.yml文件  post_asset_folder 字段设置为true</p>
+<p>配置后，建立post时，Hexo 会生成一个与post同名的文件夹，可以将与本文章相关的所有图片等资源都放到此文件夹内，可方便资源调用。</p>
 <p><img src="/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/1550593694.jpg" alt="1550593694"></p>
-<p>3、到博客的根目录下执行 npm install <a href="https://link.jianshu.com?t=https%3A%2F%2Fgithub.com%2FCodeFalling%2Fhexo-asset-image">https://github.com/CodeFalling/hexo-asset-image</a> --save 命令来进行插件的安装。</p>
-<p>4、执行 hexo new “XXX” 之后查看博客的 …/source/_posts 目录下的文件，会看到存在一个XXX文件夹 和 <a href="http://XXX.md">XXX.md</a> 文件。</p>
-<p>5、将所需要的图片资源放到XXX文件夹下,写文章就使用XXX文件内的图片</p>
-<p>7、hexo s 命令预览一下博客效果，最后执行hexo clean-&gt; hexo g -&gt; hexo d完成！</p>
+<p>2.根目录下执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p><code>hexo-asset-image</code> 是一个 Hexo 插件，主要作用是为 Hexo 生成的博客文章中的资源图片自动添加绝对路径。在 Hexo 中，默认情况下，插入图片时使用的是相对路径，这意味着当你将生成的静态文件部署到服务器或者进行分享时，图片可能无法正确显示，因为图片的路径相对于网页文件的位置而言是不确定的。<code>hexo-asset-image</code> 插件解决了这个问题，它会自动将文章中的图片路径转换为绝对路径，确保图片在任何环境下都能被正确加载</p>
+<p>3.测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;hexo new &quot;XXX&quot; </span><br><span class="line">//查看博客的 ../source/_posts 目录下的文件，会看到存在一个XXX文件夹 和 XXX.md 文件</span><br><span class="line"></span><br><span class="line">//将所需要的图片资源放到XXX文件夹下,写文章就使用XXX文件内的图片</span><br><span class="line">&gt;hexo s //预览一下博客效果</span><br><span class="line">&gt;hexo clean</span><br><span class="line">&gt;hexo g</span><br><span class="line">&gt;hexo d</span><br></pre></td></tr></table></figure>
+<p>部署后，打开线上博客查看效果</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" data-id="cm4v60v0l001coslibxe16y0i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/02/19/%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2%E5%92%8C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" data-id="cm4wg2zrg001ca9liegk212c6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
@@ -149,7 +151,7 @@
   
     <a href="/2019/02/19/%E5%A6%82%E4%BD%95%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">在github上搭建博客</div>
+      <div class="article-nav-title">github上搭建博客</div>
     </a>
   
 </nav>
@@ -168,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GolangBasic/" rel="tag">GolangBasic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" rel="tag">Golang常用函数</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP%E6%A1%86%E6%9E%B6/" rel="tag">PHP框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PhpStorm/" rel="tag">PhpStorm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Smarty/" rel="tag">Smarty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
     </div>
   </div>
 
@@ -178,7 +180,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/GolangBasic/" style="font-size: 11.25px;">GolangBasic</a> <a href="/tags/Golang%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" style="font-size: 11.25px;">Golang常用函数</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Linux/" style="font-size: 18.75px;">Linux</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/PDO/" style="font-size: 10px;">PDO</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP%E6%A1%86%E6%9E%B6/" style="font-size: 17.5px;">PHP框架</a> <a href="/tags/PhpStorm/" style="font-size: 10px;">PhpStorm</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Smarty/" style="font-size: 10px;">Smarty</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 12.5px;">前端</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a>
+      <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.5px;">Front-end</a> <a href="/tags/Git/" style="font-size: 15px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.75px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.25px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.75px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 17.5px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.25px;">Redis</a> <a href="/tags/Tool/" style="font-size: 11.25px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 16.25px;">algorithm-data_structure</a>
     </div>
   </div>
 
