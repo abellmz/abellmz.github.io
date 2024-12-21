@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-mongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-docker删除镜像" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/10/mongoDB/" class="article-date">
-  <time datetime="2021-03-10T13:01:49.000Z" itemprop="datePublished">2021-03-10</time>
+    <a href="/2021/10/26/docker%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F/" class="article-date">
+  <time datetime="2021-10-26T11:18:25.000Z" itemprop="datePublished">2021-10-26</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/10/mongoDB/">MongoDB01</a>
+      <a class="article-title" href="/2021/10/26/docker%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F/">docker删除镜像</a>
     </h1>
   
 
@@ -86,20 +86,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="服务器三种架构"><a class="markdownIt-Anchor" href="#服务器三种架构"></a> 服务器三种架构</h3>
-<p><strong>服务器集群</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
+        <p>删除Docker镜像报错image is being used by stopped container</p>
+<p>需先删除容器，再删除镜像</p>
         
           <p class="article-more-link">
-            <a href="/2021/03/10/mongoDB/#more">Read More</a>
+            <a href="/2021/10/26/docker%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/03/10/mongoDB/" data-id="cm4wohnyx001avhli4y0p4ayf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/10/26/docker%E5%88%A0%E9%99%A4%E9%95%9C%E5%83%8F/" data-id="cm4xp5ask001apdlidx9p7001" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
 
     </footer>
   </div>
@@ -108,10 +108,10 @@
 
 
   
-    <article id="post-Nginx比Apache支持高并发" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySQL联查及统计问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/" class="article-date">
-  <time datetime="2020-08-25T15:10:43.000Z" itemprop="datePublished">2020-08-25</time>
+    <a href="/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2021-10-24T10:21:15.000Z" itemprop="datePublished">2021-10-24</time>
 </a>
     
   </div>
@@ -122,7 +122,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/">Nginx比Apache支持高并发</a>
+      <a class="article-title" href="/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/">MySQL联查及统计问题</a>
     </h1>
   
 
@@ -130,19 +130,283 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="nginx比apache高并发的原因"><a class="markdownIt-Anchor" href="#nginx比apache高并发的原因"></a> Nginx比Apache高并发的原因</h4>
-<p>链接：<a href="https://www.cnblogs.com/hnhycnlc888/p/12606002.html">https://www.cnblogs.com/hnhycnlc888/p/12606002.html</a></p>
-<h4 id="资料1"><a class="markdownIt-Anchor" href="#资料1"></a> 资料1</h4>
-<p>nginx默认以多进程的方式工作,一个master进程和多个worker进程,master进程主要用来管理worker进程.多个worker进程同等竞争来自客户端的请求,一个worker进程可以处理多个请求,但不能处理其它worker进程的请求.每个worker进程里面只有一个主线程,在epoll支持下,采用异步非阻塞的方式来处理请求,从而实现高并发.epoll支持监听多个事件</p>
+        <p>1.mysql左连接，<code>where</code>的条件筛选，使得原来带有<code>null</code>值的列消失最终-导致造成数据缺失</p>
+<p>解决办法：解决方案是把右表的筛选条件放到前面去，也就是连表的地方去。即on后面，用and连接</p>
         
           <p class="article-more-link">
-            <a href="/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/#more">Read More</a>
+            <a href="/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/" data-id="cm4wohnyc000fvhli4uh274ej" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/10/24/MySQL%E8%81%94%E6%9F%A5%E5%8F%8A%E7%BB%9F%E8%AE%A1%E9%97%AE%E9%A2%98/" data-id="cm4xp5as1000gpdli7o3aburu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php计算舍入差及Ubuntu升级php版本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/16/php%E8%AE%A1%E7%AE%97%E8%88%8D%E5%85%A5%E5%B7%AE%E5%8F%8AUbuntu%E5%8D%87%E7%BA%A7php%E7%89%88%E6%9C%AC/" class="article-date">
+  <time datetime="2021-10-16T10:17:04.000Z" itemprop="datePublished">2021-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/16/php%E8%AE%A1%E7%AE%97%E8%88%8D%E5%85%A5%E5%B7%AE%E5%8F%8AUbuntu%E5%8D%87%E7%BA%A7php%E7%89%88%E6%9C%AC/">php计算舍入差及Ubuntu升级php版本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1解决计算的舍入差"><a class="markdownIt-Anchor" href="#1解决计算的舍入差"></a> 1解决计算的舍入差</h4>
+<p>bcmath系列函数，两个任意精度数字之间的运算。</p>
+<p>大多数编程语言对于浮点型数据格式遵循 IEEE 754 标准，这就会导致在使用浮点数运算的过程中会有精度丢失的问题。PHP提供了 BCMath 库来支持更加精确的计算</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/10/16/php%E8%AE%A1%E7%AE%97%E8%88%8D%E5%85%A5%E5%B7%AE%E5%8F%8AUbuntu%E5%8D%87%E7%BA%A7php%E7%89%88%E6%9C%AC/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/10/16/php%E8%AE%A1%E7%AE%97%E8%88%8D%E5%85%A5%E5%B7%AE%E5%8F%8AUbuntu%E5%8D%87%E7%BA%A7php%E7%89%88%E6%9C%AC/" data-id="cm4xp5asq001mpdli00dngpbp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PhpStorm查看代码修改人" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/07/PhpStorm%E6%9F%A5%E7%9C%8B%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E4%BA%BA/" class="article-date">
+  <time datetime="2021-10-07T10:13:51.000Z" itemprop="datePublished">2021-10-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/07/PhpStorm%E6%9F%A5%E7%9C%8B%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E4%BA%BA/">PhpStorm查看代码修改人</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>代码近期修改时间-修改人</p>
+<p>git-&gt;current file-&gt;Annotate</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/10/07/PhpStorm%E6%9F%A5%E7%9C%8B%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E4%BA%BA/" data-id="cm4xp5as6000opdligao3fpd3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Redis-zset" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/06/Redis-zset/" class="article-date">
+  <time datetime="2021-10-06T10:08:00.000Z" itemprop="datePublished">2021-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/06/Redis-zset/">Redis-zset</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="zset命令与zrangebylex"><a class="markdownIt-Anchor" href="#zset命令与zrangebylex"></a> <strong>zset命令与zrangebylex</strong></h3>
+        
+          <p class="article-more-link">
+            <a href="/2021/10/06/Redis-zset/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/10/06/Redis-zset/" data-id="cm4xp5as6000ppdligx9ids3x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Redis危险命令处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/" class="article-date">
+  <time datetime="2021-10-05T10:04:27.000Z" itemprop="datePublished">2021-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/">Redis危险命令处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="注意"><a class="markdownIt-Anchor" href="#注意"></a> 注意：</h3>
+<h4 id="危险命令"><a class="markdownIt-Anchor" href="#危险命令"></a> 危险命令</h4>
+<p>线上是不能执行 <code>keys *</code> 相关命令，虽然其模糊匹配功能使用非常方便也很强大，在小数据量情况下使用没什么问题，数据量大会导致 Redis 锁住及 CPU 飙升，在生产环境建议禁用或者重命名！</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/10/05/Redis%E5%8D%B1%E9%99%A9%E5%91%BD%E4%BB%A4%E5%A4%84%E7%90%86/" data-id="cm4xp5as8000spdlifvood9w7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Redis点赞设计" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2021-09-26T09:58:39.000Z" itemprop="datePublished">2021-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/">Redis点赞设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="点赞设计"><a class="markdownIt-Anchor" href="#点赞设计"></a> 点赞设计</h2>
+<h3 id="方案一"><a class="markdownIt-Anchor" href="#方案一"></a> 方案一</h3>
+<p><code>考虑：此方案不针对于排行榜，只是文章的点赞。</code></p>
+<p>缺点：redis挂掉的时候会丢失数据， 同时不及时同步redis中的数据， 可能会在redis内存置换的时候被淘汰掉;</p>
+<p>不过对于我们点赞而已， 稍微丢失一点数据问题不大;</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/09/26/Redis%E7%82%B9%E8%B5%9E%E8%AE%BE%E8%AE%A1/" data-id="cm4xp5asa000vpdliesqcafjo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-反向代理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="article-date">
+  <time datetime="2021-09-20T09:26:17.000Z" itemprop="datePublished">2021-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">反向代理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="正向代理与反向代理"><a class="markdownIt-Anchor" href="#正向代理与反向代理"></a> 正向代理与反向代理</h3>
+<p>正向代理：</p>
+<p>正向代理 是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
+<p>反向代理：</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/09/20/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" data-id="cm4xp5asz0027pdlic0s3106s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
@@ -154,10 +418,10 @@
 
 
   
-    <article id="post-Sessiong表配置" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Ubuntu进程查看和软件卸载" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2020-06-15T14:33:54.000Z" itemprop="datePublished">2020-06-15</time>
+    <a href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" class="article-date">
+  <time datetime="2021-09-19T09:47:04.000Z" itemprop="datePublished">2021-09-19</time>
 </a>
     
   </div>
@@ -168,7 +432,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/">Sessiong表配置</a>
+      <a class="article-title" href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/">Ubuntu进程查看和软件卸载</a>
     </h1>
   
 
@@ -176,21 +440,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>主题部署：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">采用经过dmstr/yii2-adminlte-asset封装过的主题进行安装</span><br><span class="line">composer require dmstr/yii2-adminlte-asset</span><br><span class="line">composer require mdmsoft/yii2-admin </span><br><span class="line">腾讯云cos存储插件，存储静态资源，如图片/css/js</span><br><span class="line">composer require qcloud/cos-sdk-v5</span><br></pre></td></tr></table></figure>
-<p>由于开启动负载均衡，有几台服务器，所以session的存入服务器的对应session文件不一定在同一台服务器上，导致获取到的信息可能不对应（存的sessionid和取的sessionid不是同一个）。例如短信验证码</p>
+        <h4 id="ubuntu进程查看及相关处理"><a class="markdownIt-Anchor" href="#ubuntu进程查看及相关处理"></a> ubuntu进程查看及相关处理</h4>
+<p><code>gnome-system-monitor</code>是Ubuntu系统自带的资源管理器，可以让我们在界面中动态查看所有进程资源以及计算内存消耗情况，可直接在命令行中输入<code>gnome-system-monitor</code>：</p>
         
           <p class="article-more-link">
-            <a href="/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/#more">Read More</a>
+            <a href="/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/" data-id="cm4wohnyk000svhli4xt0bycz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/19/Ubuntu%E8%BF%9B%E7%A8%8B%E6%9F%A5%E7%9C%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E5%8D%B8%E8%BD%BD/" data-id="cm4xp5ash0014pdli3spb90c4" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -199,10 +462,10 @@
 
 
   
-    <article id="post-PDO" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-定时任务" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/05/03/PDO/" class="article-date">
-  <time datetime="2020-05-03T14:50:31.000Z" itemprop="datePublished">2020-05-03</time>
+    <a href="/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" class="article-date">
+  <time datetime="2021-09-19T08:59:56.000Z" itemprop="datePublished">2021-09-19</time>
 </a>
     
   </div>
@@ -213,7 +476,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/PDO/">PDO</a>
+      <a class="article-title" href="/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/">定时任务</a>
     </h1>
   
 
@@ -221,365 +484,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="pdo概念"><a class="markdownIt-Anchor" href="#pdo概念"></a> <strong>PDO概念</strong></h3>
-<p>PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例：</p>
-<p>MySQL：<strong>mysql_connect</strong></p>
-<p>mssql：<strong>mssql_connect</strong></p>
-<p>Oracle：<strong>oci_connect</strong></p>
+        <h3 id="binbash"><a class="markdownIt-Anchor" href="#binbash"></a> #! /bin/bash</h3>
+<p>linux shell脚本中的开头 <code>#! /bin/bash</code>的含义</p>
+<p>很多时候不规范的写法可以忽略掉这一句，执行起来好像也是ok，结果没什么不一样 。这只是因为在我们常用 的linux系统上默认都是执行/bin/bash来执行我们的shell脚本，但是如果有些用户使用的是csh，那么缺少第一行的“#！/bin/bash的shell脚本执行结果就可能存在语法不兼容的问题，导致结果异常或者根本不能执行。</p>
         
           <p class="article-more-link">
-            <a href="/2020/05/03/PDO/#more">Read More</a>
+            <a href="/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/03/PDO/" data-id="cm4wohnyd000hvhlieur569bs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2021/09/19/%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" data-id="cm4xp5at2002dpdli68o5gmxq" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Smarty" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/25/Smarty/" class="article-date">
-  <time datetime="2020-04-25T13:23:27.000Z" itemprop="datePublished">2020-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/Smarty/">Smarty</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>模板（html+css）引擎技术之一</p>
-<p>可以使得“php代码”与“html代码”分离的技术都称为模板引擎技术。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/25/Smarty/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/Smarty/" data-id="cm4wohnyk000tvhli425deczr" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ThinkPHP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/13/ThinkPHP/" class="article-date">
-  <time datetime="2020-04-13T14:19:24.000Z" itemprop="datePublished">2020-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/13/ThinkPHP/">ThinkPHP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>框架下载地址：版本5.0.24</p>
-<p><a href="http://www.thinkphp.cn/down/framework.html">http://www.thinkphp.cn/down/framework.html</a></p>
-<p>TP5</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tp5</span><br><span class="line">├─application     应用目录</span><br><span class="line">├─extend          扩展类库目录（可定义）</span><br><span class="line">├─public         网站对外访问目录</span><br><span class="line">├─runtime         运行时目录（可定义）</span><br><span class="line">├─vendor          第三方类库目录（Composer）</span><br><span class="line">├─thinkphp        框架核心目录</span><br><span class="line">├─build.php       自动生成定义文件（参考）</span><br><span class="line">├─composer.json   Composer定义文件</span><br><span class="line">├─LICENSE.txt     授权说明文件</span><br><span class="line">├─README.md       README 文件</span><br><span class="line">├─think           命令行工具入口</span><br><span class="line"></span><br><span class="line">如果在linux环境下面的话，需要给runtime目录755权限。</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/13/ThinkPHP/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/ThinkPHP/" data-id="cm4wohnym000wvhli4m6z07mo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Yii-basic与advanced及SQL调用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" class="article-date">
-  <time datetime="2020-02-15T14:24:09.000Z" itemprop="datePublished">2020-02-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/">Yii-basic与advanced及SQL调用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="下载版本basic与advanced区别"><a class="markdownIt-Anchor" href="#下载版本basic与advanced区别"></a> 下载版本basic与advanced区别</h4>
-<table>
-<thead>
-<tr>
-<th>Codeception 测试</th>
-<th>/</th>
-<th>/</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>功能</td>
-<td>Basic</td>
-<td>advanced</td>
-</tr>
-<tr>
-<td>Project 结构</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>网站控制器</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>用户登录/登出</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>表单</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>数据库连接</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>命令控制台</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>资源包</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>Bootstrap</td>
-<td>/</td>
-<td>/</td>
-</tr>
-<tr>
-<td>前后台应用</td>
-<td></td>
-<td>/</td>
-</tr>
-<tr>
-<td>可用的 User 模型</td>
-<td></td>
-<td>/</td>
-</tr>
-<tr>
-<td>用户注册和密码恢复</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>basic 和 advanced 都自带有一些基本功能，Home页面、登录/登出、和数据库连接等功能。但是，</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" data-id="cm4wohnyq000zvhlib9y7hs7h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Yii的布局与表单提交" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" class="article-date">
-  <time datetime="2020-02-15T14:05:32.000Z" itemprop="datePublished">2020-02-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/">Yii的布局与表单提交</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="布局"><a class="markdownIt-Anchor" href="#布局"></a> 布局</h3>
-<p>定义父模板</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在类中定义</span><br><span class="line">public $layout=&#x27;home&#x27;;</span><br><span class="line">view的 layout目录添加home.php</span><br><span class="line">body中+&lt;?=$content ;?&gt;</span><br><span class="line"></span><br><span class="line">页面中引入其他页面  &lt;php echo $this-&gt;render(&#x27;about&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" data-id="cm4wohnyr0011vhli1bedgc3c" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SQL注入与XSS攻击" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" class="article-date">
-  <time datetime="2020-02-15T13:56:52.000Z" itemprop="datePublished">2020-02-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/">SQL注入与XSS攻击</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="sql注入"><a class="markdownIt-Anchor" href="#sql注入"></a> sql注入</h3>
-<p>以下以Yii2.0为例</p>
-<p>SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" data-id="cm4wohnyj000qvhli8in38unm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Yii2-0基本使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-01-25T13:40:33.000Z" itemprop="datePublished">2020-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">Yii2.0基本使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Yii2-advanced与yii2basic的区别</p>
-<ul>
-<li><strong>basic</strong> 更适合新手，特别是刚刚接触 yii 的入门开发人员。</li>
-<li><strong>adavanced</strong> 随包自带两个应用：前台应用 <strong>frontend</strong> 和后台应用 <strong>backend</strong>，basic 中只有一个应用 <strong>web</strong>。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" data-id="cm4wohnyr0010vhli327t6x5y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -592,7 +511,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -616,7 +535,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ComputerNetwork/" style="font-size: 17px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/Golang/" style="font-size: 13px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 19px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 16px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12.22px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
     </div>
   </div>
 

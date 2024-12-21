@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>为何使用B+树作为索引的数据结构 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="为何使用B+树作为索引的数据结构 1)二叉树与B&#x2F;B+树具有相同的查找时间复杂度O(logn)，所以时间复杂度不是选择B树的原因 2)二叉树未能很好的应用磁盘的预读功能（每次磁盘预读的数据都是无用的），会造成较多的磁盘I&#x2F;O操作；B &#x2F;B+树都很好的运用了磁盘的预读功能，磁盘页的大小与节点的大小一致（InnoDB为16kb），减少了磁盘的I&#x2F;O操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为何使用B+树作为索引的数据结构">
+<meta property="og:url" content="http://yoursite.com/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="为何使用B+树作为索引的数据结构 1)二叉树与B&#x2F;B+树具有相同的查找时间复杂度O(logn)，所以时间复杂度不是选择B树的原因 2)二叉树未能很好的应用磁盘的预读功能（每次磁盘预读的数据都是无用的），会造成较多的磁盘I&#x2F;O操作；B &#x2F;B+树都很好的运用了磁盘的预读功能，磁盘页的大小与节点的大小一致（InnoDB为16kb），减少了磁盘的I&#x2F;O操作。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-08-30T03:18:11.000Z">
+<meta property="article:modified_time" content="2024-12-21T03:29:08.367Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-为何使用B-树作为索引的数据结构" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2024-08-30T03:18:11.000Z" itemprop="datePublished">2024-08-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      为何使用B+树作为索引的数据结构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="为何使用b树作为索引的数据结构"><a class="markdownIt-Anchor" href="#为何使用b树作为索引的数据结构"></a> 为何使用B+树作为索引的数据结构</h3>
+<p>1)二叉树与B/B+树具有相同的查找时间复杂度O(logn)，所以时间复杂度不是选择B树的原因<br>
+2)二叉树未能很好的应用磁盘的预读功能（每次磁盘预读的数据都是无用的），会造成较多的磁盘I/O操作；B /B+树都很好的运用了磁盘的预读功能，磁盘页的大小与节点的大小一致（InnoDB为16kb），减少了磁盘的I/O操作。</p>
+<span id="more"></span>
+<p>3)其中，对于B+树，又通过指针将叶子结点链接了起来，对于范围查找十分有效<br>
+4)B+ /B 树节点的个数也较二叉树有所增多，可以减少节点的查找次数</p>
+<h4 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树：</h4>
+<p>二叉搜索树的特点：每个节点的左儿子小于父节点，父节点又小于右儿子。时间复杂度是O(logn)。<br>
+多叉搜索树的特点：每个节点有多个儿子，儿子之间的大小保证从左到右递增。</p>
+<p>二叉树搜索效率高，但是实际上大多数的数据库存储却并不使用O(n)，其原因是</p>
+<ol>
+<li>
+<p>索引不止存在内存中，还要写到磁盘上。树存储在磁盘中的，访问每个节点,都对应一次磁盘I/O（假设每个节点大小&lt; 操作系统的最小读写单位块大小），即树的高度=每次查询时磁盘I/O操作次数，树越高越影响性能，而数据越多，树高不断增长，磁盘I/O越多，性能越差。</p>
+<p>一棵100万节点的平衡二叉树，树高20。一次查询可能需要访问20个数据块。在机械硬盘时代，从磁盘随机读一个数据块需要10 ms左右的寻址时间。对于一个100万行的表，单独访问一行可能需要 20×10 ms的时间。<br>
+为了让一个查询尽量少地读磁盘，就必须让查询过程访问尽量少的数据块。即使用多叉树，减少树高。</p>
+</li>
+<li>
+<p>二叉查找树存在一个极端的情况：每次插入都是二叉查找树中最大的元素，二叉查找树就会退化成一条链表，查找数据的时间复杂度变为O(n)</p>
+</li>
+</ol>
+<h4 id="自平衡二叉树"><a class="markdownIt-Anchor" href="#自平衡二叉树"></a> 自平衡二叉树：</h4>
+<p>在二叉查找树基础上增加了约束：每个节点的左子树和右子树的高度差不能超过1。即增加元素时它会维持自平衡，节点的左子树和右子树仍然为平衡二叉树，查询的时间复杂度维持在O(logn)。还有很多自平衡二叉树，比如红黑树，它的操作就比较复杂了。</p>
+<p>无论平衡二叉树还是红黑树，每个节点只能有2个子节点，随着元素的增加，树高都会随之增加，意味着磁盘I/O操作次数随之变多，查询效率变低。</p>
+<h4 id="btree"><a class="markdownIt-Anchor" href="#btree"></a> BTree：</h4>
+<p>节点：指树中的一个元素（图中的一个框）</p>
+<p>节点的度：节点拥有的子树的个数，二叉树的度不大于2</p>
+<p>叶子节点：度为0的节点，也称之为终端结点</p>
+<p>高度：叶子结点的高度为1，叶子结点的父节点高度为2，以此类推，根节点的高度最高</p>
+<p>BTree又叫自平衡多叉查找树，也称B-树。允许M个子节点（M&gt;2），从而降低树高。</p>
+<p>B树的每个节点最多可以包括M个子节点，M称为B数的阶，所以B树是个多叉树。</p>
+<p>例如：</p>
+<p>一个3阶B树，每个节点最多2个数据（M-1个，方便比较大小，以此找到对应子节点），和最多3个子节点(M个)，超过就会分裂节点。</p>
+<ol>
+<li>
+<p>每个节点的组成：<br>
+1）索1) 索引：索引值(如id)<br>
+2)数据：索引值对应的data<br>
+3)指针：该层没有指定索引，通过指针到下一层寻找</p>
+</li>
+<li>
+<p>每个节点的大小：索引大小（如5B） + 数据大小（如95B）</p>
+</li>
+<li>
+<p>每个节点的大小设置为一个页的大小，这样每个节点只需要一次IO就可以完全载入。</p>
+</li>
+<li>
+<p>度比较大，每个节点可以存储多个索引值和数据，度越大，树的高度越低，磁盘IO的次数就越少<br>
+度 = 页的大小/(索引大小+数据大小)</p>
+</li>
+<li>
+<p>叶子节点具有相同的深度，叶节点的指针为空，查询效率比较稳定</p>
+</li>
+</ol>
+<p>BTree和二叉树相比，查询数据的效率更高，因为对于相同的数据量来说，层级结构小，因此搜索速度快。</p>
+<h4 id="btree-2"><a class="markdownIt-Anchor" href="#btree-2"></a> B+Tree</h4>
+<p>B+ 树在B树的基础上做了升级，MySQL索引的数据结构就采用的B+ 树。</p>
+<p><strong>结构差异</strong>：</p>
+<ol>
+<li>
+<p>叶子节点才会存放实际数据（索引+记录），非叶子节点只存放索引。</p>
+</li>
+<li>
+<p>所有索引都会在叶子节点中出现，叶子节点间构成一个有序的链表。</p>
+</li>
+<li>
+<p>非叶子节点的索引会同时存在于子节点中，且是子节点中最大或最小的索引。</p>
+</li>
+<li>
+<p>非叶子节点有多少个子节点，其中就有多少个索引。</p>
+</li>
+</ol>
+<p>由于 B+Tree只有叶子节点保存data，因此查询任何key都要走到叶子节点。</p>
+<p><strong>性能区别</strong>：</p>
+<ol>
+<li>单点查询</li>
+</ol>
+<p>B树所有节点都可以映射数据，B+ 树只有叶子节点可以映射数据。B树查询最快O(1)，平均时间比B+稍快，但因为非叶子节点即存数据又存索引，查询可到达叶子节点和飞叶子节点，波动大。相比于B树，B+树非叶子节点仅存放索引，可以存储更多的索引，因此B+树可以更<strong>矮胖</strong>，查询底层节点的磁盘I/O操作次数更少。</p>
+<ol start="2">
+<li>插入、删除效率</li>
+</ol>
+<p>B+ 树有大量的<strong>冗余节点</strong>（所有非叶子节点都是冗余索引），比如删除一个节点的时候，可以直接从叶子节点中删除，甚至可以不动非叶子节点。这样删除非常快。B 树则不同，B 树没有冗余节点，删除节点的时候非常复杂。比如删除根节点中的数据，可能涉及复杂的树的变形。</p>
+<p>B+ 树的插入也是一样，有冗余节点，插入可能存在节点的拆分（如果节点饱和），但是最多只涉及树的一条路径。而且 B+ 树会自动平衡，不需要更多复杂的算法，类似红黑树的旋转操作等。</p>
+<p>因此，B+ 树的插入和删除效率更高。</p>
+<ol start="3">
+<li>范围查询</li>
+</ol>
+<p>B+ 树所有叶子节点间有一个<strong>链表</strong>进行连接，这种设计对范围查找非常有帮助。而B树没有，只能通过树遍历来完成范围查找，涉及多个节点的磁盘I/O操作。范围查询效率不如B+树。</p>
+<p><strong>InnoDB中的B+Tree</strong></p>
+<ul>
+<li>
+<p>B+树的叶子节点间以双向链表连接，即能向左也能向右遍历。</p>
+</li>
+<li>
+<p>节点内容是数据页，数据页中存放用户记录以及各种信息，每个数据页默认大小16KB。</p>
+</li>
+</ul>
+<p>主键索引也被称为聚簇索引（clustered index），也叫作聚集索引。其余都称呼为非主键索引也被称为二级索引（secondary index），也叫作辅助索引。</p>
+<p>非叶子节点：存储了索引和子树节点的指针</p>
+<p>叶子节点：叶子节点之间通过指针相互连接，存储了索引、数据、链表指针和指向记录的指针</p>
+<h4 id="索引分类"><a class="markdownIt-Anchor" href="#索引分类"></a> 索引分类：</h4>
+<p>按存储方式区分：B树索引，哈希索引</p>
+<p>按逻辑区分：1.普通索引 2.<strong>少数索引</strong> 3.<strong>主键索引</strong> 4. <strong>空间索引</strong> 5.<strong>全文索引</strong></p>
+<p>按实际使用区分：单列索引，多列索引</p>
+<p>索引中保存了数据列的值和指向它们所在行的指针，所以在回表查询时，能快速定位到表中的特定行，从而提高查询效率。</p>
+<p>为什么索引建立太多会导致写入和删除的效率下降？</p>
+<ol>
+<li>
+<p>索引过多会增加写入操作的开销</p>
+<p>进行写操作时，数据库需要维护索引的更新，索引过多会导致维护开销变得非常大，使得写入操作变慢。</p>
+</li>
+<li>
+<p>索引过多会占用大量磁盘空间</p>
+<p>在创建索引时，数据库会为每个索引分配磁盘空间，就会占用大量的磁盘空间，导致磁盘空间不足，影响数据库的正常运行。</p>
+</li>
+<li>
+<p>索引过多会降低查询效率</p>
+<p>虽然索引能够提高查询效率，但查询时需要扫描所有的索引，而索引过多会导致扫描的时间变长，从而降低查询效率。</p>
+</li>
+<li>
+<p>索引过多会导致缓存失效</p>
+<p>数据库会将经常使用的数据缓存到内存中，以加快查询速度。但缓存的空间有限，索引过多就会挤占数据缓存的空间，导致数据缓存失效，从而降低查询效率。</p>
+</li>
+<li>
+<p>索引过多会导致锁竞争</p>
+<p>在进行查询操作时，数据库会对相关的数据进行锁定，以保证数据的一致性。但是索引过多会导致锁竞争，因为每个索引都需要进行锁定，从而导致锁的竞争变得激烈，影响数据库的性能。</p>
+</li>
+<li>
+<p>索引过多并且设置成联合索引会造成数据重复的交换</p>
+<p>例如：当同一张表中ID字段为唯一字段，card和name为不唯一，同时将ID、card和name设置为联合主键，当card和name相同，而之前推送过数据下次推送就会因为联合索引的查询不同，造成数据的重复推送！</p>
+</li>
+</ol>
+<p>综上所述，创建索引时需要谨慎考虑，避免过多的索引导致数据库性能下降。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="cm4xp5ast001updli8jbz391n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/09/01/%E7%B4%A2%E5%BC%95%E5%92%8C%E4%B8%BB%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          索引和主键
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/29/MySql%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B-%E4%B8%89%E8%8C%83%E5%BC%8F-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%B6%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySql字段类型/三范式/数据库架构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12.22px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/29/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/27/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E7%89%B9%E7%82%B9/">分布式的概念和特点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

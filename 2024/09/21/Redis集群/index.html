@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Redis集群 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis集群 实现了数据的分布式存储，对数据进行分片，将不同的数据存储在不同的master节点上面，从而解决了海量数据的存储问题。redis集群没有统一的入口的，客户端（client）连接集群的时候连接集群中的任意节点（node）即可，集群内部的节点是相互通信的（PING-PONG机制），每个节点都是一个redis实例。  Redis分片的实现方式主要有两种：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis集群">
+<meta property="og:url" content="http://yoursite.com/2024/09/21/Redis%E9%9B%86%E7%BE%A4/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="Redis集群 实现了数据的分布式存储，对数据进行分片，将不同的数据存储在不同的master节点上面，从而解决了海量数据的存储问题。redis集群没有统一的入口的，客户端（client）连接集群的时候连接集群中的任意节点（node）即可，集群内部的节点是相互通信的（PING-PONG机制），每个节点都是一个redis实例。  Redis分片的实现方式主要有两种：">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-09-21T01:51:28.000Z">
+<meta property="article:modified_time" content="2024-12-21T02:00:25.886Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Redis集群" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/09/21/Redis%E9%9B%86%E7%BE%A4/" class="article-date">
+  <time datetime="2024-09-21T01:51:28.000Z" itemprop="datePublished">2024-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis集群
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="redis集群"><a class="markdownIt-Anchor" href="#redis集群"></a> Redis集群</h3>
+<p>实现了数据的分布式存储，对数据进行分片，将不同的数据存储在不同的master节点上面，从而解决了海量数据的存储问题。redis集群没有统一的入口的，客户端（client）连接集群的时候连接集群中的任意节点（node）即可，集群内部的节点是相互通信的（PING-PONG机制），每个节点都是一个redis实例。</p>
+<h4 id="redis分片的实现方式主要有两种"><a class="markdownIt-Anchor" href="#redis分片的实现方式主要有两种"></a> Redis分片的实现方式主要有两种：</h4>
+<span id="more"></span>
+<ol>
+<li>客户端分片：当客户端请求写入或读取数据时，根据一定的规则将数据分散到不同的Redis实例中。客户端需要维护一致的hash函数，用于计算数据的分片。客户端分片的好处是简单，易于使用和部署，但是需要保证不同的客户端都能够计算出相同的分片结果，否则会出现数据丢失或访问失败的情况。</li>
+<li>服务端分片：将分片逻辑放在Redis服务端进行计算和管理。Redis Cluster是Redis官方提供的一种分片方式，它通过一致性哈希算法将数据分散存储在不同的Redis节点上。Redis Cluster采用无中心架构，每个节点都可以互相通信，通过Gossip协议进行节点的发现和状态同步。服务端分片相对于客户端分片来说，可以有效解决数据一致性问题，提高系统的可扩展性和容错性。</li>
+</ol>
+<p>无论是客户端分片还是服务端分片，都需要考虑一些问题和挑战，例如数据的一致性、容量的自动平衡、故障恢复等。在使用Redis分片时，我们需要根据实际情况选择合适的分片方式，并合理规划和管理Redis集群的部署和运维。</p>
+<p><strong>Gossip协议</strong>是一个通信协议，一种传播消息的方式，灵感来自于：瘟疫、社交网络等。使用Gossip协议的有：Redis Cluster、Consul、Apache Cassandra等。</p>
+<h4 id="数据分布算法"><a class="markdownIt-Anchor" href="#数据分布算法"></a> 数据分布算法：</h4>
+<p><strong>1.简单算法</strong></p>
+<p>将key使用hash算法计算之后，按照节点数量来取余，即hash(key)%N。优点就是比较简单，但是扩容或者摘除节点时需要重新根据映射关系计算，会导致数据重新迁移。甚至，在增加机器或减少机器的时，引起大量的缓存穿透，造成雪崩。</p>
+<p><strong>2.一致性算法</strong></p>
+<p>为每一个节点分配一个token，构成一个哈希环；查找时先根据key计算hash值，然后顺时针找到第一个大于等于该哈希值的token节点。优点是在加入和删除节点时只影响相邻的两个节点，缺点是加减节点会造成部分数据无法命中，所以一般用于缓存，而且用于节点量大的情况下，扩容一般增加一倍节点保障数据负载均衡。</p>
+<p>对于容错性和扩展性有非常好的支持，但由于无法控制节点存储数据的分配，会导致部分节点数据太多，部分节点数据太少，造成数据倾斜。</p>
+<p><strong>3.哈希槽（SLOT）分区算法</strong></p>
+<p>redis集群选用的是哈希槽，主要的原因是一致性哈希算法对于数据分布、节点位置的控制并不是很友好。</p>
+<p>哈希槽有两个概念，一个是哈希算法——crc16算法，一种校验算法。另一个是<strong>槽位</strong>的概念，空间分配的规则。</p>
+<p>哈希槽的本质和一致性哈希算法非常相似，不同点在于对哈希空间的定义。一致性哈希的空间是一个圆环，节点分布是基于圆环的，无法很好的控制数据分布。而槽位空间是自定义分配的，类似于Windows盘分区的概念。这种分区是可以自定义大小，自定义位置的。</p>
+<p>Redis Cluster包含了16384个哈希槽，将不同的哈希槽分布在不同的Redis节点上面进行管理，在对数据进行操作的时候，用CRC16算法对key进行计算并对16384取模（slot = CRC16(key)%16383），得到的结果就是 Key-Value 所放入的槽，而这个槽位是属于哪个存储节点的，则由用户自己定义分配。例如机器硬盘小的，可以分配少一点槽位，硬盘大的可以分配多一点。如果节点硬盘都差不多则可以平均分配。所以哈希槽这种概念很好地解决了一致性哈希的弊端。</p>
+<p>另外在<strong>容错性</strong>和<strong>扩展性</strong>上，表象与一致性哈希一样，都是对受影响的数据进行转移。而哈希槽本质上是对槽位的转移，把故障节点负责的槽位转移到其他正常的节点上。扩展节点也是一样，把其他节点上的槽位转移到新的节点上，无论是添加删除或者修改某一个节点，都不会造成集群不可用的状态。</p>
+<p><strong>哈希槽数据分区算法具有以下几种特点</strong>：</p>
+<ol>
+<li>
+<p>解耦数据和节点之间的关系，简化了扩容和收缩难度。</p>
+</li>
+<li>
+<p>节点自身维护槽的映射关系，不需要客户端代理服务维护槽分区元数据。</p>
+</li>
+<li>
+<p>支持节点、槽、键之间的映射查询，用于数据路由，在线伸缩等场景。</p>
+</li>
+</ol>
+<p>redis官方默认cluster下不进行读写分离，读和写都是到master上去执行的，不支持slave节点读和写，跟Redis主从复制下读写分离不一样，因为redis集群的核心的理念，主要是使用slave做数据的热备，以及master故障时的主备切换，实现高可用。Redis的读写分离，是为了横向任意扩展slave节点去支撑更大的读吞吐量。而redis集群架构下，本身master就是可以任意扩展的，如果想要支撑更大的读或写的吞吐量，都可以直接对master进行横向扩展。当然也有非官方的读写分离版本可以使用</p>
+<p>需要注意的是，对于槽位的转移和分派，Redis集群是不会自动进行的，而是需要<strong>人工配置</strong>的。所以Redis集群的高可用是依赖于节点的主从复制与主从间的自动故障转移。</p>
+<h4 id="redis集群中准确查找数据"><a class="markdownIt-Anchor" href="#redis集群中准确查找数据"></a> Redis集群中准确查找数据：</h4>
+<p>1.访问集群节点：首先，连接到Redis集群任意一个节点。</p>
+<p>2.获取键的槽（slot）信息：计算键的哈希值，确定键所属的槽(每个节点负责存储一部分槽，根据键的哈希值来决定将键存储在哪个槽中)。</p>
+<p>3.寻找槽所在的节点：根据槽的信息，确定存储该槽的节点(通过向连接的节点发送<code>CLUSTER KEYSLOT &lt;key&gt;</code>命令，可以获取该键所属的槽所在的节点)。</p>
+<p>4.判断节点类型：获取槽所在的节点后，需要判断该节点的类型（若是主节点，则直接向该节点发送读取命令，若是从节点，则进一步判断主节点的位置）。</p>
+<p>5.获取主节点：通过CLUSTER NODES命令获取所有节点的信息，找到槽所在的主节点。</p>
+<p>6.向主节点发送读取命令：将读取命令发送给主节点，并获取读取结果。</p>
+<ul>
+<li>
+<p>注意，当节点发生故障或者主从切换时，节点的槽分配会发生变化。为了追踪槽的分配情况，应定期轮询集群的节点，并在需要时更新槽信息。</p>
+<p>此外，为了实现数据的高可用和容错性，Redis集群提供了数据的自动分片和复制功能。当一个节点下线时，集群会自动将该节点的槽分配给其他节点，保证数据的连续性。因此，在读取数据时，可以选择任意一个节点进行读取操作，集群会自动将请求转发到负责该槽的节点上。</p>
+</li>
+</ul>
+<p><strong>redis集群最大槽数是16384个</strong>，使用CRC16算法用于适配这个数量的。</p>
+<ul>
+<li>
+<p>在redis节点发送心跳包时需要把所有的槽放到这个心跳包里，以便让节点知道当前集群信息，16384=16k，在发送心跳包时使用char进行bitmap压缩后是2k（2 * 8 (8 bit) * 1024(1k) = 16K），也就是说使用2k的空间创建了16k的槽数。</p>
+<p>虽然使用CRC16算法最多可以分配65535（2^16-1）个槽位，65535=65k，压缩后就是8k（8 * 8 (8 bit) * 1024(1k) =65K），也就是说需要需要8k的心跳包，作者认为这样做不太值得；并且一般情况下一个redis集群不会有超过1000个master节点，所以16k的槽位是个比较合适的选择。</p>
+</li>
+</ul>
+<p>作者原文解释：<a href="https://github.com/redis/redis/issues/2576">https://github.com/redis/redis/issues/2576</a></p>
+<p>Redis集群中一个主节点和其从节点都挂了，是不是意味着数据丢失?</p>
+<ul>
+<li>如果集群中任意一个节点挂了，而且该节点没有从节点（备份节点），那么这个集群就挂了。这是判断集群是否挂了的方法；</li>
+<li>那么为什么任意一个节点挂了（没有从节点）这个集群就挂了呢？ -&gt; 因为集群内置了16384个slot（哈希槽），并且把所有的物理节点映射到了这16384[0-16383]个slot上，或者说把这些slot均等的分配给了各个节点。当需要在Redis集群存放一个数据（key-value）时，redis会先对这个key进行crc16算法，然后得到一个结果。再把这个结果对16384进行求余，这个余数会对应[0-16383]其中一个槽，进而决定key-value存储到哪个节点中。所以一旦某个节点挂了，该节点对应的slot就无法使用，那么就会导致集群无法正常工作。</li>
+<li>综上所述，每个Redis集群理论上最多可以有16384个节点。</li>
+</ul>
+<h4 id="重新分片流程"><a class="markdownIt-Anchor" href="#重新分片流程"></a> <strong>重新分片流程</strong></h4>
+<p>redis-trib为Redis 集群管理工具</p>
+<p>现有6379、6380、6381 三个主节点，因为数据压力，增加一个主节点6385，需人工配置<br>
+1.制订槽分配计划，确保每个节点负责相似数量的槽，从而保证各节点的数据均匀。<br>
+2.对目标节点（增加的6385主键点）发送<code>cluster setslot&#123;slot&#125;importing&#123;sourceNodeId&#125;</code>命令，让目标节点准备导入槽的数据。<br>
+3.对源节点（集群扩容前存在的节点6379…）发送<code>cluster setslot&#123;slot&#125;migrating&#123;targetNodeId&#125;</code>命令，让源节点准备迁出槽的数据。<br>
+4.源节点循环执行<code>cluster getkeysinslot&#123;slot&#125;&#123;count&#125;</code>命令，获取count个属于槽<code>&#123;slot&#125;</code>的键。<br>
+5.在源节点上执行<code>migrate&#123;targetIp&#125;&#123;targetPort&#125;&quot;&quot;0&#123;timeout&#125;keys&#123;keys…&#125;</code>命令，把获取的键通过流水线（pipeline）机制批量迁移到目标节点。<br>
+6.重复执行步骤3和步骤4,直到槽下所有的键值数据迁移到目标节点。<br>
+向集群内所有主节点发送<code>cluster setslot&#123;slot&#125;node&#123;targetNodeId&#125;</code>命令，通知槽7.分配给目标节点。为了保证槽节点映射变更及时传播，需要遍历发送给所有主节点更新被迁移的槽指向新节点。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/09/21/Redis%E9%9B%86%E7%BE%A4/" data-id="cm4xp5asa000wpdli6wn6d1cv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/09/21/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E7%9A%84%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          内存溢出的解决思路
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/09/21/Redis%E4%B8%BB%E4%BB%8E%E5%92%8C%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Redis主从和哨兵模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12.22px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/29/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/27/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E7%89%B9%E7%82%B9/">分布式的概念和特点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

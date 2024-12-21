@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-serialize和json" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-InnoDB物理层七模块" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/07/16/serialize%E5%92%8Cjson/" class="article-date">
-  <time datetime="2024-07-16T08:04:21.000Z" itemprop="datePublished">2024-07-16</time>
+    <a href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time datetime="2024-08-21T02:46:37.000Z" itemprop="datePublished">2024-08-21</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/07/16/serialize%E5%92%8Cjson/">serialize和json</a>
+      <a class="article-title" href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/">InnoDB物理层七模块</a>
     </h1>
   
 
@@ -86,192 +86,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>序列化 (Serialization)：将对象的状态信息转换为可以存储或传输的形式的过程。</p>
-<p>json在速度和生成字符串大小上都比serialize要好，那为什么serialize还要存在呢？ 原因在下面这个点：实现的功能（json无法处理对象方法等数据）</p>
+        <h3 id="innodb物理层七模块"><a class="markdownIt-Anchor" href="#innodb物理层七模块"></a> InnoDB物理层七模块</h3>
+<p>InnoDB 的物理存储结构，指的是 MySQL 的数据是怎么存储在物理介质上的，由哪些磁盘文件组成。所谓逻辑存储结构，指的是这些数据是如何有结构地组织起来的。</p>
         
           <p class="article-more-link">
-            <a href="/2024/07/16/serialize%E5%92%8Cjson/#more">Read More</a>
+            <a href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/07/16/serialize%E5%92%8Cjson/" data-id="cm4wohnz2001jvhlic50vcg01" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-PHP的垃圾回收机制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2024/07/14/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time datetime="2024-07-14T08:22:37.000Z" itemprop="datePublished">2024-07-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/07/14/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">PHP的垃圾回收机制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>每一个变量对应一个zval数据结构(zend value 的简写），在该结构内还有一个val结构体，该结构体内有一个引用计数（php7而言，对于php5，这个引用计数是保存在zval结构中的），标识该对象的引用数，当对象的引用计数为0时代表这个对象可被回收。</p>
-        
-          <p class="article-more-link">
-            <a href="/2024/07/14/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/07/14/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" data-id="cm4wohnye000ivhlig8cq5m50" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-数组的底层实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2024/07/13/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" class="article-date">
-  <time datetime="2024-07-13T08:24:04.000Z" itemprop="datePublished">2024-07-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/07/13/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/">数组的底层实现</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>数组的低层实现是hash表，php里的数组是有序的，会按照插入的顺序输出。</p>
-<p>为了保证元素有序，低层保存了中间映射表。</p>
-        
-          <p class="article-more-link">
-            <a href="/2024/07/13/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/07/13/%E6%95%B0%E7%BB%84%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" data-id="cm4wohnzg002cvhli449k95ip" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-session和cookie" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2024/07/10/session%E5%92%8Ccookie/" class="article-date">
-  <time datetime="2024-07-10T07:50:44.000Z" itemprop="datePublished">2024-07-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/07/10/session%E5%92%8Ccookie/">session和cookie</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Cookie 用于在客户端存储 session ID，而 Session 用于在服务器端存储用户状态和信息。</p>
-        
-          <p class="article-more-link">
-            <a href="/2024/07/10/session%E5%92%8Ccookie/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/07/10/session%E5%92%8Ccookie/" data-id="cm4wohnz3001kvhlic52t4a3a" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-笛卡尔积-内连接-外连接" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/" class="article-date">
-  <time datetime="2022-01-09T07:40:47.000Z" itemprop="datePublished">2022-01-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/">笛卡尔积/内连接/外连接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="笛卡尔积-内连接和外连接的关系"><a class="markdownIt-Anchor" href="#笛卡尔积-内连接和外连接的关系"></a> 笛卡尔积、内连接和外连接的关系</h3>
-<h4 id="笛卡尔积与内连接"><a class="markdownIt-Anchor" href="#笛卡尔积与内连接"></a> 笛卡尔积与内连接</h4>
-<p>笛卡尔积又叫笛卡尔乘积，由一个叫笛卡尔的人提出的，为两个集合相乘得到的结果。比如：</p>
-        
-          <p class="article-more-link">
-            <a href="/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2022/01/09/%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF-%E5%86%85%E8%BF%9E%E6%8E%A5-%E5%A4%96%E8%BF%9E%E6%8E%A5/" data-id="cm4wohnzh002fvhli80p08q81" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/" data-id="cm4xp5arv0009pdli1it42vx4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
@@ -283,10 +108,10 @@
 
 
   
-    <article id="post-散列表" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-CPU与应用程序-进程-线程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/" class="article-date">
-  <time datetime="2021-11-21T11:59:52.000Z" itemprop="datePublished">2021-11-21</time>
+    <a href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time datetime="2024-08-17T10:16:46.000Z" itemprop="datePublished">2024-08-17</time>
 </a>
     
   </div>
@@ -297,7 +122,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/">散列表</a>
+      <a class="article-title" href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/">CPU与应用程序/进程/线程</a>
     </h1>
   
 
@@ -305,20 +130,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="散列表"><a class="markdownIt-Anchor" href="#散列表"></a> 散列表</h4>
-<p>Hash Table,也叫哈希表。支持按照下标随机访问数据的特性，是数组的一种扩展，由数组演化而来。</p>
+        <p><strong>应用程序与进程</strong></p>
+<p><strong>一个应用程序</strong>（application，比如浏览器）可以包含多个程序（program），一个程序只能有一个<strong>进程</strong>，即一个应用程序可以拥有多个进程（一个计算机可以有多个进程，称之为多任务）。</p>
         
           <p class="article-more-link">
-            <a href="/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/#more">Read More</a>
+            <a href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/11/21/%E6%95%A3%E5%88%97%E8%A1%A8/" data-id="cm4wohnzf002avhli9nrdfl7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" data-id="cm4xp5arp0001pdlif0c23nzo" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -327,10 +152,10 @@
 
 
   
-    <article id="post-排序——桶排序、计数排序、基数排序" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-内存与磁盘" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time datetime="2021-11-20T10:54:30.000Z" itemprop="datePublished">2021-11-20</time>
+    <a href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/" class="article-date">
+  <time datetime="2024-08-11T10:10:33.000Z" itemprop="datePublished">2024-08-11</time>
 </a>
     
   </div>
@@ -341,7 +166,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">排序——桶排序、计数排序、基数排序</a>
+      <a class="article-title" href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/">内存与磁盘</a>
     </h1>
   
 
@@ -349,21 +174,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="桶排序-计数排序-基数排序"><a class="markdownIt-Anchor" href="#桶排序-计数排序-基数排序"></a> 桶排序、计数排序、基数排序</h5>
-<p><strong>桶排序</strong>:</p>
-<p>核心思想（含计算时间复杂度）</p>
+        <p><strong>区别</strong></p>
+<p>1.内存是计算机的工作场所，硬盘用来存放暂时不用的信息。</p>
+<p>2.内存是半导体材料制作，硬盘是磁性材料制作。</p>
         
           <p class="article-more-link">
-            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/#more">Read More</a>
+            <a href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E6%A1%B6%E6%8E%92%E5%BA%8F%E3%80%81%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E3%80%81%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" data-id="cm4wohnze0028vhli521egr1v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/" data-id="cm4xp5asv001ypdlieiy9565j" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
 
     </footer>
   </div>
@@ -372,10 +197,10 @@
 
 
   
-    <article id="post-排序——快排与归并排" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Redis与memcached" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/" class="article-date">
-  <time datetime="2021-11-20T09:50:49.000Z" itemprop="datePublished">2021-11-20</time>
+    <a href="/2024/08/11/Redis%E4%B8%8Ememcached/" class="article-date">
+  <time datetime="2024-08-11T03:34:15.000Z" itemprop="datePublished">2024-08-11</time>
 </a>
     
   </div>
@@ -386,7 +211,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/">排序——快排与归并排</a>
+      <a class="article-title" href="/2024/08/11/Redis%E4%B8%8Ememcached/">Redis与memcached</a>
     </h1>
   
 
@@ -394,22 +219,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="快排-归并排"><a class="markdownIt-Anchor" href="#快排-归并排"></a> 快排、归并排：</h5>
-<p><strong>归并排</strong>：</p>
-<p>归并排序和快速排序都用到了分治思想，非常巧妙,空间复杂度O(nlogn)，不是原地排序</p>
-<p>分治算法一般都是用递归来实现的。分治是一种解决问题的处理思想，递归是一种编程技巧</p>
+        <h3 id="redis与memcached的区别"><a class="markdownIt-Anchor" href="#redis与memcached的区别"></a> Redis与memcached的区别</h3>
+<p>Redis与Memcached都是基于内存的数据存储系统。Memcached是高性能分布式内存缓存服务，本质上是一个内存key-value数据库。Redis则是一个开源的key-value存储系统。</p>
         
           <p class="article-more-link">
-            <a href="/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/#more">Read More</a>
+            <a href="/2024/08/11/Redis%E4%B8%8Ememcached/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/11/20/%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%BF%AB%E6%8E%92%E4%B8%8E%E5%BD%92%E5%B9%B6%E6%8E%92/" data-id="cm4wohnze0027vhli141wd6z4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/11/Redis%E4%B8%8Ememcached/" data-id="cm4xp5as7000qpdlihrv66sc4" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
 
     </footer>
   </div>
@@ -418,10 +241,10 @@
 
 
   
-    <article id="post-二分查找与Redis跳表" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MongoDB应用场景" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/" class="article-date">
-  <time datetime="2021-11-20T08:57:27.000Z" itemprop="datePublished">2021-11-20</time>
+    <a href="/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" class="article-date">
+  <time datetime="2024-08-09T03:45:42.000Z" itemprop="datePublished">2024-08-09</time>
 </a>
     
   </div>
@@ -432,7 +255,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/">二分查找与Redis跳表</a>
+      <a class="article-title" href="/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">MongoDB应用场景</a>
     </h1>
   
 
@@ -440,21 +263,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="二分查找"><a class="markdownIt-Anchor" href="#二分查找"></a> 二分查找</h4>
-<p>时间复杂度O(logn)</p>
-<p>这是一种极其高效的时间复杂度，有的时候甚至比时间复杂度是常量级 O(1) 的算法还要高效</p>
+        <h3 id="mongodb应用场景"><a class="markdownIt-Anchor" href="#mongodb应用场景"></a> MongoDB应用场景</h3>
+<p>mongodb支持副本集、索引、自动分片，可以保证较高的性能和可用性。</p>
         
           <p class="article-more-link">
-            <a href="/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/#more">Read More</a>
+            <a href="/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/11/20/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E4%B8%8ERedis%E8%B7%B3%E8%A1%A8/" data-id="cm4wohnz5001ovhli9qy5fckq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" data-id="cm4xp5as0000epdlibpkifn4x" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
 
     </footer>
   </div>
@@ -463,10 +285,10 @@
 
 
   
-    <article id="post-递归与排序——冒泡、插入和选择" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-如何实现浏览器跨域请求" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/" class="article-date">
-  <time datetime="2021-11-20T08:48:14.000Z" itemprop="datePublished">2021-11-20</time>
+    <a href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" class="article-date">
+  <time datetime="2024-08-07T08:52:39.000Z" itemprop="datePublished">2024-08-07</time>
 </a>
     
   </div>
@@ -477,7 +299,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/">递归与排序——冒泡、插入和选择</a>
+      <a class="article-title" href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">如何实现浏览器跨域请求</a>
     </h1>
   
 
@@ -485,20 +307,193 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="递归"><a class="markdownIt-Anchor" href="#递归"></a> 递归</h4>
-<p>递归代码都可以改为这种迭代循环的非递归写法。例如</p>
+        <p><strong>跨域请求</strong>（Cross-Origin Request），简称CORS，是指在Web开发中，当一个Web页面向不同源（域名、协议或端口）的服务器发起请求时，浏览器会遵循同源策略（Same-Origin Policy）的限制，对这些跨源请求进行限制（跨域限制仅仅是浏览器的行为）。</p>
         
           <p class="article-more-link">
-            <a href="/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/#more">Read More</a>
+            <a href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2021/11/20/%E9%80%92%E5%BD%92%E4%B8%8E%E6%8E%92%E5%BA%8F%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E3%80%81%E6%8F%92%E5%85%A5%E5%92%8C%E9%80%89%E6%8B%A9/" data-id="cm4wohnzk002kvhli84pl49p3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" data-id="cm4xp5at1002apdli6w2j1zp8" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CAP理论" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/03/CAP%E7%90%86%E8%AE%BA/" class="article-date">
+  <time datetime="2024-08-03T10:35:46.000Z" itemprop="datePublished">2024-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/08/03/CAP%E7%90%86%E8%AE%BA/">CAP理论</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CAP原则又称作CAP定理，是Brewer教授提出的，指的是在一个分布式系统中，三个要素最多只能同时实现两点，不可能三者兼顾。分布式系统提供的是最终一致性，而不是强一致性。分布式锁和分布式事务都是为了保证数据的最终一致性。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/08/03/CAP%E7%90%86%E8%AE%BA/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/03/CAP%E7%90%86%E8%AE%BA/" data-id="cm4xp5ari0000pdlif3lmbcs5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TCP三次握手与四次挥手" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/01/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" class="article-date">
+  <time datetime="2024-08-01T08:50:14.000Z" itemprop="datePublished">2024-08-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/08/01/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP三次握手与四次挥手</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>三次握手：TCP客户进程向服务器发出连接请求报文，TCP服务器收到请求报文后，同意连接，则发出确认报文，TCP客户进程收到确认后，还要向服务器给出确认。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/08/01/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/01/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" data-id="cm4xp5asf0011pdli695b2h72" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-TCP与UDP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/07/30/TCP%E4%B8%8EUDP/" class="article-date">
+  <time datetime="2024-07-30T08:48:42.000Z" itemprop="datePublished">2024-07-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/07/30/TCP%E4%B8%8EUDP/">TCP与UDP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>相同点：</strong></p>
+<p>是两者都是OSI七层模型里的传输层协议，都是全双工通信。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/30/TCP%E4%B8%8EUDP/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/07/30/TCP%E4%B8%8EUDP/" data-id="cm4xp5asg0012pdli3gtxgm1o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-IPV4默认网关-ipv4-网卡-MAC地址" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/" class="article-date">
+  <time datetime="2024-07-29T08:41:46.000Z" itemprop="datePublished">2024-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/">IPV4默认网关-ipv4-网卡-MAC地址</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>网关和网卡</strong></p>
+<p>网关就是一个网络连接到另一个网络的“关口”，也就是网络关卡。网关分为传输网关、应用网关、信令网关、中继网关、协议网关等。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/" data-id="cm4xp5arv0008pdlihw176co9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
 
     </footer>
   </div>
@@ -511,7 +506,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -535,7 +530,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ComputerNetwork/" style="font-size: 17px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/Golang/" style="font-size: 13px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 14px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 19px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 16px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12.22px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
     </div>
   </div>
 

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>InnoDB物理层七模块 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="InnoDB物理层七模块 InnoDB 的物理存储结构，指的是 MySQL 的数据是怎么存储在物理介质上的，由哪些磁盘文件组成。所谓逻辑存储结构，指的是这些数据是如何有结构地组织起来的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="InnoDB物理层七模块">
+<meta property="og:url" content="http://yoursite.com/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="InnoDB物理层七模块 InnoDB 的物理存储结构，指的是 MySQL 的数据是怎么存储在物理介质上的，由哪些磁盘文件组成。所谓逻辑存储结构，指的是这些数据是如何有结构地组织起来的。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-08-21T02:46:37.000Z">
+<meta property="article:modified_time" content="2024-12-21T02:50:11.497Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-InnoDB物理层七模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time datetime="2024-08-21T02:46:37.000Z" itemprop="datePublished">2024-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      InnoDB物理层七模块
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="innodb物理层七模块"><a class="markdownIt-Anchor" href="#innodb物理层七模块"></a> InnoDB物理层七模块</h3>
+<p>InnoDB 的物理存储结构，指的是 MySQL 的数据是怎么存储在物理介质上的，由哪些磁盘文件组成。所谓逻辑存储结构，指的是这些数据是如何有结构地组织起来的。</p>
+<span id="more"></span>
+<p><strong>InnoDB 物理存储结构(MySQL 8.0)</strong></p>
+<ol>
+<li>
+<p>系统表空间(System Tablespace)=</p>
+</li>
+<li>
+<p>独立表空间(File-Per-Table Tablespaces)=</p>
+</li>
+<li>
+<p>Redo Log 文件(Redo Log)=</p>
+</li>
+<li>
+<p>Undo 表空间(Undo Tablespaces)，撤销表空间</p>
+</li>
+<li>
+<p>双写缓存文件(Doublewrite Buffer Files)</p>
+</li>
+<li>
+<p>通用表空间(General Tablespaces)</p>
+</li>
+<li>
+<p>临时表空间(Temporary Tablespaces)</p>
+</li>
+</ol>
+<p><strong>表空间</strong>：</p>
+<p>InnoDB存储引擎的逻辑存储结构是将所有的数据都被逻辑地放在了一个空间中，这个空间中的文件就是实际存在的物理文件（.ibd文件），即表空间。默认情况下，一个数据库表占用一个表空间，表空间可以看做是InnoDB存储引擎逻辑结构的最高层，所有的数据都存放在表空间中，例如：表对应的数据、索引、insert buffer bitmap undo信息、insert buffer 索引页、double write buffer files 等都是放在共享表空间中的。</p>
+<p>表空间分为系统表空间(ibdata1文件)(共享表空间)、临时表空间、常规表空间、Undo表空间和file-per-table表空间(独立表空间)。系统表空间又包括双写缓冲区(Doublewrite buffer)、Change Buffer等。</p>
+<p>在物理层面上，表空间对应着磁盘上的一个或多个文件。默认情况下，InnoDB使用一个名为<code>ibdata1</code>的<strong>系统表空间文件</strong>来存储所有数据库的数据和索引，但也可以配置为使用独立的表空间文件（即每个表一个文件）。</p>
+<p><strong>Mysql数据字典</strong>：是存储和管理数据的基础。 常见的字典对象包括数据库、表、字段等。 数据库字典是其中最重要的一种，它存储了关于数据库的元数据信息，如数据库的名称、创建时间、所属用户等。 表字典则<strong>包含了关于表的元数据，例如表的名称、表的类型、所属数据库等</strong>。</p>
+<p><strong>表空间结构</strong></p>
+<p>表空间又由段(segment)、区( extent)、页(page)组成，页是InnoDB磁盘管理的最小单位。在我们执行sql时，不论是查询还是修改，mysql 总会把数据从磁盘读取到内存中，而且在读取数据时，不会单独加在一条数据，而是直接加载数据所在的数据页到内存中。表空间本质上就是一个存放各种页的页面池。</p>
+<p>「页」是InnoDB管理存储空间的基本单位，也是内存和磁盘交互的基本单位。也就是说，哪怕你需要1字节的数据，InnoDB也会读取整个页的数据，InnoDB有很多类型的页，它们的用处也各不相同。比如：有存放undo日志的页、有存放INODE信息的页、有存放Change Buffer信息的页、存放用户记录数据的页（索引页）等等。</p>
+<p>InnoDB默认的页大小是16KB，在初始化表空间之前可以在配置文件中进行配置，一旦数据库初始化完成就不可再变更了。</p>
+<h4 id="1系统表空间"><a class="markdownIt-Anchor" href="#1系统表空间"></a> 1.系统表空间</h4>
+<p>系统表空间，顾名思义就是 InnoDB 这个系统的默认表空间，也叫共享表空间，是在数据目录下创建一个名为.ibdata1，大小为 12M的文件。</p>
+<p>系统表空间的管理涉及到数据文件的创建、扩展、收缩和删除等操作。当系统表空间不足时，InnoDB会<strong>自动扩展数据文件的大小</strong>以容纳更多的数据。同样，当数据被删除时，表空间不会自动收缩，这可能会导致磁盘空间的浪费。为了避免这种情况，管理员可以定期进行表空间优化操作，如重建表或导出/导入数据等。</p>
+<p>若设置 innodb_file_per_table 为 off，则CREATE TABLE 语句创建的表数据，都会存储在系统表空间中。</p>
+<p>若设置innodb_file_per_table为on,则表将<strong>独立地产生一个</strong>表空间文件，即独立表空间，以 ibd 结尾，数据、索引、表的内部数据字典信息都将保存在这个单独的表空间文件中。</p>
+<h4 id="2独立表空间"><a class="markdownIt-Anchor" href="#2独立表空间"></a> 2.独立表空间</h4>
+<p>在MySQL5.6.6以及之后的版本中， InnoDB并不会默认的把各个表的数据存储到系统表空间中，而是为每一个表建立一个独立表空间，也就是说我们创建了多少个表，就有多少个独立表空间。使用独立表空间来存储表数据的话，会在该表所属数据库对应的子目录下创建一个表示该独立表空间的文件，文件名和表名相同，只不过添加了一个.ibd的扩展名而已。</p>
+<p>独立表空间只是存放数据、索引和插入缓冲Bitmap页，其他类的数据如回滚（undo）信息、插入缓冲索引页、系统事务信息、二次写缓冲等还是存放在原来的系统表空间。</p>
+<p>同时，当某个表的数据量很大时，独立表空间可以更有效地利用磁盘空间。</p>
+<h4 id="3undo-表空间"><a class="markdownIt-Anchor" href="#3undo-表空间"></a> 3.Undo 表空间</h4>
+<p>数据默认在系统表空间 ibdata1 文件中，因为共享表空间不会自动收缩，也可以单独创建一个 undo 表空间。</p>
+<h4 id="4redo-log-文件"><a class="markdownIt-Anchor" href="#4redo-log-文件"></a> 4.Redo Log 文件</h4>
+<p>redo log记录数据库的变更，数据库崩溃后，会从redo log获取事务信息，进行系统恢复。redo log在磁盘上表现为ib_logfile0和ib_logfile1两个文件。MySQL会在事务的提交前将redo日志刷新回磁盘。</p>
+<p>在同一时间提交的事务，会采用组提交（group commit）的方式一次性刷新回磁盘。从而避免一个事务刷新一次磁盘，提高性能。</p>
+<h4 id="5双写缓存文件"><a class="markdownIt-Anchor" href="#5双写缓存文件"></a> 5.双写缓存文件</h4>
+<p>保障 InnoDB 存储引擎操作数据页的可靠性。double write 分为两部分组成，一部分在内存中的 double write buffer, 大小为 2MB，另一部分是物理磁盘上共享表空间中连续的128个数据页，即2个区大小（同样是2MB）。</p>
+<h4 id="6通用表空间"><a class="markdownIt-Anchor" href="#6通用表空间"></a> 6.通用表空间</h4>
+<p>与系统表空间类似，可以用于存储表的数据和索引。其作用是可以将一些业务逻辑不同的表，存放在这个通用表空间中，从而达到物理隔离的作用。</p>
+<h4 id="7临时表空间"><a class="markdownIt-Anchor" href="#7临时表空间"></a> 7.临时表空间</h4>
+<p>存储临时表的数据，包括用户创建的临时表，和磁盘的内部临时表。对应数据目录下的 ibtmp1 文件。当数据服务器正常关闭时，该表空间被删除，下次重新产生。</p>
+<h4 id="表空间优化"><a class="markdownIt-Anchor" href="#表空间优化"></a> 表空间优化</h4>
+<p>1.合理使用表空间类型</p>
+<p>根据实际需求选择合适的表空间类型。对于小型数据库或测试环境，可以使用默认的系统表空间；而对于大型数据库或需要高效备份恢复的场景，可以考虑使用独立表空间。</p>
+<p>2.定期优化表空间</p>
+<p>对于系统表空间，定期进行表空间优化操作，如重建表、优化索引等，以释放未使用的磁盘空间。对于独立表空间，可以通过导出/导入数据或使用ALTER TABLE语句来重新整理表空间。</p>
+<p>3.监控表空间使用情况</p>
+<p>通过监控工具或查询系统表来定期检查表空间的使用情况，确保数据库的正常运行和性能稳定。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/" data-id="cm4xp5arv0009pdli1it42vx4" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/08/25/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          数据库分库分表
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CPU与应用程序/进程/线程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12.22px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/29/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/27/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E7%89%B9%E7%82%B9/">分布式的概念和特点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
