@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>验签和加解密 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="验签和加解密：  相同点：   安全性目的，两者都旨在提高数据的安全性，保护数据不被未授权访问或篡改   密钥使用，验签和加密解密都可以使用非对称加密算法，涉及到公钥和私钥的使用   数据完整性，验签用于验证数据的完整性，确保数据在传输过程中未被篡改；加密确保数据不被未授权者读取，从而也间接保证了数据的完整性.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="验签和加解密">
+<meta property="og:url" content="http://yoursite.com/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="验签和加解密：  相同点：   安全性目的，两者都旨在提高数据的安全性，保护数据不被未授权访问或篡改   密钥使用，验签和加密解密都可以使用非对称加密算法，涉及到公钥和私钥的使用   数据完整性，验签用于验证数据的完整性，确保数据在传输过程中未被篡改；加密确保数据不被未授权者读取，从而也间接保证了数据的完整性.">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-12-01T06:36:02.000Z">
+<meta property="article:modified_time" content="2024-12-21T07:00:09.969Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="SoftwareDevelopment">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-验签和加解密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/" class="article-date">
+  <time datetime="2024-12-01T06:36:02.000Z" itemprop="datePublished">2024-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      验签和加解密
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="验签和加解密"><a class="markdownIt-Anchor" href="#验签和加解密"></a> <strong>验签和加解密</strong>：</h3>
+<h4 id="相同点"><a class="markdownIt-Anchor" href="#相同点"></a> 相同点：</h4>
+<ol>
+<li>
+<p><strong>安全性目的</strong>，两者都旨在提高数据的安全性，保护数据不被未授权访问或篡改</p>
+</li>
+<li>
+<p><strong>密钥使用</strong>，验签和加密解密都可以使用非对称加密算法，涉及到公钥和私钥的使用</p>
+</li>
+<li>
+<p><strong>数据完整性</strong>，验签用于验证数据的完整性，确保数据在传输过程中未被篡改；加密确保数据不被未授权者读取，从而也间接保证了数据的完整性.</p>
+</li>
+</ol>
+<span id="more"></span>
+<h4 id="不同点"><a class="markdownIt-Anchor" href="#不同点"></a> 不同点：</h4>
+<p>1.功能目的：</p>
+<p>验签：主要用于验证数据的来源和完整性（确保数据确实是由发送者发送，并且自发送以来未被篡改）。</p>
+<p>加解密：</p>
+<ul>
+<li>加密：将明文数据转换成密文（确保只有拥有正确密钥的接收者才能解密并读取原始数据）。</li>
+<li>解密：将密文数据还原为明文（以便授权用户可以访问和理解被加密的信息）</li>
+</ul>
+<p>2.操作过程</p>
+<p>验签:最终比较的是哈希值，而不是原数据。（解密得到哈希值，与使用数据计算得到的哈希值进行比较）</p>
+<ul>
+<li>发送方使用自己的私钥对数据的哈希摘要进行加密，形成数字签名，并将签名和数据一起发送给接收方。</li>
+<li>接收方使用发送方的公钥解密数字签名，得到数据的哈希摘要，并与自己计算的数据哈希摘要进行比较，以验证签名的有效性。</li>
+</ul>
+<p>加解密：使用密钥将明文转换成密文，或使用密钥将密文还原为明文。</p>
+<p>3.密钥配对</p>
+<p>验签：通常使用发送方的私钥进行签名，接收方的公钥进行验证。</p>
+<p>加密解密:</p>
+<ul>
+<li>在非对称加密中，使用接收方的公钥进行加密，发送方的私钥进行解密。</li>
+<li>在对称加密中，使用相同的密钥进行加密和解密</li>
+</ul>
+<h4 id="签名和加解密哪个复杂度更高"><a class="markdownIt-Anchor" href="#签名和加解密哪个复杂度更高"></a> 签名和加解密哪个复杂度更高？</h4>
+<p>签名对比于加解密，实现难度和安全性上，验签的复杂度更高，涉及哈希计算和加解密，而加解密性能上会更高效些。具体来说：</p>
+<ul>
+<li>安全性：数字签名在理论上提供了更强的安全性保证，因为它依赖于非对称加密和数学难题。</li>
+<li>性能：加密和解密通常在性能上更为高效，尤其是在处理大量数据时。</li>
+<li>实现难度：数字签名的实现可能更为复杂，因为它涉及到更多的数学运算和密钥管理问题。</li>
+<li>应用场景：两者在不同的场景下有不同的应用，数字签名主要用于验证数据的完整性和来源，而加密主要用于保护数据的机密性</li>
+</ul>
+<h4 id="签名与签名验证的过程"><a class="markdownIt-Anchor" href="#签名与签名验证的过程"></a> 签名与签名验证的过程：</h4>
+<p>1）发送方签名过程：<br>
+发送方首先使用哈希函数（如SHA-256）计算数据的哈希摘要（“哈希摘要1”）。<br>
+然后，发送方使用自己的私钥对“哈希摘要1”进行加密，形成数字签名。</p>
+<p>2）发送数据和签名：<br>
+发送方将原始数据和数字签名一起发送给接收方。</p>
+<p>3）接收方验证过程：<br>
+接收方首先使用相同的哈希函数对收到的原始数据计算哈希摘要（“哈希摘要2”）。<br>
+接着，接收方使用发送方的公钥对收到的数字签名进行解密，尝试还原出另一个哈希摘要（若签名过程没有错误，此应为“哈希摘要1”）。可能需要发送相关参数请求获得公钥。</p>
+<p>4）比较哈希摘要：<br>
+接收方比较自己计算的“哈希摘要2”和通过公钥解密签名得到的哈希摘要（应该是“哈希摘要1”）。<br>
+如果“哈希摘要1”等于“哈希摘要2”，则说明数据未被篡改，且签名是由持有对应私钥的发送方创建的，签名验证成功。</p>
+<p><strong>这个过程确保了两件事情</strong>：<br>
+数据的完整性：因为哈希摘要匹配，所以数据在传输过程中未被篡改。<br>
+数据的来源：因为只有持有私钥的发送方才能创建有效的签名，所以签名验证成功也验证了数据的来源。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/" data-id="cm4xy4sjq00386dlidkpo1tin" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          分布式数据存储
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">分布式事务框架</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 12.22px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/03/jmeter/">jmeter</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

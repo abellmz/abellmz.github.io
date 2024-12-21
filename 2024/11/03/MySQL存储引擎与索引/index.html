@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>MySQL存储引擎与索引 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MySQL存储引擎 MyISAM: .frm是存储表结构 .myd存储表数据 .myi存储索引文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL存储引擎与索引">
+<meta property="og:url" content="http://yoursite.com/2024/11/03/MySQL%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%B8%8E%E7%B4%A2%E5%BC%95/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="MySQL存储引擎 MyISAM: .frm是存储表结构 .myd存储表数据 .myi存储索引文件">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-11-03T05:52:07.000Z">
+<meta property="article:modified_time" content="2024-12-21T08:56:33.875Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MySQL存储引擎与索引" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/11/03/MySQL%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%B8%8E%E7%B4%A2%E5%BC%95/" class="article-date">
+  <time datetime="2024-11-03T05:52:07.000Z" itemprop="datePublished">2024-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL存储引擎与索引
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql存储引擎"><a class="markdownIt-Anchor" href="#mysql存储引擎"></a> MySQL存储引擎</h3>
+<p><strong>MyISAM:</strong></p>
+<p><code>.frm</code>是存储表结构</p>
+<p><code>.myd</code>存储表数据</p>
+<p><code>.myi</code>存储索引文件</p>
+<span id="more"></span>
+<p><strong>InnoDB:</strong></p>
+<p><code>.frm</code>是存储表结构</p>
+<p><code>.ibd</code>存放索引文件和数据（需开启innodb_file_per_table参数）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">innodb_file_per_table这项设置告知InnoDB是否需要将所有表的数据和索引存放在共享表空间里(innodb_file_per_table = OFF) 或者为每张表的数据单独放在一个.ibd文件(innodb_file_per_table = ON)。每张表一个文件允许你在drop、truncate或者rebuild表时回收磁盘空间。</span><br></pre></td></tr></table></figure>
+<p>配置优化</p>
+<h3 id="索引"><a class="markdownIt-Anchor" href="#索引"></a> 索引</h3>
+<h4 id="优缺点"><a class="markdownIt-Anchor" href="#优缺点"></a> 优缺点</h4>
+<p><strong>优点</strong>：</p>
+<p>1.通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。<br>
+2.可以大大加快数据的检索速度，这也是创建索引的最主要的原因。<br>
+3.可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。<br>
+4.在使用分组和排序子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。<br>
+5.通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能</p>
+<p><strong>缺点</strong>：</p>
+<p>为什么索引会增加表查询速度，降低表更新速度，因为MySQL在更新表数据时，不仅需要保存数据，还需要保存一下索引文件。</p>
+<p>1.创建索引和维护索引需要耗费时间，这种时间随数据量的增加而增加。<br>
+2.除数据表占数据空间外，每一个索引还要占一定的物理空间，若要建立聚簇索引，那么需要的空间就会更大。<br>
+3.当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</p>
+<p><strong>最左前缀匹配原则</strong>：对于多列索引，总是从索引的最前面字段开始，接着往后，中间不能跳过。</p>
+<p>比如列索引(a,b,c)创建的同时，已经对(a)、(a,b)、(a,b,c)上建立了索引，中间不能跳过，比如(a,c)就不行。</p>
+<p>但是内部顺序不要求一定按照顺序来，因为MySQL会自动优化，比如说(a,b)写成(b,a)也没问题。</p>
+<h4 id="索引语句"><a class="markdownIt-Anchor" href="#索引语句"></a> 索引语句</h4>
+<p><strong>创建索引</strong>：</p>
+<p>ALTER TABLE</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE 表名 ADD INDEX 索引名 (列名)</span><br><span class="line">ALTER TABLE 表名 ADD UNIQUE 索引名(列名)</span><br><span class="line">ALTER TABLE 表名 ADD PRIMARY KEY 索引名(列名)</span><br></pre></td></tr></table></figure>
+<p>索引名可不写</p>
+<p>CREATE INDEX</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE INDEX 索引名 ON 表名 (列名)</span><br><span class="line">CREATE UNIQUE INDEX 索引名 ON 表名 (列名)</span><br></pre></td></tr></table></figure>
+<p>索引名必须有,不能用CREATE INDEX语句创建PRIMARY KEY索引。</p>
+<p><strong>删除索引</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DROP INDEX 索引名 ON 表名</span><br><span class="line">ALTER TABLE 表名 DROP INDEX 索引名</span><br></pre></td></tr></table></figure>
+<p><strong>查看索引</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">show index from 表名;</span><br><span class="line">show keys from 表名;</span><br></pre></td></tr></table></figure>
+<h4 id="问答"><a class="markdownIt-Anchor" href="#问答"></a> 问答</h4>
+<p><strong>1.什么情况下该使用索引？</strong></p>
+<p>在经常需要搜索的列上，可以加快搜索的速度；<br>
+在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>
+在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；<br>
+在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>
+在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；<br>
+在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</p>
+<p><strong>2.什么情况下不该不使用索引？</strong><br>
+对于那些在查询中很少使用或者参考的列不应该创建索引。因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。<br>
+对于那些只有很少数据值的列也不应该增加索引。例如性别，只有两种可能数据。意味着索引的二叉树级别少，这样的二叉树查询无异于全表扫描。</p>
+<p>频繁更新的字段不要使用索引</p>
+<p><strong>3.什么情况下索引会失效？</strong></p>
+<p>1.如果条件中有or，即使其中有条件带索引也不会使用(这也是为什么尽量少用or的原因)，要想使用or，又想让索引生效，只能将or条件中的每个列都加上索引。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select id from t where num=10 or num=20;</span><br><span class="line">#可以这样查询：</span><br><span class="line">select id from t where num=10;</span><br><span class="line">union all</span><br><span class="line">select id from t where num=20;</span><br></pre></td></tr></table></figure>
+<p>2.like查询是以%开头</p>
+<p>3.如果列类型是字符串，那一定要在条件中将数据使用引号引用起来,否则不使用索引</p>
+<p>4.如果mysql估计使用全表扫描要比使用索引快,则不使用索引</p>
+<p>5.对索引列进行运算导致索引失效,我所指的对索引列进行运算包括(+，-，*，/，! 等)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">错误的例子：select*from test where id-1=9;</span><br><span class="line">正确的例子：select* fromtest where id=10;</span><br></pre></td></tr></table></figure>
+<p>6.使用 &lt;&gt; 、not in、not exist、!=</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select id from t where num in(1,2,3);</span><br></pre></td></tr></table></figure>
+<p>7.索引字段进行判空查询时。也就是对索引字段判断是否为NULL时。语句为is null 或is not null。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select id from twhere num is null;</span><br><span class="line">#可以在num上设置默认值0，确保表中num列没有null值，然后这样查询：  </span><br><span class="line">select id from t where num=0;</span><br></pre></td></tr></table></figure>
+<p><strong>4.索引方法有哪些？</strong></p>
+<p>哈希表和B-tree表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MySQL对于每个表最多可以创建64个索引，包括主键索引和二级索引。这个限制是非常有意义的，因为过多的索引会带来严重的性能问题。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/11/03/MySQL%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E%E4%B8%8E%E7%B4%A2%E5%BC%95/" data-id="cm4xy4si8000h6dli4f3ghnxk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/11/05/%E8%99%9A%E6%8B%9F%E6%9C%BA/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          虚拟机
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/21/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E5%87%BB%E7%A9%BF-%E9%9B%AA%E5%B4%A9/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">缓存穿透/击穿/雪崩</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 12.22px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/03/jmeter/">jmeter</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

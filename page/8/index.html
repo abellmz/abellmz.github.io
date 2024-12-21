@@ -64,6 +64,324 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-golangBasic10-20" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/11/golangBasic10-20/" class="article-date">
+  <time datetime="2021-07-11T03:41:02.000Z" itemprop="datePublished">2021-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/11/golangBasic10-20/">golangBasic10-20</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="10错误处理"><a class="markdownIt-Anchor" href="#10错误处理"></a> 10错误处理</h2>
+<h3 id="错误处理方式"><a class="markdownIt-Anchor" href="#错误处理方式"></a> 错误处理方式</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line">import (</span><br><span class="line">	&quot;io/ioutil&quot;</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line">func main()&#123;</span><br><span class="line">	f, err := ioutil.ReadFile(&quot;test.txt&quot;)</span><br><span class="line">	if err != nil&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		fmt.Println(f)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2021/07/11/golangBasic10-20/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/07/11/golangBasic10-20/" data-id="cm4xy4sit001e6dli86mb4w98" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-golangBasic1-9" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/07/05/golangBasic1-9/" class="article-date">
+  <time datetime="2021-07-05T03:30:18.000Z" itemprop="datePublished">2021-07-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/05/golangBasic1-9/">golangBasic1-9</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GOPATH目录下主要包含三个重要目录：<br>
+（1）bin：Go编译可执行文件的存放路径。<br>
+（2）pkg：Go编译包时生成的.a中间文件存放路径。<br>
+（3）src：Go标准库源码路径。</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/07/05/golangBasic1-9/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/07/05/golangBasic1-9/" data-id="cm4xy4sis001d6dlia4jjeqo2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongoDB02" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/10/mongoDB02/" class="article-date">
+  <time datetime="2021-03-10T13:20:40.000Z" itemprop="datePublished">2021-03-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/10/mongoDB02/">mongoDB02</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mongodb与redis应用指标对比"><a class="markdownIt-Anchor" href="#mongodb与redis应用指标对比"></a> <strong>Mongodb与Redis应用指标对比</strong></h3>
+<p>MongoDB和Redis都是NoSQL，采用结构型数据存储。二者在使用场景中，存在一定的区别，这也主要由于<br>
+二者在内存映射的处理过程，持久化的处理方法不同。MongoDB建议集群部署，更多的考虑到集群方案，Redis更偏重于进程顺序写入，虽然支持集群，也仅限于主-从模式</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/03/10/mongoDB02/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/10/mongoDB02/" data-id="cm4xy4six001l6dli3z0u3mab" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mongoDB" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/10/mongoDB/" class="article-date">
+  <time datetime="2021-03-10T13:01:49.000Z" itemprop="datePublished">2021-03-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/10/mongoDB/">MongoDB01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="服务器三种架构"><a class="markdownIt-Anchor" href="#服务器三种架构"></a> 服务器三种架构</h3>
+<p><strong>服务器集群</strong>就是指将很多服务器集中起来一起进行同一种服务，在客户端看来就像是只有一个服务器。集群可以利用多个计算机进行并行计算从而获得很高的计算速度，也可以用多个计算机做备份，从而使得任何一个机器坏了整个系统还是能正常运行。</p>
+        
+          <p class="article-more-link">
+            <a href="/2021/03/10/mongoDB/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/10/mongoDB/" data-id="cm4xy4siw001k6dlifiys5wln" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Nginx比Apache支持高并发" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/" class="article-date">
+  <time datetime="2020-08-25T15:10:43.000Z" itemprop="datePublished">2020-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/">Nginx比Apache支持高并发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="nginx比apache高并发的原因"><a class="markdownIt-Anchor" href="#nginx比apache高并发的原因"></a> Nginx比Apache高并发的原因</h4>
+<p>链接：<a href="https://www.cnblogs.com/hnhycnlc888/p/12606002.html">https://www.cnblogs.com/hnhycnlc888/p/12606002.html</a></p>
+<h4 id="资料1"><a class="markdownIt-Anchor" href="#资料1"></a> 资料1</h4>
+<p>nginx默认以多进程的方式工作,一个master进程和多个worker进程,master进程主要用来管理worker进程.多个worker进程同等竞争来自客户端的请求,一个worker进程可以处理多个请求,但不能处理其它worker进程的请求.每个worker进程里面只有一个主线程,在epoll支持下,采用异步非阻塞的方式来处理请求,从而实现高并发.epoll支持监听多个事件</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/25/Nginx%E6%AF%94Apache%E6%94%AF%E6%8C%81%E9%AB%98%E5%B9%B6%E5%8F%91/" data-id="cm4xy4sia000l6dli6ddhh3dg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Sessiong表配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-06-15T14:33:54.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/">Sessiong表配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>主题部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">采用经过dmstr/yii2-adminlte-asset封装过的主题进行安装</span><br><span class="line">composer require dmstr/yii2-adminlte-asset</span><br><span class="line">composer require mdmsoft/yii2-admin </span><br><span class="line">腾讯云cos存储插件，存储静态资源，如图片/css/js</span><br><span class="line">composer require qcloud/cos-sdk-v5</span><br></pre></td></tr></table></figure>
+<p>由于开启动负载均衡，有几台服务器，所以session的存入服务器的对应session文件不一定在同一台服务器上，导致获取到的信息可能不对应（存的sessionid和取的sessionid不是同一个）。例如短信验证码</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/15/Sessiong%E8%A1%A8%E9%85%8D%E7%BD%AE/" data-id="cm4xy4sim00116dli28k1ckx5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PDO" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/03/PDO/" class="article-date">
+  <time datetime="2020-05-03T14:50:31.000Z" itemprop="datePublished">2020-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/03/PDO/">PDO</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="pdo概念"><a class="markdownIt-Anchor" href="#pdo概念"></a> <strong>PDO概念</strong></h3>
+<p>PHP和MySQL数据库是“黄金搭档”，但是能和PHP“搭档”的不止MySQL数据库一种，还有mssql、Oracle、SQLServer（局限：只能用微软开发的windows操作系统），每一种数据库都为PHP提供了属于自己的操作数据库的扩展函数！比如，就以连接数据库为例：</p>
+<p>MySQL：<strong>mysql_connect</strong></p>
+<p>mssql：<strong>mssql_connect</strong></p>
+<p>Oracle：<strong>oci_connect</strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/03/PDO/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/03/PDO/" data-id="cm4xy4sib000n6dliamqi7xyz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Smarty" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/25/Smarty/" class="article-date">
@@ -96,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/Smarty/" data-id="cm4xp5asf0010pdli2lb7bqbe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/25/Smarty/" data-id="cm4xy4sin00126dlidqyk9y83" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
@@ -142,7 +460,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/ThinkPHP/" data-id="cm4xp5asg0013pdligg9j4rcw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/ThinkPHP/" data-id="cm4xy4sio00156dlifz48gb9i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
@@ -257,326 +575,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" data-id="cm4xp5asi0016pdli4oi6enwu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/15/Yii-basic%E4%B8%8Eadvanced%E5%8F%8ASQL%E8%B0%83%E7%94%A8/" data-id="cm4xy4siq00186dli9c7g2rl0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Yii的布局与表单提交" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" class="article-date">
-  <time datetime="2020-02-15T14:05:32.000Z" itemprop="datePublished">2020-02-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/">Yii的布局与表单提交</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="布局"><a class="markdownIt-Anchor" href="#布局"></a> 布局</h3>
-<p>定义父模板</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">在类中定义</span><br><span class="line">public $layout=&#x27;home&#x27;;</span><br><span class="line">view的 layout目录添加home.php</span><br><span class="line">body中+&lt;?=$content ;?&gt;</span><br><span class="line"></span><br><span class="line">页面中引入其他页面  &lt;php echo $this-&gt;render(&#x27;about&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/Yii%E7%9A%84%E5%B8%83%E5%B1%80%E4%B8%8E%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4/" data-id="cm4xp5asj0018pdli7ue0ajd0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SQL注入与XSS攻击" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" class="article-date">
-  <time datetime="2020-02-15T13:56:52.000Z" itemprop="datePublished">2020-02-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/">SQL注入与XSS攻击</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="sql注入"><a class="markdownIt-Anchor" href="#sql注入"></a> sql注入</h3>
-<p>以下以Yii2.0为例</p>
-<p>SQL注入是属于注入式攻击，这种攻击是因为在项目中没有将代码与数据（比如用户敏感数据）隔离，在读取数据的时候，错误的将数据作为代码的一部分执行而导致的。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/15/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS%E6%94%BB%E5%87%BB/" data-id="cm4xp5asb000xpdli24sshsu8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Yii2-0基本使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2020-01-25T13:40:33.000Z" itemprop="datePublished">2020-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/">Yii2.0基本使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Yii2-advanced与yii2basic的区别</p>
-<ul>
-<li><strong>basic</strong> 更适合新手，特别是刚刚接触 yii 的入门开发人员。</li>
-<li><strong>adavanced</strong> 随包自带两个应用：前台应用 <strong>frontend</strong> 和后台应用 <strong>backend</strong>，basic 中只有一个应用 <strong>web</strong>。advanced 将前台和后台分开，方便开发者直接基于这两个应用搭建有前后台的完整网站，并且可以为前后台分别绑定不同域名。所以，advanced 比 basic 稍微复杂一点，不适合新手，适合学过yii的</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/25/Yii2-0%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" data-id="cm4xp5asi0017pdlifk6gf2o1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-rebase与merge" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/25/rebase%E4%B8%8Emerge/" class="article-date">
-  <time datetime="2019-12-25T14:40:29.000Z" itemprop="datePublished">2019-12-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/25/rebase%E4%B8%8Emerge/">rebase与merge</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="git-rebase-与git-merge"><a class="markdownIt-Anchor" href="#git-rebase-与git-merge"></a> git rebase 与git merge</h3>
-<p><strong>git rebase</strong> 你其实可以把它理解成是“重新设置基线”，将你的当前分支重新设置开始点。这个时候才能知道你当前分支于你需要比较的分支之间的差异。<br>
-原理很简单：rebase需要基于一个分支来设置你当前的分支的基线，这基线就是当前分支的开始时间轴向后移动到最新的跟踪分支的最后面，这样你的当前分支就是最新的跟踪分支。这里的操作是基于文件事务处理的，所以你不用怕中间失败会影响文件的一致性。在中间的过程中你可以随时取消rebase 事务。</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/12/25/rebase%E4%B8%8Emerge/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/25/rebase%E4%B8%8Emerge/" data-id="cm4xp5asq001npdli7y5kfiye" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-reset使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/12/03/reset%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2019-12-03T04:35:29.000Z" itemprop="datePublished">2019-12-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/03/reset%E4%BD%BF%E7%94%A8/">reset使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="git-reset三种模式hardmixedsoft"><a class="markdownIt-Anchor" href="#git-reset三种模式hardmixedsoft"></a> git reset三种模式（–hard/–mixed/–soft）</h3>
-<p>Git会有三个区域：</p>
-<p>1.Working Tree 当前的工作区域(本地代码存放位置)</p>
-<p>2.Index/Stage 暂存区域，和git stash命令暂存的地方不一样。使用git add xx，就可以将xx添加进Stage里面（暂存区域）</p>
-<p>Repository 提交的历史，即使用git commit提交后的结果（类似本地仓库）</p>
-        
-          <p class="article-more-link">
-            <a href="/2019/12/03/reset%E4%BD%BF%E7%94%A8/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/12/03/reset%E4%BD%BF%E7%94%A8/" data-id="cm4xp5asr001ppdlifhok94j0" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Markdown语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/" class="article-date">
-  <time datetime="2019-11-30T14:23:18.000Z" itemprop="datePublished">2019-11-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/">Markdown语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="标题1-6阶1~6个空格标题"><a class="markdownIt-Anchor" href="#标题1-6阶1~6个空格标题"></a> 标题1-6阶：1~6个#+空格+标题</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级</span><br><span class="line">## 二级</span><br><span class="line">### 三级</span><br><span class="line">#### 四级</span><br><span class="line">##### 五级</span><br><span class="line">###### 六级</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/30/Markdown%E8%AF%AD%E6%B3%95/" data-id="cm4xp5arz000dpdlidvq7ho5p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-自动化部署" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" class="article-date">
-  <time datetime="2019-11-16T14:57:02.000Z" itemprop="datePublished">2019-11-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/">自动化部署</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="自动化部署流程"><a class="markdownIt-Anchor" href="#自动化部署流程"></a> 自动化部署流程：</h3>
-        
-          <p class="article-more-link">
-            <a href="/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/16/%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2/" data-id="cm4xp5atd002updli3vvp907h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
 
     </footer>
   </div>
@@ -613,7 +615,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 13.33px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 12.22px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 13.33px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 12.22px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 18.89px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 20px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 11.11px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 12.22px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
     </div>
   </div>
 
@@ -622,7 +624,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -635,23 +637,23 @@
       <ul>
         
           <li>
+            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/03/jmeter/">jmeter</a>
+          </li>
+        
+          <li>
             <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
           </li>
         
           <li>
+            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+          </li>
+        
+          <li>
             <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/29/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">分布式锁</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/27/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E7%89%B9%E7%82%B9/">分布式的概念和特点</a>
           </li>
         
       </ul>

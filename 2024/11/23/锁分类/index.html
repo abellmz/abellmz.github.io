@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>锁分类 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="锁分类：    角度 分类     处理锁的态度 悲观锁、乐观锁   锁的粒度 行锁、表锁、全局锁   锁是否互斥的特性 共享锁、排他锁   算法锁 临键锁、间隙锁、记录锁   状态锁 意向共享锁、意向排他锁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="锁分类">
+<meta property="og:url" content="http://yoursite.com/2024/11/23/%E9%94%81%E5%88%86%E7%B1%BB/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="锁分类：    角度 分类     处理锁的态度 悲观锁、乐观锁   锁的粒度 行锁、表锁、全局锁   锁是否互斥的特性 共享锁、排他锁   算法锁 临键锁、间隙锁、记录锁   状态锁 意向共享锁、意向排他锁">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-11-23T05:34:27.000Z">
+<meta property="article:modified_time" content="2024-12-21T05:41:25.156Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-锁分类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/11/23/%E9%94%81%E5%88%86%E7%B1%BB/" class="article-date">
+  <time datetime="2024-11-23T05:34:27.000Z" itemprop="datePublished">2024-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      锁分类
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="锁分类"><a class="markdownIt-Anchor" href="#锁分类"></a> 锁分类：</h2>
+<table>
+<thead>
+<tr>
+<th>角度</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>处理锁的态度</td>
+<td>悲观锁、乐观锁</td>
+</tr>
+<tr>
+<td>锁的粒度</td>
+<td>行锁、表锁、全局锁</td>
+</tr>
+<tr>
+<td>锁是否互斥的特性</td>
+<td>共享锁、排他锁</td>
+</tr>
+<tr>
+<td>算法锁</td>
+<td>临键锁、间隙锁、记录锁</td>
+</tr>
+<tr>
+<td>状态锁</td>
+<td>意向共享锁、意向排他锁</td>
+</tr>
+</tbody>
+</table>
+<span id="more"></span>
+<h3 id="按粒度分"><a class="markdownIt-Anchor" href="#按粒度分"></a> 按粒度分</h3>
+<p>MySQL 中的锁可以按照粒度分为锁定整个表的表级锁（table-level locking）和锁定数据行的行级锁（row-level locking）：</p>
+<ul>
+<li>表级锁具有开销小、加锁快的特性；但锁定粒度较大，发生锁冲突的概率高，支持的并发度低。</li>
+<li>行级锁具有开销大，加锁慢的特性；但锁定粒度较小，发生锁冲突的概率低，支持的并发度高。</li>
+</ul>
+<p>InnoDB 存储引擎同时支持行级锁和表级锁，默认情况下采用行级锁。</p>
+<p>InnoDB的行锁是实现在索引上的，而不是锁在物理行记录上。所以如果访问没有命中索引，就无法使用行锁，将退化为表锁（共享行锁上升为共享表锁，排他行锁上升为排他表锁）。（Oracle的行锁实现机制不同。）</p>
+<h4 id="全局锁"><a class="markdownIt-Anchor" href="#全局锁"></a> 全局锁：</h4>
+<p>全局锁就是对整个数据库实例加锁，获得全局锁后的数据库无法进行数据的更新操作与表结构修改操作。</p>
+<p>让数据库变为只读状态，且数据的更新操作会被阻塞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Flush tables with read lock</span><br></pre></td></tr></table></figure>
+<p>解锁命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UNLOCK TABLES</span><br></pre></td></tr></table></figure>
+<h4 id="表锁"><a class="markdownIt-Anchor" href="#表锁"></a> 表锁</h4>
+<p>表级锁有两种：表数据锁（常说的表锁），元数据表锁（MDL，metadata lock，Mysql5.5版本之后加的）</p>
+<h5 id="元数据表锁"><a class="markdownIt-Anchor" href="#元数据表锁"></a> 元数据表锁</h5>
+<p>MDL锁在语句开始执行时申请，在事务提交后释放。只要有事务在执行，mysql 就会自动加上元数据表锁（MDL），这样在执行过程中就不能发生表结构变更。</p>
+<p>对表进行增删改查，加 MDL 读锁，执行表结构变更（DDL命令）加 MDL 写锁。读读不互斥、读写和写写都互斥</p>
+<h5 id="表数据锁"><a class="markdownIt-Anchor" href="#表数据锁"></a> 表数据锁</h5>
+<p>即表锁，主动加锁，可以使用 lock 和 unlock 关键词来加锁和释放锁： lock tables 表名 read/write。比如：lock tables A read,B write。未解锁前不能其它表进行CRUD操作。加上读锁后，任何线程都只能执行都操作，写操作都会被阻塞，包括加锁的线程也是这样。</p>
+<p><strong>自动加表级锁</strong></p>
+<p>1.ALTER TABLE操作：在执行ALTER TABLE操作时，MySQL会获取一个<strong>排它锁</strong>，防止其他事务对该表进行读写操作；ALTER TABLE 加字段在Mysql5.6版本之后新增了ONLINE DDL的功能，可以使该表不能使用的时间大大缩短。</p>
+<p>ALTER TABLE 加字段的时候，如果该表的数据量非常大，不要设置default值。</p>
+<p>例如，当前有2000w+数据量的表。如果加字段加了default值。Mysql会在执行Online DDL之后，对整个表的数据进行更新默认值的操作。这样就相当于是更新了2000w+的数据，而且是在同一个事务里。也就是说这个事务会把整个表都锁住，直到所有的数据记录都更新完默认值以后，才会提交。</p>
+<p>这个时间非常长，而且由于会锁全表的记录，所以该表不可用的时间会非常长。</p>
+<p>2.大事务操作：如果一个事务中包含大量的数据操作，比如更新或删除大量数据，那么MySQL会自动将该事务的隔离级别提升为SERIALIZABLE，也就是<strong>串行化</strong>，表级共享锁，此时会对涉及到的所有表进行锁定，避免其他事务对该表的并发操作；</p>
+<p>3.锁冲突较多：如果系统中存在较多的锁冲突，比如<strong>同一个表上有多个事务争夺同一个行锁或排它锁时</strong>，MySQL会自动将该表的锁级别提升为表锁，避免锁冲突的出现，提高系统的性能。 需要注意的是，表锁是对整张表进行锁定，因此会对其他事务的并发操作产生较大的影响，会导致系统的响应时间变慢，降低系统的并发性能。因此，在实际应用中，应该尽量避免使用表锁，而是采用行锁或其他更细粒度的锁机制来保证数据的一致性和并发性。</p>
+<h5 id="意向锁"><a class="markdownIt-Anchor" href="#意向锁"></a> 意向锁</h5>
+<p>意向锁（Intention Lock）分为意向共享锁 (intention shared lock, IS) 、意向排他锁 (intention exclusive lock, IX)，分别表示事务<strong>有意向</strong>对表里的某些记录加共享行锁和排他行锁。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">事务要获取某些行的 S/X 锁，必须先获得表的 IS /IX锁。</span><br></pre></td></tr></table></figure>
+<p>即，<strong>意向锁是有数据引擎自己维护的，用户无法手动操作意向锁</strong>，在为数据行加共享 / 排他锁之前，InooDB 会先获取该数据行所在在数据表的对应意向锁。</p>
+<p>意向锁存在意义：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>意向共享锁（IS）</strong></th>
+<th><strong>意向排他锁（IX）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>意向共享锁（IS）</strong></td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+<tr>
+<td><strong>意向排他锁（IX）</strong></td>
+<td>兼容</td>
+<td>兼容</td>
+</tr>
+</tbody>
+</table>
+<p>意向锁之间互相兼容，但是它会与<strong>普通的表级</strong>排他 / 共享锁互斥。</p>
+<p>意向锁不会与<strong>行级</strong>的共享 / 排他锁互斥。</p>
+<p>例如：</p>
+<p>事务 A 获取了某一行的排他锁，并未提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE id = 6 FOR UPDATE;</span><br></pre></td></tr></table></figure>
+<p>事务 B 想要获取 <code>users</code> 表的表锁：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLES users READ;</span><br></pre></td></tr></table></figure>
+<p>事务 B 在试图对 <code>users</code> 表加共享锁的时候，必须保证:</p>
+<p>1当前没有其他事务持有 users 表的排他锁。</p>
+<p>2当前没有其他事务持有 users 表中任意一行的排他锁。</p>
+<p>为检测是否满足第二个条件，事务 B 必须在确保 <code>users</code>表不存在任何排他锁（表级）的前提下，去检测表中的每一行是否存在排他锁。很明显这是一个效率很差的做法，但是有了<strong>意向锁</strong>之后，情况就不一样了：</p>
+<p><code>事务 A</code> 获取了某一行的排他锁，并未提交：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE id = 6 FOR UPDATE;</span><br></pre></td></tr></table></figure>
+<p>此时 <code>users</code> 表存在两把锁：<code>users</code> 表上的<strong>意向排他锁</strong>与 id 为 6 的数据行上的<strong>排他锁</strong>。</p>
+<p>事务 B 想要获取 users 表的共享锁：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCK TABLES users READ;</span><br></pre></td></tr></table></figure>
+<p>此时<code>事务 B</code> 检测事务 A 持有 <code>users</code> 表的<strong>意向排他锁</strong>，就可以得知<code>事务 A</code> 必然持有该表中某些数据行的<strong>排他锁</strong>，那么<code>事务 B</code> 对 <code>users</code> 表的加锁请求就会被排斥（阻塞），而无需去检测表中的每一行数据是否存在排他锁。</p>
+<p>由于，意向锁不会与行级的共享 / 排他锁互斥，意向锁并不会影响到多个事务对不同数据行加排他锁时的并发性。</p>
+<p>此外，</p>
+<p>InnoDB 支持<strong>多粒度锁</strong>（multiple granularity locking），它<em>允许行级锁与表级锁共存</em>，而<strong>意向锁</strong>就是其中的一种表锁，是一种不与行级锁冲突表级锁。</p>
+<p>由 InnoDB 自动添加，不需要用户干预，是一种表级锁弱锁，仅仅用于表明意向。</p>
+<h5 id="自增锁"><a class="markdownIt-Anchor" href="#自增锁"></a> 自增锁</h5>
+<p>是一种特殊的<strong>表级别锁</strong>，专门针对事务插入AUTO_INCREMENT类型的列。最简单的情况，如果一个事务正在往表中插入记录，所有其他事务的插入必须等待，以便第一个事务插入的行，是连续的主键值。控制同一sql 语句插入的所有记录的自增id是连续的。</p>
+<p>innodb通过 <code>innodb_autoinc_lock_mode</code>可以查看自增锁的状态。取值为0/1/2，默认为 1,</p>
+<h4 id="行锁"><a class="markdownIt-Anchor" href="#行锁"></a> 行锁</h4>
+<p>排他 X 锁和共享 S 锁是 Innodb 的行级概念锁。保证同一行记录修改与删除的串行性，从而保证数据的强一致。</p>
+<p>共享锁是读锁，多个事务可以拿到同一行记录的共享锁，所以读-读可以并发。</p>
+<p>排他锁是写锁，同一行记录的排他锁在同一时刻只能有一个事务获得，所以写-写是互斥的。实际上读写也是互斥的，也就是有排他锁就不能加共享锁，有共享锁就不能加排他锁。</p>
+<h5 id="共享锁"><a class="markdownIt-Anchor" href="#共享锁"></a> 共享锁</h5>
+<p>加了lock in share mode 的 select 语句， 比如：select … lock in share mode</p>
+<p>普通 select 实施不加锁多版本快照读(与MVCC多版本并发控制相关)</p>
+<h5 id="排它锁"><a class="markdownIt-Anchor" href="#排它锁"></a> 排它锁</h5>
+<p>update, delete, insert 都是行级排它锁</p>
+<p>主动加锁，比如 for update 的 select 语句，比如 select … for update</p>
+<h3 id="算法分"><a class="markdownIt-Anchor" href="#算法分"></a> 算法分</h3>
+<h4 id="记录锁"><a class="markdownIt-Anchor" href="#记录锁"></a> 记录锁</h4>
+<p>Record Locks，加锁对象是索引节点，锁定一个记录上的索引，而不是记录本身。如果表没有设置索引，InnoDB 会自动在主键上创建隐藏的聚簇索引，因此 Record Locks依然可以使用。</p>
+<p>手动或者自动加了<code>for update</code> 才会加记录锁，否则不加锁，实施快照读。</p>
+<h4 id="间隙锁"><a class="markdownIt-Anchor" href="#间隙锁"></a> <strong>间隙锁</strong></h4>
+<p>Gap Locks，实施在索引上，它用于锁定的索引之间的间隙，即键值在条件范围内但并不存在的记录，它不会包含记录本身，GAP锁的目的，是为了防止同一事务的两次当前读，出现<strong>幻读</strong>的情况。</p>
+<p>可以防止间隙内有新数据被插入，以及防止已存在的记录，更新成间隙内的记录。适用于在唯一索引上使用了范围查询条件。</p>
+<p>间隙是指索引中两个索引键之间的空间，比如，并发2个事务：</p>
+<p>A:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">SELECT * FROM `products` WHERE `product_id` BETWEEN 100 and 200 FOR UPDATE;</span><br></pre></td></tr></table></figure>
+<p>B:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BEGIN;</span><br><span class="line">INSERT INTO `products` (`product_id`, `name`) VALUES (150, &#x27;Product 150&#x27;);</span><br></pre></td></tr></table></figure>
+<p>事务A会在products表中product_id值在 100 和 200 之间的范围上设置间隙锁，在事务A运行期间，其他事务无法在这个范围内插入新的数据，在事务B尝试插入product_id为150的记录时，由于该记录位于事务A锁定的间隙范围内，事务B将被阻塞，直到事务A释放间隙锁为止。</p>
+<h4 id="临键锁"><a class="markdownIt-Anchor" href="#临键锁"></a> 临键锁</h4>
+<p>Next-Key Lock：实施在索引上，Record Lock和Gap Lock的组合，锁定一个范围的记录和间隙。是mysql的一种锁机制，对于行的查询，都是采用该方法，主要目的是解决幻读的问题。</p>
+<p><em>GAP锁和Next Key Lock区别</em></p>
+<p>区别在于锁定范围，Gap锁只锁定索引记录之间的间隙，而Next Key Lock则同时锁定索引记录和间隙。另外，Next Key Lock是MySQL中的一种锁机制，它是在Gap锁的基础上引入的。</p>
+<p>A.<strong>唯一索引</strong>，精确等值检索，Next-Key Locks就退化为记录锁，不会加gap锁。</p>
+<p>B.**非唯一索引，**精确等值检索，Next-Key Locks会对间隙加gap锁（至于区间是多大稍后讨论），以及对应检索到的记录加记录锁。</p>
+<p>C.<strong>范围检索</strong>，会锁住where条件中相应的范围，范围中的记录以及间隙，换言之就是加上记录锁和gap 锁</p>
+<p>D.不走<strong>索引检索</strong>，全表间隙加gap锁、全表记录加记录锁。</p>
+<h4 id="插入意向锁"><a class="markdownIt-Anchor" href="#插入意向锁"></a> 插入意向锁</h4>
+<p>间隙锁的一种。</p>
+<p><strong>作用</strong>：多个事务，在同一个索引，同一个范围区间插入记录时，如果插入的位置不冲突，不会阻塞彼此。用于提高插入并发，因为如果使用间隙锁的话，不允许多个事务同时往同一个索引间隙插入记录，但是使用插入意向锁可以。如果插入的位置冲突呢？怎么办？另一个回滚吗？</p>
+<p>比如两个事务都想往id(10,20)插入一条记录，但是两个事务插入记录的id分别是 11 和 12，插入的位置不冲突，所以不会阻塞对方。</p>
+<h3 id="处理锁的态度分"><a class="markdownIt-Anchor" href="#处理锁的态度分"></a> 处理锁的态度分</h3>
+<h4 id="悲观锁"><a class="markdownIt-Anchor" href="#悲观锁"></a> 悲观锁</h4>
+<p>指在读取数据的时候总是认为别人会修改它，于是在取数据的时候会对当前数据加一个锁，在结束事务前（提交事务前），不允许其他事务对当前数据进行更改。应用于<strong>数据更新比较频繁</strong>的场景。</p>
+<p>MySQL层常用的 <strong>悲观锁</strong> 实现方式是加一个 <strong>排他锁</strong>。</p>
+<ul>
+<li>排他锁的解释是：“通过在事务中使用 select xx for update 语句来实现”。排他锁会在当前行加一个行级锁，在当前事务提交前，其他事务无法进行更改操作。”</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin;</span><br><span class="line">select * from emp where id = 1 for update;</span><br><span class="line">update emp set name = &#x27;zhang3&#x27; where id = 1;</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure>
+<h4 id="乐观锁"><a class="markdownIt-Anchor" href="#乐观锁"></a> 乐观锁</h4>
+<p>指在读取数据的时候总会天真的认为没有人会去修改它，在更改操作的时候再去检查冲突。适用于<strong>读多写少</strong>的场景</p>
+<p><strong>乐观锁</strong> 机制采取了更加宽松的加锁机制。</p>
+<p><strong>悲观锁</strong> 大多数情况下依靠数据库的锁机制实现，以保证操作最大程度的独占性。但随之而来的就是数据库性能的大量开销，特别是对长事务而言，这样的开销往往无法承受。<strong>乐观锁</strong>机制在一定程度上解决了这个问题。乐观锁，大多是基于数据版本（Version）记录机制实现。即为数据增加一个版本标识，在基于数据库表的版本解决方案中，一般是通过为数据库表增加一个&quot;version&quot;字段来实现。</p>
+<p><strong>乐观锁</strong> 的工作原理：</p>
+<p>读取出数据时，将此版本号一同读出，之后更新时，对此版本号加一。此时，将提交数据的版本数据与数据库表对应记录的当前版本信息进行比对，如果提交的数据版本号大于数据库表当前版本号，则予以更新，否则认为是过期数据。需要重新查询再修改。</p>
+<p>比如，事务A在更改数据的时候，要先看是否匹配版本号，如果匹配成功再修改，失败则不修改:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">begin;</span><br><span class="line">select * from emp where id = 1;</span><br><span class="line">update emp set name = &#x27;zhang3&#x27; where id = 1 and version = 1;</span><br><span class="line">commit;</span><br></pre></td></tr></table></figure>
+<p>简而言之，操作数据时不会上锁，但是更新时会判断在此期间有没有别的事务更新这个数据，若被更新过，则失败重试。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/11/23/%E9%94%81%E5%88%86%E7%B1%BB/" data-id="cm4xy4sjp00366dli64ba1dmr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/11/27/%E5%88%86%E5%B8%83%E5%BC%8F%E7%9A%84%E6%A6%82%E5%BF%B5%E5%92%8C%E7%89%B9%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          分布式的概念和特点
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/11/17/%E5%B8%B8%E8%A7%81%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AD%96%E7%95%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">常见的负载均衡策略</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 12.22px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/03/jmeter/">jmeter</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">分布式数据存储</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/">分布式事务框架</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
