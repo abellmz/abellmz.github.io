@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>分布式锁 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分布式锁 字面上，就是在分布式系统架构里所用到的锁，一种用于并发控制的机制，确保在多个节点上对共享资源的互斥访问，从而避免数据竞争和冲突。与单体架构中的锁，最大的区别就是，细粒度的划分：从线程间的资源共享到进程间的资源共享。  分布式锁与普通锁（本地锁）的区别：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式锁">
+<meta property="og:url" content="http://yoursite.com/2024/10/15/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="分布式锁 字面上，就是在分布式系统架构里所用到的锁，一种用于并发控制的机制，确保在多个节点上对共享资源的互斥访问，从而避免数据竞争和冲突。与单体架构中的锁，最大的区别就是，细粒度的划分：从线程间的资源共享到进程间的资源共享。  分布式锁与普通锁（本地锁）的区别：">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-10-15T10:56:23.000Z">
+<meta property="article:modified_time" content="2024-12-21T11:38:32.852Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="SoftwareDevelopment">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-分布式锁" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/10/15/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" class="article-date">
+  <time datetime="2024-10-15T10:56:23.000Z" itemprop="datePublished">2024-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      分布式锁
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="分布式锁"><a class="markdownIt-Anchor" href="#分布式锁"></a> 分布式锁</h3>
+<p>字面上，就是在分布式系统架构里所用到的锁，一种用于并发控制的机制，确保在多个节点上对共享资源的互斥访问，从而避免数据竞争和冲突。与单体架构中的锁，最大的区别就是，细粒度的划分：从线程间的资源共享到进程间的资源共享。</p>
+<h4 id="分布式锁与普通锁本地锁的区别"><a class="markdownIt-Anchor" href="#分布式锁与普通锁本地锁的区别"></a> 分布式锁与普通锁（本地锁）的区别：</h4>
+<span id="more"></span>
+<p><strong>1.作用范围</strong></p>
+<ul>
+<li>普通锁：<br>
+单个进程或单个计算机内的多个线程之间的同步。当多个线程尝试访问同一资源时，普通锁可以确保只有一个线程可以访问该资源，其他线程需要等待锁的释放。</li>
+<li>分布式锁：<br>
+分布式锁用于跨多个进程或多个计算机之间的同步。允许不同的进程或计算机协调对共享资源的访问，以避免冲突和数据不一致性。</li>
+</ul>
+<p><strong>2.锁的获取方式</strong></p>
+<ul>
+<li>普通锁：<br>
+普通锁通常是基于本地内存的互斥量或自旋锁实现的，可以通过在内存中的标记或计数器来判断锁的状态，并通过执行CPU自旋等待来获取锁。</li>
+<li>分布式锁：<br>
+分布式锁通常使用基于分布式系统的外部组件或服务，如分布式缓存系统（如Redis）或分布式协调服务（如ZooKeeper）实现。进程或计算机通过与这些组件进行通信来获取和释放锁。</li>
+</ul>
+<p><strong>3.可靠性和容错性</strong></p>
+<ul>
+<li>普通锁：<br>
+普通锁在单个计算机上运行，受限于该计算机的可靠性和容错性。如果计算机故障或程序崩溃，可能会导致锁被永久占用或意外释放。</li>
+<li>分布式锁：<br>
+分布式锁通过将锁状态存储在外部组件中，可以提供更高的可靠性和容错性。即使其中一个计算机或进程崩溃，其他进程仍然可以通过与外部组件通信来获取锁。</li>
+</ul>
+<h4 id="分布式锁的一些概念和特点"><a class="markdownIt-Anchor" href="#分布式锁的一些概念和特点"></a> 分布式锁的一些概念和特点：</h4>
+<p>1.互斥性：分布式锁能够确保同一时刻只有一个节点能够获取锁，从而避免多个节点同时对共享资源进行修改或访问。</p>
+<p>2.可重入性：指同一个线程或进程在已经持有锁的情况下，可以再次获取同一把锁，而不会被自己阻塞。（不是必须的，比如非常简单的操作中，执行路径明确）。</p>
+<ul>
+<li>可重入性例子：<br>
+可以通过在锁的value中记录当前客户端的标识和计数器信息来实现。当客户端第一次获取锁时，它的标识和计数器（通常初始化为1）被记录在锁的value中。如果同一个客户端再次请求锁，Redis会检查value中的标识是否与当前客户端的标识匹配，如果匹配，则增加计数器而不是重新设置锁。释放锁时，计数器会减少，只有当计数器减到0时，锁才真正被释放。</li>
+</ul>
+<p>3.锁超时：分布式锁通常支持设置锁的超时时间，以防止因节点故障或其他原因导致锁无法释放而引起系统阻塞。</p>
+<p>4.锁的实现方式：常见的分布式锁实现方式包括基于数据库的实现（使用行级锁或乐观锁）、基于缓存的实现（使用Redis、Memcached等分布式缓存）、基于ZooKeeper、etcd等分布式协调服务的实现，以及基于分布式锁算法的自定义实现等。</p>
+<p>5.容错性：分布式锁需要考虑节点故障或网络分区等异常情况下的容错处理，确保锁的可靠性和稳定性。</p>
+<p>6.性能和成本：选择合适的分布式锁实现需要考虑其性能开销和成本，尽量减少对系统性能的影响，并兼顾系统的可扩展性和可维护性。</p>
+<h4 id="分布式锁应该具备哪些条件"><a class="markdownIt-Anchor" href="#分布式锁应该具备哪些条件"></a> 分布式锁应该具备哪些条件：</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1、在分布式系统环境下，一个方法在同一时间只能被一个机器的一个线程执行；</span><br><span class="line">2、高可用的获取锁与释放锁；</span><br><span class="line">3、高性能的获取锁与释放锁；</span><br><span class="line">4、具备可重入特性：指获得锁的线程可以再次进入到相同的锁的代码块中，意义在于防止死锁</span><br><span class="line">5、具备锁失效机制，防止死锁；</span><br><span class="line">6、具备非阻塞锁特性，即没有获取到锁将直接返回获取锁失败。</span><br></pre></td></tr></table></figure>
+<h3 id="分布式锁的实现"><a class="markdownIt-Anchor" href="#分布式锁的实现"></a> <strong>分布式锁的实现</strong></h3>
+<p>常见的一共有三种：</p>
+<h4 id="1使用关系型mysql数据库实现分布式锁"><a class="markdownIt-Anchor" href="#1使用关系型mysql数据库实现分布式锁"></a> 1.使用关系型mysql数据库实现分布式锁。</h4>
+<p>实现方法：</p>
+<ol>
+<li>在 MySQL 中实现分布式锁通常涉及到使用数据库表。可以创建一个专用的锁表，并利用行的唯一性（例如利用唯一索引）来实现锁机制。</li>
+<li>使用基于事务的 FOR UPDATE 语句或 GET_LOCK() 函数来获取锁。</li>
+</ol>
+<p>实操1方法，建一个锁表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;create table test(</span><br><span class="line">    id int(4) primary key auto_increment comment &#x27;主键&#x27;,</span><br><span class="line">    method_name varchar(255) not null comment &#x27;方法名&#x27;,</span><br><span class="line">    datetime timestamp not null comment &#x27;过期时间&#x27;,</span><br><span class="line">    unique key unique_method_name ( method_name )</span><br><span class="line">)ENGINE=InnoDB default charset=utf8;</span><br></pre></td></tr></table></figure>
+<p>定义一个自增的主键、一个拥有唯一索引的方法名，以及一个过期时间。接下来，当有一个请求进行访问时，往数据库中插入一个数据，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;insert into test values(null,&#x27;当前执行的方法名&#x27;,current_timestamp + 想要加的秒数);</span><br></pre></td></tr></table></figure>
+<p>由于数据库中的第二列method_name添加了唯一约束，同一时间只会有一个请求访问当前方法，知道方法执行完成之后再删除掉对应的数据，代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;delete from test where method_name = &#x27;当前执行的方法名&#x27;;</span><br></pre></td></tr></table></figure>
+<p>这样就可以保证分布式锁的作用。</p>
+<p>注意：加一个过期时间的原因，当一个请求过来的时候，向数据库中添加了数据之后，服务器突然宕机，此时数据库中的数据还在，当服务器恢复之后，由于这个方法的数据一直在，所以导致无法有请求来执行这个方法。所以总体来说，过期时间再加上一个周期性检查数据是否过期的任务，来防止服务器突然宕机等情况，导致数据库中的数据没有被删除</p>
+<p>优点：</p>
+<ul>
+<li>对于已经使用 MySQL 的系统，使用数据库来实现分布式锁很方便，无需额外的技术栈。</li>
+<li>利用事务和锁机制，保证了一致性</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>性能问题：相较于其他专用的锁服务，数据库操作通常性能较低。</li>
+<li>可能会因为数据库锁的冲突导致行锁升级为表锁，影响整个表的性能。</li>
+<li>增加数据库的负担，尤其是在高并发场景下。</li>
+</ul>
+<h4 id="2使用redis非关系型数据库实现分布式锁"><a class="markdownIt-Anchor" href="#2使用redis非关系型数据库实现分布式锁"></a> 2.使用redis非关系型数据库实现分布式锁。</h4>
+<p>特点：</p>
+<p>A.Redis是单线程的，速度非常快。</p>
+<p>B.Redis所能承受的压力，比mysql数据库高出很多。</p>
+<p>可以使用原生redis中的setnx这个命令</p>
+<p>优点：</p>
+<ul>
+<li>性能高：Redis 是内存数据库，获取锁和释放锁的操作非常快。</li>
+<li>支持锁的自动过期，降低死锁的风险。</li>
+<li>实现简单，客户端支持广泛。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>不是正真意义的公平锁，无法保证请求锁的顺序。</li>
+<li>在 Redis 集群模式下，没有内置的分布式锁支持，需要更为复杂的实现来保证锁的一致性</li>
+</ul>
+<h4 id="3使用zookeeper注册中心来实现分布式锁"><a class="markdownIt-Anchor" href="#3使用zookeeper注册中心来实现分布式锁"></a> 3.使用zookeeper注册中心来实现分布式锁。</h4>
+<p>实现方法：</p>
+<ol>
+<li>利用 Zookeeper 的节点（Znode）作为锁。客户端创建一个顺序临时节点，如果该节点是最小的节点，则获取锁。</li>
+<li>客户端监听前一个顺序节点的删除事件来实现锁的等待。</li>
+</ol>
+<p>ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，他的内部是一个文件系统目录的树结构，和Linux系统比较相似。</p>
+<p>可以采用创建临时节点的方法来进行加锁，当所有请求同时创建临时节点的时候，只会有一个请求能够成功创建临时节点，此时其他的请求都会直接报错，返回，我们使用服务降级来解决这一问题。</p>
+<p>当服务器宕机之后，zookeeper也会随之下线，服务器重连之后，由于zookeeper也会进行重新连接，所以临时节点也会随之消亡，不必担心没有删除临时节点突然宕机的情况。</p>
+<p>缺点：过于频繁创建和删除节点，在性能这一方面远远不如redis，并且只要有一处不可用，整个zookeeper服务就不可用，因为zookeeper满足CAP定理中的CP。</p>
+<p>优点：</p>
+<ul>
+<li>公平性：因为 Zookeeper 的顺序节点保证了请求锁的顺序。</li>
+<li>可靠性高：Zookeeper 保证了状态的一致性。</li>
+<li>具备强一致性和容错性：适用于对一致性要求较高的场景</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>相较于 Redis，性能较低。</li>
+<li>实现复杂，需要处理 Znode 的创建和监听。</li>
+<li>对Zookeeper集群的依赖较大，要求集群本身高可用</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/10/15/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" data-id="cm4y48cgg00289nlicjebenn7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/21/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F-%E5%87%BB%E7%A9%BF-%E9%9B%AA%E5%B4%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          缓存穿透/击穿/雪崩
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/07/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1%E6%A1%86%E6%9E%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">分布式事务框架</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 12.22px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/03/jmeter/">jmeter</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/23/%E9%94%81%E5%88%86%E7%B1%BB/">锁分类</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
