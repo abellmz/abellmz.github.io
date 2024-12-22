@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-docker-compose-yml说明" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/01/docker-compose-yml%E8%AF%B4%E6%98%8E/" class="article-date">
+  <time datetime="2019-09-01T14:14:16.000Z" itemprop="datePublished">2019-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/01/docker-compose-yml%E8%AF%B4%E6%98%8E/">docker-compose.yml说明</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">version : &#x27;3&#x27;  #docker引擎对应所支持的docker-compose文本格式</span><br><span class="line">services:            #本工程的服务配置列表</span><br><span class="line">  swapping:            #spring boot的服务名，服务名自定义</span><br><span class="line">    container_name: swapping-compose </span><br></pre></td></tr></table></figure>
+<p>本spring boot服务之后启动的容器实例的名字，如果指定，按照这个命名容器，如果未指定，容器命名规则是,【[compose文件所在目录]_[服务名]_1】，例如【swappingdockercompose_swapping_1】如果多启动，也就是docker-compose scale swapping=3 mysql=2的话，就不需要指定容器名称，否则会报错 容器名重复存在的问题</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/09/01/docker-compose-yml%E8%AF%B4%E6%98%8E/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/01/docker-compose-yml%E8%AF%B4%E6%98%8E/" data-id="cm4z9ckep001b4gliculy06jk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Docker-compose相关命令" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/27/Docker-compose%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" class="article-date">
@@ -101,7 +145,7 @@ kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/27/Docker-compose%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" data-id="cm4y48cf300039nli5ynkg7o9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/27/Docker-compose%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/" data-id="cm4z9ckdv00034gli8gtkab9y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
@@ -145,7 +189,7 @@ kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/16/Docker%E7%AE%80%E4%BB%8B%E5%92%8C%E5%91%BD%E4%BB%A4/" data-id="cm4y48cf400049nlievevfczy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/16/Docker%E7%AE%80%E4%BB%8B%E5%92%8C%E5%91%BD%E4%BB%A4/" data-id="cm4z9ckdw00044gli0v6u2hsn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
@@ -189,7 +233,7 @@ kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" data-id="cm4y48cfj000p9nli0sfrg52i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/18/PhpStorm%E4%B8%AD%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" data-id="cm4z9ckea000p4gliew6p6j3x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li></ul>
@@ -235,7 +279,7 @@ kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/24/Vue-js%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%931/" data-id="cm4y48cfw00179nli0m2p3bhd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/24/Vue-js%E9%98%B6%E6%AE%B5%E6%80%BB%E7%BB%931/" data-id="cm4z9cken00174gli3w01dkgq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li></ul>
@@ -281,7 +325,7 @@ kill 通过发送SIGKILL的信号强制停止运行的容器，这个信号可�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/23/Composer/" data-id="cm4y48cf100029nlif5ehcw80" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/23/Composer/" data-id="cm4z9ckdu00024glibp7y3odj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
@@ -329,7 +373,7 @@ git pull</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/19/Git-Bash-Here%E6%93%8D%E4%BD%9C/" data-id="cm4y48cf500059nlig05yblep" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/19/Git-Bash-Here%E6%93%8D%E4%BD%9C/" data-id="cm4z9ckdw00054gli1wvkccho" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
@@ -373,7 +417,7 @@ git pull</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/16/redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" data-id="cm4y48cg8001r9nlibf70evo2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/16/redis%E5%AE%9E%E7%8E%B0%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/" data-id="cm4z9ckex001s4gliexyahozk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
@@ -420,7 +464,7 @@ git pull</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/30/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%81%E4%B9%85%E5%8C%96/" data-id="cm4y48cfn000w9nli2rp61owx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/30/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%8C%81%E4%B9%85%E5%8C%96/" data-id="cm4z9ckee000w4gli1n61h95y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
@@ -464,50 +508,7 @@ git pull</p>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/29/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="cm4y48cgn002o9nlig0sthfcb" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-循环" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/20/%E5%BE%AA%E7%8E%AF/" class="article-date">
-  <time datetime="2019-05-20T01:48:49.000Z" itemprop="datePublished">2019-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/20/%E5%BE%AA%E7%8E%AF/">循环</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="if判断"><a class="markdownIt-Anchor" href="#if判断"></a> if判断</h5>
-        
-          <p class="article-more-link">
-            <a href="/2019/05/20/%E5%BE%AA%E7%8E%AF/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/20/%E5%BE%AA%E7%8E%AF/" data-id="cm4y48cgl002k9nlig2nz2jbq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/29/%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="cm4z9ckfd002p4glig4b0aac2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
@@ -547,7 +548,7 @@ git pull</p>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 12.22px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
     </div>
   </div>
 
@@ -573,6 +574,10 @@ git pull</p>
           </li>
         
           <li>
+            <a href="/2024/12/05/jmeter%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">jmeter安装配置</a>
+          </li>
+        
+          <li>
             <a href="/2024/12/03/jmeter/">jmeter</a>
           </li>
         
@@ -582,10 +587,6 @@ git pull</p>
         
           <li>
             <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
-          </li>
-        
-          <li>
-            <a href="/2024/11/23/%E9%94%81%E5%88%86%E7%B1%BB/">锁分类</a>
           </li>
         
       </ul>
