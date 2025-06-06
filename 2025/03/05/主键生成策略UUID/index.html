@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>主键生成策略UUID | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在分库分表环境下，由于表中数据同时存在不同数据库中，单服务时主键值所使用的自增长将无用武之地，各分区数据库自生成的ID无法保证全局唯一。所以需要单独设计全局主键，以避免跨库主键重复问题。 这里要说的是常见的主键生成策略之一UUID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="主键生成策略UUID">
+<meta property="og:url" content="http://yoursite.com/2025/03/05/%E4%B8%BB%E9%94%AE%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5UUID/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="在分库分表环境下，由于表中数据同时存在不同数据库中，单服务时主键值所使用的自增长将无用武之地，各分区数据库自生成的ID无法保证全局唯一。所以需要单独设计全局主键，以避免跨库主键重复问题。 这里要说的是常见的主键生成策略之一UUID">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-03-05T02:56:18.000Z">
+<meta property="article:modified_time" content="2025-06-05T03:14:05.246Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-主键生成策略UUID" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/03/05/%E4%B8%BB%E9%94%AE%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5UUID/" class="article-date">
+  <time datetime="2025-03-05T02:56:18.000Z" itemprop="datePublished">2025-03-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      主键生成策略UUID
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在分库分表环境下，由于表中数据同时存在不同数据库中，单服务时主键值所使用的自增长将无用武之地，各分区数据库自生成的ID无法保证全局唯一。所以需要单独设计全局主键，以避免跨库主键重复问题。</p>
+<p>这里要说的是常见的主键生成策略之一UUID</p>
+<span id="more"></span>
+<p>UUID标准形式为36个<strong>字符</strong>（32 个 16 进制数字和 4 个连字符）占36字节，分为5段，形式为8-4-4-4-12的36个字符，例如：550e8400-e29b-41d4-a716-446655440000。若是二进制存储，无需连字符，为128位二进制，即16字节。</p>
+<p>UUID是主键是最简单的方案，本地生成，性能高，没有网络耗时。但缺点也很明显，由于UUID非常长，会占用大量的存储空间；另外，作为主键建立索引和基于索引进行查询时都会存在性能问题，在InnoDB下，UUID的无序性会引起数据位置频繁变动，导致页分裂。</p>
+<p><strong>小知识点</strong>：</p>
+<p>十进制，每个数字需要4位二进制位来表示，因为 4 位二进制数可以表示 16 种不同的值（从 0000 到 1111），而十六进制，每个数字也需要4位二进制位来表示。十进制与二进制之间可以相互转换，但不像十六进制这样直接一个数对应 4 位二进制这么简洁的关系。<br>
+所以128位的uuid是32个字符，即32个数字。在二进制存储时，每个数字占4位二进制位，所以是128位16字节。字符串存储时，32个字符+4个连字符，共36个字符，每个字符一个字节，即需要36字节存储。</p>
+<p>在InnoDB下，UUID的无序性导致<strong>页分裂的原因</strong>：</p>
+<p>UUID 是随机生成的无序字符串，作为主键时，新插入的数据无法确定其插入位置，可能会在 B+ 树索引的中间位置。这与自增主键每次插入数据都在索引的最后位置不同，自增主键插入时不需要频繁调整数据位置，而 UUID 插入时会导致数据页中的数据频繁移动，以腾出空间插入新数据。</p>
+<p>比如，当插入无序的 UUID 主键时，若数据页已满，为维护 B+ 树的有序性，需要申请新数据页并进行页分裂，将部分数据移动到新页，调整数据页之间的关系，增加了数据重排的次数和存储开销。</p>
+<p>由于InnoDB 使用 B+ 树作为索引结构，数据按照主键顺序存储在叶子节点。因为 UUID 无序，无法利用索引进行高效范围查询，每次分页查询都需扫描大量无用数据，导致随机读写严重，性能下降。随着数据量增加，分页查询的 I/O 操作增多，查询时间变长，严重时影响用户体验。</p>
+<p><strong>页分裂解决办法</strong>：</p>
+<p>1.若业务中有合适的业务字段（如时间字段），可先对该字段进行排序，再结合 UUID 主键进行分页查询。例如，按创建时间降序排序，每页获取一定数量的记录，同时记录每页最后一个记录的 UUID 值，下一页查询时以此 UUID 值为起点进行查询，如此可提高分页查询效率。</p>
+<p>2.使用有序的 UUID 替代方案，采用如 UUIDv7 等基于时间戳的有序 UUID，其将时间戳置于前面，使生成的 UUID 相对有序。插入数据时能减少页分裂和数据移动，分页查询时可按 UUID 的顺序进行，提高查询效率，在一定程度上保留了 UUID 的唯一性和随机性特点。（在 UUID 前添加自然数字序号也可以使数据变得有序，时间顺序的序号更直观）。</p>
+<p>或使用数据库自增主键生成全局唯一 ID 的中间件，兼具自增 ID 的有序性和分布式环境下的唯一性，便于分页查询。</p>
+<p>3.使用Snowflake 算法，它是 Twitter 开发的一种分布式唯一 ID 生成算法。它通过结合机器节点、时间戳和序列号等信息来生成唯一的 64 - bit 整数 ID。其构成部分包括 1 位符号位（总是 0）、41 位时间戳、10 位机器节点、12 位序列号。其优点是，生成的 ID 是有序的，能够保证在全局范围内唯一，并且可以在一定程度上避免 UUID 的无序性带来的问题。场景，在分布式系统中，需要一个高效的、能够生成全局唯一且有序的 ID 的场景。</p>
+<p>Golang 使用UUID的例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;github.com/google/uuid&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"><span class="comment">// 生成新的UUID</span></span><br><span class="line">	newUUID := uuid.New().String()</span><br><span class="line">	fmt.Println(newUUID)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2025/03/05/%E4%B8%BB%E9%94%AE%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5UUID/" data-id="cmbkf3nfc0027e51h8l9g2xip" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/23/Snowflake%E5%88%86%E5%B8%83%E5%BC%8F%E8%87%AA%E5%A2%9EID%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Snowflake分布式自增ID算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Goland配置debug</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 14.44px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 17.78px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 17.78px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18.89px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/05/25/JWT%E5%AE%9E%E6%88%98/">JWT实战</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/16/CSRF%E6%A6%82%E8%BF%B0%E5%92%8CBeego%E9%85%8D%E7%BD%AE/">CSRF概述和Beego配置</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/05/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS/">SQL注入与XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/27/%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">服务程序后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/17/Linux%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux通用命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

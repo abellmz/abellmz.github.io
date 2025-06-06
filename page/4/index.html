@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CPU与应用程序-进程-线程" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-常见的锁" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" class="article-date">
-  <time datetime="2024-08-17T10:16:46.000Z" itemprop="datePublished">2024-08-17</time>
+    <a href="/2024/09/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%94%81/" class="article-date">
+  <time datetime="2024-09-15T03:12:03.000Z" itemprop="datePublished">2024-09-15</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/">CPU与应用程序/进程/线程</a>
+      <a class="article-title" href="/2024/09/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%94%81/">常见的锁</a>
     </h1>
   
 
@@ -86,20 +86,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>应用程序与进程</strong></p>
-<p><strong>一个应用程序</strong>（application，比如浏览器）可以包含多个程序（program），一个程序只能有一个<strong>进程</strong>，即一个应用程序可以拥有多个进程（一个计算机可以有多个进程，称之为多任务）。</p>
+        <h3 id="常见的锁"><a class="markdownIt-Anchor" href="#常见的锁"></a> 常见的锁</h3>
+<p>常见的有读写锁，也成为共享锁、排它锁；间隙锁；行锁、表锁；</p>
         
           <p class="article-more-link">
-            <a href="/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/#more">Read More</a>
+            <a href="/2024/09/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%94%81/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/17/CPU%E4%B8%8E%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B/" data-id="cm4z9ckds00014glie23hd225" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/09/15/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%94%81/" data-id="cmbkf3nfq002se51hgfd5at95" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -108,10 +108,10 @@
 
 
   
-    <article id="post-Redis与memcached" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-事务的隔离级别" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/08/15/Redis%E4%B8%8Ememcached/" class="article-date">
-  <time datetime="2024-08-15T03:34:15.000Z" itemprop="datePublished">2024-08-15</time>
+    <a href="/2024/09/11/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" class="article-date">
+  <time datetime="2024-09-11T03:09:08.000Z" itemprop="datePublished">2024-09-11</time>
 </a>
     
   </div>
@@ -122,7 +122,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/15/Redis%E4%B8%8Ememcached/">Redis与memcached</a>
+      <a class="article-title" href="/2024/09/11/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">事务的隔离级别</a>
     </h1>
   
 
@@ -130,20 +130,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="redis与memcached的区别"><a class="markdownIt-Anchor" href="#redis与memcached的区别"></a> Redis与memcached的区别</h3>
-<p>Redis与Memcached都是基于内存的数据存储系统。Memcached是高性能分布式内存缓存服务，本质上是一个内存key-value数据库。Redis则是一个开源的key-value存储系统。</p>
+        <h3 id="事务的隔离级别"><a class="markdownIt-Anchor" href="#事务的隔离级别"></a> 事务的隔离级别</h3>
+<p>MySQL事务主要 用于处理操作量大，复杂度高的数据。<strong>并发事务</strong>会导致数据脏读、不可重复读、幻读、更新丢失。</p>
         
           <p class="article-more-link">
-            <a href="/2024/08/15/Redis%E4%B8%8Ememcached/#more">Read More</a>
+            <a href="/2024/09/11/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/15/Redis%E4%B8%8Ememcached/" data-id="cm4z9ckec000s4gli91m0hloz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/09/11/%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/" data-id="cmbkf3nfd0029e51hflsqhuhn" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -152,10 +152,10 @@
 
 
   
-    <article id="post-内存与磁盘" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-表结构的优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/" class="article-date">
-  <time datetime="2024-08-11T10:10:33.000Z" itemprop="datePublished">2024-08-11</time>
+    <a href="/2024/09/07/%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84%E4%BC%98%E5%8C%96/" class="article-date">
+  <time datetime="2024-09-07T03:06:48.000Z" itemprop="datePublished">2024-09-07</time>
 </a>
     
   </div>
@@ -166,7 +166,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/">内存与磁盘</a>
+      <a class="article-title" href="/2024/09/07/%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84%E4%BC%98%E5%8C%96/">表结构的优化</a>
     </h1>
   
 
@@ -174,21 +174,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>区别</strong></p>
-<p>1.内存是计算机的工作场所，硬盘用来存放暂时不用的信息。</p>
-<p>2.内存是半导体材料制作，硬盘是磁性材料制作。</p>
+        <h3 id="表结构的优化"><a class="markdownIt-Anchor" href="#表结构的优化"></a> 表结构的优化</h3>
+<p>当库中删除了大量的数据后，您可能会发现数据文件尺寸并没有减小。这是因为删除操作后在数据文件中留下碎片所致。通俗的理解就是，删除数据时，mysql并不会回收被已删除数据的占据的存储空间以及索引位，而是空在那里，等待新的数据来弥补这个空缺。删除操作其实是假删除，空间并没有被释放。所以对于写比较频烦的表，要定期进行optimize，比如一个月一次。用optimizetable（表结构优化）重新压缩表格来回收空间和达到优化性能。</p>
         
           <p class="article-more-link">
-            <a href="/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/#more">Read More</a>
+            <a href="/2024/09/07/%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84%E4%BC%98%E5%8C%96/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/11/%E5%86%85%E5%AD%98%E4%B8%8E%E7%A3%81%E7%9B%98/" data-id="cm4z9ckf200224gli2f9f3a7m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/09/07/%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84%E4%BC%98%E5%8C%96/" data-id="cmbkf3ng1003be51hc6n7ak7v" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -197,10 +196,10 @@
 
 
   
-    <article id="post-MongoDB应用场景" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-内存泄露与内存溢出" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" class="article-date">
-  <time datetime="2024-08-09T03:45:42.000Z" itemprop="datePublished">2024-08-09</time>
+    <a href="/2024/09/06/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" class="article-date">
+  <time datetime="2024-09-06T08:15:29.000Z" itemprop="datePublished">2024-09-06</time>
 </a>
     
   </div>
@@ -211,7 +210,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/">MongoDB应用场景</a>
+      <a class="article-title" href="/2024/09/06/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/">内存泄露与内存溢出</a>
     </h1>
   
 
@@ -219,103 +218,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="mongodb应用场景"><a class="markdownIt-Anchor" href="#mongodb应用场景"></a> MongoDB应用场景</h3>
-<p>mongodb支持副本集、索引、自动分片，可以保证较高的性能和可用性。</p>
+        <p>内存泄漏memory leak：是指程序在申请内存后，<strong>无法释放已申请的内存空间</strong>，一次内存泄漏似乎不会有大的影响，但内存泄漏堆积后的后果就是内存溢出。</p>
         
           <p class="article-more-link">
-            <a href="/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/#more">Read More</a>
+            <a href="/2024/09/06/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/09/MongoDB%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" data-id="cm4z9cke4000f4gli89cacd2p" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-如何实现浏览器跨域请求" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" class="article-date">
-  <time datetime="2024-08-07T08:52:39.000Z" itemprop="datePublished">2024-08-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/">如何实现浏览器跨域请求</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>跨域请求</strong>（Cross-Origin Request），简称CORS，是指在Web开发中，当一个Web页面向不同源（域名、协议或端口）的服务器发起请求时，浏览器会遵循同源策略（Same-Origin Policy）的限制，对这些跨源请求进行限制（跨域限制仅仅是浏览器的行为）。</p>
-        
-          <p class="article-more-link">
-            <a href="/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/07/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82/" data-id="cm4z9ckf7002e4gligma8f7zd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-CAP理论" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2024/08/05/CAP%E7%90%86%E8%AE%BA/" class="article-date">
-  <time datetime="2024-08-05T10:35:46.000Z" itemprop="datePublished">2024-08-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/05/CAP%E7%90%86%E8%AE%BA/">CAP理论</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CAP原则又称作CAP定理，是Brewer教授提出的，指的是在一个分布式系统中，三个要素最多只能同时实现两点，不可能三者兼顾。分布式系统提供的是最终一致性，而不是强一致性。分布式锁和分布式事务都是为了保证数据的最终一致性。</p>
-        
-          <p class="article-more-link">
-            <a href="/2024/08/05/CAP%E7%90%86%E8%AE%BA/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/05/CAP%E7%90%86%E8%AE%BA/" data-id="cm4z9ckdl00004gli2w1v7bqu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/09/06/%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA/" data-id="cmbkf3nfg002ce51h9a7u4ldq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li></ul>
@@ -327,10 +239,10 @@
 
 
   
-    <article id="post-TCP三次握手与四次挥手" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-索引和主键" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/08/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" class="article-date">
-  <time datetime="2024-08-03T08:50:14.000Z" itemprop="datePublished">2024-08-03</time>
+    <a href="/2024/09/01/%E7%B4%A2%E5%BC%95%E5%92%8C%E4%B8%BB%E9%94%AE/" class="article-date">
+  <time datetime="2024-09-01T03:31:17.000Z" itemprop="datePublished">2024-09-01</time>
 </a>
     
   </div>
@@ -341,7 +253,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/">TCP三次握手与四次挥手</a>
+      <a class="article-title" href="/2024/09/01/%E7%B4%A2%E5%BC%95%E5%92%8C%E4%B8%BB%E9%94%AE/">索引和主键</a>
     </h1>
   
 
@@ -349,19 +261,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>三次握手：TCP客户进程向服务器发出连接请求报文，TCP服务器收到请求报文后，同意连接，则发出确认报文，TCP客户进程收到确认后，还要向服务器给出确认。</p>
+        <h3 id="索引的优点"><a class="markdownIt-Anchor" href="#索引的优点"></a> 索引的优点</h3>
+<p>索引的本质就是数据结构，索引往往以索引文件的形式存储在磁盘上。</p>
+<p>主键索引、唯一索引、一般索引、hash索引（memory存储引擎支持）、聚簇索引、空间索引、全文索引（MyISAM支持）。</p>
         
           <p class="article-more-link">
-            <a href="/2024/08/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/#more">Read More</a>
+            <a href="/2024/09/01/%E7%B4%A2%E5%BC%95%E5%92%8C%E4%B8%BB%E9%94%AE/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/03/TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E4%B8%8E%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/" data-id="cm4z9ckek00134gli4oe5e4ht" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/09/01/%E7%B4%A2%E5%BC%95%E5%92%8C%E4%B8%BB%E9%94%AE/" data-id="cmbkf3nfz0036e51h906l4iif" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -370,10 +284,10 @@
 
 
   
-    <article id="post-TCP与UDP" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-为何使用B-树作为索引的数据结构" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/08/01/TCP%E4%B8%8EUDP/" class="article-date">
-  <time datetime="2024-08-01T08:48:42.000Z" itemprop="datePublished">2024-08-01</time>
+    <a href="/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2024-08-30T03:18:11.000Z" itemprop="datePublished">2024-08-30</time>
 </a>
     
   </div>
@@ -384,7 +298,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/08/01/TCP%E4%B8%8EUDP/">TCP与UDP</a>
+      <a class="article-title" href="/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">为何使用B+树作为索引的数据结构</a>
     </h1>
   
 
@@ -392,20 +306,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>相同点：</strong></p>
-<p>是两者都是OSI七层模型里的传输层协议，都是全双工通信。</p>
+        <h3 id="为何使用b树作为索引的数据结构"><a class="markdownIt-Anchor" href="#为何使用b树作为索引的数据结构"></a> 为何使用B+树作为索引的数据结构</h3>
+<p>1)二叉树与B/B+树具有相同的查找时间复杂度O(logn)，所以时间复杂度不是选择B树的原因<br>
+2)二叉树未能很好的应用磁盘的预读功能（每次磁盘预读的数据都是无用的），会造成较多的磁盘I/O操作；B /B+树都很好的运用了磁盘的预读功能，磁盘页的大小与节点的大小一致（InnoDB为16kb），减少了磁盘的I/O操作。</p>
         
           <p class="article-more-link">
-            <a href="/2024/08/01/TCP%E4%B8%8EUDP/#more">Read More</a>
+            <a href="/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/08/01/TCP%E4%B8%8EUDP/" data-id="cm4z9ckel00144glieah5h0ie" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/30/%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8B-%E6%A0%91%E4%BD%9C%E4%B8%BA%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="cmbkf3nfc0026e51hhe6ng1p0" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -414,10 +329,10 @@
 
 
   
-    <article id="post-PHP的垃圾回收机制" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-MySQL-Cluster" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/07/31/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time datetime="2024-07-31T08:22:37.000Z" itemprop="datePublished">2024-07-31</time>
+    <a href="/2024/08/27/MySQL-Cluster/" class="article-date">
+  <time datetime="2024-08-27T03:04:03.000Z" itemprop="datePublished">2024-08-27</time>
 </a>
     
   </div>
@@ -428,7 +343,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/07/31/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">PHP的垃圾回收机制</a>
+      <a class="article-title" href="/2024/08/27/MySQL-Cluster/">MySQL Cluster</a>
     </h1>
   
 
@@ -436,19 +351,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>每一个变量对应一个zval数据结构(zend value 的简写），在该结构内还有一个val结构体，该结构体内有一个引用计数（php7而言，对于php5，这个引用计数是保存在zval结构中的），标识该对象的引用数，当对象的引用计数为0时代表这个对象可被回收。</p>
+        <h3 id="mysql-cluster"><a class="markdownIt-Anchor" href="#mysql-cluster"></a> MySQL Cluster</h3>
+<p><strong>Mysql</strong>本身是不支持分布式的,所以在分布式系统中使用就得考虑分库分表，主备机制。分库分表就相当于是“切片”的概念；主备机制就相当于是“副本”的概念。</p>
         
           <p class="article-more-link">
-            <a href="/2024/07/31/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/#more">Read More</a>
+            <a href="/2024/08/27/MySQL-Cluster/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/07/31/PHP%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" data-id="cm4z9ckea000o4gli31x20oky" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/27/MySQL-Cluster/" data-id="cmbkf3nea000me51h8elhe75f" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -457,10 +373,10 @@
 
 
   
-    <article id="post-IPV4默认网关-ipv4-网卡-MAC地址" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-分库分表带来的问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/" class="article-date">
-  <time datetime="2024-07-29T08:41:46.000Z" itemprop="datePublished">2024-07-29</time>
+    <a href="/2024/08/25/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2024-08-25T02:58:23.000Z" itemprop="datePublished">2024-08-25</time>
 </a>
     
   </div>
@@ -471,7 +387,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/">IPV4默认网关-ipv4-网卡-MAC地址</a>
+      <a class="article-title" href="/2024/08/25/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/">分库分表带来的问题</a>
     </h1>
   
 
@@ -479,20 +395,110 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>网关和网卡</strong></p>
-<p>网关就是一个网络连接到另一个网络的“关口”，也就是网络关卡。网关分为传输网关、应用网关、信令网关、中继网关、协议网关等。</p>
+        <h3 id="分库分表带来的问题"><a class="markdownIt-Anchor" href="#分库分表带来的问题"></a> 分库分表带来的问题</h3>
+<h4 id="1事务一致性问题"><a class="markdownIt-Anchor" href="#1事务一致性问题"></a> 1.事务一致性问题</h4>
+<p><strong>分布式事务</strong></p>
+<p>当更新内容同时分布在不同库中，不可避免会带来跨库事务问题。跨分片事务也是分布式事务，没有简单的方案，一般可使用&quot;XA协议&quot;和&quot;两阶段提交&quot;处理。</p>
         
           <p class="article-more-link">
-            <a href="/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/#more">Read More</a>
+            <a href="/2024/08/25/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2024/07/29/IPV4%E9%BB%98%E8%AE%A4%E7%BD%91%E5%85%B3-ipv4-%E7%BD%91%E5%8D%A1-MAC%E5%9C%B0%E5%9D%80/" data-id="cm4z9ckdy00084gli320i55jj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2024/08/25/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="cmbkf3nfj002je51ha6w3cvbw" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据库分库分表" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" class="article-date">
+  <time datetime="2024-08-23T02:52:26.000Z" itemprop="datePublished">2024-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/08/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/">数据库分库分表</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="数据库分库分表"><a class="markdownIt-Anchor" href="#数据库分库分表"></a> 数据库分库分表</h3>
+<p>关系型数据库本身相对容易成为系统瓶颈，单机存储容量、连接数、处理能力都有限。当单表的数据量达到1000W或100G以后，由于查询维度较多，即使添加从库、优化索引，做很多操作时性能仍下降严重。此时就要考虑对其进行切分了，切分的目的就在于减少数据库的负担，缩短查询时间。阿里巴巴《Java开发手册》提出单表行数超过 500 万行或者单表容量超过 2GB，就推荐进行分库分表。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/08/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/23/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/" data-id="cmbkf3nfu0030e51hb5wd9p09" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-InnoDB物理层七模块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time datetime="2024-08-21T02:46:37.000Z" itemprop="datePublished">2024-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/">InnoDB物理层七模块</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="innodb物理层七模块"><a class="markdownIt-Anchor" href="#innodb物理层七模块"></a> InnoDB物理层七模块</h3>
+<p>InnoDB 的物理存储结构，指的是 MySQL 的数据是怎么存储在物理介质上的，由哪些磁盘文件组成。所谓逻辑存储结构，指的是这些数据是如何有结构地组织起来的。</p>
+        
+          <p class="article-more-link">
+            <a href="/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2024/08/21/InnoDB%E7%89%A9%E7%90%86%E5%B1%82%E4%B8%83%E6%A8%A1%E5%9D%97/" data-id="cmbkf3ne4000ce51h0p541dbb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
     </footer>
   </div>
@@ -505,7 +511,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -529,7 +535,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 14.44px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 17.78px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 17.78px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18.89px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
     </div>
   </div>
 
@@ -538,7 +544,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -551,23 +557,23 @@
       <ul>
         
           <li>
-            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+            <a href="/2025/05/25/JWT%E5%AE%9E%E6%88%98/">JWT实战</a>
           </li>
         
           <li>
-            <a href="/2024/12/05/jmeter%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">jmeter安装配置</a>
+            <a href="/2025/05/16/CSRF%E6%A6%82%E8%BF%B0%E5%92%8CBeego%E9%85%8D%E7%BD%AE/">CSRF概述和Beego配置</a>
           </li>
         
           <li>
-            <a href="/2024/12/03/jmeter/">jmeter</a>
+            <a href="/2025/05/05/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS/">SQL注入与XSS</a>
           </li>
         
           <li>
-            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+            <a href="/2025/04/27/%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">服务程序后台运行</a>
           </li>
         
           <li>
-            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+            <a href="/2025/04/17/Linux%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux通用命令</a>
           </li>
         
       </ul>
@@ -582,7 +588,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2024 abellmz<br>
+      &copy; 2025 abellmz<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

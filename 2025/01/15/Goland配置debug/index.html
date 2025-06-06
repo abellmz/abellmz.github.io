@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Goland配置debug | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="打开Goland，点击Run，再点击Edit configurations，配置debug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Goland配置debug">
+<meta property="og:url" content="http://yoursite.com/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="打开Goland，点击Run，再点击Edit configurations，配置debug">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/image-20250402161254947.png">
+<meta property="article:published_time" content="2025-01-15T01:57:50.000Z">
+<meta property="article:modified_time" content="2025-06-05T02:34:48.222Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="Golang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/image-20250402161254947.png">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Goland配置debug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/" class="article-date">
+  <time datetime="2025-01-15T01:57:50.000Z" itemprop="datePublished">2025-01-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Goland配置debug
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>打开Goland，点击Run，再点击Edit configurations，配置debug</p>
+<span id="more"></span>
+<p>配置说明：</p>
+<p><img src="/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/image-20250402161254947.png" alt></p>
+<p><strong>Run kind</strong></p>
+<p>指定了运行的类型或模式,可选以文件/包/目录的方式运行<br>
+File：以单个文件的方式运行。这种方式适用于直接运行单个 Go 文件，不需要编译整个包。<br>
+Package：以包的方式运行。这种方式需要指定一个包路径，适用于运行包含 main 函数的包，编译并运行整个包。<br>
+Directory：以目录的方式运行。这种方式适用于运行整个目录下的所有 Go 文件，通常用于运行包含多个包的项目。</p>
+<p><strong>Package path</strong></p>
+<p>BeegoBlog/AllSrcCode 指定要运行或调试的 Go 包的路径。</p>
+<p><strong>Output directory</strong><br>
+可以留空，或者指定编译后的可执行文件的一个输出目录。</p>
+<p><strong>Run after build</strong><br>
+勾选此选项。编译成功后自动运行生成的可执行文件，并将程序的输出显示在运行窗口中。</p>
+<p><strong>Working directory</strong></p>
+<p>确保设置为项目的工作目录，例如 /Users/minzhangli/gopath/src/BeegoBlog。</p>
+<p><strong>Environment</strong><br>
+用于设置环境变量。环境变量是在操作系统中定义的变量，它们可以影响程序的运行行为。在 GoLand 中设置环境变量可以让你的程序在不同的环境下运行时具有不同的配置。<br>
+用途：可以在这里添加、修改或删除环境变量，这些变量将在程序运行时被使用。例如，可以设置 DEBUG=1 来启用程序的调试模式，或者设置 PORT=8080 来指定服务器监听的端口。<br>
+格式：环境变量通常以 KEY=VALUE 的形式设置。</p>
+<p><strong>Go tool arguments</strong><br>
+可以留空，用于向 Go 工具（如 go build、go run 等）传递额外的命令行参数。<br>
+用途：这允许你自定义 Go 工具的行为，例如指定编译选项、设置编译目标等。例如，你可以添加 -race 来启用数据竞争检测，或者使用 -tags=ssl 来编译时包含特定的构建标签。<br>
+格式：这些参数直接作为命令行参数传递给 Go 工具</p>
+<p><strong>Program arguments:</strong><br>
+可以留空，用于向你的 Go 程序传递命令行参数。用途：这允许你在运行程序时传递参数，这些参数可以在程序内部被解析和使用。<br>
+例如，你可以传递 --config=production 来指定程序运行的配置模式，或者使用 --log-level=debug 来设置日志级别。<br>
+格式：这些参数将被传递给你的 Go 程序，通常在 main 函数中通过 os.Args 切片来访问。</p>
+<p><strong>根目录是否配置错误？</strong></p>
+<p>可以在main包检测一下，当前文件位置所在位置，对比参数的根目录就知道。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//获取配置文件</span><br><span class="line">err := beego.LoadAppConfig(&quot;ini&quot;, &quot;conf/app.conf&quot;)</span><br><span class="line">// 是否找不到配置文件</span><br><span class="line">	if err != nil &#123;</span><br><span class="line">		fmt.Println(&quot;获取配置文件报错:&quot;,err)</span><br><span class="line">		dir, err1 := os.Getwd()//获取当前文件所在位置</span><br><span class="line">		if err1 != nil &#123;</span><br><span class="line">			fmt.Println(&quot;方法报错了:&quot;, err1)</span><br><span class="line">			return</span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Println(&quot;当前文件所在位置:&quot;,dir)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//打印加载的配置项（用于调试）</span><br><span class="line">	fmt.Println(&quot;RunMode:&quot;, beego.AppConfig.String(&quot;runmode&quot;))</span><br><span class="line">	fmt.Println(&quot;HttpPort:&quot;, beego.AppConfig.String(&quot;httpport&quot;))</span><br><span class="line">	fmt.Println(&quot;MysqlHost:&quot;, beego.AppConfig.String(&quot;mysqlHost&quot;))</span><br><span class="line">	fmt.Println(&quot;MysqlPort:&quot;, beego.AppConfig.String(&quot;mysqlPort&quot;))</span><br><span class="line">	fmt.Println(&quot;MysqlUser:&quot;, beego.AppConfig.String(&quot;mysqlUser&quot;))</span><br><span class="line">	fmt.Println(&quot;MysqlPassword:&quot;, beego.AppConfig.String(&quot;mysqlPassword&quot;))</span><br><span class="line">	fmt.Println(&quot;MysqlDb:&quot;, beego.AppConfig.String(&quot;mysqlDb&quot;))</span><br><span class="line">	//beego.BConfig.RunMode = &quot;dev&quot;</span><br></pre></td></tr></table></figure>
+<p>通过这个检测，可以对比出Working directory参数配置是否错误。终端输出，<br>
+mysq连接正常-redis连接正常-日志log正常启动。页面正常打开登录，功能正常。</p>
+<h4 id="delve安装配置"><a class="markdownIt-Anchor" href="#delve安装配置"></a> delve安装配置</h4>
+<p>Goland中进行调试时，Delve是推荐的调试工具，因为它能够很好地支持Golang语言的特性，如goroutine、channel等。Delve是Go社区官方支持的调试器，因此通常建议使用Delve来实现断点调试。Goland与Delve的集成度很高，能够方便地设置断点、查看变量、单步执行等操作。</p>
+<p>goland开启debug，打断点时，断点显示无效，报：protocol error E09 during set breakpoint for packet $Z0,1d7beda,1</p>
+<p><strong>1.安装Delve</strong></p>
+<p>需要匹配goland版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;go version //go1.22.11</span><br></pre></td></tr></table></figure>
+<p>Go版本是1.16或更高:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;go install github.com/go-delve/delve/cmd/dlv@latest</span><br></pre></td></tr></table></figure>
+<p>Go版本低于1.16:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;git clone https://github.com/go-delve/delve</span><br><span class="line">&gt;cd delve</span><br><span class="line">&gt;go install github.com/go-delve/delve/cmd/dlv</span><br></pre></td></tr></table></figure>
+<p>对于Go 1.15，可以安装Delve 1.4.0版本(安装特定版本的Delve)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;go install github.com/go-delve/delve/cmd/dlv@v1.4.0</span><br></pre></td></tr></table></figure>
+<p>验证安装:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;dlv version</span><br></pre></td></tr></table></figure>
+<p><strong>2.Goland中配置Delve</strong></p>
+<p>默认配置：Goland默认使用Delve作为调试器，通常无需额外配置。<br>
+自定义Delve路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;which dlv</span><br></pre></td></tr></table></figure>
+<p>如果需要指定Delve的路径，可以在Goland中打开Help-&gt;Edit Custom Properties对话框，添加以下配置：<br>
+dlv.path=/path/to/dlv<br>
+确保路径与实际安装的Delve可执行文件位置一致。</p>
+<p><strong>3.关闭编译器优化和内联</strong></p>
+<p>在调试时，为了确保调试信息的完整性，需要关闭编译器优化和内联。对于Go 1.10及更高版本,编译时添加以下参数:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;go build -gcflags=&quot;all=-N -l&quot;//让调试信息更为完整</span><br></pre></td></tr></table></figure>
+<p>-N：禁用优化。优化会改变代码的执行路径和变量的存储方式，使得调试变得困难，但它可以让代码的执行路径与源代码保持一致，方便调试。<br>
+-l：禁用内联，内联会将小函数的代码直接插入到调用点，这会改变函数调用的结构。但它可以确保函数调用的结构清晰，便于查看调用栈。</p>
+<p>优化和内联通常会提高程序的性能，但会使得调试变得困难，因为代码的执行路径和变量的存储方式会被改变，生成的可执行文件会包含调试信息。</p>
+<p>bee run会重新编译项目，会覆盖掉之前用-gcflags编译的可执行文件，而不是使用之前编译的可执行文件,不会受到影响。若再debug调试，需要重新关闭编译器优化和内联。如果在调试配置中设置了-gcflags=“all=-N -l”，则无需每次手动执行go build（Run &gt; Edit Configurations-&gt;Go tool arguments，添加-gcflags=“all=-N -l”）。<br>
+gc在Go中有两个含义，一个是Go编译器（gc），另一个是垃圾回收（Garbage Collection）。gcflags是用于自定义Go编译器的行为。不执行这一步，会影响断点的正确命中、变量的准确性、调用栈分析困难、调试信息不完整。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2025/01/15/Goland%E9%85%8D%E7%BD%AEdebug/" data-id="cmbkf3ne00008e51h4fgfefof" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/05/%E4%B8%BB%E9%94%AE%E7%94%9F%E6%88%90%E7%AD%96%E7%95%A5UUID/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          主键生成策略UUID
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/05/IntelliJ-IDEA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IntelliJ IDEA</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 14.44px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 17.78px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 17.78px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18.89px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/05/25/JWT%E5%AE%9E%E6%88%98/">JWT实战</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/16/CSRF%E6%A6%82%E8%BF%B0%E5%92%8CBeego%E9%85%8D%E7%BD%AE/">CSRF概述和Beego配置</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/05/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS/">SQL注入与XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/27/%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">服务程序后台运行</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/17/Linux%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux通用命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -23,9 +23,6 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555855533581.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856148934.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856215379.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856569535.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856824265.png">
-<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555861329078.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902379731.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555900725335.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555901956463.png">
@@ -33,13 +30,15 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903650349.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903844294.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555904269579.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555861329078.png">
+<meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856824265.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555913208991.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555915904509.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555922321362.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555922910440.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555923423854.png">
 <meta property="article:published_time" content="2019-04-23T02:04:40.000Z">
-<meta property="article:modified_time" content="2024-12-20T06:47:28.495Z">
+<meta property="article:modified_time" content="2025-05-14T11:35:06.630Z">
 <meta property="article:author" content="abellmz">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -123,11 +122,11 @@
 <span id="more"></span>
 <p><strong>锁的分类</strong></p>
 <p>XXXXXXXX</p>
-<h6 id="myisam的锁机制"><a class="markdownIt-Anchor" href="#myisam的锁机制"></a> MyISAM的锁机制</h6>
-<h6 id="mysql事务"><a class="markdownIt-Anchor" href="#mysql事务"></a> MYSQL事务</h6>
+<h5 id="myisam的锁机制"><a class="markdownIt-Anchor" href="#myisam的锁机制"></a> MyISAM的锁机制</h5>
+<p>MYSQL事务</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1、用 BEGIN, ROLLBACK, COMMIT 来实现</span><br><span class="line"></span><br><span class="line">BEGIN 或 START TRANSACTION：开用于开始一个事务。</span><br><span class="line">ROLLBACK 事务回滚，取消之前的更改。</span><br><span class="line">COMMIT：事务确认，提交事务，使更改永久生效。</span><br><span class="line"></span><br><span class="line">2、直接用 SET 来改变 MySQL 的自动提交模式:</span><br><span class="line"></span><br><span class="line">SET AUTOCOMMIT=0 禁止自动提交</span><br><span class="line">SET AUTOCOMMIT=1 开启自动提交</span><br></pre></td></tr></table></figure>
 <p><strong>表锁（偏读）</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">表锁</span><br><span class="line">读锁（共享锁）：对同一个数据，多个读操作可以同时进行，互不干扰。加锁的会话只能对此表进行读操作,其他会话也只能进行读操作。MyISAM的读默认是加读锁。</span><br><span class="line"></span><br><span class="line">加写锁（互斥锁）：当前能读和写，阻塞其他线程的读和写（等待）。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">表锁</span><br><span class="line">读锁（共享锁）：加读锁(对当前表)，当前session可读不可写，且不可读取其他未加锁的表，其他session对该表可读不可写。</span><br><span class="line">MySQL早期版本（如5.5及之前）中，MyISAM表在读取数据时会自动加读锁，但写操作不会自动加锁。现在，MyISAM 表在读取数据时默认不会自动加锁，除非使用了 LOCK TABLES 语句手动加锁。</span><br><span class="line"></span><br><span class="line">加写锁（互斥锁）：当前能读和写，阻塞其他线程的读和写（等待）。</span><br></pre></td></tr></table></figure>
 <p>建表sql</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555853034727.png" alt></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555853393947.png" alt></p>
@@ -136,44 +135,18 @@
 <p>加读锁</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555854357824.png" alt></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555854440948.png" alt></p>
+<p>加写锁</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555855231229.png" alt></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555855312765.png" alt></p>
 <p>总结</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555855533581.png" alt></p>
-<p>总之就是：读锁会阻塞写，但不会堵塞读；写锁则会把读和写都阻塞；</p>
 <p>表锁分析</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856148934.png" alt></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856215379.png" alt></p>
-<h6 id="lnnodb的锁机制"><a class="markdownIt-Anchor" href="#lnnodb的锁机制"></a> lnnoDB的锁机制</h6>
+<h5 id="lnnodb的锁机制"><a class="markdownIt-Anchor" href="#lnnodb的锁机制"></a> lnnoDB的锁机制</h5>
 <p><strong>行锁(偏写)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">共享锁（读锁）：简称S锁，当一个事务对某几行上读锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作，允许其他事务上读锁，但不允许给这几行上写锁。</span><br><span class="line"></span><br><span class="line">排他锁（写锁）：简称X锁，当一个事务对某几个上写锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作。也不允许其他事务给这几行上任何锁。</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">1.两个事务不能锁同一个索引。</span><br><span class="line">2.insert ，delete ， update在事务中都会自动默认加上排它锁。</span><br><span class="line">3.行锁必须有索引才能实现，否则会自动锁全表，那么就不是行锁了。</span><br><span class="line">4.InnoDb表锁和MyISAM差别不大 。注意：开启一个新事务的时候会解锁表</span><br><span class="line">参考：https://blog.csdn.net/FMC_WBL/article/details/88831294</span><br></pre></td></tr></table></figure>
-<p>什么情况会加锁：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及的数据集加排他锁；</span><br><span class="line">对于普通SELECT语句，InnoDB不会加任何锁；</span><br><span class="line">共享锁，只有主动触发才会加锁，比如加了lock in share mode 的 select 语句</span><br></pre></td></tr></table></figure>
-<p>参考：<a href="https://www.cnblogs.com/hi3254014978/p/17107610.html">https://www.cnblogs.com/hi3254014978/p/17107610.html</a></p>
-<p>事物的ACID</p>
-<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856569535.png" alt></p>
-<p><strong>并发事务</strong>会导致数据脏读、不可重复读、幻读、更新丢失</p>
-<p>更新丢失（Lost Update）</p>
-<p>两个事务在并发下同时进行更新，后一个事务的更新覆盖了前一个事务更新的情况，丢失更新是数据没有保证一致性导致的。比如，事务A 修改了一条记录，事务B 在 事务A 提交的同时也进行了一次修改并且提交。当事务A查询的时候，会发现刚才修改的内容没有被修改，好像丢失了更新。</p>
-<p>解决办法：</p>
-<p>1悲观锁</p>
-<p>2乐观锁</p>
-<p><a href="https://blog.csdn.net/sun8112133/article/details/89853755">https://blog.csdn.net/sun8112133/article/details/89853755</a></p>
-<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856824265.png" alt></p>
-<p><strong>事物隔离级别与脏读、不可重复读、幻读的关系</strong></p>
-<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555861329078.png" alt></p>
-<p>mysql的InnoDB事务的隔离级别 默认是“可重复读”（REPEATABLE READ）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1）未提交读（READ UNCOMMITTED）。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据（脏读）( 隔离级别最低，并发性能高 )。</span><br><span class="line">2）提交读（READ COMMITTED）。本事务读取到的是最新的数据（其他事务提交后的）。问题是，在同一个事务里，前后两次相同的SELECT会读到不同的结果（不重复读）。会出现不可重复读、幻读问题（锁定正在读取的行）</span><br><span class="line">3）可重复读（REPEATABLE READ）。在同一个事务里，SELECT的结果是事务开始时时间点的状态，因此，同样的SELECT操作读到的结果会是一致的。但是，会有幻读现象（稍后解释）。会出幻读（锁定所读取的所有行）。</span><br><span class="line">4）串行化（SERIALIZABLE）。读操作会隐式获取共享锁，可以保证不同事务间的互斥（锁表）。serializable时会锁表，因此不会出现幻读的情况，包括更新丢失也能解决，但这种隔离级别并发性极低，开发中很少会用到</span><br><span class="line"></span><br><span class="line">四个级别逐渐增强，每个级别解决一个问题。</span><br><span class="line">1）脏读。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据。</span><br><span class="line">2）不重复读。解决了脏读后，会遇到，同一个事务执行过程中，另外一个事务提交了新数据，因此本事务先后两次读到的数据结果会不一致。</span><br><span class="line">3）幻读。解决了不重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。但是，如果另一个事务同时提交了新数据，本事务再更新时，就会“惊奇的”发现了这些新数据，貌似之前读到的数据是“鬼影”一样的幻觉。</span><br><span class="line"></span><br><span class="line">脏读和幻读的区别：脏读是事务b修改了数据，幻读是事务b新增了数据</span><br><span class="line"></span><br><span class="line">隔离级别越高的数据库越安全，能解决的并发*一致性*问题也就越多。</span><br><span class="line">隔离级别越高，就代表着越安全，但是同时性能效率也就越低。</span><br><span class="line"></span><br><span class="line">参考链接：https://blog.csdn.net/ccfeng2008/article/details/51760350</span><br></pre></td></tr></table></figure>
-<p><strong>InnoDB引擎通过MVCC，解决了脏读、不可重复读，通过MVCC + Next-Key Lock(临键锁)来解决幻读，实现了事务的隔离级别Repeatable Read（可重复读）。</strong></p>
-<p><strong>可重复读隔离级别下，并发问题需要靠开发者显式或隐式使用锁来自行解决。</strong></p>
-<p>RR防止幻读的讨论：</p>
-<p><a href="https://github.com/Yhzhtk/note/issues/42">https://github.com/Yhzhtk/note/issues/42</a></p>
-<p>结论：Innodb 的 RR 隔离界别对范围会加上 GAP，理论上不会存在幻读，但是是否有例外，还需要进一步求证。</p>
-<p>nosql CAP 理论</p>
-<p><a href="http://www.cnblogs.com/gudi/p/8183548.html">http://www.cnblogs.com/gudi/p/8183548.html</a></p>
-<p>一致性C（Consistency）、可用性A（Availability）和分区容错性P（Tolerance of network Partition）</p>
-<p>保CP还是保AP，大网站只能保AP</p>
-<p>行锁基本演示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">共享锁（读锁）：简称S锁，当一个事务对某几行上读锁时，允许其他事务对这几行进行读操作，但不允许其进行写操作，允许其他事务上读锁，但不允许给这几行上写锁。</span><br><span class="line"></span><br><span class="line">排他锁（写锁）：简称X锁，当前事务对加了写锁的行可以进行读取和写入，可以自由地读取表中其他未被加锁的行。其他事务对这些加了写锁的行既不能读取也不能写入，也不能给这几行上任何锁。</span><br><span class="line"></span><br><span class="line">如果其他事务使用的是“一致性非锁定读”（通过MVCC机制），它们仍然可以读取这些行的快照版本，而无需等待锁释放。这种读取方式不会获取锁，因此不会被写锁阻塞。这是InnoDB 实现并发性能的一个关键特性。</span><br><span class="line"></span><br><span class="line">注意：</span><br><span class="line">1.行锁必须有索引才能实现，否则会自动锁全表，那么就不是行锁了。</span><br><span class="line">2.insert ，delete ， update在事务中都会自动默认加上排它锁。</span><br><span class="line"></span><br><span class="line">行锁和索引的关系：</span><br><span class="line">InnoDB通过索引可以快速地定位到需要锁定的行。如果没有索引，由于无法高效地定位到特定的行进行锁定，就只能将整个表锁定，以保证数据的一致性。</span><br><span class="line"></span><br><span class="line">一致性非锁定读：</span><br><span class="line">是指在读取数据时，不会对数据行加锁。它会读取数据行的一个一致性视图，这个视图是根据事务的隔离级别和事务开始时的状态来确定的。</span><br><span class="line">当一个事务执行一致性非锁定读时，InnoDB 会根据事务的隔离级别和事务的快照版本来查找数据。例如，在可重复读隔离级别下，事务会看到事务开始时的数据快照，这个快照是通过多版本并发控制（MVCC）实现的。MVCC 为每行数据保存多个版本，每个版本都有一个事务的标识，用于确定该版本是哪个事务修改的。</span><br><span class="line"></span><br><span class="line">一致性非锁定读是否能读取最新的提交数据，取决于事务的隔离级别。在读已提交（Read Committed）隔离级别下，一致性非锁定读可以读取最新的已提交数据。在可重复读（Repeatable Read）隔离级别下，一致性非锁定读不能读取最新的提交数据。在可重复读隔离级别下，事务在开始时会创建一个数据的快照，后续的读操作都基于这个快照。即使其他事务对数据进行了修改并提交，只要这个事务还没结束，它仍然会看到事务开始时的数据版本。</span><br><span class="line">例如：事务 A 在可重复读隔离级别下查询一张表得到某些数据行。事务 B 修改了这些数据行并提交。事务 A 再次查询这些数据行时，还是看到第一次查询时的数据，不会读取到事务 B 提交后的最新数据，这是为了保证事务内的可重复读。</span><br></pre></td></tr></table></figure>
+<p><strong>行锁基本演示</strong></p>
 <p>建表</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555902379731.png" alt></p>
 <p>取消自动提交就是设置了行锁，不提交前具有己读性（只有自己能看到修改后的数据，其他人看旧数据）</p>
@@ -182,16 +155,6 @@
 <p>无索引，行锁升级为表锁：</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555901956463.png" alt></p>
 <p>设置了行锁，但session1更新时b为varchar却没有加单引号，导致索引失效，未提交，导致升级为表锁，session2出现等待，session1提交后，session2恢复</p>
-<p><strong>间隙锁</strong></p>
-<p>范围检索数据时，对于键值在条件范围内但并不存在的记录，叫做&quot;间隙（ GAP )&quot;， InnoDB 也会对这个&quot;间隙”加锁，叫间隙锁。这种锁机制就是所谓的Next - Key 锁。</p>
-<p>Record Lock：即行锁或排他锁，锁定一个记录上的索引，而不是记录本身。如果表没有设置索引，InnoDB 会自动在主键上创建隐藏的聚簇索引，因此 Record Locks依然可以使用。</p>
-<p>Gap Lock：间隙锁，锁定一个范围，但不包括记录本身。GAP锁的目的，是为了防止同一事务的两次当前读，出现幻读的情况。是一个左开右闭的区间，即(x,y]的形式。</p>
-<p>Next-Key Lock：锁定的是当前值和前面的范围，即锁定一个范围的记录和间隙，是Record Lock和Gap Lock的组合。对于行的查询，都是采用该方法，主要目的是解决幻读的问题。</p>
-<p><strong>GAP锁和Next Key Lock区别</strong></p>
-<p>区别在于锁定范围，Gap锁只锁定索引记录之间的间隙，而Next Key Lock则同时锁定索引记录和间隙。另外，Next Key Lock是MySQL中的一种锁机制，它是在Gap锁的基础上引入的。</p>
-<p>当我们用范围条件，而不是使用相等条件检索数据（select），并请求共享或排他锁时， InnoDB 会给符合条件的已有数据进行加锁；即，一个事务在一个范围内的索引记录上执行<code>SELECT ... FOR UPDATE</code>语句时，MySQL会在该范围内的所有记录和间隙上设置Next Key Lock。</p>
-<p>例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;set autocommit =0;</span><br><span class="line">&gt;update products set name= &#x27;nums&#x27; where id &lt; 10;</span><br><span class="line">&gt;commit;</span><br><span class="line"></span><br><span class="line">会话1：用update语句更新符合条件的数据的某个字段值，更新条件为id&lt;10，目前表中id只有1、2、3、4、6、9的数据，那么id=5,7,8的行数据也会被锁，即间隙行被锁（虽然实际数据不存在）</span><br><span class="line">会话2：插入不存在但是处以id&lt;10条件的行数据时，会进入阻塞状态，直到会话1提交事务。</span><br><span class="line">如何避免：</span><br><span class="line">尽量缩小where后面条件的范围。</span><br></pre></td></tr></table></figure>
 <p><strong>如何主动锁定一行</strong>：</p>
 <p>select … … for update（排它锁）; select … lock in share mode(共享锁)</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555903451452.png" alt></p>
@@ -202,7 +165,65 @@
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555904269579.png" alt></p>
 <p><strong>页锁</strong></p>
 <p>知道有这么个锁就可以，用的比较少</p>
-<h5 id="主从复制"><a class="markdownIt-Anchor" href="#主从复制"></a> 主从复制</h5>
+<h6 id="扩展"><a class="markdownIt-Anchor" href="#扩展"></a> <strong>扩展：</strong></h6>
+<p>1.什么情况会加锁：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">1.对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及的数据集加排他锁；</span><br><span class="line">2.对于普通SELECT语句，InnoDB不会加任何锁；如果在SELECT语句中使用了锁定提示（如SELECT ... FOR UPDATE或SELECT ... LOCK IN SHARE MODE），InnoDB会根据提示对读取的行加锁。</span><br><span class="line">在事务中读取数据不会加读锁而是使用一致性非锁定读，只有加了锁定提示，才会加读锁。</span><br><span class="line"></span><br><span class="line">其他情况：</span><br><span class="line">1.当执行涉及外键约束的操作时，InnoDB可能会对相关表中的行加锁以确保约束的一致性。例如，当插入或更新带有外键的行时，InnoDB会检查父表中的相关行是否存在，并可能对这些行加锁以防止它们被删除或修改。</span><br><span class="line">2.如果在表上定义了触发器，当触发器被激活时，InnoDB可能会对相关行加锁。这取决于触发器的定义和执行的操作。</span><br><span class="line">3.在存储过程或函数中执行的SQL语句可能会导致加锁。这取决于存储过程中包含的语句类型。</span><br><span class="line">4.在可重复读隔离级别下，InnoDB会使用间隙锁（Gap Locks）和next-key锁（记录锁 + 间隙锁）来防止幻读。这些锁会锁定索引间隙或索引记录，防止其他事务插入或更新数据。</span><br><span class="line">间隙锁是否任何时候都存在呢？</span><br><span class="line">5.在某些情况下，如对表进行DDL操作（如ALTER TABLE）、对没有索引的表进行大量更新或删除操作时，InnoDB可能会使用表锁而不是行锁。</span><br><span class="line"></span><br><span class="line">外键约束：</span><br><span class="line">外键（Foreign Key）是一种用于确保数据一致性的数据库约束，通常用于关联两个表中的数据，数据库管理系统（如MySQL）会在内部维护这些约束信息。</span><br><span class="line">-数据一致性，外键约束确保引用的值在被引用的表中存在。当试图插入或更新一个外键值时，数据库会检查被引用的表中是否存在该值。如果不存在，操作会被拒绝。</span><br><span class="line">-级联操作，可以定义外键的级联操作，如ON DELETE CASCADE或ON UPDATE CASCADE，以便在被引用的行被删除或更新时，自动更新或删除引用的行。</span><br><span class="line">-事务支持，外键约束通常与事务一起使用，以确保数据的一致性。在事务中，对外键的检查通常会在事务提交时进行。</span><br><span class="line">CREATE TABLE students (</span><br><span class="line">    id INT PRIMARY KEY,</span><br><span class="line">    name VARCHAR(100),</span><br><span class="line">    class_id INT,</span><br><span class="line">    FOREIGN KEY (class_id) REFERENCES classes(id)</span><br><span class="line">);</span><br><span class="line">外键约束在实际开发中非常常见，尤其是在需要保证数据完整性和一致性的场景下。</span><br><span class="line">不定义外键约束虽然在某些情况下可以简化开发或提高性能，但它可能导致数据不一致和应用逻辑复杂化。因此，建议在设计数据库时尽量使用外键约束，特别是在需要保证数据完整性和一致性的场景下。如果确实因为性能或其他原因不能使用外键约束，应在应用层实现相应的逻辑来确保数据的一致性。</span><br><span class="line"></span><br><span class="line">触发器（Trigger）：</span><br><span class="line">是一种特殊类型的数据库存储过程，它会根据预定义的事件（如插入、更新或删除操作）自动执行。触发器可以用来在数据变动时自动执行一系列操作，以确保数据的完整性、一致性或执行其他业务逻辑。</span><br><span class="line">BEFORE 触发器：在执行INSERT、UPDATE或DELETE操作之前触发。通常用于验证或修改将要插入或更新的数据。</span><br><span class="line">AFTER 触发器：在执行INSERT、UPDATE或DELETE操作之后触发。通常用于在数据更改后执行某些操作，如记录日志或更新其他表。</span><br><span class="line">触发器通过CREATE TRIGGER语句定义。</span><br><span class="line">BEFORE INSERT 触发器例子：</span><br><span class="line">DELIMITER //</span><br><span class="line">CREATE TRIGGER before_employee_insert</span><br><span class="line">BEFORE INSERT ON employees</span><br><span class="line">FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">    -- 在插入新员工记录时，设置创建时间和修改时间</span><br><span class="line">    SET NEW.created_at = NOW();</span><br><span class="line">    SET NEW.updated_at = NOW();</span><br><span class="line">END //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">AFTER UPDATE 触发器例子：</span><br><span class="line">DELIMITER //</span><br><span class="line">CREATE TRIGGER after_employee_update</span><br><span class="line">AFTER UPDATE ON employees</span><br><span class="line">FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">    -- 在更新员工记录后，记录日志</span><br><span class="line">    INSERT INTO employee_logs (employee_id, action, timestamp)</span><br><span class="line">    VALUES (OLD.id, &#x27;UPDATE&#x27;, NOW());</span><br><span class="line">END //</span><br><span class="line">DELIMITER ;</span><br><span class="line"></span><br><span class="line">作用：</span><br><span class="line">1.数据完整性：触发器可以用于在插入或更新数据时验证数据的正确性。例如，确保某个字段必须为正数或者在插入新记录时自动生成某些字段的默认值。</span><br><span class="line">2.自动记录日志：触发器可以用于记录数据变动的历史。例如，每次更新或删除一条记录时，可以将原数据保存到一个日志表中。</span><br><span class="line">3.级联更新或删除：触发器可以用于在某个表的数据变动时自动更新或删除其他表中的相关数据。</span><br><span class="line">4.业务逻辑实现：触发器可以用于实现一些业务逻辑，如在插入或更新数据时自动计算某些字段的值。</span><br><span class="line"></span><br><span class="line">注意事项：</span><br><span class="line">1.性能影响：触发器的逻辑可能会增加数据库操作的复杂性和执行时间。因此，在设计触发器时，应尽量保持其逻辑简单高效。</span><br><span class="line">2.调试困难：触发器的逻辑在数据库内部执行，调试起来可能比较困难。需要通过日志或调试工具来跟踪触发器的执行情况。</span><br><span class="line">3.事务处理：触发器中的操作通常会受到事务的影响。如果触发器中的操作导致错误，整个事务可能会回滚。</span><br><span class="line">4.权限要求：创建和管理触发器通常需要特定的数据库权限。</span><br><span class="line"></span><br><span class="line">总之，触发器是一种强大的数据库工具，可以用来自动执行各种操作以确保数据的一致性和完整性。但使用时应谨慎，以避免对性能和可维护性造成负面影响。</span><br></pre></td></tr></table></figure>
+<p>参考：<a href="https://www.cnblogs.com/hi3254014978/p/17107610.html">https://www.cnblogs.com/hi3254014978/p/17107610.html</a></p>
+<h5 id="事物的acid"><a class="markdownIt-Anchor" href="#事物的acid"></a> <strong>事物的ACID</strong></h5>
+<p>事务的ACID特性是数据库系统中事务的四个关键特性，它们确保了事务能够可靠地执行，并且在发生故障或错误时能够保持数据的一致性和完整性。</p>
+<p>1.原子性（Atomicity）</p>
+<p>事务是个原子操作单元，事务要么完全执行，要么完全不执行。如果事务的一部分失败，整个事务将回滚，所有操作都不会对数据库产生影响。</p>
+<p>2.一致性（Consistency）</p>
+<p>事务执行前后，数据库都必须保持一致状态。这意味着所有相关的数据规则都必须应用于事务的修改，以保持数据的完整性；事务结束时，所有的内部数据结构（如B树索引或双向链表）也都必须是正确的。</p>
+<p>3.隔离性（Isolation）</p>
+<p>事务的执行是独立的，不受其他并发事务的影响。每个事务都像是在独立的环境中运行，其操作和中间状态对其他事务不可见。</p>
+<p>4.持久性（Durability）</p>
+<p>一旦事务提交，其对数据库的修改就是永久的，即使之后发生系统故障，修改后的数据也不会丢失。</p>
+<p><strong>事物隔离级别与脏读、不可重复读、幻读的关系</strong></p>
+<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555861329078.png" alt></p>
+<p>一般来说数据库的默认级别是提交读（比如SQL Server、Oracle），而mysql的InnoDB事务的隔离级别 默认是“可重复读”（REPEATABLE READ）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1）未提交读（READ UNCOMMITTED）。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据（脏读）( 隔离级别最低，并发性能高 )。</span><br><span class="line">2）提交读（READ COMMITTED）。本事务读取到的是最新的数据（其他事务提交后的）。问题是，在同一个事务里，前后两次相同的SELECT会读到不同的结果（不重复读）。会出现不可重复读、幻读问题（锁定正在读取的行）</span><br><span class="line">3）可重复读（REPEATABLE READ）。在同一个事务里，SELECT的结果是事务开始时的时间点状态，因此，同样的SELECT操作读到的结果会是一致的。但是，会有幻读现象（锁定所读取的所有行）。</span><br><span class="line">4）串行化（SERIALIZABLE）。读操作会隐式获取共享锁，可以保证不同事务间的互斥（锁表）。serializable时会锁表，因此不会出现幻读的情况，包括更新丢失也能解决，但这种隔离级别并发性极低，开发中很少会用到</span><br><span class="line"></span><br><span class="line">四个级别逐渐增强，每个级别解决一个问题。</span><br><span class="line">1）脏读。另一个事务修改了数据，但尚未提交，而本事务中的SELECT会读到这些未被提交的数据。</span><br><span class="line">2）不可重复读。解决了脏读后，会遇到：另外一个事务提交了新数据，导致本事务先后两次读到的数据结果会不一致。</span><br><span class="line">3）幻读。解决了不可重复读，保证了同一个事务里，查询的结果都是事务开始时的状态（一致性）。但若另一个事务同时提交了新数据，本事务再更新时，就会“惊奇的”发现了这些新数据，貌似之前读到的数据是“鬼影”一样的幻觉。</span><br><span class="line"></span><br><span class="line">脏读和幻读的区别：脏读是事务b修改了数据，幻读是事务b新增了数据</span><br><span class="line"></span><br><span class="line">隔离级别越高的数据库越安全，能解决的并发*一致性*问题也就越多。</span><br><span class="line">隔离级别越高，就代表着越安全，但是同时性能效率也就越低。</span><br><span class="line"></span><br><span class="line">参考链接：https://blog.csdn.net/ccfeng2008/article/details/51760350</span><br></pre></td></tr></table></figure>
+<p><strong>并发事务</strong>会导致数据脏读、不可重复读、幻读、更新丢失</p>
+<p>更新丢失（Lost Update）</p>
+<p>两个事务在并发下同时进行更新，后一个事务的更新覆盖了前一个事务更新的情况，丢失更新是数据没有保证一致性导致的。比如，事务A 修改了一条记录，事务B 在 事务A 提交的同时也进行了一次修改并且提交。当事务A查询的时候，会发现刚才修改的内容没有被修改，好像丢失了更新。</p>
+<p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555856824265.png" alt></p>
+<p>解决办法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.使用适当的事务隔离级别:</span><br><span class="line">可重复读</span><br><span class="line">在可重复读隔离级别下，InnoDB使用多版本并发控制（MVCC）来避免更新丢失。当一个事务读取数据时，它读取的是事务开始时的数据快照，其他事务对数据的更新不会影响当前事务看到的数据。如果两个事务同时读取同一数据并进行更新，第二个事务在提交时会检测到数据已被修改，并根据具体情况决定是否抛出异常或回滚。</span><br><span class="line">另外在这一级别下，InnoDB可以使用间隙锁和next-key锁来避免幻读，这些锁也可以间接避免更新丢失。间隙锁锁定索引间隙，防止其他事务在间隙中插入数据。next-key锁锁定索引记录和前面的间隙，确保数据的一致性。</span><br><span class="line">串行化（SERIALIZABLE）</span><br><span class="line">这是最高级别的隔离，它通过强制事务串行执行来避免更新丢失。在串行化隔离级别下，事务会获取读写锁，确保同一时间只有一个事务可以访问和修改数据。使用串行化隔离级别可以完全避免更新丢失，但会降低并发性能，因为事务必须按顺序执行，不能并行。</span><br><span class="line">2.使用SELECT ... FOR UPDATE获取排他锁</span><br><span class="line">行锁可以确保在更新数据时，其他事务不能同时对同一数据进行更新。InnoDB默认使用行锁，但在某些情况下可能需要显式地获取行锁。</span><br><span class="line">这样可以确保在读取和更新数据时其他事务不能对该数据进行修改，从而避免更新丢失。</span><br><span class="line">3.乐观锁</span><br><span class="line">乐观锁是一种应用层面的锁机制，它假设在事务执行期间不会发生冲突，但在提交时会检查是否发生了冲突。如果发生冲突，则回滚事务并重试。</span><br><span class="line">实现方式：通常在数据表中添加一个版本号（version）或时间戳（timestamp）字段。在更新数据时，检查当前版本号是否与读取时的版本号一致。如果不一致，说明数据已被其他事务修改，回滚当前事务并重试。</span><br><span class="line">4.悲观锁</span><br><span class="line">悲观锁（Pessimistic Locking）假设冲突是常见的，因此在读取数据时就加锁，以防止其他事务对数据进行修改。在事务执行期间，悲观锁会一直持有锁，直到事务完成。</span><br><span class="line">在MySQL的InnoDB存储引擎中，可以通过SELECT ... FOR UPDATE语句来实现悲观锁。这个语句会对读取的行加排他锁，确保其他事务无法对这些行进行读写操作（除了同样持有排他锁的事务）。</span><br><span class="line"></span><br><span class="line">InnoDB解决更新丢失与幻读：</span><br><span class="line">更新丢失：在可重复读隔离级别下，InnoDB通过行锁和MVCC机制避免更新丢失。行锁确保同一行数据在同一时间只能被一个事务更新，而MVCC在事务提交时检测数据是否被修改。</span><br><span class="line">幻读：在可重复读隔离级别下，InnoDB通过next-key锁避免幻读。next-key锁（间隙锁+记录锁）锁定索引记录之间的间隙和记录，防止其他事务插入新行。</span><br><span class="line"></span><br><span class="line">在高并发的情况下，使用了mysql的事务，未加行锁的情况下是有可能更新丢失的，这时可以给事务加一个redis锁或者在事务中显示的加写锁，来防止并发。两者性能上的对比是</span><br><span class="line">Redis锁：在高并发场景下性能较好，能快速响应，但需要额外的Redis组件，适用于分布式系统中的并发控制。</span><br><span class="line">MySQL写锁：适合对数据一致性要求极高的场景，无需额外组件，但在高并发下可能会降低并发性能，适用于传统单体应用或对事务隔离性要求高的场景。</span><br></pre></td></tr></table></figure>
+<p><strong>InnoDB引擎通过MVCC，解决了脏读、不可重复读，通过MVCC + Next-Key Lock(临键锁)来解决幻读，实现了事务的隔离级别Repeatable Read（可重复读）。</strong></p>
+<p><strong>可重复读隔离级别下，并发问题需要靠开发者显式或隐式使用锁来自行解决。</strong></p>
+<p>参考链接：</p>
+<p><a href="https://blog.csdn.net/sun8112133/article/details/89853755">https://blog.csdn.net/sun8112133/article/details/89853755</a></p>
+<p>RR(Repeatable Read)防止幻读的讨论：</p>
+<p><a href="https://github.com/Yhzhtk/note/issues/42">https://github.com/Yhzhtk/note/issues/42</a></p>
+<p>结论：Innodb 的 RR 隔离界别对范围会加上 GAP，理论上不会存在幻读，但是是否有例外，还需要进一步求证。</p>
+<h6 id="扩展-2"><a class="markdownIt-Anchor" href="#扩展-2"></a> 扩展</h6>
+<p><strong>间隙锁</strong></p>
+<p>范围检索数据时，对于键值在条件范围内但并不存在的记录，叫做&quot;间隙（ GAP )&quot;， InnoDB 也会对这个&quot;间隙”加锁，叫间隙锁。这种锁机制就是所谓的Next - Key 锁（记录锁 + 间隙锁）。</p>
+<p>Record Lock：即行锁或排他锁，锁定一个记录上的索引，而不是记录本身。只要表有主键，就存在聚簇索引，Record Lock可以作用于该索引。如果没有显式的主键或索引，InnoDB会创建隐藏的聚簇索引，Record Lock仍然可以使用。因此，表总是存在索引（至少是隐藏的聚簇索引），Record Lock总能作用于某个索引。</p>
+<p>Gap Lock：间隙锁锁定的是索引记录之间的间隙，而不是具体的数据行本身。它用于保护一个范围内的记录，但不锁定记录本身。GAP锁的主要目的是防止幻读。幻读发生在在一个事务中多次执行相同查询时，由于其他事务插入了新数据，导致查询结果不一致。间隙锁通过锁定索引记录之间的间隙，阻止其他事务在这些间隙中插入新记录，从而避免幻读。间隙锁通常在可重复读隔离级别下自动使用。当执行范围查询（如 <code>SELECT * FROM table WHERE id BETWEEN 1 AND 10 FOR UPDATE</code>）时，InnoDB 会自动对符合条件的索引记录之间的间隙加锁。锁定的是两个相邻记录之间的间隙，不包含记录本身。若两个相邻记录的值分别是<code>x</code>和<code>y</code>，则间隙锁的区间表示为<code>(x, y)</code>（左开右开区间）。</p>
+<p>Next-Key Lock：是Record Lock和Gap Lock的组合，Next-Key Lock 锁定的是一个记录以及该记录之后的间隙，但不包括下一个记录，也就是说，它锁定的是一个左闭右开的区间[current_record, next_record)。Next-Key Lock 的主要目的是防止幻读。当执行<strong>范围查询</strong>、<strong>非唯一索引上的等值查询</strong>（select…for update）操作时，InnoDB 会使用 Next-Key Lock。</p>
+<p><strong>GAP锁和Next Key Lock区别</strong></p>
+<p>区别在于锁定范围，Gap锁只锁定索引记录之间的间隙，而Next Key Lock则同时锁定索引记录和间隙。另外，Next Key Lock是MySQL中的一种锁机制，它是在Gap锁的基础上引入的，结合了 Gap 锁和记录锁的功能，提供了更强的保护。</p>
+<p>当我们用范围条件，并请求共享或排他锁时， InnoDB 会给符合条件的已有数据进行加锁；即，一个事务在一个范围内的索引记录上执行<code>SELECT ... FOR UPDATE</code>语句时，MySQL会在该范围内的所有记录和间隙上设置Next Key Lock。</p>
+<p>而若是使用相等条件检索数据（select），InnoDB只会对满足条件的记录加记录锁（Record Lock），而不会对间隙加锁。这种情况下，锁定范围仅限于被访问的记录本身，不存在区间加锁。</p>
+<p>例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;set autocommit =0;</span><br><span class="line">&gt;update products set name= &#x27;nums&#x27; where id &lt; 10;</span><br><span class="line">&gt;commit;</span><br><span class="line"></span><br><span class="line">会话1：用update语句更新符合条件的数据的某个字段值，更新条件为id&lt;10，目前表中id只有1、2、3、4、6、9的数据，那么id=5,7,8的行数据也会被锁，即间隙行被锁（虽然实际数据不存在）</span><br><span class="line">会话2：插入不存在但是处以id&lt;10条件的行数据时，会进入阻塞状态，直到会话1提交事务。</span><br><span class="line">如何避免：</span><br><span class="line">1.尽量缩小where后面条件的范围，尽量让更新或删除操作的WHERE条件能够精确匹配索引，避免使用范围查询。如果必须使用范围查询，尽量让范围尽可能小，以减少锁定的间隙和记录。</span><br><span class="line">2.使用唯一索引：如果可能，使用唯一索引可以避免间隙锁，因为唯一索引的等值查询不会锁定间隙。</span><br><span class="line">3.调整事务隔离级别：如果幻读不是主要问题，可以考虑将事务隔离级别调整为读已提交（READ COMMITTED），在这个隔离级别下，InnoDB不会使用间隙锁。</span><br></pre></td></tr></table></figure>
+<h5 id="cap理论"><a class="markdownIt-Anchor" href="#cap理论"></a> CAP理论</h5>
+<p>分布式系统领域的理论</p>
+<p><a href="http://www.cnblogs.com/gudi/p/8183548.html">http://www.cnblogs.com/gudi/p/8183548.html</a></p>
+<p>一致性C（Consistency）、可用性A（Availability）和分区容错性P（Partition Tolerance）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一致性（数据）：当一个节点向系统写入数据后，其他节点立即能读取到这个最新的数据。这意味着任何节点的读操作都能获取到最新的写入结果。</span><br><span class="line">可用性（系统）：每个请求都必须在有限的时间内返回结果，无论成功还是失败。系统不能无限制地拖延响应。</span><br><span class="line">分区容错性（网络）：系统在遇到网络分区（部分节点之间的通信失败）时仍能继续运行。意味着即使在网络分区的情况下，系统仍然能够继续处理请求。</span><br><span class="line"></span><br><span class="line">网络分区是指在分布式系统中，由于网络故障、配置错误或其他原因，导致系统中的一部分节点无法与另一部分节点进行通信。它不一定是因为某个地区的网络信号不可用，而更像是系统内部的通信故障，类似于国内的网络访问不了国外的网站。</span><br></pre></td></tr></table></figure>
+<p>CAP的权衡</p>
+<p>在实际的分布式系统设计中，通常需要在以下三种组合中做出选择</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.CP系统（Consistency + Partition Tolerance）：在这种系统中，当发生网络分区时，系统会优先保证一致性，可能会牺牲部分可用性。例如，某些节点可能无法响应请求，直到分区问题解决。如果系统选择保证一致性（CP），那么在分区期间，系统可能会拒绝部分请求以保持数据一致（如银行交易系统）。</span><br><span class="line">2.AP系统（Availability + Partition Tolerance）：在这种系统中，当发生网络分区时，系统会优先保证可用性，可能会牺牲一致性。例如，某些节点可能会返回过时的数据，但系统仍然会响应请求。如果系统选择保证可用性（AP），那么在分区期间可能会出现数据不一致的情况。（如在线视频服务，大网站一般保AP）</span><br><span class="line">3.CA系统（Consistency + Availability）：理论上，这种系统可以在没有网络分区的情况下同时满足一致性和可用性。但实际上，在分布式系统中，网络分区是不可避免的，因此CA系统在实际中很少存在</span><br></pre></td></tr></table></figure>
+<p>CAP理论实际应用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1.主从复制：在主从复制架构中，主节点负责写操作，从节点负责读操作。为了保证一致性，写操作需要在所有从节点上成功后才返回成功。但如果网络分区导致从节点无法通信，系统可能无法保证可用性。</span><br><span class="line">2.多主复制：在多主复制架构中，每个节点都可以处理写操作，并将写操作复制到其他节点。这种架构通常更关注可用性，但在网络分区时可能会出现不一致的情况。</span><br></pre></td></tr></table></figure>
+<p>NoSQL与CAP理论的关系：</p>
+<p>NoSQL 数据库与 CAP 理论紧密相关，因为它们通常用于构建分布式系统。NoSQL 数据库的设计也通常需要在 CAP 理论的三个特性（一致性、可用性、分区容错性）之间做出权衡，以满足特定的应用场景和需求。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CP 类型（Consistency + Partition Tolerance） ：</span><br><span class="line">特点：优先保证一致性和分区容错性，在网络分区期间可能牺牲可用性。</span><br><span class="line">示例：一些强一致性需求的 NoSQL 数据库，如某些场景下的 MongoDB（当配置为强一致性时）。在遇到网络分区时，MongoDB 的部分节点可能会不可用，以确保数据的一致性。</span><br><span class="line"></span><br><span class="line">AP 类型（Availability + Partition Tolerance） ：</span><br><span class="line">特点：优先保证可用性和分区容错性，在网络分区期间可能牺牲一致性。</span><br><span class="line">示例：Cassandra 是一个典型的 AP 型 NoSQL 数据库。它设计用于高可用性，在网络分区期间仍然允许读写操作，但可能会返回过时的数据。</span><br><span class="line"></span><br><span class="line">网络分区是指在分布式系统中，由于网络故障、配置错误或其他原因，导致系统中的一部分节点无法与另一部分节点进行通信。</span><br></pre></td></tr></table></figure>
+<p>网络分区后，AP导致的数据不一致在，网络恢复后，数据怎么办？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1.数据同步机制</span><br><span class="line">-主动同步：在网络恢复后，系统会自动检测到网络分区的解除，并启动数据同步过程。各个节点会将自己在网络分区期间修改的数据发送给其他节点，以保证数据的一致性。例如，Cassandra 会记录每个节点的写操作，并在网络恢复后自动同步。</span><br><span class="line">-定期同步：系统会定期检查各个节点的数据版本或时间戳，发现不一致时进行同步。这种方式可以确保即使网络分区导致的数据不一致，也能在一定时间内得到修复。</span><br><span class="line">2.冲突解决机制</span><br><span class="line">-版本号比较：每个数据项都附带一个版本号，网络分区期间各个节点独立修改数据时会增加版本号。在网络恢复后，比较数据的版本号，保留最高版本号的数据，或者将不同版本的数据合并。</span><br><span class="line">-时间戳机制：记录数据最后更新的时间戳，网络恢复后以时间戳较新的数据为准。需要注意的是，时间戳机制依赖于各个节点的时间同步，如果节点时间不同步，可能会导致错误的判断。</span><br><span class="line">-业务规则：根据业务逻辑来解决数据冲突。例如，在一个电商系统的购物车数据中，如果两个节点在网络分区期间都添加了商品，网络恢复后可以根据业务规则（如合并购物车商品）来解决冲突。</span><br><span class="line">3.人工干预</span><br><span class="line">-日志审计：系统会记录网络分区期间的所有操作日志。网络恢复后，通过人工审计日志来发现和解决数据不一致的问题。</span><br><span class="line">-数据校验：定期进行数据校验，发现不一致时手动修复。这种方式通常适用于对数据一致性要求极高且自动冲突解决机制无法保证正确性的场景。</span><br><span class="line">4.最终一致性模型</span><br><span class="line">-网络分区期间：允许数据不一致，但保证网络恢复后数据最终会达到一致状态。例如，使用消息队列来缓冲网络分区期间的写操作，网络恢复后，消息队列中的操作会被依次执行，确保数据最终一致。</span><br></pre></td></tr></table></figure>
+<h4 id="主从复制"><a class="markdownIt-Anchor" href="#主从复制"></a> 主从复制</h4>
 <p><strong>基本原理</strong></p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555913208991.png" alt></p>
 <p><strong>基本原则</strong></p>
@@ -232,11 +253,21 @@
 <p>如何停止从服务复制功能（有时候主机的数据，从机不需要，这时用到，以及以下情况）</p>
 <p><img src="/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/1555923423854.png" alt></p>
 <p>每次从来需要主机show master status,因为position不一样</p>
+<h4 id="mysql缓存机制"><a class="markdownIt-Anchor" href="#mysql缓存机制"></a> MySQL缓存机制</h4>
+<p>MySQL 有多种缓存机制，包括查询缓存、InnoDB 的缓冲池、MyISAM 的键缓存等。</p>
+<p><strong>查询缓存</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-工作原理：查询缓存会将客户端的查询请求和服务器返回的结果集存储在内存中。当相同的查询再次执行时，MySQL 可以直接从查询缓存中返回结果，而无需再次访问数据表。</span><br><span class="line">-限制：如果数据表发生更改（如插入、更新或删除操作），与该表相关的查询缓存将被自动失效，后续的查询需要重新从数据表中获取数据。</span><br></pre></td></tr></table></figure>
+<p><strong>InnoDB 缓冲池</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 工作原理：InnoDB 使用缓冲池来缓存数据和索引页。当读取数据时，InnoDB 会优先从缓冲池中获取数据，如果数据不在缓冲池中，才会从磁盘读取并加载到缓冲池中。</span><br><span class="line">- 持久性：缓冲池中的数据会在内存中保留，直到被其他数据替换或 MySQL 服务器重启。</span><br></pre></td></tr></table></figure>
+<p><strong>MyISAM 的键缓存</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-工作原理：MyISAM 使用键缓存（Key Buffer）来缓存索引块。数据文件的读取直接从磁盘进行，而不经过缓存。</span><br></pre></td></tr></table></figure>
+<p><strong>实际应用场景</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- 查询缓存默认关闭：从 MySQL 8.0 开始，默认情况下查询缓存是关闭的，因为它在某些情况下可能会降低性能。</span><br><span class="line">- 手动控制缓存：可以通过配置参数手动开启或关闭查询缓存，并设置缓存的大小。</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/" data-id="cm4z9cke7000j4gli0tah0auj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/23/MySQL%E9%94%81%E6%9C%BA%E5%88%B6/" data-id="cmbkf3nec000pe51h993g6xh0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
@@ -288,7 +319,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ComputerNetwork/" style="font-size: 15.56px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 12.22px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 11.11px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 16.67px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 18.89px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 14.44px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 15.56px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 17.78px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 14.44px;">algorithm-data_structure</a>
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 13.33px;">Git</a> <a href="/tags/Golang/" style="font-size: 14.44px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 17.78px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 17.78px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18.89px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
     </div>
   </div>
 
@@ -297,7 +328,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
     </div>
   </div>
 
@@ -310,23 +341,23 @@
       <ul>
         
           <li>
-            <a href="/2024/12/05/IntelliJ-IDEA/">IntelliJ IDEA</a>
+            <a href="/2025/05/25/JWT%E5%AE%9E%E6%88%98/">JWT实战</a>
           </li>
         
           <li>
-            <a href="/2024/12/05/jmeter%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">jmeter安装配置</a>
+            <a href="/2025/05/16/CSRF%E6%A6%82%E8%BF%B0%E5%92%8CBeego%E9%85%8D%E7%BD%AE/">CSRF概述和Beego配置</a>
           </li>
         
           <li>
-            <a href="/2024/12/03/jmeter/">jmeter</a>
+            <a href="/2025/05/05/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS/">SQL注入与XSS</a>
           </li>
         
           <li>
-            <a href="/2024/12/01/%E9%AA%8C%E7%AD%BE%E5%92%8C%E5%8A%A0%E8%A7%A3%E5%AF%86/">验签和加解密</a>
+            <a href="/2025/04/27/%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">服务程序后台运行</a>
           </li>
         
           <li>
-            <a href="/2024/11/30/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">分布式事务</a>
+            <a href="/2025/04/17/Linux%E9%80%9A%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux通用命令</a>
           </li>
         
       </ul>
@@ -341,7 +372,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2024 abellmz<br>
+      &copy; 2025 abellmz<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
