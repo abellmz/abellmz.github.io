@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>同步Github与Gitee的项目代码 | abellmz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GitHub 和 Gitee 上的项目可以通过多种方式实现代码同步，以确保在 GitHub 上的仓库代码发生变动时，Gitee 上的代码也能相应更新。 同步的方法有多种：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="同步Github与Gitee的项目代码">
+<meta property="og:url" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/index.html">
+<meta property="og:site_name" content="abellmz">
+<meta property="og:description" content="GitHub 和 Gitee 上的项目可以通过多种方式实现代码同步，以确保在 GitHub 上的仓库代码发生变动时，Gitee 上的代码也能相应更新。 同步的方法有多种：">
+<meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612102428279.png">
+<meta property="og:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612102348724.png">
+<meta property="og:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103240771.png">
+<meta property="og:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103333202.png">
+<meta property="og:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103417566.png">
+<meta property="og:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103600039.png">
+<meta property="article:published_time" content="2025-06-05T02:16:29.000Z">
+<meta property="article:modified_time" content="2025-06-12T02:49:25.786Z">
+<meta property="article:author" content="abellmz">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612102428279.png">
+  
+    <link rel="alternate" href="/atom.xml" title="abellmz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">abellmz</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-同步Github与Gitee的项目代码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/" class="article-date">
+  <time datetime="2025-06-05T02:16:29.000Z" itemprop="datePublished">2025-06-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      同步Github与Gitee的项目代码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GitHub 和 Gitee 上的项目可以通过多种方式实现代码同步，以确保在 GitHub 上的仓库代码发生变动时，Gitee 上的代码也能相应更新。</p>
+<p>同步的方法有多种：</p>
+<span id="more"></span>
+<p>1.使用 Gitee 的仓库镜像管理功能。</p>
+<p>2.使用 GitHub Actions 自动同步。</p>
+<p>3.使用定时任务和脚本。</p>
+<p>4.手动同步。</p>
+<p>以下为第一种方法的操作步骤：</p>
+<h3 id="gitee操作"><a class="markdownIt-Anchor" href="#gitee操作"></a> Gitee操作</h3>
+<p>1.登录 Gitee 账户，找到需要镜像的仓库。点击仓库页面左上角的 “管理” 选项，进入仓库管理页面。</p>
+<p>2.在管理页面中，找到 “仓库镜像管理” 选项并点击进入。</p>
+<p>3.点击 “添加镜像” 按钮。</p>
+<p><img src="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612102428279.png" alt></p>
+<p>4.如果Gitee 账号还没有绑定过 GitHub 账号，根据弹窗的提示绑定 GitHub 账号。</p>
+<p>5.在 “镜像方向” 中选择 “Push” 方向，表示 Gitee 往 GitHub 方向推送</p>
+<p><img src="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612102348724.png" alt></p>
+<p>6.在 “镜像仓库” 下拉列表中选择需要镜像的仓库。</p>
+<p>7.在 “个人令牌” 中输入 GitHub 个人令牌。（GitHub 的私人令牌中必须包含对 “repo” 的访问授权，否则添加后镜像不可用。私人令牌的获取可以按照链接的提示获取。）</p>
+<p>8.点击 “添加” 按钮，完成镜像配置。</p>
+<p>注意：<br>
+仓库镜像会同步分支、标签和提交记录，镜像触发的最短间隔时间为 5 分钟。若同步时间超过 30 分钟视为超时，大型仓库不建议使用镜像方式同步。</p>
+<h3 id="github个人令牌获取"><a class="markdownIt-Anchor" href="#github个人令牌获取"></a> Github个人令牌获取</h3>
+<p>1.登录 GitHub 账户，点击右上角的头像，选择 “Settings”。</p>
+<p><img src="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103240771.png" alt></p>
+<p>2.在左侧导航栏中，找到 “Developer settings” 选项并点击进入。</p>
+<p><img src="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103333202.png" alt></p>
+<p>3.在 “Developer settings” 页面中，点击 “Personal access tokens”。</p>
+<p><img src="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103417566.png" alt></p>
+<p>4.在 “Personal access tokens” 下有2个选项，选择Tokens (classic)，点击 “Generate new token” 按钮也有2个选项，选择“Generate new token (classic)”，创建新的个人访问令牌。</p>
+<p>“Fine-grained tokens” ：该选项允许你创建具有更精细权限控制的访问令牌，适用于需要更严格权限管理的场景。不过，对于大多数常规操作，“Tokens (classic)” 已经足够使用。</p>
+<p>5.为令牌起一个名称，以便日后识别。</p>
+<p><img src="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/image-20250612103600039.png" alt></p>
+<p>6.选择令牌的权限范围。对于仓库镜像操作，通常需要选择 “repo” 权限，这样令牌才能对仓库进行读写操作。</p>
+<p>7.设置令牌的有效期。可以选择合适的时长，例如 1 个月、3 个月或 1 年等。</p>
+<p>8.点击 “Generate token” 按钮创建令牌，</p>
+<h5 id="拓展"><a class="markdownIt-Anchor" href="#拓展"></a> 拓展</h5>
+<p>1.若是删除 GitHub 上的原项目仓库并重建一个同名仓库后，Gitee 项目代码可以顺利同步到这个新仓库。</p>
+<p>2.大型仓库不建议使用镜像方式同步的原因：<br>
+“大型仓库”没有严格统一的标准，但一般认为大于5000w行代码或容量超过100G的仓库即为普遍认可的大仓，可能会发生镜像同步超时，即同步时间超过30分钟。<br>
+镜像同步超时的本质是其对时间的敏感性。镜像同步需要在两个仓库之间传输大量数据，包括分支、标签和提交记录，若同步时间过长，可能会出现网络中断、数据不一致等问题，导致同步失败。对于大型仓库，数据量巨大，同步所需的时间和资源成本更高，更容易受超时问题的影响。另外，由于镜像操作会覆盖目标仓库的分支、标签和提交记录，这在大型仓库中可能导致潜在的数据丢失风险。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/" data-id="cmbss68b5002l61liftkmdo3v" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/05/25/JWT%E5%AE%9E%E6%88%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JWT实战</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ComputerNetwork/" rel="tag">ComputerNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Front-end/" rel="tag">Front-end</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/" rel="tag">MongoDB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OperatingSystem/" rel="tag">OperatingSystem</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP-framework/" rel="tag">PHP-framework</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SoftwareDevelopment/" rel="tag">SoftwareDevelopment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tool/" rel="tag">Tool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm-data-structure/" rel="tag">algorithm-data_structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ComputerNetwork/" style="font-size: 16.67px;">ComputerNetwork</a> <a href="/tags/Docker/" style="font-size: 12.22px;">Docker</a> <a href="/tags/Front-end/" style="font-size: 11.11px;">Front-end</a> <a href="/tags/Git/" style="font-size: 14.44px;">Git</a> <a href="/tags/Golang/" style="font-size: 14.44px;">Golang</a> <a href="/tags/Hexo/" style="font-size: 12.22px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/MongoDB/" style="font-size: 11.11px;">MongoDB</a> <a href="/tags/MySQL/" style="font-size: 20px;">MySQL</a> <a href="/tags/OperatingSystem/" style="font-size: 17.78px;">OperatingSystem</a> <a href="/tags/PHP/" style="font-size: 17.78px;">PHP</a> <a href="/tags/PHP-framework/" style="font-size: 15.56px;">PHP-framework</a> <a href="/tags/Redis/" style="font-size: 16.67px;">Redis</a> <a href="/tags/SoftwareDevelopment/" style="font-size: 18.89px;">SoftwareDevelopment</a> <a href="/tags/Tool/" style="font-size: 13.33px;">Tool</a> <a href="/tags/algorithm-data-structure/" style="font-size: 15.56px;">algorithm-data_structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/03/">March 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">October 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/09/">September 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/05/%E5%90%8C%E6%AD%A5Github%E4%B8%8EGitee%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/">同步Github与Gitee的项目代码</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/25/JWT%E5%AE%9E%E6%88%98/">JWT实战</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/16/CSRF%E6%A6%82%E8%BF%B0%E5%92%8CBeego%E9%85%8D%E7%BD%AE/">CSRF概述和Beego配置</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/05/SQL%E6%B3%A8%E5%85%A5%E4%B8%8EXSS/">SQL注入与XSS</a>
+          </li>
+        
+          <li>
+            <a href="/2025/04/27/%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%90%8E%E5%8F%B0%E8%BF%90%E8%A1%8C/">服务程序后台运行</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2025 abellmz<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
